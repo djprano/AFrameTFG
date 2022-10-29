@@ -11,6 +11,7 @@
     <a-scene renderer="antialias: true">
       <a-assets>
         <img id="sky" src="textures/sky.jpg">
+        <a-asset-item id="terrain" src="data/noctis-3500-clip-envi.bin"></a-asset-item>
       </a-assets>
       <!-- Camera -->
       <a-entity position="0 80 -200" rotation="0 180 0">
@@ -20,7 +21,7 @@
       <!-- Terrain-->
       <a-entity
         terrain-model="map: url(data/noctis-3500-clip-textureRED-resized.jpg);
-          dem: url(data/noctis-3500-clip-envi.bin);
+          dem: #terrain;
           planeWidth: 346;
           planeHeight: 346;
           segmentsWidth: 199;
