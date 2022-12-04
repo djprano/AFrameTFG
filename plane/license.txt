@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low poly plane
+* source:	https://sketchfab.com/3d-models/low-poly-plane-151517395bae4d849b30ca53a5e3c5a8
+* author:	elbert.nathanaeltkg (https://sketchfab.com/elbert.nathanaeltkg)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low poly plane" (https://sketchfab.com/3d-models/low-poly-plane-151517395bae4d849b30ca53a5e3c5a8) by elbert.nathanaeltkg (https://sketchfab.com/elbert.nathanaeltkg) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
