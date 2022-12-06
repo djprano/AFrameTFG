@@ -9,12 +9,11 @@ var mainScene;
 var sky;
 var cam;
 var lastFlight;
-const intervalTime = 1000;
+const intervalTime = 5000;
 const localApi = new LocalApi();
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
-
 
 
 AFRAME.registerComponent('position-listener', {
@@ -94,49 +93,78 @@ function flightVectorExtractor(flight) {
 
 function buildPlane(data) {
     //Filtramos vuelos con nombre indefinido de vuelo ya que será nuestro primary key.
-    data.states.filter(flight => flight[OpenSkyModel.NAME] != null && flight[OpenSkyModel.NAME] != undefined && flight[OpenSkyModel.NAME] != "").
+    data.states.filter(flight => flight[OpenSkyModel.ID] != null && flight[OpenSkyModel.ID] != undefined && flight[OpenSkyModel.ID] != "").
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
-            let name = flight[OpenSkyModel.NAME];
+            let id = flight[OpenSkyModel.ID];
             let vector = flightVectorExtractor(flight);
             let rotationY = flight[OpenSkyModel.TRUE_TRACK] + 180;
 
             let entityEl;
+            let cacheData;
 
-            if (flightsCache.has(name)) {
-                //Si está el vuelo en la cache
-                entityEl = document.getElementById(name);
-            } else {
-                //Vuelo nuevo
-                const scale = 5 / OpenSkyModel.FACTOR;
-                entityEl = document.createElement('a-entity');
-                entityEl.setAttribute('id', name);
-                entityEl.setAttribute('gltf-model', "#plane");
-                entityEl.setAttribute('scale', { x: scale, y: scale, z: scale });
-                mainScene.appendChild(entityEl);
-            }
-            //cambiamos la posición del vuelo
-            console.log("Actualizando el vuelvo" + name);
-            //Si ya se introdujo en el mapa se crea el componente animación desde el punto anterior hasta la nueva posición
+            //Creamos el objeto de nueva posición 
             let newPosition = { x: vector[0], y: vector[1] == null ? 0 : vector[1], z: vector[2] };
-            if (entityEl.getAttribute('position') != null) {
-                let lastPosition = entityEl.getAttribute('position');
+
+            //Comprobamos si está en la cache
+            if (flightsCache.has(id)) {
+                entityEl = document.getElementById(id);
+
+                cacheData = flightsCache.get(id);
+                cacheData.lastData = cacheData.newData;
+                cacheData.newData = newPosition;
+
+            } else {
+                entityEl = createFlightElement(id);
+                cacheData = new FlightCacheData(id,null,newPosition);
+            }
+
+            //cambiamos la posición del vuelo
+            console.log("Actualizando el vuelvo " + id);
+           
+            //Creamos la animación si tiene almacenado una posición anterior
+            if (cacheData.lastData != null && cacheData.lastData != undefined) {
                 entityEl.setAttribute('animation', {
                     property: 'position',
-                    from: lastPosition,
-                    to: newPosition,
+                    from: cacheData.lastData,
+                    to: cacheData.newData,
                     autoplay: true,
+                    loop: 0,
                     easing: 'linear',
                     dur: intervalTime
                 });
             }
-            entityEl.setAttribute('position', newPosition);
+            entityEl.setAttribute('position', cacheData.newData);
             entityEl.setAttribute('rotation', { x: 0, y: rotationY, z: 0 });
 
             //Guardarmos el vuelo en la cache
-            flightsCache.set(name, flight);
-            console.log("Actualizado el vuelvo" + name);
+            flightsCache.set(id, cacheData);
+            console.log("Actualizado el vuelvo " + id);
             //salvamos la posición del último vuelo para mover la cámara
             lastFlight = vector;
         });
 }
+
+function createFlightElement(id) {
+    //Vuelo nuevo
+    const scale = 4 / OpenSkyModel.FACTOR;
+    let entityEl = document.createElement('a-entity');
+    entityEl.setAttribute('id', id);
+    entityEl.setAttribute('gltf-model', "#plane");
+    entityEl.setAttribute('scale', { x: scale, y: scale, z: scale });
+    mainScene.appendChild(entityEl);
+    return entityEl;
+
+}
+
+//Clase wrapper que contiene la información de la posición anterior y la nueva posicón y será almacenado en la cache.
+class FlightCacheData{
+    
+    //Constructor
+    constructor(id,lastData , newData){
+        this.id = id;
+        this.lastData = lastData;
+        this.newData = newData;
+    }
+}
+
