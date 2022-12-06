@@ -93,7 +93,10 @@ function flightVectorExtractor(flight) {
 
 function buildPlane(data) {
     //Filtramos vuelos con nombre indefinido de vuelo ya que será nuestro primary key.
-    data.states.filter(flight => flight[OpenSkyModel.ID] != null && flight[OpenSkyModel.ID] != undefined && flight[OpenSkyModel.ID] != "").
+    data.states.filter(flight => flight != null &&
+        flight[OpenSkyModel.ID] != null &&
+        flight[OpenSkyModel.ID] != undefined &&
+        flight[OpenSkyModel.ID] != "").
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
@@ -136,7 +139,7 @@ function buildPlane(data) {
 
             //Guardarmos el vuelo en la cache
             flightsCache.set(id, cacheData);
-            
+
             //salvamos la posición del último vuelo para mover la cámara
             lastFlight = vector;
         });
