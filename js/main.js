@@ -119,9 +119,6 @@ function buildPlane(data) {
                 cacheData = new FlightCacheData(id,null,newPosition);
             }
 
-            //cambiamos la posición del vuelo
-            console.log("Actualizando el vuelvo " + id);
-           
             //Creamos la animación si tiene almacenado una posición anterior
             if (cacheData.lastData != null && cacheData.lastData != undefined) {
                 entityEl.setAttribute('animation', {
@@ -139,7 +136,7 @@ function buildPlane(data) {
 
             //Guardarmos el vuelo en la cache
             flightsCache.set(id, cacheData);
-            console.log("Actualizado el vuelvo " + id);
+            
             //salvamos la posición del último vuelo para mover la cámara
             lastFlight = vector;
         });
