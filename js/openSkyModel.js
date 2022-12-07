@@ -22,4 +22,14 @@ export const TRUE_TRACK = 10;
 //********************Constantes para el escalado del mapa */
 
 //Constante de escalado en metros, se usa para no tener distancias en metros si no que en un factor representado por estas constante.
-export const FACTOR = 10;
+export const FACTOR = 1000;
+
+//MER(Minimun Enclosing Rectangle) en grados del escenario
+
+export const LAT_MIN = 40.178873;
+
+export const LAT_MAX = 40.971604;
+
+export const LONG_MIN = -4.702148;
+
+export const LONG_MAX = -2.900391;

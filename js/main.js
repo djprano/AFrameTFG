@@ -11,9 +11,12 @@ var cam;
 var lastFlight;
 const intervalTime = 5000;
 const localApi = new LocalApi();
+var displacement;
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
+
+
 
 
 AFRAME.registerComponent('position-listener', {
@@ -43,7 +46,7 @@ AFRAME.registerComponent('handle-events', {
         });
         el.addEventListener('click', function () {
             if (lastFlight != undefined) {
-                cam.setAttribute('position', { x: lastFlight[0], y: lastFlight[1], z: lastFlight[2] });
+                cam.setAttribute('position', lastFlight);
             }
         });
 
@@ -61,6 +64,9 @@ AFRAME.registerComponent('main-scene', {
         cam = mainScene.querySelector('#camera');
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
+        //Displacement calculation
+        displacementCalculation();    
+
     },
 
     invertalEvent: function () {
@@ -78,15 +84,45 @@ AFRAME.registerComponent('main-scene', {
 }
 );
 
+//Displacement calculation
+function displacementCalculation(){
+    
+    let longDispDegrees = (OpenSkyModel.LONG_MAX - OpenSkyModel.LONG_MIN)/2;
+    let latDispDegrees = (OpenSkyModel.LAT_MAX - OpenSkyModel.LAT_MIN)/2;
+    
+    displacement = degreeToMeter(latDispDegrees,longDispDegrees);
+}
+
+function degreeToMeter(lat,long){
+    let latlng = new L.latLng(lat, long);
+    return L.Projection.Mercator.project(latlng);
+}
+
+//Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
 
-    let latlng = new L.latLng(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
-    let point = L.Projection.Mercator.project(latlng);
-    let xPos = point.x / OpenSkyModel.FACTOR;
-    let yPos = point.y / OpenSkyModel.FACTOR;
-    let zPos = flight[OpenSkyModel.ALTITUDE] / OpenSkyModel.FACTOR;
-    let vector = [xPos, zPos, yPos];
-    return vector;
+    let point = degreeToMeter(flight[OpenSkyModel.LAT],flight[OpenSkyModel.LONG]);
+    let mercatorVector = {x:point.x,y:flight[OpenSkyModel.ALTITUDE],z:point.y};
+    return mercatorToWorld(mercatorVector);
+}
+
+//Esta función comvierte una coordenada mercator a una coordenada en el mundo 3d
+//En el 3d tenemos conversiones de factor , desplazamiento y cambio de ejes.
+function mercatorToWorld(mercatorVector){
+    let xWorld = (mercatorVector.x-displacement.x)/OpenSkyModel.FACTOR;
+    let yWorld = (mercatorVector.z-displacement.y)/OpenSkyModel.FACTOR;
+    let altitudeWorld = mercatorVector.y == null ? 0: mercatorVector.y/OpenSkyModel.FACTOR;
+
+    return {x:xWorld,y:altitudeWorld,z:yWorld};
+}
+
+//Convierte los datos del mundo 3D a un vector en mercator en metros
+function worldtoMercator(worldVector){
+    let xMercator = (worldVector.x*OpenSkyModel.FACTOR)+displacement.x;
+    let yMercator = (worldVector.z*OpenSkyModel.FACTOR)+displacement.y;
+    let altitude = worldVector.y*OpenSkyModel.FACTOR;
+
+    return {x:xMercator,y:altitude,z:yMercator};
 }
 
 
@@ -100,14 +136,13 @@ function buildPlane(data) {
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
-            let vector = flightVectorExtractor(flight);
             let rotationY = flight[OpenSkyModel.TRUE_TRACK] + 180;
 
             let entityEl;
             let cacheData;
 
             //Creamos el objeto de nueva posición 
-            let newPosition = { x: vector[0], y: vector[1] == null ? 0 : vector[1], z: vector[2] };
+            let newPosition = flightVectorExtractor(flight);
 
             //Comprobamos si está en la cache
             if (flightsCache.has(id)) {
@@ -141,7 +176,7 @@ function buildPlane(data) {
             flightsCache.set(id, cacheData);
 
             //salvamos la posición del último vuelo para mover la cámara
-            lastFlight = vector;
+            lastFlight = newPosition;
         });
 }
 
