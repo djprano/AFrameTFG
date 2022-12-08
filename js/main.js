@@ -2,15 +2,20 @@
 import { LocalApi } from "./readApiLocalOpenSky.js";
 import * as OpenSkyModel from "./openSkyModel.js";
 
+/*****Constantes****/
+const intervalTime = 2000;
+const localApi = new LocalApi();
+const simbolMagnification = 4;
 
 
+
+/*****Variables ****/
 var terrain;
 var mainScene;
 var sky;
 var cam;
 var lastFlight;
-const intervalTime = 1000;
-const localApi = new LocalApi();
+
 var displacement;
 
 //Cache de vuelos, será mantenida por cada evento.
@@ -27,11 +32,19 @@ AFRAME.registerComponent('main-scene', {
         //Displacement calculation
         displacementCalculation();
 
+        //KEYBOARD EVENTS
         document.addEventListener('keydown', evt => {
             if (evt.key == 1 && lastFlight != undefined) {
                 cam.setAttribute('position', lastFlight);
             }
         });
+
+        // createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MAX,'maxmax');
+        // createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MAX,'maxmin');
+        // createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax');
+        // createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin');
+
+        
 
     },
 
@@ -50,11 +63,27 @@ AFRAME.registerComponent('main-scene', {
 }
 );
 
+function createCorner(long, lat,id) {
+    //CORNERS MERS
+    let entityEl = document.createElement('a-entity');
+    entityEl.setAttribute('id', id);
+    entityEl.setAttribute('geometry', {
+        primitive: 'box',
+        width: 100,
+        height: 10000,
+        depth:100
+    });
+    let point = degreeToMeter(lat,long);
+    let mercator = mercatorToWorld({x:point.x,y:0,z:point.y});
+    entityEl.setAttribute('position', mercator);
+    mainScene.appendChild(entityEl);
+}
+
 //Displacement calculation
 function displacementCalculation(){
     
-    let longDispDegrees = (OpenSkyModel.LONG_MAX - OpenSkyModel.LONG_MIN)/2;
-    let latDispDegrees = (OpenSkyModel.LAT_MAX - OpenSkyModel.LAT_MIN)/2;
+    let longDispDegrees = OpenSkyModel.LONG_MIN+((OpenSkyModel.LONG_MAX - OpenSkyModel.LONG_MIN)/2);
+    let latDispDegrees = OpenSkyModel.LAT_MIN+((OpenSkyModel.LAT_MAX - OpenSkyModel.LAT_MIN)/2);
     
     displacement = degreeToMeter(latDispDegrees,longDispDegrees);
 }
@@ -148,7 +177,7 @@ function buildPlane(data) {
 
 function createFlightElement(id) {
     //Vuelo nuevo
-    const scale = 4 / OpenSkyModel.FACTOR;
+    const scale = simbolMagnification / OpenSkyModel.FACTOR;
     let entityEl = document.createElement('a-entity');
     entityEl.setAttribute('id', id);
     entityEl.setAttribute('gltf-model', "#plane");
