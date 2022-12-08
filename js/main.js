@@ -3,7 +3,7 @@ import { LocalApi } from "./readApiLocalOpenSky.js";
 import * as OpenSkyModel from "./openSkyModel.js";
 
 /*****Constantes****/
-const intervalTime = 5500;
+const intervalTime = 3000;
 const localApi = new LocalApi();
 const simbolMagnification = 4;
 
