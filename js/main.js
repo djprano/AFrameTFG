@@ -9,52 +9,12 @@ var mainScene;
 var sky;
 var cam;
 var lastFlight;
-const intervalTime = 5000;
+const intervalTime = 1000;
 const localApi = new LocalApi();
 var displacement;
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
-
-
-
-
-AFRAME.registerComponent('position-listener', {
-    tick: function () {
-        const newValue = this.el.getAttribute('position');
-        const stringCoords = AFRAME.utils.coordinates.stringify(newValue);
-        if (this.lastValue !== stringCoords) {
-            this.el.emit('positionChanged', newValue);
-            this.lastValue = stringCoords;
-        }
-    }
-});
-
-AFRAME.registerComponent('handle-events', {
-    tick: function () {
-        var el = this.el;  // <a-box>
-        let scale = 1.5;
-        let unscale = 1 / scale;
-
-        //Eventos
-
-        el.addEventListener('mouseenter', function () {
-            el.setAttribute('scale', { x: scale, y: scale, z: scale });
-        });
-        el.addEventListener('mouseleave', function () {
-            el.setAttribute('scale', { x: unscale, y: unscale, z: unscale });
-        });
-        el.addEventListener('click', function () {
-            if (lastFlight != undefined) {
-                cam.setAttribute('position', lastFlight);
-            }
-        });
-
-        document.getElementById('camera').addEventListener('positionChanged', e => {
-        });
-    }
-});
-
 
 AFRAME.registerComponent('main-scene', {
     init: function () {
@@ -65,7 +25,13 @@ AFRAME.registerComponent('main-scene', {
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
         //Displacement calculation
-        displacementCalculation();    
+        displacementCalculation();
+
+        document.addEventListener('keydown', evt => {
+            if (evt.key == 1 && lastFlight != undefined) {
+                cam.setAttribute('position', lastFlight);
+            }
+        });
 
     },
 
@@ -154,6 +120,7 @@ function buildPlane(data) {
 
             } else {
                 entityEl = createFlightElement(id);
+                entityEl.setAttribute('position', newPosition);
                 cacheData = new FlightCacheData(id,null,newPosition);
             }
 
@@ -169,7 +136,6 @@ function buildPlane(data) {
                     dur: intervalTime
                 });
             }
-            entityEl.setAttribute('position', cacheData.newData);
             entityEl.setAttribute('rotation', { x: 0, y: rotationY, z: 0 });
 
             //Guardarmos el vuelo en la cache
@@ -202,4 +168,3 @@ class FlightCacheData{
         this.newData = newData;
     }
 }
-
