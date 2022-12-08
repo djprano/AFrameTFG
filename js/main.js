@@ -6,6 +6,7 @@ import * as OpenSkyModel from "./openSkyModel.js";
 const intervalTime = 3000;
 const localApi = new LocalApi();
 const simbolMagnification = 4;
+const scale = simbolMagnification / OpenSkyModel.FACTOR;
 
 
 
@@ -17,6 +18,8 @@ var cam;
 var lastFlight;
 
 var displacement;
+
+var contador = 0;
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
@@ -50,11 +53,12 @@ AFRAME.registerComponent('main-scene', {
 
     invertalEvent: function () {
         // Called every second.
-        let openSkyData = localApi.getJsonOpenSky();
-        if (openSkyData != undefined) {
-            buildPlane(openSkyData);
+        if(localApi.isLoaded){
+            let openSkyData = localApi.getJsonOpenSky();
+            if (openSkyData != undefined) {
+                buildPlane(openSkyData);
+            }
         }
-
     },
 
     tick: function (t, dt) {
@@ -120,6 +124,36 @@ function worldtoMercator(worldVector){
     return {x:xMercator,y:altitude,z:yMercator};
 }
 
+//Crea el texto encima del avión.
+function createElementText(flight){
+    //creamos el texto del nombre del vuelo
+    let entityText = document.createElement('a-text');
+    entityText.setAttribute('value',flight[OpenSkyModel.NAME]);
+    let magnificationText = 500;
+    entityText.setAttribute('scale', { x: magnificationText*scale, y: magnificationText*scale, z: magnificationText*scale });
+    entityText.setAttribute('position', { x: 0, y: 30, z: 0 });
+    entityText.setAttribute('height', 10);
+    entityText.setAttribute('width', 10);
+    entityText.setAttribute('side', 'double');
+    entityText.setAttribute('align', 'center');
+    entityText.setAttribute('anchor', 'center');
+    return entityText;
+}
+
+function createElementTextPosition(vector){
+    //creamos el texto del nombre del vuelo
+    let entityText = document.createElement('a-text');
+    entityText.setAttribute('value',contador++);
+    let magnificationText = 100;
+    entityText.setAttribute('scale', { x: magnificationText*scale, y: magnificationText*scale, z: magnificationText*scale });
+    entityText.setAttribute('position', vector);
+    entityText.setAttribute('height', 10);
+    entityText.setAttribute('width', 10);
+    entityText.setAttribute('side', 'double');
+    entityText.setAttribute('align', 'center');
+    entityText.setAttribute('anchor', 'center');
+    mainScene.appendChild(entityText);
+}
 
 
 function buildPlane(data) {
@@ -131,7 +165,7 @@ function buildPlane(data) {
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
-            let rotationY = flight[OpenSkyModel.TRUE_TRACK] + 180;
+            let rotationY = flight[OpenSkyModel.TRUE_TRACK];
 
             let entityEl;
             let cacheData;
@@ -151,6 +185,10 @@ function buildPlane(data) {
                 entityEl = createFlightElement(id);
                 entityEl.setAttribute('position', newPosition);
                 cacheData = new FlightCacheData(id,null,newPosition);
+
+                //creamos el texto del nombre del vuelo
+                let entityText = createElementText(flight);
+                entityEl.appendChild(entityText);
             }
 
             //Creamos la animación si tiene almacenado una posición anterior
@@ -172,12 +210,15 @@ function buildPlane(data) {
 
             //salvamos la posición del último vuelo para mover la cámara
             lastFlight = newPosition;
+            //Para debugear el trazado que debe realizar
+            if(flight[OpenSkyModel.NAME].includes('AFR69LY')){
+                createElementTextPosition(newPosition);
+            }
         });
 }
 
 function createFlightElement(id) {
     //Vuelo nuevo
-    const scale = simbolMagnification / OpenSkyModel.FACTOR;
     let entityEl = document.createElement('a-entity');
     entityEl.setAttribute('id', id);
     entityEl.setAttribute('gltf-model', "#plane");
