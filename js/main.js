@@ -1,12 +1,11 @@
 //LocalApi
 import { LocalApi } from "./readApiLocalOpenSky.js";
 import * as OpenSkyModel from "./openSkyModel.js";
+import * as MapConversion from "./mapConversion.js";
 
 /*****Constantes****/
 const intervalTime = 3000;
 const localApi = new LocalApi();
-const simbolMagnification = 4;
-const scale = simbolMagnification / OpenSkyModel.FACTOR;
 
 
 
@@ -16,8 +15,6 @@ var mainScene;
 var sky;
 var cam;
 var lastFlight;
-
-var displacement;
 
 var contador = 0;
 
@@ -33,7 +30,7 @@ AFRAME.registerComponent('main-scene', {
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
         //Displacement calculation
-        displacementCalculation();
+        MapConversion.displacementCalculation();
 
         //KEYBOARD EVENTS
         document.addEventListener('keydown', evt => {
@@ -67,61 +64,14 @@ AFRAME.registerComponent('main-scene', {
 }
 );
 
-function createCorner(long, lat,id) {
-    //CORNERS MERS
-    let entityEl = document.createElement('a-entity');
-    entityEl.setAttribute('id', id);
-    entityEl.setAttribute('geometry', {
-        primitive: 'box',
-        width: 100,
-        height: 10000,
-        depth:100
-    });
-    let point = degreeToMeter(lat,long);
-    let mercator = mercatorToWorld({x:point.x,y:0,z:point.y});
-    entityEl.setAttribute('position', mercator);
-    mainScene.appendChild(entityEl);
-}
 
-//Displacement calculation
-function displacementCalculation(){
-    
-    let longDispDegrees = OpenSkyModel.LONG_MIN+((OpenSkyModel.LONG_MAX - OpenSkyModel.LONG_MIN)/2);
-    let latDispDegrees = OpenSkyModel.LAT_MIN+((OpenSkyModel.LAT_MAX - OpenSkyModel.LAT_MIN)/2);
-    
-    displacement = degreeToMeter(latDispDegrees,longDispDegrees);
-}
-
-function degreeToMeter(lat,long){
-    let latlng = new L.latLng(lat, long);
-    return L.Projection.Mercator.project(latlng);
-}
 
 //Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
 
-    let point = degreeToMeter(flight[OpenSkyModel.LAT],flight[OpenSkyModel.LONG]);
+    let point = MapConversion.degreeToMeter(flight[OpenSkyModel.LAT],flight[OpenSkyModel.LONG]);
     let mercatorVector = {x:point.x,y:flight[OpenSkyModel.ALTITUDE],z:point.y};
-    return mercatorToWorld(mercatorVector);
-}
-
-//Esta función comvierte una coordenada mercator a una coordenada en el mundo 3d
-//En el 3d tenemos conversiones de factor , desplazamiento y cambio de ejes.
-function mercatorToWorld(mercatorVector){
-    let xWorld = (mercatorVector.x-displacement.x)/OpenSkyModel.FACTOR;
-    let yWorld = (mercatorVector.z-displacement.y)/OpenSkyModel.FACTOR;
-    let altitudeWorld = mercatorVector.y == null ? 0: mercatorVector.y/OpenSkyModel.FACTOR;
-
-    return {x:xWorld,y:altitudeWorld,z:yWorld};
-}
-
-//Convierte los datos del mundo 3D a un vector en mercator en metros
-function worldtoMercator(worldVector){
-    let xMercator = (worldVector.x*OpenSkyModel.FACTOR)+displacement.x;
-    let yMercator = (worldVector.z*OpenSkyModel.FACTOR)+displacement.y;
-    let altitude = worldVector.y*OpenSkyModel.FACTOR;
-
-    return {x:xMercator,y:altitude,z:yMercator};
+    return MapConversion.mercatorToWorld(mercatorVector);
 }
 
 //Crea el texto encima del avión.
@@ -129,8 +79,7 @@ function createElementText(flight){
     //creamos el texto del nombre del vuelo
     let entityText = document.createElement('a-text');
     entityText.setAttribute('value',flight[OpenSkyModel.NAME]);
-    let magnificationText = 500;
-    entityText.setAttribute('scale', { x: magnificationText*scale, y: magnificationText*scale, z: magnificationText*scale });
+    entityText.setAttribute('scale', { x: OpenSkyModel.scaleText, y: OpenSkyModel.scaleText, z: OpenSkyModel.scaleText});
     entityText.setAttribute('position', { x: 0, y: 30, z: 0 });
     entityText.setAttribute('height', 10);
     entityText.setAttribute('width', 10);
@@ -140,12 +89,13 @@ function createElementText(flight){
     return entityText;
 }
 
+//Funcion para depurar la  posición del vector de vuelo, acabará siendo borrada
 function createElementTextPosition(vector){
     //creamos el texto del nombre del vuelo
     let entityText = document.createElement('a-text');
     entityText.setAttribute('value',contador++);
     let magnificationText = 100;
-    entityText.setAttribute('scale', { x: magnificationText*scale, y: magnificationText*scale, z: magnificationText*scale });
+    entityText.setAttribute('scale', { x: magnificationText*OpenSkyModel.scale, y: magnificationText*OpenSkyModel.scale, z: magnificationText*OpenSkyModel.scale });
     entityText.setAttribute('position', vector);
     entityText.setAttribute('height', 10);
     entityText.setAttribute('width', 10);
@@ -222,7 +172,7 @@ function createFlightElement(id) {
     let entityEl = document.createElement('a-entity');
     entityEl.setAttribute('id', id);
     entityEl.setAttribute('gltf-model', "#plane");
-    entityEl.setAttribute('scale', { x: scale, y: scale, z: scale });
+    entityEl.setAttribute('scale', { x: OpenSkyModel.scale, y: OpenSkyModel.scale, z: OpenSkyModel.scale });
     mainScene.appendChild(entityEl);
     return entityEl;
 

@@ -24,6 +24,15 @@ export const TRUE_TRACK = 10;
 //Constante de escalado en metros, se usa para no tener distancias en metros si no que en un factor representado por estas constante.
 export const FACTOR = 100;
 
+//Constante de creacimiento del simbolo
+const simbolMagnification = 4;
+
+const simbolMagnificationText = 500;
+
+export const scale = simbolMagnification / FACTOR;
+
+export const scaleText = simbolMagnificationText / FACTOR;
+
 //MER(Minimun Enclosing Rectangle) en grados del escenario
 
 export const LAT_MIN = 40.178873;
