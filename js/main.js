@@ -21,6 +21,10 @@ var contador = 0;
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
 
+function getBoundingString() {
+    return OpenSkyModel.LAT_MIN + "," + OpenSkyModel.LONG_MIN + "," + OpenSkyModel.LAT_MAX + "," + OpenSkyModel.LONG_MAX;
+}
+
 AFRAME.registerComponent('main-scene', {
     init: function () {
         mainScene = this.el;
@@ -44,13 +48,60 @@ AFRAME.registerComponent('main-scene', {
         // createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax');
         // createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin');
 
-        
+        //Overpass buildings
+        // let overpassQuery = "(way[building](" +
+        //     getBoundingString() +
+        //     ");relation[building](" +
+        //     getBoundingString() +
+        //     "););out;>;out skel qt;";
+        var color = "#d9c0d9";
+        fetch('.//data//' + 'buildings.xml')
+            .then((response) => response.text())
+            .then(data => {
+                let parser = new DOMParser();
+                var itemData = parser.parseFromString(data, "application/xml");
+                var itemJSON = osmtogeojson(itemData);
+
+                let feature = itemJSON.features[0];
+                if (feature.geometry.type == "Polygon") {
+                    let wayPoints = [];
+                    for (let way of feature.geometry.coordinates) {
+                        for (let point of way) {
+                            wayPoints.push(point);
+                        }
+                    }
+                    let item = document.createElement("a-entity");
+                    let buildingProperties = { primitive: "building", color: "#0000ff", points: wayPoints };
+                    buildingProperties.height = 5;
+                    item.setAttribute("geometry", buildingProperties);
+                    item.setAttribute("material", { color: color });
+                    mainScene.appendChild(item);
+                }
+
+            //     for (let feature of itemJSON.features) {
+            //         if (feature.geometry.type == "Polygon") {
+            //             let wayPoints = [];
+            //             for (let way of feature.geometry.coordinates) {
+            //                 for (let point of way) {
+            //                   wayPoints.push(point);
+            //                 }
+            //             }
+            //             let item = document.createElement("a-entity");
+            //             let buildingProperties = { primitive: "building", color: "#0000ff",points:wayPoints};
+            //             buildingProperties.height = 5;
+            //             item.setAttribute("geometry", buildingProperties);
+            //             item.setAttribute("material", { color: color });
+            //             mainScene.appendChild(item);
+            //         }
+
+            //     }
+            });
 
     },
 
     invertalEvent: function () {
         // Called every second.
-        if(localApi.isLoaded){
+        if (localApi.isLoaded) {
             let openSkyData = localApi.getJsonOpenSky();
             if (openSkyData != undefined) {
                 buildPlane(openSkyData);
@@ -69,17 +120,17 @@ AFRAME.registerComponent('main-scene', {
 //Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
 
-    let point = MapConversion.degreeToMeter(flight[OpenSkyModel.LAT],flight[OpenSkyModel.LONG]);
-    let mercatorVector = {x:point.x,y:flight[OpenSkyModel.ALTITUDE],z:point.y};
+    let point = MapConversion.degreeToMeter(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
+    let mercatorVector = { x: point.x, y: flight[OpenSkyModel.ALTITUDE], z: point.y };
     return MapConversion.mercatorToWorld(mercatorVector);
 }
 
 //Crea el texto encima del avión.
-function createElementText(flight){
+function createElementText(flight) {
     //creamos el texto del nombre del vuelo
     let entityText = document.createElement('a-text');
-    entityText.setAttribute('value',flight[OpenSkyModel.NAME]);
-    entityText.setAttribute('scale', { x: OpenSkyModel.scaleText, y: OpenSkyModel.scaleText, z: OpenSkyModel.scaleText});
+    entityText.setAttribute('value', flight[OpenSkyModel.NAME]);
+    entityText.setAttribute('scale', { x: OpenSkyModel.scaleText, y: OpenSkyModel.scaleText, z: OpenSkyModel.scaleText });
     entityText.setAttribute('position', { x: 0, y: 30, z: 0 });
     entityText.setAttribute('height', 10);
     entityText.setAttribute('width', 10);
@@ -90,12 +141,12 @@ function createElementText(flight){
 }
 
 //Funcion para depurar la  posición del vector de vuelo, acabará siendo borrada
-function createElementTextPosition(vector){
+function createElementTextPosition(vector) {
     //creamos el texto del nombre del vuelo
     let entityText = document.createElement('a-text');
-    entityText.setAttribute('value',contador++);
+    entityText.setAttribute('value', contador++);
     let magnificationText = 100;
-    entityText.setAttribute('scale', { x: magnificationText*OpenSkyModel.scale, y: magnificationText*OpenSkyModel.scale, z: magnificationText*OpenSkyModel.scale });
+    entityText.setAttribute('scale', { x: magnificationText * OpenSkyModel.scale, y: magnificationText * OpenSkyModel.scale, z: magnificationText * OpenSkyModel.scale });
     entityText.setAttribute('position', vector);
     entityText.setAttribute('height', 10);
     entityText.setAttribute('width', 10);
@@ -134,7 +185,7 @@ function buildPlane(data) {
             } else {
                 entityEl = createFlightElement(id);
                 entityEl.setAttribute('position', newPosition);
-                cacheData = new FlightCacheData(id,null,newPosition);
+                cacheData = new FlightCacheData(id, null, newPosition);
 
                 //creamos el texto del nombre del vuelo
                 let entityText = createElementText(flight);
@@ -161,7 +212,7 @@ function buildPlane(data) {
             //salvamos la posición del último vuelo para mover la cámara
             lastFlight = newPosition;
             //Para debugear el trazado que debe realizar
-            if(flight[OpenSkyModel.NAME].includes('AFR69LY')){
+            if (flight[OpenSkyModel.NAME].includes('AFR69LY')) {
                 createElementTextPosition(newPosition);
             }
         });
@@ -179,12 +230,43 @@ function createFlightElement(id) {
 }
 
 //Clase wrapper que contiene la información de la posición anterior y la nueva posicón y será almacenado en la cache.
-class FlightCacheData{
-    
+class FlightCacheData {
+
     //Constructor
-    constructor(id,lastData , newData){
+    constructor(id, lastData, newData) {
         this.id = id;
         this.lastData = lastData;
         this.newData = newData;
     }
 }
+
+AFRAME.registerGeometry('building', {
+    schema: {
+        color: { type: 'color', default: '#f00' },
+        height: { type: 'number', default: 10 },
+        points: { default: ['-10 10', '-10 -10', '10 -10'], }
+    },
+    init: function (data) {
+        var geometry = new THREE.BufferGeometry();
+        let points = data.points;
+
+        var shape = new THREE.Shape(points);
+        shape.moveTo(0,0);
+
+
+        var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+            depth: data.height,
+            bevelEnabled: false
+        });
+        extrudedGeometry.rotateX(-Math.PI / 2);
+        extrudedGeometry.rotateY(0);
+        extrudedGeometry.rotateZ(0);
+        extrudedGeometry.center;
+
+        // // Geometry doesn't do much on its own, we need to create a Mesh from it
+        // var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshBasicMaterial({
+        //     color: data.color
+        // }));
+        this.geometry = extrudedMesh;
+    }
+});

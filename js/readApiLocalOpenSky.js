@@ -10,8 +10,7 @@ class LocalApi {
     }
 
     getJsonOpenSky() {
-        console.log(this.index);
-        this.index++;
+        console.log("Api pop = "+ this.openSkyApi.length);
         return this.openSkyApi.pop();
     }
 
