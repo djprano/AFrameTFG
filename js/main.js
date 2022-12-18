@@ -43,10 +43,10 @@ AFRAME.registerComponent('main-scene', {
             }
         });
 
-        // createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MAX,'maxmax');
-        // createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MAX,'maxmin');
-        // createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax');
-        // createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin');
+        // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MAX,'maxmax',mainScene);
+        // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MAX,'maxmin',mainScene);
+        // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax',mainScene);
+        // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin',mainScene);
 
         //Overpass buildings
         // let overpassQuery = "(way[building](" +
@@ -55,46 +55,82 @@ AFRAME.registerComponent('main-scene', {
         //     getBoundingString() +
         //     "););out;>;out skel qt;";
         var color = "#d9c0d9";
-        fetch('.//data//' + 'buildings.xml')
-            .then((response) => response.text())
-            .then(data => {
-                let parser = new DOMParser();
-                var itemData = parser.parseFromString(data, "application/xml");
-                var itemJSON = osmtogeojson(itemData);
 
-                let feature = itemJSON.features[0];
-                if (feature.geometry.type == "Polygon") {
-                    let wayPoints = [];
-                    for (let way of feature.geometry.coordinates) {
-                        for (let point of way) {
-                            wayPoints.push(point);
-                        }
+        fetch('.//data//' + 'buildings.json')
+            .then((response) => response.json())
+            .then(itemJSON => {
+                let maxBuildings = 10000;
+                for (let feature of itemJSON.features) {
+                    if(maxBuildings == 0){
+                        break;
+                    }else{
+                        maxBuildings--;
                     }
-                    let item = document.createElement("a-entity");
-                    let buildingProperties = { primitive: "building", color: "#0000ff", points: wayPoints };
-                    buildingProperties.height = 5;
-                    item.setAttribute("geometry", buildingProperties);
-                    item.setAttribute("material", { color: color });
-                    mainScene.appendChild(item);
+                    if (feature.geometry.type == "Polygon") {
+                        let wayPoints = [];
+                        // //debug/////////////////////////////
+                        // let corner = feature.geometry.coordinates[0][0];
+                        // MapConversion.createCorner(corner[0],corner[1],'bulding position',mainScene);
+                        // //debug/////////////////////////////
+                        for (let way of feature.geometry.coordinates) {
+                            for (let point of way) {
+                                let pointMeter = MapConversion.degreeToMeter(point[1], point[0]);//point[1] lat ; point[0] long
+                                let mercatorVector = { x: pointMeter.x, y: 0, z: pointMeter.y };
+                                let point3d = MapConversion.mercatorToWorld(mercatorVector);
+                                wayPoints.push({ x: point3d.x, y: point3d.z });
+                            }
+                        }
+                        let item = document.createElement("a-entity");
+                        let buildingProperties = { primitive: "building", color: "#ffffff", points: wayPoints };
+                        let levels = feature.properties["building:levels"];
+                        let metersByLevel = 3;
+                        let height = levels != undefined ? levels * metersByLevel : metersByLevel;
+                        buildingProperties.height = height /OpenSkyModel.FACTOR;
+                        item.setAttribute("id", feature.id);
+                        item.setAttribute("geometry", buildingProperties);
+                        mainScene.appendChild(item);
+                    }
                 }
+                // fetch('.//data//' + 'buildings.xml')
+                //     .then((response) => response.text())
+                //     .then(data => {
+                //         let parser = new DOMParser();
+                //         var itemData = parser.parseFromString(data, "application/xml");
+                //         var itemJSON = osmtogeojson(itemData);
 
-            //     for (let feature of itemJSON.features) {
-            //         if (feature.geometry.type == "Polygon") {
-            //             let wayPoints = [];
-            //             for (let way of feature.geometry.coordinates) {
-            //                 for (let point of way) {
-            //                   wayPoints.push(point);
-            //                 }
-            //             }
-            //             let item = document.createElement("a-entity");
-            //             let buildingProperties = { primitive: "building", color: "#0000ff",points:wayPoints};
-            //             buildingProperties.height = 5;
-            //             item.setAttribute("geometry", buildingProperties);
-            //             item.setAttribute("material", { color: color });
-            //             mainScene.appendChild(item);
-            //         }
+                //         let feature = itemJSON.features[0];
+                //         if (feature.geometry.type == "Polygon") {
+                //             let wayPoints = [];
+                //             for (let way of feature.geometry.coordinates) {
+                //                 for (let point of way) {
+                //                     wayPoints.push(point);
+                //                 }
+                //             }
+                //             let item = document.createElement("a-entity");
+                //             let buildingProperties = { primitive: "building", color: "#0000ff", points: wayPoints };
+                //             buildingProperties.height = 5;
+                //             item.setAttribute("geometry", buildingProperties);
+                //             item.setAttribute("material", { color: color });
+                //             mainScene.appendChild(item);
+                //         }
 
-            //     }
+                //     for (let feature of itemJSON.features) {
+                //         if (feature.geometry.type == "Polygon") {
+                //             let wayPoints = [];
+                //             for (let way of feature.geometry.coordinates) {
+                //                 for (let point of way) {
+                //                   wayPoints.push(point);
+                //                 }
+                //             }
+                //             let item = document.createElement("a-entity");
+                //             let buildingProperties = { primitive: "building", color: "#0000ff",points:wayPoints};
+                //             buildingProperties.height = 5;
+                //             item.setAttribute("geometry", buildingProperties);
+                //             item.setAttribute("material", { color: color });
+                //             mainScene.appendChild(item);
+                //         }
+
+                //     }
             });
 
     },
@@ -247,26 +283,18 @@ AFRAME.registerGeometry('building', {
         points: { default: ['-10 10', '-10 -10', '10 -10'], }
     },
     init: function (data) {
-        var geometry = new THREE.BufferGeometry();
-        let points = data.points;
+        let shape = new THREE.Shape(data.points);
 
-        var shape = new THREE.Shape(points);
-        shape.moveTo(0,0);
-
-
-        var extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
+        let extrudedGeometry = new THREE.ExtrudeGeometry(shape, {
             depth: data.height,
             bevelEnabled: false
         });
-        extrudedGeometry.rotateX(-Math.PI / 2);
-        extrudedGeometry.rotateY(0);
-        extrudedGeometry.rotateZ(0);
-        extrudedGeometry.center;
+        extrudedGeometry.rotateX(Math.PI / 2);
+        extrudedGeometry.translate(0, data.height, 0);
+        // extrudedGeometry.rotateY(0);
+        // extrudedGeometry.rotateZ(0);
+        let mesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshBasicMaterial({ color: data.color }));
 
-        // // Geometry doesn't do much on its own, we need to create a Mesh from it
-        // var extrudedMesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshBasicMaterial({
-        //     color: data.color
-        // }));
-        this.geometry = extrudedMesh;
+        this.geometry = extrudedGeometry;
     }
 });

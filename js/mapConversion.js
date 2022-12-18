@@ -36,7 +36,7 @@ export function worldtoMercator(worldVector){
 }
 
 
-export function createCorner(long, lat,id) {
+export function createCorner(long, lat,id,mainScene) {
     //CORNERS MERS
     let entityEl = document.createElement('a-entity');
     entityEl.setAttribute('id', id);
