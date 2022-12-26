@@ -48,15 +48,9 @@ AFRAME.registerComponent('main-scene', {
         // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax',mainScene);
         // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin',mainScene);
 
-        //Overpass buildings
-        // let overpassQuery = "(way[building](" +
-        //     getBoundingString() +
-        //     ");relation[building](" +
-        //     getBoundingString() +
-        //     "););out;>;out skel qt;";
         var color = "#d9c0d9";
 
-        fetch('.//data//' + 'buildings.json')
+        fetch('.//data//' + 'terminal.geojson')
             .then((response) => response.json())
             .then(itemJSON => {
                 let maxBuildings = 10000;
@@ -81,56 +75,24 @@ AFRAME.registerComponent('main-scene', {
                             }
                         }
                         let item = document.createElement("a-entity");
-                        let buildingProperties = { primitive: "building", color: "#ffffff", points: wayPoints };
+                        let buildingProperties = { primitive: "building", points: wayPoints };
+                        let featureHeight = feature.properties["height"];
                         let levels = feature.properties["building:levels"];
                         let metersByLevel = 3;
-                        let height = levels != undefined ? levels * metersByLevel : metersByLevel;
+                        let height;
+                        //prioridad a la propiedad altura si no usamos 
+                        if(featureHeight != undefined && featureHeight != null){
+                            height = featureHeight;
+                        }else{
+                            height = levels != undefined ? levels * metersByLevel : 15;
+                        }
                         buildingProperties.height = height /OpenSkyModel.FACTOR;
                         item.setAttribute("id", feature.id);
                         item.setAttribute("geometry", buildingProperties);
+                        item.setAttribute( "material", {color: 'red', roughness: 0.5, metalness: 0.5});
                         mainScene.appendChild(item);
                     }
                 }
-                // fetch('.//data//' + 'buildings.xml')
-                //     .then((response) => response.text())
-                //     .then(data => {
-                //         let parser = new DOMParser();
-                //         var itemData = parser.parseFromString(data, "application/xml");
-                //         var itemJSON = osmtogeojson(itemData);
-
-                //         let feature = itemJSON.features[0];
-                //         if (feature.geometry.type == "Polygon") {
-                //             let wayPoints = [];
-                //             for (let way of feature.geometry.coordinates) {
-                //                 for (let point of way) {
-                //                     wayPoints.push(point);
-                //                 }
-                //             }
-                //             let item = document.createElement("a-entity");
-                //             let buildingProperties = { primitive: "building", color: "#0000ff", points: wayPoints };
-                //             buildingProperties.height = 5;
-                //             item.setAttribute("geometry", buildingProperties);
-                //             item.setAttribute("material", { color: color });
-                //             mainScene.appendChild(item);
-                //         }
-
-                //     for (let feature of itemJSON.features) {
-                //         if (feature.geometry.type == "Polygon") {
-                //             let wayPoints = [];
-                //             for (let way of feature.geometry.coordinates) {
-                //                 for (let point of way) {
-                //                   wayPoints.push(point);
-                //                 }
-                //             }
-                //             let item = document.createElement("a-entity");
-                //             let buildingProperties = { primitive: "building", color: "#0000ff",points:wayPoints};
-                //             buildingProperties.height = 5;
-                //             item.setAttribute("geometry", buildingProperties);
-                //             item.setAttribute("material", { color: color });
-                //             mainScene.appendChild(item);
-                //         }
-
-                //     }
             });
 
     },
@@ -156,8 +118,8 @@ AFRAME.registerComponent('main-scene', {
 //Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
 
-    let point = MapConversion.degreeToMeter(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
-    let mercatorVector = { x: point.x, y: flight[OpenSkyModel.ALTITUDE], z: point.y };
+    let latlong = MapConversion.degreeToMeter(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
+    let mercatorVector = { x: latlong.x, y: flight[OpenSkyModel.ALTITUDE], z: latlong.y };
     return MapConversion.mercatorToWorld(mercatorVector);
 }
 
@@ -202,7 +164,8 @@ function buildPlane(data) {
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
-            let rotationY = flight[OpenSkyModel.TRUE_TRACK];
+            //Orientación al norte
+            let rotationY = -flight[OpenSkyModel.TRUE_TRACK]-180;
 
             let entityEl;
             let cacheData;
@@ -240,6 +203,7 @@ function buildPlane(data) {
                     dur: intervalTime
                 });
             }
+            //orientación del modelo con respecto al norte
             entityEl.setAttribute('rotation', { x: 0, y: rotationY, z: 0 });
 
             //Guardarmos el vuelo en la cache
@@ -247,10 +211,10 @@ function buildPlane(data) {
 
             //salvamos la posición del último vuelo para mover la cámara
             lastFlight = newPosition;
-            //Para debugear el trazado que debe realizar
-            if (flight[OpenSkyModel.NAME].includes('AFR69LY')) {
-                createElementTextPosition(newPosition);
-            }
+            // //Para debugear el trazado que debe realizar
+            // if (flight[OpenSkyModel.NAME].includes('AFR69LY')) {
+            //     createElementTextPosition(newPosition);
+            // }
         });
 }
 
@@ -278,7 +242,6 @@ class FlightCacheData {
 
 AFRAME.registerGeometry('building', {
     schema: {
-        color: { type: 'color', default: '#f00' },
         height: { type: 'number', default: 10 },
         points: { default: ['-10 10', '-10 -10', '10 -10'], }
     },
@@ -291,10 +254,6 @@ AFRAME.registerGeometry('building', {
         });
         extrudedGeometry.rotateX(Math.PI / 2);
         extrudedGeometry.translate(0, data.height, 0);
-        // extrudedGeometry.rotateY(0);
-        // extrudedGeometry.rotateZ(0);
-        let mesh = new THREE.Mesh(extrudedGeometry, new THREE.MeshBasicMaterial({ color: data.color }));
-
         this.geometry = extrudedGeometry;
     }
 });

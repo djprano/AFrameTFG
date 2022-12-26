@@ -2,7 +2,7 @@ class LocalApi {
 
     constructor() {
         this.fn = 'response';
-        this.pathReference = './/openSkyData//';
+        this.pathReference = './/openSkyData_madrid//';
         this.length = 333;
         this.openSkyApi = [];
         this.isLoaded = false;

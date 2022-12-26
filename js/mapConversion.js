@@ -23,13 +23,13 @@ export function mercatorToWorld(mercatorVector){
     let yWorld = (mercatorVector.z-displacement.y)/OpenSkyModel.FACTOR;
     let altitudeWorld = mercatorVector.y == null ? 0: mercatorVector.y/OpenSkyModel.FACTOR;
 
-    return {x:xWorld,y:altitudeWorld,z:yWorld};
+    return {x:xWorld,y:altitudeWorld,z:-yWorld};
 }
 
 //Convierte los datos del mundo 3D a un vector en mercator en metros
 export function worldtoMercator(worldVector){
     let xMercator = (worldVector.x*OpenSkyModel.FACTOR)+displacement.x;
-    let yMercator = (worldVector.z*OpenSkyModel.FACTOR)+displacement.y;
+    let yMercator = (-worldVector.z*OpenSkyModel.FACTOR)+displacement.y;
     let altitude = worldVector.y*OpenSkyModel.FACTOR;
 
     return {x:xMercator,y:altitude,z:yMercator};
