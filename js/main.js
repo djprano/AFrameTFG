@@ -227,7 +227,6 @@ function createTerminal() {
         .then((response) => response.json())
         .then(itemJSON => {
             let maxBuildings = 10000;
-            let color = "#d9c0d9";
             for (let feature of itemJSON.features) {
                 if (maxBuildings == 0) {
                     break;
@@ -263,7 +262,7 @@ function createTerminal() {
                     buildingProperties.height = height / OpenSkyModel.FACTOR;
                     item.setAttribute("id", feature.id);
                     item.setAttribute("geometry", buildingProperties);
-                    item.setAttribute("material", { color: 'red', roughness: 0.5, metalness: 0.5 });
+                    item.setAttribute("material", { color: 'orange', roughness: 0.5, metalness: 0.5 });
                     mainScene.appendChild(item);
                 }
             }
