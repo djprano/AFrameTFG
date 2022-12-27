@@ -48,6 +48,17 @@ AFRAME.registerComponent('main-scene', {
         // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax',mainScene);
         // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin',mainScene);
 
+        //Map image
+        let mapTileGround = document.createElement("a-plane");
+        mapTileGround.setAttribute("id", 'mapTileGround');
+        mapTileGround.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+        mapTileGround.setAttribute("position", { x: 0, y: 0, z: 0 });
+        mapTileGround.setAttribute("src", '#groundTexture');
+        let groundSize = MapConversion.getGroundSize();
+        mapTileGround.setAttribute("width", groundSize.width);
+        mapTileGround.setAttribute("height", groundSize.height);
+        mainScene.appendChild(mapTileGround);
+
         var color = "#d9c0d9";
 
         fetch('.//data//' + 'terminal.geojson')

@@ -42,13 +42,23 @@ export function createCorner(long, lat,id,mainScene) {
     entityEl.setAttribute('id', id);
     entityEl.setAttribute('geometry', {
         primitive: 'box',
-        width: 100,
-        height: 10000,
-        depth:100
+        width: 10,
+        height: 9000,
+        depth:10
     });
     let point = degreeToMeter(lat,long);
     let mercator = mercatorToWorld({x:point.x,y:0,z:point.y});
     entityEl.setAttribute('position', mercator);
     mainScene.appendChild(entityEl);
+}
+
+export function getGroundSize() {
+
+    let latlongMax = degreeToMeter(OpenSkyModel.LAT_MAX, OpenSkyModel.LONG_MAX);
+    let sizeMeters = mercatorToWorld({x:latlongMax.x,y:0,z:latlongMax.y});
+    return {
+        width: Math.abs(sizeMeters.x * 2),
+        height: Math.abs(sizeMeters.z * 2)
+    };
 }
 

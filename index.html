@@ -22,7 +22,7 @@
   <a-scene main-scene renderer="antialias: true">
     <a-assets>
       <img id="sky" src="textures/sky.jpg">
-      <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
+      <img id="groundTexture" src="data/map.png">
       <img id="terrain-texture" src="data/noctis-3500-clip-textureRED-resized.jpg">
       <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
       <a-asset-item id="terrain" src="data/noctis-3500-clip-envi.bin"></a-asset-item>
@@ -34,7 +34,6 @@
       
     </a-entity>
     <a-entity id="sky" geometry="primitive: sphere; thetaLength: 90; radius: 1000" material="side: back; height: 2048; width: 2048; src: #skyTexture; shader: flat" position="" rotation="" scale="" visible=""></a-entity>
-    <a-entity id="ground" geometry="primitive: plane; height: 3000; width: 3000" material="src: #groundTexture" rotation="-90 0 0" position="" scale="" visible=""></a-entity>
     <!-- Terrain-->
     <!-- <a-entity terrain-model="map: url(data/noctis-3500-clip-textureRED-resized.jpg);
           dem: url(data/noctis-3500-clip-envi.bin);
