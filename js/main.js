@@ -21,20 +21,21 @@ var contador = 0;
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
 
-function getBoundingString() {
-    return OpenSkyModel.LAT_MIN + "," + OpenSkyModel.LONG_MIN + "," + OpenSkyModel.LAT_MAX + "," + OpenSkyModel.LONG_MAX;
-}
-
+//Inicio de la escena.
 AFRAME.registerComponent('main-scene', {
     init: function () {
+        //Displacement calculation
+        MapConversion.displacementCalculation();
         mainScene = this.el;
         terrain = mainScene.querySelector('#terrain');
         sky = mainScene.querySelector('#sky');
         cam = mainScene.querySelector('#camera');
+        let initCamPosition = MapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
+        initCamPosition.y = 2;
+        cam.setAttribute('position',initCamPosition);
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
-        //Displacement calculation
-        MapConversion.displacementCalculation();
+
 
         //KEYBOARD EVENTS
         document.addEventListener('keydown', evt => {
@@ -48,63 +49,11 @@ AFRAME.registerComponent('main-scene', {
         // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax',mainScene);
         // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin',mainScene);
 
-        //Map image
-        let mapTileGround = document.createElement("a-plane");
-        mapTileGround.setAttribute("id", 'mapTileGround');
-        mapTileGround.setAttribute("rotation", { x: -90, y: 0, z: 0 });
-        mapTileGround.setAttribute("position", { x: 0, y: 0, z: 0 });
-        mapTileGround.setAttribute("src", '#groundTexture');
-        let groundSize = MapConversion.getGroundSize();
-        mapTileGround.setAttribute("width", groundSize.width);
-        mapTileGround.setAttribute("height", groundSize.height);
-        mainScene.appendChild(mapTileGround);
 
-        var color = "#d9c0d9";
+        createMapGround();
+        createTerminal();
 
-        fetch('.//data//' + 'terminal.geojson')
-            .then((response) => response.json())
-            .then(itemJSON => {
-                let maxBuildings = 10000;
-                for (let feature of itemJSON.features) {
-                    if(maxBuildings == 0){
-                        break;
-                    }else{
-                        maxBuildings--;
-                    }
-                    if (feature.geometry.type == "Polygon") {
-                        let wayPoints = [];
-                        // //debug/////////////////////////////
-                        // let corner = feature.geometry.coordinates[0][0];
-                        // MapConversion.createCorner(corner[0],corner[1],'bulding position',mainScene);
-                        // //debug/////////////////////////////
-                        for (let way of feature.geometry.coordinates) {
-                            for (let point of way) {
-                                let pointMeter = MapConversion.degreeToMeter(point[1], point[0]);//point[1] lat ; point[0] long
-                                let mercatorVector = { x: pointMeter.x, y: 0, z: pointMeter.y };
-                                let point3d = MapConversion.mercatorToWorld(mercatorVector);
-                                wayPoints.push({ x: point3d.x, y: point3d.z });
-                            }
-                        }
-                        let item = document.createElement("a-entity");
-                        let buildingProperties = { primitive: "building", points: wayPoints };
-                        let featureHeight = feature.properties["height"];
-                        let levels = feature.properties["building:levels"];
-                        let metersByLevel = 3;
-                        let height;
-                        //prioridad a la propiedad altura si no usamos 
-                        if(featureHeight != undefined && featureHeight != null){
-                            height = featureHeight;
-                        }else{
-                            height = levels != undefined ? levels * metersByLevel : 15;
-                        }
-                        buildingProperties.height = height /OpenSkyModel.FACTOR;
-                        item.setAttribute("id", feature.id);
-                        item.setAttribute("geometry", buildingProperties);
-                        item.setAttribute( "material", {color: 'red', roughness: 0.5, metalness: 0.5});
-                        mainScene.appendChild(item);
-                    }
-                }
-            });
+
 
     },
 
@@ -165,7 +114,7 @@ function createElementTextPosition(vector) {
     mainScene.appendChild(entityText);
 }
 
-
+//Gnera los aviones a partir de la consulta de la api de vuelos.
 function buildPlane(data) {
     //Filtramos vuelos con nombre indefinido de vuelo ya que será nuestro primary key.
     data.states.filter(flight => flight != null &&
@@ -176,7 +125,7 @@ function buildPlane(data) {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
             //Orientación al norte
-            let rotationY = -flight[OpenSkyModel.TRUE_TRACK]+180;
+            let rotationY = -flight[OpenSkyModel.TRUE_TRACK] + 180;
             rotationY = { x: 0, y: rotationY, z: 0 };
 
             let entityEl;
@@ -191,11 +140,11 @@ function buildPlane(data) {
 
                 cacheData = flightsCache.get(id);
                 cacheData.lastData = cacheData.newData;
-                cacheData.newData = {position:newPosition,rotation:rotationY};
+                cacheData.newData = { position: newPosition, rotation: rotationY };
 
             } else {
                 entityEl = createFlightElement(id);
-                cacheData = new FlightCacheData(id, null, {position:newPosition,rotation:rotationY});
+                cacheData = new FlightCacheData(id, null, { position: newPosition, rotation: rotationY });
 
                 //creamos el texto del nombre del vuelo
                 let entityText = createElementText(flight);
@@ -204,7 +153,7 @@ function buildPlane(data) {
 
             //Creamos la animación si tiene almacenado una posición anterior
             if (cacheData.lastData != null && cacheData.lastData != undefined) {
-                
+
                 if (cacheData.lastData.position != cacheData.newData.position) {
                     entityEl.setAttribute('animation__000', {
                         property: 'position',
@@ -230,11 +179,11 @@ function buildPlane(data) {
                 //     });
                 // }
                 //orientación del modelo con respecto al norte
-            }else{
+            } else {
                 entityEl.setAttribute('position', newPosition);
             }
             entityEl.setAttribute('rotation', rotationY);
-            
+
 
 
             //Guardarmos el vuelo en la cache
@@ -249,6 +198,7 @@ function buildPlane(data) {
         });
 }
 
+//crea los elementos html de los aviones.
 function createFlightElement(id) {
     //Vuelo nuevo
     let entityEl = document.createElement('a-entity');
@@ -271,6 +221,57 @@ class FlightCacheData {
     }
 }
 
+//Carga los datos de la terminal del aeropuerto y genera las geometrías custom de los edificios.
+function createTerminal() {
+    fetch('.//data//' + 'terminal.geojson')
+        .then((response) => response.json())
+        .then(itemJSON => {
+            let maxBuildings = 10000;
+            let color = "#d9c0d9";
+            for (let feature of itemJSON.features) {
+                if (maxBuildings == 0) {
+                    break;
+                } else {
+                    maxBuildings--;
+                }
+                if (feature.geometry.type == "Polygon") {
+                    let wayPoints = [];
+                    // //debug/////////////////////////////
+                    // let corner = feature.geometry.coordinates[0][0];
+                    // MapConversion.createCorner(corner[0],corner[1],'bulding position',mainScene);
+                    // //debug/////////////////////////////
+                    for (let way of feature.geometry.coordinates) {
+                        for (let point of way) {
+                            let pointMeter = MapConversion.degreeToMeter(point[1], point[0]);//point[1] lat ; point[0] long
+                            let mercatorVector = { x: pointMeter.x, y: 0, z: pointMeter.y };
+                            let point3d = MapConversion.mercatorToWorld(mercatorVector);
+                            wayPoints.push({ x: point3d.x, y: point3d.z });
+                        }
+                    }
+                    let item = document.createElement("a-entity");
+                    let buildingProperties = { primitive: "building", points: wayPoints };
+                    let featureHeight = feature.properties["height"];
+                    let levels = feature.properties["building:levels"];
+                    let metersByLevel = 3;
+                    let height;
+                    //prioridad a la propiedad altura si no usamos 
+                    if (featureHeight != undefined && featureHeight != null) {
+                        height = featureHeight;
+                    } else {
+                        height = levels != undefined ? levels * metersByLevel : 70;
+                    }
+                    buildingProperties.height = height / OpenSkyModel.FACTOR;
+                    item.setAttribute("id", feature.id);
+                    item.setAttribute("geometry", buildingProperties);
+                    item.setAttribute("material", { color: 'red', roughness: 0.5, metalness: 0.5 });
+                    mainScene.appendChild(item);
+                }
+            }
+        });
+}
+
+
+//Geometría custom para extruir edificios a partir de una superficie y su altura.
 AFRAME.registerGeometry('building', {
     schema: {
         height: { type: 'number', default: 10 },
@@ -288,3 +289,21 @@ AFRAME.registerGeometry('building', {
         this.geometry = extrudedGeometry;
     }
 });
+
+//Crea un plano con la imagen correspondiente al mapa, tan solo es una referencia.
+function createMapGround() {
+    //Map image
+    let mapTileGround = document.createElement("a-plane");
+    mapTileGround.setAttribute("id", 'mapTileGround');
+    mapTileGround.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+    mapTileGround.setAttribute("position", { x: 0, y: 0, z: 0 });
+    mapTileGround.setAttribute("src", '#groundTexture');
+    let groundSize = MapConversion.getGroundSize();
+    mapTileGround.setAttribute("width", groundSize.width);
+    mapTileGround.setAttribute("height", groundSize.height);
+    mainScene.appendChild(mapTileGround);
+}
+
+function getBoundingString() {
+    return OpenSkyModel.LAT_MIN + "," + OpenSkyModel.LONG_MIN + "," + OpenSkyModel.LAT_MAX + "," + OpenSkyModel.LONG_MAX;
+}

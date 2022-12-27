@@ -16,6 +16,11 @@ export function degreeToMeter(lat,long){
     return L.Projection.Mercator.project(latlng);
 }
 
+export function meterToDegree(mercatorVector){
+    let point = {x:mercatorVector.x,y:mercatorVector.z};
+    return  L.Projection.Mercator.unproject(point);
+}
+
 //Esta función comvierte una coordenada mercator a una coordenada en el mundo 3d
 //En el 3d tenemos conversiones de factor , desplazamiento y cambio de ejes.
 export function mercatorToWorld(mercatorVector){
@@ -34,6 +39,20 @@ export function worldtoMercator(worldVector){
 
     return {x:xMercator,y:altitude,z:yMercator};
 }
+
+//función que convierte una coordenada WGS84 en grados en un vector del escenario con sus transformaciones afines.
+export function degreeToWorld(lat,long){
+    let point = degreeToMeter(lat,long);
+    return mercatorToWorld({x:point.x,y:0,z:point.y});
+}
+
+//función que convierte una coordenada del escenario a la coordenada correspondiente a WGS84 en grados.
+export function worldToDegree(worldVector){
+    let mercatorVector = worldtoMercator(worldVector);
+    return meterToDegree(mercatorVector);
+}
+
+
 
 
 export function createCorner(long, lat,id,mainScene) {

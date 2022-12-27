@@ -33,7 +33,7 @@ export const scale = simbolMagnification / FACTOR;
 
 export const scaleText = simbolMagnificationText / FACTOR;
 
-//MER(Minimun Enclosing Rectangle) en grados del escenario
+//MER(Minimun Enclosing Rectangle) en grados del escenario.
 
 export const LAT_MIN = 40.178873;
 
@@ -42,3 +42,6 @@ export const LAT_MAX = 40.971604;
 export const LONG_MIN = -4.702148;
 
 export const LONG_MAX = -2.900391;
+
+//Posición inicial de la cámara.
+export const INIT_CAM_POSITION = {lat:40.4827317,long:-3.5818863};
