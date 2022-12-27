@@ -176,7 +176,8 @@ function buildPlane(data) {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
             //Orientación al norte
-            let rotationY = -flight[OpenSkyModel.TRUE_TRACK]-180;
+            let rotationY = -flight[OpenSkyModel.TRUE_TRACK]+180;
+            rotationY = { x: 0, y: rotationY, z: 0 };
 
             let entityEl;
             let cacheData;
@@ -190,12 +191,11 @@ function buildPlane(data) {
 
                 cacheData = flightsCache.get(id);
                 cacheData.lastData = cacheData.newData;
-                cacheData.newData = newPosition;
+                cacheData.newData = {position:newPosition,rotation:rotationY};
 
             } else {
                 entityEl = createFlightElement(id);
-                entityEl.setAttribute('position', newPosition);
-                cacheData = new FlightCacheData(id, null, newPosition);
+                cacheData = new FlightCacheData(id, null, {position:newPosition,rotation:rotationY});
 
                 //creamos el texto del nombre del vuelo
                 let entityText = createElementText(flight);
@@ -204,18 +204,38 @@ function buildPlane(data) {
 
             //Creamos la animación si tiene almacenado una posición anterior
             if (cacheData.lastData != null && cacheData.lastData != undefined) {
-                entityEl.setAttribute('animation', {
-                    property: 'position',
-                    from: cacheData.lastData,
-                    to: cacheData.newData,
-                    autoplay: true,
-                    loop: 0,
-                    easing: 'linear',
-                    dur: intervalTime
-                });
+                
+                if (cacheData.lastData.position != cacheData.newData.position) {
+                    entityEl.setAttribute('animation__000', {
+                        property: 'position',
+                        from: cacheData.lastData.position,
+                        to: cacheData.newData.position,
+                        autoplay: true,
+                        loop: 0,
+                        easing: 'linear',
+                        dur: intervalTime
+                    });
+                }
+
+                // if (cacheData.lastData.rotation != cacheData.newData.rotation) {
+                //     entityEl.setAttribute('animation__001', {
+                //         property: 'rotation',
+                //         from: cacheData.lastData.rotation,
+                //         to: cacheData.newData.rotation,
+                //         autoplay: true,
+                //         loop: 0,
+                //         easing: 'easeInSine',
+                //         dir: 'reverse',
+                //         dur: intervalTime
+                //     });
+                // }
+                //orientación del modelo con respecto al norte
+            }else{
+                entityEl.setAttribute('position', newPosition);
             }
-            //orientación del modelo con respecto al norte
-            entityEl.setAttribute('rotation', { x: 0, y: rotationY, z: 0 });
+            entityEl.setAttribute('rotation', rotationY);
+            
+
 
             //Guardarmos el vuelo en la cache
             flightsCache.set(id, cacheData);
