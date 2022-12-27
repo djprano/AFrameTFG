@@ -15,7 +15,7 @@ class LocalApi {
     }
 
     //Función recursiva para cargar todos los ficheros de manera sincrona y secuencial
-    readJsonData(index){
+    async readJsonData(index){
         fetch(this.pathReference + this.fn + index + '.json')
         .then((response) => response.json())
         .then(json => {
