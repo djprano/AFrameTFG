@@ -13,7 +13,6 @@
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
   <script src="https://unpkg.com/osmtogeojson/osmtogeojson.js"></script>
-  <script src="js/mapConversion.js" type="module"></script>
   <script src="js/main.js" type="module"></script>
 
 </head>
@@ -21,22 +20,23 @@
 <body>
   <a-scene main-scene renderer="antialias: true">
     <a-assets>
+      <img id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       <img id="groundTexture" src="data/map.png">
-      <!-- <img id="terrain-texture" src="data/noctis-3500-clip-textureRED-resized.jpg"> -->
-      <!-- <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item> -->
-      <!-- <a-asset-item id="terrain" src="data/noctis-3500-clip-envi.bin"></a-asset-item> -->
-      <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+      <img id="terrain-texture" src="data/noctis-3500-clip-textureRED-resized.jpg">
+      <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
+      <a-asset-item id="terrain" src="data/noctis-3500-clip-envi.bin"></a-asset-item>
     </a-assets>
     <!-- Camera -->
     <a-entity id="camera" position="0 10 0" camera look-controls="reverseMouseDrag:false"
       wasd-controls="fly:true;acceleration:300" cursor="rayOrigin: mouse" position-listener>
-      
     </a-entity>
-    <a-entity id="sky" geometry="primitive: sphere; thetaLength: 90; radius: 1000" material="side: back; height: 2048; width: 2048; src: #skyTexture; shader: flat" position="" rotation="" scale="" visible=""></a-entity>
-    <a-sphere material="shader: flat; color: #fef7ec" radius="10" position="-180 500 -600" light="type: directional; color: #fef7ec; intensity: 0.5"></a-sphere>
 
+    <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
+
+    <a-sphere material="shader: flat; color: #fef7ec" radius="10" position="-180 500 -600"
+      light="type: directional; color: #fef7ec; intensity: 0.5"></a-sphere>
+          
     <a-entity light="type: directional; color: #fef7ec; intensity: 0.4" position="133 500 580"></a-entity>
-
 
     <!-- Terrain-->
     <!-- <a-entity terrain-model="map: url(data/noctis-3500-clip-textureRED-resized.jpg);

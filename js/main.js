@@ -5,7 +5,8 @@ import * as MapConversion from "./mapConversion.js";
 
 /*****Constantes****/
 const intervalTime = 3000;
-const localApi = new LocalApi();
+
+var localApi;
 
 
 
@@ -34,6 +35,7 @@ AFRAME.registerComponent('main-scene', {
         initCamPosition.y = 2;
         cam.setAttribute('position',initCamPosition);
         // Set up throttling.
+        localApi = new LocalApi();
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
 
 
