@@ -59,12 +59,7 @@ AFRAME.registerComponent('main-scene', {
 
     invertalEvent: function () {
         // Called every second.
-        if (localApi.isLoaded) {
-            let openSkyData = localApi.getJsonOpenSky();
-            if (openSkyData != undefined) {
-                buildPlane(openSkyData);
-            }
-        }
+            localApi.getJsonOpenSky().then(openSkyData => buildPlane(openSkyData))
     },
 
     tick: function (t, dt) {

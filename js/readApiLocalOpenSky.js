@@ -4,29 +4,22 @@ class LocalApi {
         this.fn = 'response';
         this.pathReference = './/openSkyData_madrid//';
         this.length = 333;
-        this.openSkyApi = [];
         this.isLoaded = false;
+        this.index = 0;
         this.readJsonData(0);
     }
 
     getJsonOpenSky() {
-        console.log("Api pop = "+ this.openSkyApi.length);
-        return this.openSkyApi.pop();
+        console.log("Api pop = "+ this.index);
+        let promise = this.readJsonData(this.index);
+        this.index++;
+        return promise;
     }
 
     //Función recursiva para cargar todos los ficheros de manera sincrona y secuencial
     async readJsonData(index){
-        fetch(this.pathReference + this.fn + index + '.json')
-        .then((response) => response.json())
-        .then(json => {
-            this.openSkyApi.push(json);
-            if (this.openSkyApi.length == 333) {
-                this.isLoaded = true;
-                this.openSkyApi.reverse();
-            }else{
-                this.readJsonData(++index);
-            }
-        });
+        return fetch(this.pathReference + this.fn + index + '.json')
+        .then((response) => response.json());
     }
 
     
