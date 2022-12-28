@@ -3,10 +3,13 @@ import { LocalApi } from "./readApiLocalOpenSky.js";
 import * as OpenSkyModel from "./openSkyModel.js";
 import * as MapConversion from "./mapConversion.js";
 
+//Displacement calculation
+MapConversion.displacementCalculation();
+
 /*****Constantes****/
 const intervalTime = 3000;
 
-var localApi;
+var localApi = new LocalApi();;
 
 
 
@@ -21,12 +24,11 @@ var contador = 0;
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
-
+//condiciones de carrera no veo el problema pero por el momento es necesario.
+setTimeout(() => {  console.log("World!"); }, 500);
 //Inicio de la escena.
 AFRAME.registerComponent('main-scene', {
     init: function () {
-        //Displacement calculation
-        MapConversion.displacementCalculation();
         mainScene = this.el;
         terrain = mainScene.querySelector('#terrain');
         sky = mainScene.querySelector('#sky');
@@ -35,7 +37,6 @@ AFRAME.registerComponent('main-scene', {
         initCamPosition.y = 2;
         cam.setAttribute('position',initCamPosition);
         // Set up throttling.
-        localApi = new LocalApi();
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
 
 

@@ -6,7 +6,6 @@ class LocalApi {
         this.length = 333;
         this.isLoaded = false;
         this.index = 0;
-        this.readJsonData(0);
     }
 
     getJsonOpenSky() {
