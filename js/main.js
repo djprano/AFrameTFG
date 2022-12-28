@@ -9,8 +9,16 @@ MapConversion.displacementCalculation();
 /*****Constantes****/
 const intervalTime = 3000;
 
-var localApi = new LocalApi();;
+var localApi = new LocalApi();
 
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
 
 
 /*****Variables ****/
@@ -25,7 +33,7 @@ var contador = 0;
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
 //condiciones de carrera no veo el problema pero por el momento es necesario.
-setTimeout(() => {  console.log("World!"); }, 500);
+sleep(500);
 //Inicio de la escena.
 AFRAME.registerComponent('main-scene', {
     init: function () {
