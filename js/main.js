@@ -218,7 +218,7 @@ class FlightCacheData {
 
 //Carga los datos de la terminal del aeropuerto y genera las geometrías custom de los edificios.
 function createTerminal() {
-    fetch('.//data//' + 'terminal.geojson')
+    fetch('.//data//' + 'madrid_building.geojson')
         .then((response) => response.json())
         .then(itemJSON => {
             let maxBuildings = 10000;
@@ -257,7 +257,7 @@ function createTerminal() {
                     buildingProperties.height = height / OpenSkyModel.FACTOR;
                     item.setAttribute("id", feature.id);
                     item.setAttribute("geometry", buildingProperties);
-                    item.setAttribute("material", { color: 'orange', roughness: 0.5, metalness: 0.5 });
+                    item.setAttribute("material", { color: '#8aebff', roughness: 0.8, metalness: 0.8 });
                     mainScene.appendChild(item);
                 }
             }
