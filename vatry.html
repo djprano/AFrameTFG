@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vatry</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+  <script
+    src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
+
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+  <script src="js/openSkyModel.js" type="module"></script>
+  <script src="js/vatryconf.js" type="module"></script>
+  <script src="js/main.js" type="module"></script>
+
+</head>
+
+<body>
+  <a-scene main-scene>
+    <a-assets>
+      <img id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+      <img id="groundTexture" src="data/vatry_map.png">
+      <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
+    </a-assets>
+    <!-- Camera -->
+    <a-entity id="camera" position="0 10 0" camera look-controls="reverseMouseDrag:false"
+      wasd-controls="fly:true;acceleration:300" cursor="rayOrigin: mouse" position-listener>
+    </a-entity>
+
+    <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
+
+    <a-sphere material="shader: flat; color: #fef7ec" radius="10" position="-180 500 -600"
+      light="type: directional; color: #fef7ec; intensity: 0.5"></a-sphere>
+          
+    <a-entity light="type: directional; color: #fef7ec; intensity: 0.4" position="133 500 580"></a-entity>
+
+  </a-scene>
+</body>
+
+</html>

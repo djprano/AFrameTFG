@@ -46,13 +46,26 @@ export var LONG_MAX;
 //Posición inicial de la cámara.
 export var INIT_CAM_POSITION;
 
-export function loadMerConfig(latmin,latmax,longmin,longmax){
+//Fichero de edificios
+export var BUILDING_FILE_NAME;
+
+export var FLIGHT_LOCAL_FOLDER;
+
+export function setMerConfig(latmin,latmax,longmin,longmax){
     LAT_MIN = latmin;
     LAT_MAX = latmax;
     LONG_MIN = longmin;
     LONG_MAX = longmax;
 }
 
-export function loadCamPosition(lat,long){
+export function setCamPosition(lat,long){
     INIT_CAM_POSITION = {lat:lat,long:long};
+}
+
+export function setBuildingFileName(filename){
+    BUILDING_FILE_NAME = filename;
+}
+
+export function setFlightLocalFolder(folder){
+    FLIGHT_LOCAL_FOLDER = folder;
 }

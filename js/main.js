@@ -13,7 +13,7 @@ var lastFlight;
 var contador = 0;
 
 /*****Constantes****/
-const intervalTime = 3000;
+const intervalTime = 500;
 
 var localApi = new LocalApi();
 
@@ -226,7 +226,7 @@ class FlightCacheData {
 
 //Carga los datos de la terminal del aeropuerto y genera las geometrías custom de los edificios.
 function createTerminal() {
-    fetch('.//data//' + 'madrid_building.geojson')
+    fetch('.//data//' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson')
         .then((response) => response.json())
         .then(itemJSON => {
             let maxBuildings = 10000;

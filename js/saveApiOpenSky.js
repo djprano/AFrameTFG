@@ -1,16 +1,36 @@
-const fs = require('fs');
-
+import * as fs from 'fs';
 import * as OpenSkyModel from "./openSkyModel.js";
 
-var endpoint = 'https://opensky-network.org/api/states/all?lamin='+OpenSkyModel.LAT_MIN+'&lomin='+OpenSkyModel.LONG_MIN+'&lamax='+OpenSkyModel.LAT_MAX+'&lomax='+OpenSkyModel.LONG_MAX;
 var user = 'xxxxxx';
 var password = 'xxxxx';
 var fn = 'response';
-var pathReference = 'C:\\Users\\djpra\\Documentos\\workspaceTFG\\openSkyData\\';
+var saveFolder;
 var index = 0;
+var pathReference;
 
-function saveJson(jsonData,iteration){
-    
+
+
+export function main(){
+    pathReference = 'C:\\Users\\djpra\\Documentos\\workspaceTFG\\AFrameTest\\openSkyData'+saveFolder+'\\';
+    var endpoint = 'https://opensky-network.org/api/states/all?lamin='+OpenSkyModel.LAT_MIN+'&lomin='+OpenSkyModel.LONG_MIN+'&lamax='+OpenSkyModel.LAT_MAX+'&lomax='+OpenSkyModel.LONG_MAX;
+    setInterval(() => {
+        fetch(endpoint, {
+            method: 'GET',
+            headers: { 'Authorization': 'Basic ' + btoa(user + ':' + password) }
+        }).then(response => response.json()).then(json => {
+            if(json != undefined && json != null && !isEmptyObject(json)){
+                saveJson(json, index++);
+            }        
+        });
+    }, 5500);
+}
+
+export function saveJson(jsonData,iteration){
+
+    if (!fs.existsSync(pathReference)) {
+        fs.mkdirSync(pathReference);
+    }
+    console.log("saving the iteration "+iteration);
     fs.writeFile(pathReference+fn+iteration+'.json', JSON.stringify(jsonData),'utf8', function(err) {
         if (err) {
             console.log(err);
@@ -18,16 +38,22 @@ function saveJson(jsonData,iteration){
     });
 }
 
-// sleep time expects milliseconds
-function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
 
-  setInterval(() => {
-    fetch(endpoint, {
-        method: 'GET',
-        headers: { 'Authorization': 'Basic ' + btoa(user + ':' + password) }
-    }).then(response => response.json()).then(json => saveJson(json,index++));
-  }, 5500);
+function isEmptyObject(obj) {
+    for (let name in obj) {
+        return obj.states == null;
+    }
+    return true;
+}
 
+export function setUser(u){
+    user = u;
+}
 
+export function setPassword(p){
+    password = p;
+}
+
+export function setSaveFolder(folder) {
+    saveFolder = folder;
+}
