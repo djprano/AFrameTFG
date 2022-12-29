@@ -1,25 +1,7 @@
 //LocalApi
 import { LocalApi } from "./readApiLocalOpenSky.js";
-import * as OpenSkyModel from "./openSkyModel.js";
+import * as OpenSkyModel from "./openSkyModel_madrid.js";
 import * as MapConversion from "./mapConversion.js";
-
-//Displacement calculation
-MapConversion.displacementCalculation();
-
-/*****Constantes****/
-const intervalTime = 3000;
-
-var localApi = new LocalApi();
-
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
-}
-
 
 /*****Variables ****/
 var terrain;
@@ -30,30 +12,37 @@ var lastFlight;
 
 var contador = 0;
 
+/*****Constantes****/
+const intervalTime = 3000;
+
+var localApi = new LocalApi();
+
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
-//condiciones de carrera no veo el problema pero por el momento es necesario.
+// condiciones de carrera no veo el problema pero por el momento es necesario.
+function sleep(milliseconds) {
+    let start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
 sleep(500);
 //Inicio de la escena.
 AFRAME.registerComponent('main-scene', {
     init: function () {
+
+        //Displacement calculation
+        MapConversion.displacementCalculation();
+
         mainScene = this.el;
         terrain = mainScene.querySelector('#terrain');
         sky = mainScene.querySelector('#sky');
         cam = mainScene.querySelector('#camera');
+        //Cam position
         let initCamPosition = MapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
         initCamPosition.y = 2;
-        cam.setAttribute('position',initCamPosition);
-        // Set up throttling.
-        this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
-
-
-        //KEYBOARD EVENTS
-        document.addEventListener('keydown', evt => {
-            if (evt.key == 1 && lastFlight != undefined) {
-                cam.setAttribute('position', lastFlight);
-            }
-        });
 
         // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MAX,'maxmax',mainScene);
         // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MAX,'maxmin',mainScene);
@@ -64,7 +53,15 @@ AFRAME.registerComponent('main-scene', {
         createMapGround();
         createTerminal();
 
-
+                // Set up throttling.
+                this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
+                        //KEYBOARD EVENTS
+        document.addEventListener('keydown', evt => {
+            if (evt.key == 1 && lastFlight != undefined) {
+                cam.setAttribute('position', lastFlight);
+            }
+        });
+        cam.setAttribute('position',initCamPosition);
 
     },
 
