@@ -1,6 +1,6 @@
 //LocalApi
 import { LocalApi } from "./readApiLocalOpenSky.js";
-import * as OpenSkyModel from "./openSkyModel_madrid.js";
+import * as OpenSkyModel from "./openSkyModel.js";
 import * as MapConversion from "./mapConversion.js";
 
 /*****Variables ****/

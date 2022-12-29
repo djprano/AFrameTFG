@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-import * as OpenSkyModel from "./openSkyModel_madrid.js";
+import * as OpenSkyModel from "./openSkyModel.js";
 
 var endpoint = 'https://opensky-network.org/api/states/all?lamin='+OpenSkyModel.LAT_MIN+'&lomin='+OpenSkyModel.LONG_MIN+'&lamax='+OpenSkyModel.LAT_MAX+'&lomax='+OpenSkyModel.LONG_MAX;
 var user = 'xxxxxx';

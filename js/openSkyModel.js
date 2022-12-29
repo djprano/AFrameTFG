@@ -35,13 +35,24 @@ export const scaleText = simbolMagnificationText / FACTOR;
 
 //MER(Minimun Enclosing Rectangle) en grados del escenario.
 
-export let LAT_MIN = 40.178873;
+export var LAT_MIN;
 
-export let LAT_MAX = 40.971604;
+export var LAT_MAX;
 
-export let LONG_MIN = -4.702148;
+export var LONG_MIN;
 
-export let LONG_MAX = -2.900391;
+export var LONG_MAX;
 
 //Posición inicial de la cámara.
-export const INIT_CAM_POSITION = {lat:40.4827317,long:-3.5818863};
+export var INIT_CAM_POSITION;
+
+export function loadMerConfig(latmin,latmax,longmin,longmax){
+    LAT_MIN = latmin;
+    LAT_MAX = latmax;
+    LONG_MIN = longmin;
+    LONG_MAX = longmax;
+}
+
+export function loadCamPosition(lat,long){
+    INIT_CAM_POSITION = {lat:lat,long:long};
+}
