@@ -67,7 +67,7 @@ AFRAME.registerComponent('main-scene', {
 
     invertalEvent: function () {
         // Called every second.
-            localApi.getJsonOpenSky().then(openSkyData => buildPlane(openSkyData))
+            localApi.getJsonOpenSky().then(openSkyData => updateData(openSkyData))
     },
 
     tick: function (t, dt) {
@@ -117,8 +117,12 @@ function createElementTextPosition(vector) {
     mainScene.appendChild(entityText);
 }
 
-//Gnera los aviones a partir de la consulta de la api de vuelos.
-function buildPlane(data) {
+//Funcion que actualiza los elementos de la escena.
+function updateData(data) {
+    //creamos un set con los id que vamos a generar en esta actualización para mantenimiento de aviones, 
+    //todos los no actualizados se borran
+    let updateFlights = new Set();
+
     //Filtramos vuelos con nombre indefinido de vuelo ya que será nuestro primary key.
     data.states.filter(flight => flight != null &&
         flight[OpenSkyModel.ID] != null &&
@@ -127,6 +131,10 @@ function buildPlane(data) {
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
             let id = flight[OpenSkyModel.ID];
+
+            //Guardamos el vuelo que estamos actualizando en el set
+            updateFlights.add(id);
+
             //Orientación al norte
             let rotationY = -flight[OpenSkyModel.TRUE_TRACK] + 180;
             rotationY = { x: 0, y: rotationY, z: 0 };
@@ -199,6 +207,9 @@ function buildPlane(data) {
             //     createElementTextPosition(newPosition);
             // }
         });
+
+    //Borrado de vuelos no actualizados para no dejar un avión congelado.
+    Array.from(flightsCache.keys()).filter(key => !updateFlights.has(key)).forEach(key => removeFlightElement(key));
 }
 
 //crea los elementos html de los aviones.
@@ -211,6 +222,13 @@ function createFlightElement(id) {
     mainScene.appendChild(entityEl);
     return entityEl;
 
+}
+
+//borra un avión del DOM.
+function removeFlightElement(id){
+    let entityEl = document.getElementById(id);
+    entityEl.parentNode.removeChild(entityEl);
+    flightsCache.delete(id);
 }
 
 //Clase wrapper que contiene la información de la posición anterior y la nueva posicón y será almacenado en la cache.
