@@ -13,7 +13,7 @@ var lastFlight;
 var contador = 0;
 
 /*****Constantes****/
-const intervalTime = 500;
+const intervalTime = 1000;
 
 var localApi = new LocalApi();
 
@@ -312,16 +312,35 @@ AFRAME.registerGeometry('building', {
 
 //Crea un plano con la imagen correspondiente al mapa, tan solo es una referencia.
 function createMapGround() {
-    //Map image
-    let mapTileGround = document.createElement("a-plane");
-    mapTileGround.setAttribute("id", 'mapTileGround');
-    mapTileGround.setAttribute("rotation", { x: -90, y: 0, z: 0 });
-    mapTileGround.setAttribute("position", { x: 0, y: 0, z: 0 });
-    mapTileGround.setAttribute("src", '#groundTexture');
     let groundSize = MapConversion.getGroundSize();
-    mapTileGround.setAttribute("width", groundSize.width);
-    mapTileGround.setAttribute("height", groundSize.height);
-    mainScene.appendChild(mapTileGround);
+    if (true) {
+        let terrainEl = document.createElement('a-entity');
+        terrainEl.setAttribute('id', "terrain");
+        let atributes = {
+            map: 'url(data/vatry_map.png)',
+            dem: 'url(data/smallMap.bin)',
+            planeWidth: groundSize.width,
+            planeHeight: groundSize.height,
+            segmentsWidth: 199,
+            segmentsHeight: 199,
+            zPosition: 100
+        };
+        terrainEl.setAttribute('terrain-model', atributes);
+        mainScene.appendChild(terrainEl);
+    } else {
+        //Map image
+        let mapTileGround = document.createElement("a-plane");
+        mapTileGround.setAttribute("id", 'mapTileGround');
+        mapTileGround.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+        mapTileGround.setAttribute("position", { x: 0, y: 0, z: 0 });
+        mapTileGround.setAttribute("src", '#groundTexture');
+        mapTileGround.setAttribute("width", groundSize.width);
+        mapTileGround.setAttribute("height", groundSize.height);
+        mainScene.appendChild(mapTileGround);
+    }
+    //ajuste de la esfera de cielo
+    let skyEl = document.getElementById("sky");
+    skyEl.setAttribute("radius",Math.min(groundSize.width,groundSize.height)/2);
 }
 
 function getBoundingString() {
