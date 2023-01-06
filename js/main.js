@@ -51,8 +51,6 @@ AFRAME.registerComponent('main-scene', {
 
 
         createMapGround();
-        createTerminal();
-
                 // Set up throttling.
                 this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
                         //KEYBOARD EVENTS
@@ -243,11 +241,17 @@ class FlightCacheData {
 }
 
 //Carga los datos de la terminal del aeropuerto y genera las geometrías custom de los edificios.
-function createTerminal() {
+function createBuildings(heightData,groundSize,gridSize,zMagnification) {
+
+    // createVertexDebug(heightData,gridSize,groundSize,zMagnification);
+
     fetch('.//data//' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson')
         .then((response) => response.json())
-        .then(itemJSON => {
+        .then(((gridSize,groundSize,heightData,zMagnification,itemJSON) => {
             let maxBuildings = 10000;
+            //calculos previos para convertir posición 3D a posicion array de alturas
+            let cellSize = {width: groundSize.width/gridSize.width ,height: groundSize.height/gridSize.height}
+
             for (let feature of itemJSON.features) {
                 if (maxBuildings == 0) {
                     break;
@@ -260,16 +264,32 @@ function createTerminal() {
                     // let corner = feature.geometry.coordinates[0][0];
                     // MapConversion.createCorner(corner[0],corner[1],'bulding position',mainScene);
                     // //debug/////////////////////////////
+                    let numPoints = 0;
+                    let centroid = {x:0,y:0};
                     for (let way of feature.geometry.coordinates) {
                         for (let point of way) {
                             let pointMeter = MapConversion.degreeToMeter(point[1], point[0]);//point[1] lat ; point[0] long
                             let mercatorVector = { x: pointMeter.x, y: 0, z: pointMeter.y };
                             let point3d = MapConversion.mercatorToWorld(mercatorVector);
                             wayPoints.push({ x: point3d.x, y: point3d.z });
+                            centroid.x = centroid.x+point3d.x;
+                            centroid.y = centroid.y+point3d.z;
+                            numPoints++;
                         }
                     }
+                    //Calculo del centroide del edificio
+                    centroid.x = centroid.x/numPoints;
+                    centroid.y = centroid.y/numPoints;
+
+                    //Conversión inversa
+                    let indexX = Math.round((centroid.x + (groundSize.width / 2)) / (cellSize.width));
+                    let indexY = Math.round((centroid.y + (groundSize.height / 2)) / (cellSize.height));
+                    let index = (indexY * (gridSize.width + 1)) + indexX;
+
+                    let terrainHeight = zMagnification*(heightData[index] / 65535);//se divide entre 2^16 debido a que es un Uint16Array
+
                     let item = document.createElement("a-entity");
-                    let buildingProperties = { primitive: "building", points: wayPoints };
+                    let buildingProperties = { primitive: "building", points: wayPoints , terrainHeight:terrainHeight};
                     let featureHeight = feature.properties["height"];
                     let levels = feature.properties["building:levels"];
                     let metersByLevel = 3;
@@ -287,7 +307,7 @@ function createTerminal() {
                     mainScene.appendChild(item);
                 }
             }
-        });
+        }).bind(null,gridSize,groundSize,heightData,zMagnification));
 }
 
 
@@ -295,7 +315,8 @@ function createTerminal() {
 AFRAME.registerGeometry('building', {
     schema: {
         height: { type: 'number', default: 10 },
-        points: { default: ['-10 10', '-10 -10', '10 -10'], }
+        points: { default: ['-10 10', '-10 -10', '10 -10'], },
+        terrainHeight: { type: 'number', default: 0 }
     },
     init: function (data) {
         let shape = new THREE.Shape(data.points);
@@ -305,7 +326,7 @@ AFRAME.registerGeometry('building', {
             bevelEnabled: false
         });
         extrudedGeometry.rotateX(Math.PI / 2);
-        extrudedGeometry.translate(0, data.height, 0);
+        extrudedGeometry.translate(0, data.height+data.terrainHeight, 0);
         this.geometry = extrudedGeometry;
     }
 });
@@ -317,16 +338,21 @@ function createMapGround() {
         let terrainEl = document.createElement('a-entity');
         terrainEl.setAttribute('id', "terrain");
         let atributes = {
+            // wireframe:true,
             map: 'url(data/vatry_map.png)',
             dem: 'url(data/smallMap.bin)',
             planeWidth: groundSize.width,
             planeHeight: groundSize.height,
             segmentsWidth: 199,
             segmentsHeight: 199,
-            zPosition: 100
+            zPosition: 350
         };
         terrainEl.setAttribute('terrain-model', atributes);
         mainScene.appendChild(terrainEl);
+        terrainEl.addEventListener("demLoaded", evt => {
+            let heightData = evt.target.components['terrain-model'].heightData;
+            createBuildings(heightData,MapConversion.getGroundSize(),{height:atributes.segmentsHeight,width:atributes.segmentsWidth},atributes.zPosition);
+        });
     } else {
         //Map image
         let mapTileGround = document.createElement("a-plane");
@@ -345,4 +371,22 @@ function createMapGround() {
 
 function getBoundingString() {
     return OpenSkyModel.LAT_MIN + "," + OpenSkyModel.LONG_MIN + "," + OpenSkyModel.LAT_MAX + "," + OpenSkyModel.LONG_MAX;
+}
+
+//Función para debugear el terreno calcula la coordenada 3D y pone una caja en cada vertice.
+function createVertexDebug(heightData,gridSize,groundSize,zMagnification){
+    let cellSize = {width: groundSize.width/gridSize.width ,height: groundSize.height/gridSize.height}
+    heightData.forEach((element,index,array) => {
+        let height = zMagnification * (element / 65535);
+        let vertex = document.createElement("a-box");
+        let x = ((index%(gridSize.width+1))*cellSize.width)-(groundSize.width/2);
+        let y = (Math.trunc(index/(gridSize.width+1))*cellSize.height)-(groundSize.height/2)
+        vertex.setAttribute("id", 'vertex-'+index);
+        vertex.setAttribute("depth", 0.1);
+        vertex.setAttribute("height", 0.1);
+        vertex.setAttribute("width", 0.1);
+        vertex.setAttribute("position", { x: x, y: height, z: y });
+        mainScene.appendChild(vertex);
+        console.log();
+    });
 }
