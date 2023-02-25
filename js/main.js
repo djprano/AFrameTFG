@@ -1,8 +1,8 @@
 //LocalApi
-import { LocalApi } from "./readApiLocalOpenSky.js";
-import * as OpenSkyModel from "./openSkyModel.js";
-import * as MapConversion from "./mapConversion.js";
-import * as CacheData from "./FlightCacheData.js";
+import { LocalApi } from "./data/readApiLocalOpenSky.js";
+import * as OpenSkyModel from "./configuration/openSkyModel.js";
+import * as MapConversion from "./gis/mapConversion.js";
+import * as CacheData from "./data/FlightCacheData.js";
 
 /*****Variables ****/
 var terrain;
@@ -95,6 +95,7 @@ function createElementText(flight) {
 
 //Funcion que actualiza los elementos de la escena.
 function updateData(data) {
+    if(data==null || data == undefined)return;
     //creamos un set con los id que vamos a generar en esta actualización para mantenimiento de aviones, 
     //todos los no actualizados se borran
     let updateFlights = new Set();

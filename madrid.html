@@ -14,7 +14,7 @@
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
   <!-- <script src="https://unpkg.com/osmtogeojson/osmtogeojson.js"></script> -->
   <script src="js/openSkyModel.js" type="module"></script>
-  <script src="js/madridconf.js" type="module"></script>
+  <script src="js/configuration/madridconf.js" type="module"></script>
   <script src="js/main.js" type="module"></script>
 
 </head>
@@ -22,7 +22,7 @@
 <body>
   <a-scene main-scene >
     <a-assets>
-      <img id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+      <img crossorigin="anonymous" id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       <img id="groundTexture" src="data/madrid_map.png">
       <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
       <!-- <img id="terrain-texture" src="data/noctis-3500-clip-textureRED-resized.jpg">      

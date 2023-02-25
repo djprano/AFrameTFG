@@ -1,4 +1,4 @@
-import * as OpenSkyModel from "./openSkyModel.js";
+import * as OpenSkyModel from "../configuration/openSkyModel.js";
 
 var displacement;
 

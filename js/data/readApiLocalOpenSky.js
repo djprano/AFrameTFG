@@ -1,10 +1,11 @@
-import * as OpenSkyModel from "./openSkyModel.js";
+import * as OpenSkyModel from "../configuration/openSkyModel.js";
+
 
 class LocalApi {
 
     constructor() {
         this.fn = 'response';
-        this.pathReference = './/openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
+        this.pathReference = '..//openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
         this.length = 333;
         this.isLoaded = false;
         this.index = 0;
@@ -20,7 +21,7 @@ class LocalApi {
     //Función recursiva para cargar todos los ficheros de manera sincrona y secuencial
     async readJsonData(index){
         return fetch(this.pathReference + this.fn + index + '.json')
-        .then((response) => response.json());
+        .then((response) => response.status == 404 ? undefined : response.json());
     }
 
     

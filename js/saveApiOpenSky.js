@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as OpenSkyModel from "./openSkyModel.js";
+import * as OpenSkyModel from "./configuration/openSkyModel.js";
 
 var user = 'xxxxxx';
 var password = 'xxxxx';
