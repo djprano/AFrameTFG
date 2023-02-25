@@ -16,6 +16,38 @@ AFRAME.registerComponent('hud', {
     backgroundEl.setAttribute('raycaster-ignore', true);
     this.hudEl.appendChild(backgroundEl);
 
+    // Crear un botón close para el HUD.
+    // Creamos el texto del botón close.
+    var textEl = document.createElement('a-entity');
+    textEl.setAttribute('text', {
+      value: 'Close',
+      align: 'center',
+      width: 1.5,
+      color: '#FFFFFF',
+    });
+    textEl.setAttribute('position', '0 0 0.001');
+    textEl.setAttribute('raycaster-ignore', true);
+    //Creamos el botón
+    var closeButtonEl = document.createElement('a-entity');
+    closeButtonEl.setAttribute('id', 'hud-close-button');
+    closeButtonEl.setAttribute('geometry', {
+      primitive: 'box',
+      width: 0.3,
+      height: 0.1,
+      depth: 0.002
+    });
+    closeButtonEl.setAttribute('material', {
+      color: '#FF5722'
+    });
+    closeButtonEl.appendChild(textEl);
+    closeButtonEl.setAttribute('position', '0 -0.6 0');
+    closeButtonEl.setAttribute('rotation', '0 0 0');
+    closeButtonEl.addEventListener('click', () => this.hideData());
+    closeButtonEl.setAttribute('raycaster-ignore', false);
+    closeButtonEl.setAttribute('class', 'clickable'); // Agrega la clase 'clickable'
+
+    this.hudEl.appendChild(closeButtonEl);
+
     // Crear un contenedor para el contenido del HUD.
     this.contentEl = document.createElement('a-entity');
     this.contentEl.setAttribute('id', 'hud-content');
@@ -37,11 +69,7 @@ AFRAME.registerComponent('hud', {
 
     // Registrar el evento 'ocultar' para ocultar el HUD.
     this.hudEl.addEventListener('hud-hide', () => {
-      // Vaciar el contenido del HUD.
-      this.contentEl.innerHTML = '';
-
-      // Ocultar el HUD.
-      this.hudEl.setAttribute('visible', 'false');
+      this.hideData();
     });
   },
   showData: function (data) {
@@ -53,6 +81,13 @@ AFRAME.registerComponent('hud', {
 
     // Mostrar el HUD.
     this.hudEl.setAttribute('visible', 'true');
+  },
+  hideData(){
+    // Vaciar el contenido del HUD.
+    this.contentEl.innerHTML = '';
+
+    // Ocultar el HUD.
+    this.hudEl.setAttribute('visible', 'false');
   }
   ,
   json2TextComponent: function (jsonData) {
@@ -65,12 +100,11 @@ AFRAME.registerComponent('hud', {
       let textEl = document.createElement('a-text');
       let value = propiedad + ': ' + jsonData[propiedad];
       textEl.setAttribute('value', propiedad + ': ' + jsonData[propiedad]);
-      textEl.setAttribute('position', '0 ' + (-0.2 * Object.keys(jsonData).indexOf(propiedad)) + ' 0');
-      textEl.setAttribute('height', 5);
-      textEl.setAttribute('width', 5);
+      textEl.setAttribute('position', '-0.3a ' + (-0.1 * Object.keys(jsonData).indexOf(propiedad) + 0.5) + ' 0');
+      textEl.setAttribute('height', 2);
+      textEl.setAttribute('width', 2);
       textEl.setAttribute('align', 'left');
       textEl.setAttribute('color', 'white');
-      textEl.setAttribute('width', '3');
       jsonEl.appendChild(textEl);
     }
     return jsonEl;

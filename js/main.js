@@ -204,7 +204,7 @@ function handleMouseEvent(evt) {
         hudEl.emit('hud-show-json', jsonData);
         console.log("hudon");
     } else if (evt.type === 'mouseleave') {
-        hudEl.emit('hud-hide');
+        //hudEl.emit('hud-hide');
         console.log("hudoff");
     }
 
