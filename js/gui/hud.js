@@ -37,7 +37,8 @@ AFRAME.registerComponent('hud', {
       depth: 0.002
     });
     closeButtonEl.setAttribute('material', {
-      color: '#FF5722'
+      color: '#FF5722',
+      shader: 'flat' // Establece el shader a flat
     });
     closeButtonEl.appendChild(textEl);
     closeButtonEl.setAttribute('position', '0 -0.6 0');
