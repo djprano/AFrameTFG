@@ -22,16 +22,6 @@ var localApi = new LocalApi();
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
-// condiciones de carrera no veo el problema pero por el momento es necesario.
-function sleep(milliseconds) {
-    let start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
-}
-sleep(500);
 //Inicio de la escena.
 AFRAME.registerComponent('main-scene', {
     init: function () {
