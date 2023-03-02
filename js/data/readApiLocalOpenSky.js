@@ -5,7 +5,7 @@ class LocalApi {
 
     constructor() {
         this.fn = 'response';
-        this.pathReference = '..//openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
+        this.pathReference = '..//..//openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
         this.length = 333;
         this.isLoaded = false;
         this.index = 0;
