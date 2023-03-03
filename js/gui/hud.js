@@ -3,14 +3,15 @@ AFRAME.registerComponent('hud', {
     // Crear el elemento del HUD y añadirlo a la escena.
     this.hudEl = document.createElement('a-entity');
     this.hudEl.setAttribute('id', 'hud');
-    this.hudEl.setAttribute('position', '0 0 -1');
+    this.hudEl.setAttribute('position', '1.2% 0.5% -1');
+    this.hudEl.setAttribute('scale', '0.4 0.4 1');
     this.hudEl.setAttribute('visible', 'false');
 
 
     // Crear un fondo transparente para el HUD.
     var backgroundEl = document.createElement('a-plane');
     backgroundEl.setAttribute('color', '#000');
-    backgroundEl.setAttribute('opacity', '0.5');
+    backgroundEl.setAttribute('opacity', '0.4');
     backgroundEl.setAttribute('width', '2');
     backgroundEl.setAttribute('height', '1.5');
     backgroundEl.setAttribute('raycaster-ignore', true);

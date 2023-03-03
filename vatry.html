@@ -15,6 +15,7 @@
   <script src="js/configuration/openSkyModel.js" type="module"></script>
   <script src="js/configuration/vatryconf.js" type="module"></script>
   <script src="js/gui/hud.js" type="module"></script>
+  <script src="js/gui/toolbar.js" type="module"></script>
   <script src="js/gui/hover-scale.js" type="module"></script>
   <script src="js/main.js" type="module"></script>
 
@@ -22,6 +23,7 @@
 
 <body>
   <a-scene main-scene>
+    <a-entity toolbar></a-entity>
     <a-assets>
       <img crossorigin="anonymous" id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       <img crossorigin="anonymous" id="groundTexture" src="data/vatry_map.png">
