@@ -5,7 +5,7 @@ class LocalApi {
 
     constructor() {
         this.fn = 'response';
-        this.pathReference = '..//..//openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
+        this.pathReference = '../../openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
         this.length = 333;
         this.isLoaded = false;
         this.index = 0;
@@ -20,7 +20,8 @@ class LocalApi {
 
     //Función recursiva para cargar todos los ficheros de manera sincrona y secuencial
     async readJsonData(index){
-        return fetch(this.pathReference + this.fn + index + '.json')
+        let dataUrl = new URL(this.pathReference + this.fn + index + '.json', import.meta.url);
+        return fetch(dataUrl)
         .then((response) => response.status == 404 ? undefined : response.json());
     }
 
