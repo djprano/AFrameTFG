@@ -19,12 +19,10 @@ AFRAME.registerComponent('draggable', {
   },
   onMouseMove: function (event) {
     if (this.isDragging) {
-      console.log(event.movementX +'-'+event.movementY);
       const dx = event.movementX;
       const dy = event.movementY;
       const scalar = 600;
       let offset = new THREE.Vector3(dx, -dy, 0).divideScalar(scalar);
-      console.log(offset);
       this.el.object3D.position.add(offset);
     }
   }

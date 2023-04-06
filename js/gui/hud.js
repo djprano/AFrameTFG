@@ -1,3 +1,6 @@
+const HUD_SHOW_JSON = 'hud-show-json';
+const HUD_OBJECT_SELECTED = 'hud-object-selected';
+
 AFRAME.registerComponent('hud', {
   init: function () {
     // Crear el elemento del HUD y añadirlo a la escena.
@@ -71,7 +74,7 @@ AFRAME.registerComponent('hud', {
     });
 
     // Registrar el evento 'mostrar json' para mostrar el HUD.
-    this.hudEl.addEventListener('hud-show-json', (event) => {
+    this.hudEl.addEventListener(HUD_SHOW_JSON, (event) => {
       this.showData(this.json2TextComponent(event.detail));
     });
 
@@ -80,44 +83,23 @@ AFRAME.registerComponent('hud', {
       this.hideData();
     });
 
-    // Registrar los eventos de ratón para permitir arrastrar el HUD.
-    this.dragging = false; // Indicador de si se está arrastrando el HUD
-    this.mousePos = new THREE.Vector2(); // Posición del ratón en coordenadas normalizadas
-    this.hudPos = new THREE.Vector3(); // Posición del HUD en el espacio 3D
-    backgroundEl.addEventListener('mousedown', (event) => {
-      if (event.detail.mouseEvent.button === 1 ) {
-        this.dragging = true;
-        this.mousePos.set(event.detail.intersection.uv.x, event.detail.intersection.uv.y);
-        this.hudPos.copy(this.hudEl.object3D.position);
-      }
+    // Registrar el evento 'mostrar un marcador en el objeto seleccionado'.
+    this.hudEl.addEventListener(HUD_OBJECT_SELECTED, (event) => {
+      this.objectSelected(event.detail);
     });
-    window.addEventListener('mousemove', (event) => {
-      if (this.dragging) {
-        console.log('dragg');
-        const mousePos = new THREE.Vector2();
-        mousePos.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mousePos.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        const intersection = new THREE.Vector3();
-        this.el.sceneEl.camera.el.object3D.getWorldPosition(intersection);
-        this.el.sceneEl.camera.el.object3D.getWorldDirection(intersection);
-        const dist = -this.hudPos.z / intersection.z;
-        intersection.multiplyScalar(dist);
-        intersection.add(this.hudPos);
-        intersection.x += (mousePos.x - 0.5) * 2;
-        intersection.y += (mousePos.y - 0.5) * 2;
-        this.hudEl.object3D.position.copy(intersection);
-      }
-    });
-
-    backgroundEl.addEventListener('mouseup', (event) => {
-      if (event.detail.mouseEvent.button === 1) {
-        this.dragging = false;
-      }
-    });
-
-
 
   },
+  objectSelected: function(data){
+    const ring = document.createElement('a-entity');
+    ring.setAttribute('geometry', { primitive: 'ring', radiusInner: 1, radiusOuter: 1.2 });
+    ring.setAttribute('material', { color: 'red', shader: 'flat' });
+    ring.setAttribute('position', '0 15 0'); // posicion relativa
+    ring.setAttribute('scale', '20 20 1');
+    ring.setAttribute('rotation', '0 -180 0');
+    ring.setAttribute('look-at','#camera');
+    data.appendChild(ring);
+  }
+  ,
   showData: function (data) {
     // Vaciar el contenido anterior del HUD.
     this.contentEl.innerHTML = '';
