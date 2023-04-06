@@ -3,9 +3,13 @@ AFRAME.registerComponent('hud', {
     // Crear el elemento del HUD y añadirlo a la escena.
     this.hudEl = document.createElement('a-entity');
     this.hudEl.setAttribute('id', 'hud');
-    this.hudEl.setAttribute('position', '1.2% 0.5% -1');
+    this.hudEl.setAttribute('position', '0 0 -1');
     this.hudEl.setAttribute('scale', '0.4 0.4 1');
     this.hudEl.setAttribute('visible', 'false');
+    this.hudEl.setAttribute('class', "clickable");
+    this.hudEl.setAttribute('raycaster-ignore', false);
+    this.hudEl.setAttribute('class', 'clickable'); // Agrega la clase 'clickable'
+    this.hudEl.setAttribute('draggable', '');
 
 
     // Crear un fondo transparente para el HUD.
@@ -14,7 +18,9 @@ AFRAME.registerComponent('hud', {
     backgroundEl.setAttribute('opacity', '0.4');
     backgroundEl.setAttribute('width', '2');
     backgroundEl.setAttribute('height', '1.5');
-    backgroundEl.setAttribute('raycaster-ignore', true);
+    backgroundEl.setAttribute('class', "clickable");
+    backgroundEl.setAttribute('draggable');
+
     this.hudEl.appendChild(backgroundEl);
 
     // Crear un botón close para el HUD.
@@ -73,6 +79,44 @@ AFRAME.registerComponent('hud', {
     this.hudEl.addEventListener('hud-hide', () => {
       this.hideData();
     });
+
+    // Registrar los eventos de ratón para permitir arrastrar el HUD.
+    this.dragging = false; // Indicador de si se está arrastrando el HUD
+    this.mousePos = new THREE.Vector2(); // Posición del ratón en coordenadas normalizadas
+    this.hudPos = new THREE.Vector3(); // Posición del HUD en el espacio 3D
+    backgroundEl.addEventListener('mousedown', (event) => {
+      if (event.detail.mouseEvent.button === 1 ) {
+        this.dragging = true;
+        this.mousePos.set(event.detail.intersection.uv.x, event.detail.intersection.uv.y);
+        this.hudPos.copy(this.hudEl.object3D.position);
+      }
+    });
+    window.addEventListener('mousemove', (event) => {
+      if (this.dragging) {
+        console.log('dragg');
+        const mousePos = new THREE.Vector2();
+        mousePos.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mousePos.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        const intersection = new THREE.Vector3();
+        this.el.sceneEl.camera.el.object3D.getWorldPosition(intersection);
+        this.el.sceneEl.camera.el.object3D.getWorldDirection(intersection);
+        const dist = -this.hudPos.z / intersection.z;
+        intersection.multiplyScalar(dist);
+        intersection.add(this.hudPos);
+        intersection.x += (mousePos.x - 0.5) * 2;
+        intersection.y += (mousePos.y - 0.5) * 2;
+        this.hudEl.object3D.position.copy(intersection);
+      }
+    });
+
+    backgroundEl.addEventListener('mouseup', (event) => {
+      if (event.detail.mouseEvent.button === 1) {
+        this.dragging = false;
+      }
+    });
+
+
+
   },
   showData: function (data) {
     // Vaciar el contenido anterior del HUD.
@@ -84,7 +128,7 @@ AFRAME.registerComponent('hud', {
     // Mostrar el HUD.
     this.hudEl.setAttribute('visible', 'true');
   },
-  hideData(){
+  hideData() {
     // Vaciar el contenido del HUD.
     this.contentEl.innerHTML = '';
 
