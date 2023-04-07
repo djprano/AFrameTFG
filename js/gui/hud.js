@@ -11,15 +11,6 @@ AFRAME.registerComponent('hud', {
     //Guardamos la cámara principal.
     this.camera = document.querySelector('#camera');
 
-    //Creamos la cámara secundaria
-    // Crear una nueva cámara y agregarla al objeto seleccionado.
-    this.cameraEl = document.createElement('a-entity');
-    this.cameraEl.setAttribute('camera', {
-      active: false // La cámara no está activa inicialmente
-    });
-    this.cameraEl.setAttribute('position', '0 0 0');
-    
-
     // Crear el elemento del HUD y añadirlo a la escena.
     this.hudEl = document.createElement('a-entity');
     this.hudEl.setAttribute('id', 'hud');
@@ -57,8 +48,6 @@ AFRAME.registerComponent('hud', {
     this.contentEl.setAttribute('raycaster-ignore', true);
     this.hudEl.appendChild(this.contentEl);
 
-    this.el.appendChild(this.hudEl);
-
     // Registrar el evento 'mostrar' para mostrar el HUD.
     this.hudEl.addEventListener('hud-show', (event) => {
       this.showData(event.detail);
@@ -88,6 +77,9 @@ AFRAME.registerComponent('hud', {
     this.hudEl.addEventListener(HUD_ENABLE, (event) => {
       this.enableHud();
     });
+
+    //Agregamos el hud a la camara.
+    this.el.appendChild(this.hudEl);
 
   },
   /**
@@ -152,8 +144,13 @@ AFRAME.registerComponent('hud', {
     this.hudEl.setAttribute('visible', 'false');
 
     //Borramos el selector.
-    this.objSelected.removeChild(this.ring);
-    this.objSelected = null;
+    if (this.objSelected != null) {
+      this.camera.setAttribute('camera', { active: true });
+      this.cameraEl.setAttribute('active', false);
+      this.objSelected.removeChild(this.ring);
+      this.objSelected = null;
+    }
+
   }
   ,
   json2TextComponent: function (jsonData) {
@@ -196,7 +193,7 @@ AFRAME.registerComponent('hud', {
     });
     closeButtonEl.setAttribute('material', {
       color: '#FF5722',
-      shader: 'flat' // Establece el shader a flat
+      shader: 'flat' // Establece el shader a flat para no terner efectos de iluminación.
     });
     closeButtonEl.appendChild(closeButtonText);
     closeButtonEl.setAttribute('position', '-0.3 -0.6 0');
@@ -227,7 +224,7 @@ AFRAME.registerComponent('hud', {
     });
     cameraOnBoardButtonEl.setAttribute('material', {
       color: '#FF5722',
-      shader: 'flat' // Establece el shader a flat
+      shader: 'flat' // Establece el shader a flat para que no tenga efectos de iluminación.
     });
     cameraOnBoardButtonEl.appendChild(cameraOnBoardButtonText);
     cameraOnBoardButtonEl.setAttribute('position', '0.3 -0.6 0');
@@ -237,10 +234,29 @@ AFRAME.registerComponent('hud', {
     cameraOnBoardButtonEl.setAttribute('class', 'clickable'); // Agrega la clase 'clickable'
     return cameraOnBoardButtonEl;
   },
-  cameraOnBoard:function(){
+  cameraOnBoard: function () {
+
+    //Creamos la cámara secundaria
+    // Crear una nueva cámara y agregarla al objeto seleccionado.
+    this.cameraEl = document.createElement('a-entity');
+    this.cameraEl.setAttribute('camera', {
+      active: false // La cámara no está activa inicialmente
+    });
+
+    // Copiamos los atributos de la cámara principal en la secundaria menos la posición y el control.
+
+    Array.from(this.camera.attributes).forEach(attribute => {
+      let name = attribute.name;
+      let value = attribute.value;
+      if (name !== 'position' && name !== 'wasd-controls' && name !== 'id' && name !== 'camera' && name !== 'hud') {
+        this.cameraEl.setAttribute(name, value);
+      }
+    });
+    this.cameraEl.setAttribute('position', '0 0 0');
+
     this.objSelected.appendChild(this.cameraEl);
     this.cameraEl.setAttribute('active', true);
-    this.camera.setAttribute('camera', {active: false});
+    this.camera.setAttribute('camera', { active: false });
   }
 });
 
