@@ -89,15 +89,24 @@ AFRAME.registerComponent('hud', {
     });
 
   },
-  objectSelected: function(data){
-    const ring = document.createElement('a-entity');
-    ring.setAttribute('geometry', { primitive: 'ring', radiusInner: 1, radiusOuter: 1.2 });
-    ring.setAttribute('material', { color: 'red', shader: 'flat' });
-    ring.setAttribute('position', '0 15 0'); // posicion relativa
-    ring.setAttribute('scale', '20 20 1');
-    ring.setAttribute('rotation', '0 -180 0');
-    ring.setAttribute('look-at','#camera');
-    data.appendChild(ring);
+  createRing: function() {
+    this.ring = document.createElement('a-entity');
+    this.ring.setAttribute('geometry', { primitive: 'ring', radiusInner: 1, radiusOuter: 1.2 });
+    this.ring.setAttribute('material', { color: 'red', shader: 'flat' });
+    this.ring.setAttribute('position', '0 15 0'); // posicion relativa
+    this.ring.setAttribute('scale', '20 20 1');
+    this.ring.setAttribute('rotation', '0 -180 0');
+    this.ring.setAttribute('look-at', '#camera');
+  }
+  ,
+  objectSelected: function (data) {
+    if (this.objSelected != undefined && this.objSelected != null) {
+      this.objSelected.removeChild(this.ring);
+    }
+    //creamos el anillo de selección.
+    this.createRing();
+    data.appendChild(this.ring);
+    this.objSelected = data;
   }
   ,
   showData: function (data) {
@@ -116,6 +125,10 @@ AFRAME.registerComponent('hud', {
 
     // Ocultar el HUD.
     this.hudEl.setAttribute('visible', 'false');
+
+    //Borramos el selector.
+    this.objSelected.removeChild(this.ring);
+    this.objSelected = null;
   }
   ,
   json2TextComponent: function (jsonData) {
@@ -138,3 +151,4 @@ AFRAME.registerComponent('hud', {
     return jsonEl;
   }
 });
+
