@@ -89,6 +89,10 @@ AFRAME.registerComponent('hud', {
     });
 
   },
+  /**
+   * Función que crea una entidad anillo para señalar el objeto seleccionado
+   * en el que se muestra la información en el hud.
+   */
   createRing: function() {
     this.ring = document.createElement('a-entity');
     this.ring.setAttribute('geometry', { primitive: 'ring', radiusInner: 1, radiusOuter: 1.2 });
@@ -99,6 +103,10 @@ AFRAME.registerComponent('hud', {
     this.ring.setAttribute('look-at', '#camera');
   }
   ,
+  /**
+   * Evento para señalar el elemento data con una geometría que indique que está señalado.
+   * @param {HTMLElement} data elemento seleccionado del que vamos a mostrar la información en el hud.
+   */
   objectSelected: function (data) {
     if (this.objSelected != undefined && this.objSelected != null) {
       this.objSelected.removeChild(this.ring);
