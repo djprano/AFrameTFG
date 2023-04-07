@@ -1,8 +1,12 @@
 const HUD_SHOW_JSON = 'hud-show-json';
 const HUD_OBJECT_SELECTED = 'hud-object-selected';
+const HUD_DISABLE = 'hud-disable';
+const HUD_ENABLE = 'hud-enable';
 
 AFRAME.registerComponent('hud', {
   init: function () {
+    // Controla si está habilidato el hud.
+    this.disable = false;
     // Crear el elemento del HUD y añadirlo a la escena.
     this.hudEl = document.createElement('a-entity');
     this.hudEl.setAttribute('id', 'hud');
@@ -88,6 +92,16 @@ AFRAME.registerComponent('hud', {
       this.objectSelected(event.detail);
     });
 
+    // Registrar el evento 'deshabilitar hud'.
+    this.hudEl.addEventListener(HUD_DISABLE, (event) => {
+      this.disableHud();
+    });
+
+    // Registrar el evento 'habilitar hud'.
+    this.hudEl.addEventListener(HUD_ENABLE, (event) => {
+      this.enableHud();
+    });
+
   },
   /**
    * Función que crea una entidad anillo para señalar el objeto seleccionado
@@ -108,6 +122,9 @@ AFRAME.registerComponent('hud', {
    * @param {HTMLElement} data elemento seleccionado del que vamos a mostrar la información en el hud.
    */
   objectSelected: function (data) {
+    //Comprobamos que está habilitado el hud.
+    if(this.disable)return;
+
     if (this.objSelected != undefined && this.objSelected != null) {
       this.objSelected.removeChild(this.ring);
     }
@@ -117,7 +134,18 @@ AFRAME.registerComponent('hud', {
     this.objSelected = data;
   }
   ,
+  disableHud: function(){
+    this.hideData();
+    this.disable = true;
+  }
+  ,
+  enableHud: function(){
+    this.disable = false;
+  }
+  ,
   showData: function (data) {
+    //Comprobamos que está habilitado el hud.
+    if(this.disable)return;
     // Vaciar el contenido anterior del HUD.
     this.contentEl.innerHTML = '';
 
@@ -128,6 +156,8 @@ AFRAME.registerComponent('hud', {
     this.hudEl.setAttribute('visible', 'true');
   },
   hideData() {
+    //Comprobamos que está habilitado el hud.
+    if(this.disable)return;
     // Vaciar el contenido del HUD.
     this.contentEl.innerHTML = '';
 

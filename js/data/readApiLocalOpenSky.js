@@ -8,7 +8,7 @@ class LocalApi {
         this.pathReference = '../../openSkyData'+OpenSkyModel.FLIGHT_LOCAL_FOLDER+'//';
         this.length = 333;
         this.isLoaded = false;
-        this.index = 30;
+        this.index = 70;
     }
 
     getJsonOpenSky() {
