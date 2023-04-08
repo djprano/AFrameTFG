@@ -197,7 +197,7 @@ const ID_ATRIBUTE = 'id';
 function handleMouseEvent(evt) {
 
     if (evt.type === 'mouseenter') {
-        const flightEl = evt.target;
+        const flightEl = evt.currentTarget;
         // Crear un json con los datos del vuelo.
         let flightData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE)).data;
         let jsonData = {};
@@ -205,11 +205,11 @@ function handleMouseEvent(evt) {
         jsonData["Altitude"] = flightData[OpenSkyModel.ALTITUDE];
         jsonData["Name"] = flightData[OpenSkyModel.NAME];
 
-        hudEl.emit(HUD_SHOW_JSON, jsonData);
-        hudEl.emit(HUD_OBJECT_SELECTED,flightEl);
+        mainScene.emit(HUD_SHOW_JSON, jsonData);
+        mainScene.emit(HUD_OBJECT_SELECTED,flightEl);
         console.log("hudon");
     } else if (evt.type === 'mouseleave') {
-        //hudEl.emit('hud-hide');
+        //mainScene.emit('hud-hide');
         console.log("hudoff");
     }
 

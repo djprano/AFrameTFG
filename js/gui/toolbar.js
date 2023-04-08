@@ -1,5 +1,19 @@
 AFRAME.registerComponent('toolbar', {
   init: function () {
+    // Recuperamos el elemento escena.
+    this.sceneEl = document.querySelector("a-scene");
+
+    // Creamos los listener de eventos.
+    // Registrar el evento 'mostrar botón exit on board' para mostrar el HUD.
+    this.sceneEl.addEventListener('toolbar-show-exitOnBoardButton', (event) => {
+      this.exitOnBoardButton.style.display = 'inline-block'; // Mostrar el botón
+    });
+
+    // Registrar el evento 'mostrar botón exit on board' para mostrar el HUD.
+    this.sceneEl.addEventListener('toolbar-hide-exitOnBoardButton', (event) => {
+      this.exitOnBoardButton.style.display = 'none'; // ocultar el botón
+    });
+
     // Creamos el container para la toolbar.
     const toolbar = document.createElement('div');
     toolbar.setAttribute('id', 'toolbar');
@@ -7,35 +21,54 @@ AFRAME.registerComponent('toolbar', {
     toolbar.style.top = '10px';
     toolbar.style.left = '10px';
     toolbar.style.zIndex = '999';
+    
 
     // Crea los botones
+    // creamos el botón para la camera on board
+    this.exitOnBoardButton = this.createExitOnBoard();
 
-    const hudButton = document.createElement('button');
-    hudButton.innerText = 'Hud enable';
-    let toggleState = false; // Variable para guardar el estado del botón.
-    hudButton.addEventListener('click', () => {
-      // Lógica del toogle button
-      toggleState = !toggleState; // Cambia el estado del botón.
-      this.checkHudEl();
-      // Agrega o remueve la clase "button.pressed"
-      hudButton.classList.toggle('button.pressed');
-      if (toggleState) {
-        this.hudEl.emit('hud-enable', null);
-        hudButton.innerText = 'Hud enable';
-      } else {
-        this.hudEl.emit('hud-disable', null);
-        hudButton.innerText = 'Hud disable';
-      }
-    });
+    // creamos el botón para el hud
+    const hudButton = this.createHudButton();
     // Agrega los botones al contenedor
     toolbar.appendChild(hudButton);
+    toolbar.appendChild(this.exitOnBoardButton);
 
     // Agrega el contenedor al cuerpo del documento
     document.body.appendChild(toolbar);
   },
-  checkHudEl: function () {
-    if (this.hudEl == undefined || this.hudEl == null) {
-      this.hudEl = document.querySelector('#hud');
-    }
+  createExitOnBoard:function(){
+    const button = document.createElement('button');
+    button.innerText = 'Exit on board';
+    button.style.marginRight = '5px';
+    button.style.display = 'none'; // Ocultar el botón
+    button.addEventListener('click', () => {
+      this.sceneEl.emit('hud-exit-onBoard', null);
+      button.style.display = 'none'; // Ocultar el botón
+    });
+    return button;
+  },
+  createHudButton:function(){
+    const button = document.createElement('button');
+    button.innerText = 'Hud disable';
+    button.style.marginRight = '5px';
+    let hudButtonEnable = false; // Variable para guardar el estado del botón.
+    button.classList.toggle('buttonDisable');
+    button.addEventListener('click', () => {
+      // Lógica del toogle button
+      hudButtonEnable = !hudButtonEnable; // Cambia el estado del botón.
+
+      // Agrega o remueve la clase "buttonPressed"
+      button.classList.toggle('buttonDisable');
+      button.classList.toggle('buttonEnable');
+
+      if (hudButtonEnable) {
+        this.sceneEl.emit('hud-enable', null);
+        button.innerText = 'Hud enable';
+      } else {
+        this.sceneEl.emit('hud-disable', null);
+        button.innerText = 'Hud disable';
+      }
+    });
+    return button;
   }
 });

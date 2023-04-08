@@ -1,0 +1,10 @@
+.buttonDisable {
+    background-color: rgb(255, 174, 174);
+    color: rgb(0, 0, 0);
+    border: 2px solid #fff;
+}
+.buttonEnable {
+    background-color: rgb(174, 255, 174);
+    color: rgb(0, 0, 0);
+    border: 2px solid #fff;
+}

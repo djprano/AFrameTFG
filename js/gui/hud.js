@@ -1,12 +1,9 @@
-const HUD_SHOW_JSON = 'hud-show-json';
-const HUD_OBJECT_SELECTED = 'hud-object-selected';
-const HUD_DISABLE = 'hud-disable';
-const HUD_ENABLE = 'hud-enable';
-
 AFRAME.registerComponent('hud', {
   init: function () {
+    // Recuperamos el elemento escena.
+    this.sceneEl = document.querySelector("a-scene");
     // Controla si está habilidato el hud.
-    this.disable = false;
+    this.disable = true;
 
     //Guardamos la cámara principal.
     this.camera = document.querySelector('#camera');
@@ -49,33 +46,38 @@ AFRAME.registerComponent('hud', {
     this.hudEl.appendChild(this.contentEl);
 
     // Registrar el evento 'mostrar' para mostrar el HUD.
-    this.hudEl.addEventListener('hud-show', (event) => {
+    this.sceneEl.addEventListener('hud-show', (event) => {
       this.showData(event.detail);
     });
 
     // Registrar el evento 'mostrar json' para mostrar el HUD.
-    this.hudEl.addEventListener(HUD_SHOW_JSON, (event) => {
+    this.sceneEl.addEventListener('hud-show-json', (event) => {
       this.showData(this.json2TextComponent(event.detail));
     });
 
     // Registrar el evento 'ocultar' para ocultar el HUD.
-    this.hudEl.addEventListener('hud-hide', () => {
+    this.sceneEl.addEventListener('hud-hide', () => {
       this.hideData();
     });
 
     // Registrar el evento 'mostrar un marcador en el objeto seleccionado'.
-    this.hudEl.addEventListener(HUD_OBJECT_SELECTED, (event) => {
+    this.sceneEl.addEventListener('hud-object-selected', (event) => {
       this.objectSelected(event.detail);
     });
 
     // Registrar el evento 'deshabilitar hud'.
-    this.hudEl.addEventListener(HUD_DISABLE, (event) => {
+    this.sceneEl.addEventListener('hud-disable', (event) => {
       this.disableHud();
     });
 
     // Registrar el evento 'habilitar hud'.
-    this.hudEl.addEventListener(HUD_ENABLE, (event) => {
+    this.sceneEl.addEventListener('hud-enable', (event) => {
       this.enableHud();
+    });
+
+    // Registrar el evento 'exit camera on board'.
+    this.sceneEl.addEventListener('hud-exit-onBoard', (event) => {
+      this.exitCameraOnBoard();
     });
 
     //Agregamos el hud a la camara.
@@ -135,8 +137,9 @@ AFRAME.registerComponent('hud', {
     this.hudEl.setAttribute('visible', 'true');
   },
   hideData() {
-    //Comprobamos que está habilitado el hud.
-    if (this.disable) return;
+    //Ocultamos el botón de on board de la toolbar por si está visible.
+    this.sceneEl.emit('toolbar-hide-exitOnBoardButton', null);
+
     // Vaciar el contenido del HUD.
     this.contentEl.innerHTML = '';
 
@@ -145,8 +148,9 @@ AFRAME.registerComponent('hud', {
 
     //Borramos el selector.
     if (this.objSelected != null) {
-      this.camera.setAttribute('camera', { active: true });
-      this.cameraEl.setAttribute('active', false);
+      if (this.cameraEl !== null && this.cameraEl !== undefined) {
+        this.exitCameraOnBoard();
+      }
       this.objSelected.removeChild(this.ring);
       this.objSelected = null;
     }
@@ -235,7 +239,12 @@ AFRAME.registerComponent('hud', {
     return cameraOnBoardButtonEl;
   },
   cameraOnBoard: function () {
-
+    //Activamos el botón de salir
+    this.sceneEl.emit('toolbar-show-exitOnBoardButton', null);
+    //Desactivamos el ring
+    this.ring.setAttribute('visible', false);
+    //Desactivamos los eventos
+    this.disable = true;
     //Creamos la cámara secundaria
     // Crear una nueva cámara y agregarla al objeto seleccionado.
     this.cameraEl = document.createElement('a-entity');
@@ -257,6 +266,14 @@ AFRAME.registerComponent('hud', {
     this.objSelected.appendChild(this.cameraEl);
     this.cameraEl.setAttribute('active', true);
     this.camera.setAttribute('camera', { active: false });
+  },
+  exitCameraOnBoard: function () {
+    //Activamos el ring
+    this.ring.setAttribute('visible', true);
+    //Activamos los eventos
+    this.disable = false;
+    this.camera.setAttribute('camera', { active: true });
+    this.cameraEl.setAttribute('active', false);
   }
 });
 
