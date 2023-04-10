@@ -34,7 +34,7 @@ export function createMapGround() {
 function createBuildings(heightData, groundSize, gridSize, zMagnification) {
 
     // createVertexDebug(heightData,gridSize,groundSize,zMagnification);
-    let dataUrl = new URL('..//..//data//' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson', import.meta.url);
+    let dataUrl = new URL('../../data/' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson', import.meta.url);
 
     fetch(dataUrl)
         .then((response) => response.json())
