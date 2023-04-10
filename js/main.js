@@ -1,7 +1,7 @@
 //LocalApi
 import { LocalApi } from "./data/readApiLocalOpenSky.js";
 import * as OpenSkyModel from "./configuration/openSkyModel.js";
-import * as MapConversion from "./gis/mapConversion.js";
+import mapConversion from "./gis/mapConversion.js";
 import * as CacheData from "./data/FlightCacheData.js";
 import * as mapGround from "./map-ground/map-ground.js";
 
@@ -26,17 +26,13 @@ var flightsCache = new Map();
 //Inicio de la escena.
 AFRAME.registerComponent('main-scene', {
     init: function () {
-
-        //Displacement calculation
-        MapConversion.displacementCalculation();
-
         mainScene = this.el;
         terrain = mainScene.querySelector('#terrain');
         sky = mainScene.querySelector('#sky');
         cam = mainScene.querySelector('#camera');
         hudEl = mainScene.querySelector('#hud');
         //Cam position
-        let initCamPosition = MapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
+        let initCamPosition = mapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
         initCamPosition.y = 40;
 
         // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MAX,'maxmax',mainScene);
@@ -74,9 +70,9 @@ AFRAME.registerComponent('main-scene', {
 //Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
 
-    let latlong = MapConversion.degreeToMeter(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
+    let latlong = mapConversion.degreeToMeter(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
     let mercatorVector = { x: latlong.x, y: flight[OpenSkyModel.ALTITUDE], z: latlong.y };
-    return MapConversion.mercatorToWorld(mercatorVector);
+    return mapConversion.mercatorToWorld(mercatorVector);
 }
 
 //Crea el texto encima del avión.

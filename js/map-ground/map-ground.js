@@ -1,13 +1,11 @@
-import * as MapConversion from "../gis/mapConversion.js";
+import mapConversion from "../gis/mapConversion.js";
 import * as OpenSkyModel from "../configuration/openSkyModel.js";
-
-MapConversion.displacementCalculation();
 
 const mainScene = document.querySelector('a-scene');
 
 //Crea un plano con la imagen correspondiente al mapa, tan solo es una referencia.
 export function createMapGround() {
-    let groundSize = MapConversion.getGroundSize();
+    let groundSize = mapConversion.getGroundSize();
     let terrainEl = document.createElement('a-entity');
     terrainEl.setAttribute('id', "terrain");
     let atributes = {
@@ -24,7 +22,7 @@ export function createMapGround() {
     mainScene.appendChild(terrainEl);
     terrainEl.addEventListener("demLoaded", evt => {
         let heightData = evt.target.components['terrain-model'].heightData;
-        createBuildings(heightData, MapConversion.getGroundSize(), { height: atributes.segmentsHeight, width: atributes.segmentsWidth }, atributes.zPosition);
+        createBuildings(heightData, mapConversion.getGroundSize(), { height: atributes.segmentsHeight, width: atributes.segmentsWidth }, atributes.zPosition);
     });
 
     //ajuste de la esfera de cielo
@@ -54,15 +52,15 @@ function createBuildings(heightData, groundSize, gridSize, zMagnification) {
                     let wayPoints = [];
                     // //debug/////////////////////////////
                     // let corner = feature.geometry.coordinates[0][0];
-                    // MapConversion.createCorner(corner[0],corner[1],'bulding position',mainScene);
+                    // mapConversion.createCorner(corner[0],corner[1],'bulding position',mainScene);
                     // //debug/////////////////////////////
                     let numPoints = 0;
                     let centroid = { x: 0, y: 0 };
                     for (let way of feature.geometry.coordinates) {
                         for (let point of way) {
-                            let pointMeter = MapConversion.degreeToMeter(point[1], point[0]);//point[1] lat ; point[0] long
+                            let pointMeter = mapConversion.degreeToMeter(point[1], point[0]);//point[1] lat ; point[0] long
                             let mercatorVector = { x: pointMeter.x, y: 0, z: pointMeter.y };
-                            let point3d = MapConversion.mercatorToWorld(mercatorVector);
+                            let point3d = mapConversion.mercatorToWorld(mercatorVector);
                             wayPoints.push({ x: point3d.x, y: point3d.z });
                             centroid.x = centroid.x + point3d.x;
                             centroid.y = centroid.y + point3d.z;

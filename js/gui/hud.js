@@ -8,15 +8,16 @@ AFRAME.registerComponent('hud', {
     //Guardamos la cámara principal.
     this.camera = document.querySelector('#camera');
 
+    // Creamos la posición deshabilitado y habilitado
+    this.enableHudPosition = new THREE.Vector3(0, 0, -1);
+    this.disableHudPosition = new THREE.Vector3(0, 0, 1);
+
     // Crear el elemento del HUD y añadirlo a la escena.
     this.hudEl = document.createElement('a-entity');
     this.hudEl.setAttribute('id', 'hud');
-    this.hudEl.setAttribute('position', '0 0 -1');
+    this.hudEl.object3D.position.copy(this.disableHudPosition);
     this.hudEl.setAttribute('scale', '0.4 0.4 1');
     this.hudEl.setAttribute('visible', 'false');
-    this.hudEl.setAttribute('class', "clickable");
-    this.hudEl.setAttribute('raycaster-ignore', false);
-    this.hudEl.setAttribute('class', 'clickable'); // Agrega la clase 'clickable'
     this.hudEl.setAttribute('draggable', '');
 
 
@@ -33,6 +34,7 @@ AFRAME.registerComponent('hud', {
 
     // Crear un botón close para el HUD.
     let closeButtonEl = this.createCloseButton();
+    
     let cameraOnBoard = this.createCameraOnBoardButton();
 
     this.hudEl.appendChild(closeButtonEl);
@@ -42,7 +44,6 @@ AFRAME.registerComponent('hud', {
     this.contentEl = document.createElement('a-entity');
     this.contentEl.setAttribute('id', 'hud-content');
     this.contentEl.setAttribute('position', '0 0 0');
-    this.contentEl.setAttribute('raycaster-ignore', true);
     this.hudEl.appendChild(this.contentEl);
 
     // Registrar el evento 'mostrar' para mostrar el HUD.
@@ -134,6 +135,7 @@ AFRAME.registerComponent('hud', {
     this.contentEl.appendChild(data);
 
     // Mostrar el HUD.
+    this.hudEl.object3D.position.copy(this.enableHudPosition);
     this.hudEl.setAttribute('visible', 'true');
   },
   hideData() {
@@ -145,6 +147,9 @@ AFRAME.registerComponent('hud', {
 
     // Ocultar el HUD.
     this.hudEl.setAttribute('visible', 'false');
+    this.enableHudPosition.copy(this.hudEl.object3D.position);
+    this.hudEl.object3D.position.copy(this.disableHudPosition);
+
 
     //Borramos el selector.
     if (this.objSelected != null) {
@@ -162,7 +167,6 @@ AFRAME.registerComponent('hud', {
     let jsonEl = document.createElement('a-entity');
     jsonEl.setAttribute('id', 'jsonEl');
     jsonEl.setAttribute('position', '0 0 0');
-    jsonEl.setAttribute('raycaster-ignore', true);
     for (let propiedad in jsonData) {
       let textEl = document.createElement('a-text');
       let value = propiedad + ': ' + jsonData[propiedad];
@@ -185,7 +189,6 @@ AFRAME.registerComponent('hud', {
       color: '#FFFFFF',
     });
     closeButtonText.setAttribute('position', '0 0 0.001');
-    closeButtonText.setAttribute('raycaster-ignore', true);
     //Creamos el botón
     let closeButtonEl = document.createElement('a-entity');
     closeButtonEl.setAttribute('id', 'hud-close-button');
@@ -203,7 +206,6 @@ AFRAME.registerComponent('hud', {
     closeButtonEl.setAttribute('position', '-0.3 -0.6 0');
     closeButtonEl.setAttribute('rotation', '0 0 0');
     closeButtonEl.addEventListener('click', () => this.hideData());
-    closeButtonEl.setAttribute('raycaster-ignore', false);
     closeButtonEl.setAttribute('class', 'clickable'); // Agrega la clase 'clickable'
     return closeButtonEl;
   },
@@ -216,7 +218,6 @@ AFRAME.registerComponent('hud', {
       color: '#FFFFFF',
     });
     cameraOnBoardButtonText.setAttribute('position', '0 0 0.001');
-    cameraOnBoardButtonText.setAttribute('raycaster-ignore', true);
     //Creamos el botón
     let cameraOnBoardButtonEl = document.createElement('a-entity');
     cameraOnBoardButtonEl.setAttribute('id', 'hud-close-button');
@@ -234,7 +235,6 @@ AFRAME.registerComponent('hud', {
     cameraOnBoardButtonEl.setAttribute('position', '0.3 -0.6 0');
     cameraOnBoardButtonEl.setAttribute('rotation', '0 0 0');
     cameraOnBoardButtonEl.addEventListener('click', () => this.cameraOnBoard());
-    cameraOnBoardButtonEl.setAttribute('raycaster-ignore', false);
     cameraOnBoardButtonEl.setAttribute('class', 'clickable'); // Agrega la clase 'clickable'
     return cameraOnBoardButtonEl;
   },
