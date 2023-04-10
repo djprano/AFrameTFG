@@ -22,7 +22,8 @@
   <script src="js/gui/draggable.js" type="module"></script>
   <script src="js/gui/hover-scale.js" type="module"></script>
   <script src="js/map-ground/building-geometry.js" type="module"></script>
-  <script src="js/main.js" type="module"></script>
+  <script src="js/mainscene.js" type="module"></script>
+  <script src="js/map-ground/camera-height.js" type="module"></script>
   <script src="js/gui/toolbar.js" type="module"></script>
 
 
@@ -40,12 +41,12 @@
     <!-- Camera -->
     <a-entity id="rig" movement-controls position="25 0 25">
       <a-entity id="camera" camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
-        raycaster="far: 1000; objects: .clickable" position="0 10 0" wasd-controls="fly:true;acceleration:1000" hud>
+        raycaster="far: 1000; objects: .clickable" position="0 10 0" wasd-controls="fly:false;acceleration:100" hud terrain-height>
       </a-entity>
+      <a-entity oculus-go-controls></a-entity>
+      <a-entity oculus-touch-controls="hand: left"></a-entity>
+      <a-entity oculus-touch-controls="hand: right"></a-entity>
     </a-entity>
-    <a-entity oculus-go-controls></a-entity>
-    <a-entity oculus-touch-controls="hand: left"></a-entity>
-    <a-entity oculus-touch-controls="hand: right"></a-entity>
     <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
 
     <a-sphere material="shader: flat; color: #fef7ec" radius="10" position="-180 500 -600"

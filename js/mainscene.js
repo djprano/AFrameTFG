@@ -3,7 +3,7 @@ import { LocalApi } from "./data/readApiLocalOpenSky.js";
 import * as OpenSkyModel from "./configuration/openSkyModel.js";
 import mapConversion from "./gis/mapConversion.js";
 import * as CacheData from "./data/FlightCacheData.js";
-import * as mapGround from "./map-ground/map-ground.js";
+import heightManager from "./map-ground/heightManager.js";
 
 /*****Variables ****/
 var terrain;
@@ -41,7 +41,7 @@ AFRAME.registerComponent('main-scene', {
         // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin',mainScene);
 
 
-        mapGround.createMapGround();
+        heightManager.createMapGround();
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
         //KEYBOARD EVENTS
