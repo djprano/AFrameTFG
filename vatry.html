@@ -8,10 +8,12 @@
   <link rel="stylesheet" type="text/css" href="css/aframe.css">
 
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@fb96ab2/dist/aframe-extras.min.js"></script>
+
 
   <script
     src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script> 
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
   <script src="js/configuration/openSkyModel.js" type="module"></script>
@@ -21,7 +23,7 @@
   <script src="js/gui/hover-scale.js" type="module"></script>
   <script src="js/main.js" type="module"></script>
   <script src="js/gui/toolbar.js" type="module"></script>
-  
+
 
 
 </head>
@@ -35,8 +37,10 @@
       <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
     </a-assets>
     <!-- Camera -->
-    <a-entity id="camera" camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
-      raycaster="far: 1000; objects: .clickable" position="0 10 0" wasd-controls="fly:true;acceleration:1000" hud>
+    <a-entity id="rig" movement-controls position="25 0 25">
+      <a-entity id="camera" camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
+        raycaster="far: 1000; objects: .clickable" position="0 10 0" wasd-controls="fly:true;acceleration:1000" hud>
+      </a-entity>
     </a-entity>
     <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
 
