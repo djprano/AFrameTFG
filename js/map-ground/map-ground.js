@@ -35,7 +35,7 @@ function createBuildings(heightData, groundSize, gridSize, zMagnification) {
 
     // createVertexDebug(heightData,gridSize,groundSize,zMagnification);
 
-    fetch('..//data//' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson')
+    fetch('.//data//' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson')
         .then((response) => response.json())
         .then(((gridSize, groundSize, heightData, zMagnification, itemJSON) => {
             let maxBuildings = 10000;
