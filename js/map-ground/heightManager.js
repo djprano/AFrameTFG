@@ -22,15 +22,16 @@ class HeightManager {
      * Calcula la altura en función de su coordenadas 3d.
      * @param {*} x coordenada x de la posición de la que se quiere saber la altura.
      * @param {*} y coordenada y de la posición de la que se quiere saber la altura.
+     * @param {*} hightPrecision booleano que indica si queremos calcular la altura para posiciones intermedias con alta precisión.
      * @returns el valor de la altura.
      */
-    getTerrainHeight(x, y, raycaster) {
+    getTerrainHeight(x, y, hightPrecision) {
         //Cálculo de indice de la matríz de alturas.
         let indexX = Math.round((x + (this.groundSize.width / 2)) / (this.cellSize.width));
         let indexY = Math.round((y + (this.groundSize.height / 2)) / (this.cellSize.height));
         let index = (indexY * (this.gridSize.width + 1)) + indexX;
         let height = this.indexToHeight(index);
-        if (raycaster) {
+        if (hightPrecision) {
             // Creamos un raycaster desde la posición de la cámara y en dirección hacia arriba
             let raycasterPos = new THREE.Vector3(x, height + 100, y);
             this.raycaster.ray.origin.copy(raycasterPos);
