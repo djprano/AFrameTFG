@@ -44,12 +44,6 @@ AFRAME.registerComponent('main-scene', {
         heightManager.createMapGround();
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
-        //KEYBOARD EVENTS
-        document.addEventListener('keydown', evt => {
-            if (evt.key == 1 && lastFlight != undefined) {
-                cam.setAttribute('position', lastFlight);
-            }
-        });
         cam.setAttribute('position', initCamPosition);
 
     },
