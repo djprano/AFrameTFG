@@ -220,7 +220,7 @@ AFRAME.registerComponent('hud', {
     cameraOnBoardButtonText.setAttribute('position', '0 0 0.001');
     //Creamos el botón
     let cameraOnBoardButtonEl = document.createElement('a-entity');
-    cameraOnBoardButtonEl.setAttribute('id', 'hud-close-button');
+    cameraOnBoardButtonEl.setAttribute('id', 'hud-cameraOnBoard-button');
     cameraOnBoardButtonEl.setAttribute('geometry', {
       primitive: 'box',
       width: 0.6,
