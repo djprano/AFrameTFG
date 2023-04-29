@@ -12,7 +12,6 @@
   <script
     src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
   <script src="js/configuration/openSkyModel.js" type="module"></script>
@@ -42,8 +41,8 @@
       <a-entity id="camera" camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
         raycaster="far: 1000; objects: .clickable" position="0 10 0" wasd-controls="fly:false;acceleration:100" movement-controls hud terrain-height>
       </a-entity>
-      <a-entity oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="objects: .clickable" teleport-controls="cameraRig: #rig; teleportOrigin: #left-hand; type: parabolic; curveHitColor: red;collisionEntities: .terrain;"></a-entity>
-      <a-entity oculus-touch-controls="hand: right" laser-controls="hand: right" raycaster="objects: .clickable" teleport-controls="cameraRig: #rig; teleportOrigin: #right-hand; type: parabolic; curveHitColor: red;collisionEntities: .terrain;"></a-entity>
+      <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="objects: .clickable"></a-entity>
+      <a-entity id="right-hand" oculus-touch-controls="hand: right" laser-controls="hand: right" raycaster="objects: .clickable"></a-entity>
     </a-entity>
     <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
 
