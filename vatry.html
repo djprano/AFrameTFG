@@ -34,8 +34,8 @@
       <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
     </a-assets>
     <!-- Camera -->
-    <a-entity id="rig" position="0 0 0" movement-controls terrain-height hud>
-      <a-entity id="camera" camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
+    <a-entity id="rig" position="0 0 0" movement-controls terrain-height>
+      <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
         raycaster="far: 1000; objects: .clickable" position="0 0 0"  >
       </a-entity>
       <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="objects: .clickable"></a-entity>
