@@ -1,12 +1,8 @@
 AFRAME.registerComponent('draggable', {
   init: function () {
-    //mouse controls
     this.el.addEventListener('mousedown', this.onMouseDown.bind(this));
     this.el.sceneEl.addEventListener('mouseup', this.onMouseUp.bind(this));
     this.el.sceneEl.addEventListener('mousemove', this.onMouseMove.bind(this));
-    //laser controls
-    this.el.sceneEl.addEventListener('triggerdown', this.onMouseDown.bind(this));
-    this.el.sceneEl.addEventListener('triggerup', this.onMouseUp.bind(this));
     this.isDragging = false;
     this.cameraEl = this.el.sceneEl.querySelector('#camera'); // referencia al elemento de la cámara
     this.cameraPos= new THREE.Vector3().set(0, 0, 0);
@@ -25,15 +21,6 @@ AFRAME.registerComponent('draggable', {
     if (this.isDragging) {
       const dx = event.movementX;
       const dy = event.movementY;
-      const scalar = 600;
-      let offset = new THREE.Vector3(dx, -dy, 0).divideScalar(scalar);
-      this.el.object3D.position.add(offset);
-    }
-  },
-  onControllerMoved: function (event) {
-    if (this.isDragging) {
-      const dx = event.detail.positionDelta.x;
-      const dy = event.detail.positionDelta.y;
       const scalar = 600;
       let offset = new THREE.Vector3(dx, -dy, 0).divideScalar(scalar);
       this.el.object3D.position.add(offset);
