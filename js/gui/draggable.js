@@ -6,7 +6,7 @@ AFRAME.registerComponent('draggable', {
     this.el.sceneEl.addEventListener('mousemove', this.onMouseMove.bind(this));
     
     //laser controls
-    this.el.sceneEl.addEventListener('triggerdown', this.onMouseDown.bind(this));
+    this.el.sceneEl.addEventListener('laserdown', this.onMouseDown.bind(this));
     this.el.sceneEl.addEventListener('laserup ', this.onMouseUp.bind(this));
     this.el.sceneEl.addEventListener('lasermove', this.onMouseMove.bind(this));
 
