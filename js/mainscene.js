@@ -10,6 +10,7 @@ var terrain;
 var mainScene;
 var sky;
 var cam;
+var rig;
 var lastFlight;
 var hudEl;
 
@@ -30,6 +31,7 @@ AFRAME.registerComponent('main-scene', {
         terrain = mainScene.querySelector('#terrain');
         sky = mainScene.querySelector('#sky');
         cam = mainScene.querySelector('#camera');
+        rig = mainScene.querySelector('#rig');
         hudEl = mainScene.querySelector('#hud');
         //Cam position
         let initCamPosition = mapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
@@ -44,8 +46,7 @@ AFRAME.registerComponent('main-scene', {
         heightManager.createMapGround();
         // Set up throttling.
         this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
-        cam.setAttribute('position', initCamPosition);
-
+        rig.setAttribute('position', initCamPosition);
     },
 
     invertalEvent: function () {
