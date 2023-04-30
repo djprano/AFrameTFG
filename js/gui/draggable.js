@@ -1,8 +1,15 @@
 AFRAME.registerComponent('draggable', {
   init: function () {
+    //mouse
     this.el.addEventListener('mousedown', this.onMouseDown.bind(this));
     this.el.sceneEl.addEventListener('mouseup', this.onMouseUp.bind(this));
     this.el.sceneEl.addEventListener('mousemove', this.onMouseMove.bind(this));
+    
+    //laser controls
+    this.el.sceneEl.addEventListener('triggerdown', this.onMouseDown.bind(this));
+    this.el.sceneEl.addEventListener('laserup ', this.onMouseUp.bind(this));
+    this.el.sceneEl.addEventListener('lasermove', this.onMouseMove.bind(this));
+
     this.isDragging = false;
     this.cameraEl = this.el.sceneEl.querySelector('#camera'); // referencia al elemento de la cámara
     this.cameraPos= new THREE.Vector3().set(0, 0, 0);
