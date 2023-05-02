@@ -8,7 +8,8 @@
   <link rel="stylesheet" type="text/css" href="css/aframe.css">
 
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@fb96ab2/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
   <script
     src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
@@ -17,12 +18,13 @@
   <script src="js/configuration/openSkyModel.js" type="module"></script>
   <script src="js/configuration/vatryconf.js" type="module"></script>
   <script src="js/gui/hud.js" type="module"></script>
-  <script src="js/gui/draggable.js" type="module"></script>
+  <!-- <script src="js/gui/draggable.js" type="module"></script> -->
   <script src="js/gui/hover-scale.js" type="module"></script>
   <script src="js/map-ground/building-geometry.js" type="module"></script>
   <script src="js/mainscene.js" type="module"></script>
   <script src="js/map-ground/camera-height.js" type="module"></script>
   <script src="js/gui/toolbar.js" type="module"></script>
+  <script src="js/gui/superHands-look-controls.js" type="module"></script>
 </head>
 
 <body>
@@ -35,12 +37,30 @@
     </a-assets>
     <!-- Camera -->
     <a-entity id="rig" position="0 0 0" movement-controls terrain-height>
-      <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
-        raycaster="far: 1000; objects: .clickable" position="0 0 0"  >
+      <a-entity id="camera" hud camera cursor="rayOrigin: mouse; fuse: false"
+        raycaster="far: 1000; objects: .clickable" position="0 0 0" super-hands="colliderEvent: raycaster-intersection;
+        colliderEventProperty: els;
+        colliderEndEvent:raycaster-intersection-cleared;
+        colliderEndEventProperty: clearedEls;">
+
+        <a-mixin id="grabConf" geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5" grabbable super-hands-look-controls>
+        </a-mixin>
+  
+        <a-entity id="hud" position="0 0 -3">
+          <a-entity class="clickable" mixin="grabConf" position="0 0 -1" material="color: red"></a-entity>
+        </a-entity>
+
+
       </a-entity>
-      <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="objects: .clickable"></a-entity>
-      <a-entity id="right-hand" oculus-touch-controls="hand: right" laser-controls="hand: right" raycaster="objects: .clickable"></a-entity>
+
+
+
+      <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left"
+        raycaster="objects: .clickable" super-hands></a-entity>
+      <a-entity id="right-hand" oculus-touch-controls="hand: right" laser-controls="hand: right"
+        raycaster="objects: .clickable" super-hands></a-entity>
     </a-entity>
+
     <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
 
     <a-sphere material="shader: flat; color: #fef7ec" radius="10" position="-180 500 -600"

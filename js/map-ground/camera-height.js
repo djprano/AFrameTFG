@@ -27,12 +27,6 @@ AFRAME.registerComponent('terrain-height', {
             let rigPos = this.el.parentEl.object3D.position;
             const position = (new THREE.Vector3(0, 0, 0)).copy(camPos).add(rigPos);
 
-
-            console.log("rigpos:",rigPos.x, rigPos.y, rigPos.z);
-            console.log("camera:",camPos.x, camPos.y, camPos.z);
-
-
-
             // Obtener la altura del terreno en la posición actual de la cámara
             const terrainHeight = heightManager.getTerrainHeight(position.x, position.z,false);
 
