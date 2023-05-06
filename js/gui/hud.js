@@ -13,24 +13,19 @@ AFRAME.registerComponent('hud', {
     this.disableHudPosition = new THREE.Vector3(0, 0, 1);
 
     // Crear el elemento del HUD y añadirlo a la escena.
-    this.hudEl = document.createElement('a-entity');
+    this.hudEl = document.createElement('a-plane');
     this.hudEl.setAttribute('id', 'hud');
     this.hudEl.object3D.position.copy(this.disableHudPosition);
-    this.hudEl.setAttribute('scale', '0.4 0.4 1');
+    this.hudEl.setAttribute('scale', '0.5 0.5 1');
     this.hudEl.setAttribute('visible', 'false');
-    this.hudEl.setAttribute('draggable', '');
-
-
-    // Crear un fondo transparente para el HUD.
-    var backgroundEl = document.createElement('a-plane');
-    backgroundEl.setAttribute('color', '#000');
-    backgroundEl.setAttribute('opacity', '0.4');
-    backgroundEl.setAttribute('width', '2');
-    backgroundEl.setAttribute('height', '1.5');
-    backgroundEl.setAttribute('class', "clickable");
-    backgroundEl.setAttribute('draggable');
-
-    this.hudEl.appendChild(backgroundEl);
+    this.hudEl.setAttribute('class', "clickable");
+    const width = '3';
+    const height = '2';
+    this.hudEl.setAttribute('width', width);
+    this.hudEl.setAttribute('height', height);
+    this.hudEl.setAttribute('color', '#000');
+    this.hudEl.setAttribute('opacity', '0.4');
+    this.hudEl.setAttribute('custom-draggable', '');
 
     // Crear un botón close para el HUD.
     let closeButtonEl = this.createCloseButton();
