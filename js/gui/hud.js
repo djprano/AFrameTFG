@@ -9,14 +9,14 @@ AFRAME.registerComponent('hud', {
     this.camera = document.querySelector('#camera');
 
     // Creamos la posición deshabilitado y habilitado
-    this.enableHudPosition = new THREE.Vector3(0, 0, -1);
-    this.disableHudPosition = new THREE.Vector3(0, 0, 1);
+    this.enableHudPosition = new THREE.Vector3(0, 0, -2);
+    this.disableHudPosition = new THREE.Vector3(0, 0, 2);
 
     // Crear el elemento del HUD y añadirlo a la escena.
     this.hudEl = document.createElement('a-plane');
     this.hudEl.setAttribute('id', 'hud');
     this.hudEl.object3D.position.copy(this.disableHudPosition);
-    this.hudEl.setAttribute('scale', '0.5 0.5 1');
+    this.hudEl.setAttribute('scale', '0.4 0.4 1');
     this.hudEl.setAttribute('visible', 'false');
     this.hudEl.setAttribute('class', "clickable");
     const width = '3';

@@ -1,8 +1,9 @@
 AFRAME.registerComponent('custom-draggable', {
   init: function () {
 
-    this.enablePosition = new THREE.Vector3(0, 0, -1);
-    this.disabledPosition = new THREE.Vector3(0, 0, 1);
+    let zPos = Math.abs(this.el.object3D.position.z);
+    this.enablePosition = new THREE.Vector3(0, 0, -zPos);
+    this.disabledPosition = new THREE.Vector3(0, 0, zPos);
 
     this.raycasterEl = this.el.querySelector('[raycaster]');
     //mouse
