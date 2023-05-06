@@ -19,13 +19,12 @@ AFRAME.registerComponent('hud', {
     this.hudEl.setAttribute('scale', '0.4 0.4 1');
     this.hudEl.setAttribute('visible', 'false');
     this.hudEl.setAttribute('class', "clickable");
-    const width = '3';
-    const height = '2';
-    this.hudEl.setAttribute('width', width);
-    this.hudEl.setAttribute('height', height);
+    this.hudEl.setAttribute('width', 3);
+    this.hudEl.setAttribute('height', 2);
     this.hudEl.setAttribute('color', '#000');
     this.hudEl.setAttribute('opacity', '0.4');
     this.hudEl.setAttribute('custom-draggable', '');
+    this.hudEl.setAttribute('look-at', '#camera');
 
     // Crear un botón close para el HUD.
     let closeButtonEl = this.createCloseButton();
