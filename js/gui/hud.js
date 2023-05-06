@@ -129,7 +129,9 @@ AFRAME.registerComponent('hud', {
     this.contentEl.appendChild(data);
 
     // Mostrar el HUD.
-    this.hudEl.object3D.position.copy(this.enableHudPosition);
+    if(!this.hudEl.object3D.visible){
+      this.hudEl.object3D.position.copy(this.enableHudPosition);
+    }
     this.hudEl.setAttribute('visible', 'true');
   },
   hideData() {
