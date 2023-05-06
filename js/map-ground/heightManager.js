@@ -45,7 +45,7 @@ class HeightManager {
                 intersection = intersects[0].point;
             }
             return intersection !== undefined ? intersection.y : height;
-        }else{
+        } else {
             return height;
         }
     }
@@ -145,6 +145,11 @@ class HeightManager {
                         item.setAttribute("id", feature.id);
                         item.setAttribute("geometry", buildingProperties);
                         item.setAttribute("material", { color: '#8aebff', roughness: 0.8, metalness: 0.8 });
+                        let infoValue = feature.properties.source;
+                        if (infoValue != null && infoValue != undefined) {
+                            item.setAttribute('tooltip-info', { info: infoValue });
+                            item.setAttribute('class', "clickable");
+                        }
                         this.mainScene.appendChild(item);
                     }
                 }
