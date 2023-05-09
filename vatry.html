@@ -21,23 +21,22 @@
   <script src="js/map-ground/building-geometry.js" type="module"></script>
   <script src="js/mainscene.js" type="module"></script>
   <script src="js/map-ground/camera-height.js" type="module"></script>
-  <script src="js/gui/toolbar.js" type="module"></script>
   <script src="js/gui/oculus-test.js" type="module"></script>
   <script src="js/gui/tooltip-info.js" type="module"></script>
+  <script src="js/gui/toolbar3d.js" type="module"></script>
 </head>
 
 <body>
   <a-scene main-scene>
-    <a-entity toolbar></a-entity>
     <a-assets>
       <img crossorigin="anonymous" id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       <img crossorigin="anonymous" id="groundTexture" src="data/vatry_map.png">
       <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
     </a-assets>
     <!-- Camera -->
-    <a-entity id="rig" position="0 0 0" movement-controls terrain-height>
+    <a-entity id="rig" position="0 0 0" movement-controls terrain-height >
       <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
-        raycaster="far: 1000; objects: .clickable" position="0 0 0" >
+        raycaster="far: 1000; objects: .clickable" position="0 0 0" toolbar3d>
       </a-entity>
       <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left"
         raycaster="far: 1000; objects: .clickable"></a-entity>

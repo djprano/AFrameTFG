@@ -13,7 +13,7 @@ AFRAME.registerComponent('custom-draggable', {
     this.isDragging = false;
 
     this.el.addEventListener('raycaster-intersected', evt => {
-      if(!this.isDragging){
+      if (!this.isDragging) {
         this.raycaster = evt.detail.el;
       }
     });
@@ -25,16 +25,21 @@ AFRAME.registerComponent('custom-draggable', {
     this.intersection = new THREE.Vector3();
     this.createFakePlane();
   },
-  createFakePlane: function(){
+  createFakePlane: function () {
     // Crear el plano clickcable
-    this.plane = document.createElement('a-plane');
-    this.plane.setAttribute('id', 'fakePlane');
-    this.plane.setAttribute('width', '20');
-    this.plane.setAttribute('height', '20');
-    this.plane.setAttribute('visible', 'false');
-    this.plane.setAttribute('class', "clickable");
-    this.plane.object3D.position.copy(this.disabledPosition);
-    this.cameraEl.appendChild(this.plane);
+    let fakePlane = document.querySelector('#fakePlane');
+    if(fakePlane != null && fakePlane != undefined){
+      this.plane = fakePlane;
+    }else{
+      this.plane = document.createElement('a-plane');
+      this.plane.setAttribute('id', 'fakePlane');
+      this.plane.setAttribute('width', '20');
+      this.plane.setAttribute('height', '20');
+      this.plane.setAttribute('visible', 'false');
+      this.plane.setAttribute('class', "clickable");
+      this.plane.object3D.position.copy(this.disabledPosition);
+      this.cameraEl.appendChild(this.plane);
+    }
   }
   ,
   onMouseDown: function (event) {
@@ -42,11 +47,16 @@ AFRAME.registerComponent('custom-draggable', {
     this.plane.object3D.position.copy(this.enablePosition);
     this.isDragging = true;
     this.backupOpacity = this.el.getAttribute('material').opacity;
-    this.el.setAttribute('material', 'opacity', 0.15);
-    if(this.raycaster != null){
+    const draggingOpacity = 0.15;
+    if (draggingOpacity < this.backupOpacity) {
+      this.el.setAttribute('material', 'opacity', draggingOpacity);
+    }
+    if (this.raycaster != null) {
       const intersect = this.raycaster.components.raycaster.getIntersection(this.el);
-      const positionRelative = this.cameraEl.object3D.worldToLocal(intersect.point.clone());
-      this.previousPosition.copy(positionRelative);
+      if (intersect != null) {
+        const positionRelative = this.cameraEl.object3D.worldToLocal(intersect.point.clone());
+        this.previousPosition.copy(positionRelative);
+      }
     }
 
   },
@@ -54,12 +64,14 @@ AFRAME.registerComponent('custom-draggable', {
     this.isDragging = false;
     this.cameraEl.setAttribute('look-controls', 'enabled', 'true'); // volvemos a activar look-controls
     this.plane.object3D.position.copy(this.disabledPosition);
-    this.el.setAttribute('material', 'opacity', this.backupOpacity);
+    if (this.backupOpacity != null && this.backupOpacity != undefined)
+      this.el.setAttribute('material', 'opacity', this.backupOpacity);
+      this.backupOpacity = null;
   },
   tick: function () {
     if (this.isDragging && this.raycaster != null) {
       const intersect = this.raycaster.components.raycaster.getIntersection(this.plane);
-      if(intersect!=null){
+      if (intersect != null) {
         const positionRelative = this.cameraEl.object3D.worldToLocal(intersect.point.clone());
         this.currentPosition.copy(positionRelative);
         const displacement = new THREE.Vector3().subVectors(this.currentPosition, this.previousPosition);
