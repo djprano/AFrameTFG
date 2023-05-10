@@ -111,8 +111,10 @@ AFRAME.registerComponent('hud', {
   }
   ,
   disableHud: function () {
-    this.hideData();
-    this.disable = true;
+    if(!this.disable){
+      this.hideData();
+      this.disable = true;
+    }
   }
   ,
   enableHud: function () {
