@@ -4,6 +4,8 @@ AFRAME.registerComponent('hud', {
     this.sceneEl = document.querySelector("a-scene");
     // Controla si está habilidato el hud.
     this.disable = true;
+    //Controla si el panel del hud se está mostrando.
+    this.showed = false;
 
     //Guardamos la cámara principal.
     this.camera = document.querySelector('#camera');
@@ -60,6 +62,16 @@ AFRAME.registerComponent('hud', {
       this.objectSelected(event.detail);
     });
 
+    // Registrar el evento 'mostrar un marcador en el objeto con el puntero encima'.
+    this.sceneEl.addEventListener('hud-object-enter', (event) => {
+      this.objectEnter(event.detail);
+    });
+
+    // Registrar el evento 'borrar un marcador en el con el puntero encima'.
+    this.sceneEl.addEventListener('hud-object-leave', (event) => {
+      this.objectLeave(event.detail);
+    });
+
     // Registrar el evento 'deshabilitar hud'.
     this.sceneEl.addEventListener('hud-disable', (event) => {
       this.disableHud();
@@ -91,6 +103,19 @@ AFRAME.registerComponent('hud', {
     this.ring.setAttribute('scale', '20 20 1');
     this.ring.setAttribute('rotation', '0 -180 0');
     this.ring.setAttribute('look-at', '#camera');
+  },
+  /**
+   * Función que crea una entidad anillo para señalar el objeto seleccionado
+   * en el que se muestra la información en el hud.
+   */
+  createTriangle: function () {
+    this.triangle = document.createElement('a-entity');
+    this.triangle.setAttribute('geometry', { primitive: 'cone', radiusBottom: 0, radiusTop: 0.5, height: 1.5, segmentsRadial: 3, segmentsHeight: 1 });
+    this.triangle.setAttribute('material', { color: 'green', shader: 'flat' });
+    this.triangle.setAttribute('position', '0 40 0'); // posicion relativa
+    this.triangle.setAttribute('scale', '20 20 1');
+    this.triangle.setAttribute('rotation', '0 -180 0');
+    this.triangle.setAttribute('look-at', '#camera');
   }
   ,
   /**
@@ -108,13 +133,32 @@ AFRAME.registerComponent('hud', {
     this.createRing();
     data.appendChild(this.ring);
     this.objSelected = data;
+  },
+  /**
+   * Evento para señalar el elemento data con una geometría que indique que está el ratón encima.
+   * @param {HTMLElement} data elemento que vamos a señalar con una geometría.
+   */
+  objectEnter: function (data) {
+    //Comprobamos que está habilitado el hud.
+    if (this.disable) return;
+    this.createTriangle();
+    data.appendChild(this.triangle);
+  },
+  /**
+   * Evento para quitar el marcador del elemento que teníamos el ratón encima.
+   * @param {HTMLElement} data elemento del que vamos a quitar el marcador.
+   */
+  objectLeave: function (data) {
+    //Comprobamos que está habilitado el hud.
+    if (this.disable) return;
+    data.removeChild(this.triangle);
   }
   ,
   disableHud: function () {
-    if(!this.disable){
+    if(this.showed){
       this.hideData();
-      this.disable = true;
     }
+    this.disable = true;
   }
   ,
   enableHud: function () {
@@ -135,6 +179,7 @@ AFRAME.registerComponent('hud', {
       this.hudEl.object3D.position.copy(this.enableHudPosition);
     }
     this.hudEl.setAttribute('visible', 'true');
+    this.showed = true;
   },
   hideData() {
     //Ocultamos el botón de on board de la toolbar por si está visible.
@@ -157,7 +202,7 @@ AFRAME.registerComponent('hud', {
       this.objSelected.removeChild(this.ring);
       this.objSelected = null;
     }
-
+    this.showed = false;
   }
   ,
   json2TextComponent: function (jsonData) {

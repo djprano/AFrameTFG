@@ -174,9 +174,9 @@ function createFlightElement(id) {
     entityEl.setAttribute('scale', { x: OpenSkyModel.scale, y: OpenSkyModel.scale, z: OpenSkyModel.scale });
     entityEl.setAttribute('hover-scale', 'maxScale: 10; maxDistance: 10000');
 
-
-    entityEl.addEventListener('mouseenter', evt => handleMouseEvent(evt));
-    entityEl.addEventListener('mouseleave', evt => handleMouseEvent(evt));
+    entityEl.addEventListener('mouseenter', evt => handleMouseEnter(evt));
+    entityEl.addEventListener('click', evt => handleMouseClick(evt));
+    entityEl.addEventListener('mouseleave', evt => handleMouseLeave(evt));
     mainScene.appendChild(entityEl);
     return entityEl;
 
@@ -184,27 +184,34 @@ function createFlightElement(id) {
 
 const HUD_SHOW_JSON = 'hud-show-json';
 const HUD_OBJECT_SELECTED = 'hud-object-selected';
+const HUD_OBJECT_ENTER = 'hud-object-enter';
+const HUD_OBJECT_LEAVE = 'hud-object-leave';
 const ID_ATRIBUTE = 'id';
+
 //Consumidor de eventos mouse enter
-function handleMouseEvent(evt) {
+function handleMouseClick(evt) {
+    const flightEl = evt.currentTarget;
+    // Crear un json con los datos del vuelo.
+    let flightData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE)).data;
+    let jsonData = {};
+    jsonData["ID"] = flightData[OpenSkyModel.ID];
+    jsonData["Altitude"] = flightData[OpenSkyModel.ALTITUDE];
+    jsonData["Name"] = flightData[OpenSkyModel.NAME];
 
-    if (evt.type === 'mouseenter') {
-        const flightEl = evt.currentTarget;
-        // Crear un json con los datos del vuelo.
-        let flightData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE)).data;
-        let jsonData = {};
-        jsonData["ID"] = flightData[OpenSkyModel.ID];
-        jsonData["Altitude"] = flightData[OpenSkyModel.ALTITUDE];
-        jsonData["Name"] = flightData[OpenSkyModel.NAME];
+    mainScene.emit(HUD_SHOW_JSON, jsonData);
+    mainScene.emit(HUD_OBJECT_SELECTED, flightEl);
+}
 
-        mainScene.emit(HUD_SHOW_JSON, jsonData);
-        mainScene.emit(HUD_OBJECT_SELECTED, flightEl);
-        console.log("hudon");
-    } else if (evt.type === 'mouseleave') {
-        //mainScene.emit('hud-hide');
-        console.log("hudoff");
-    }
+//Consumidor de eventos mouse enter
+function handleMouseEnter(evt) {
+    const flightEl = evt.currentTarget;
+    mainScene.emit(HUD_OBJECT_ENTER, flightEl);
+}
 
+//Consumidor de eventos mouse leave
+function handleMouseLeave(evt) {
+    const flightEl = evt.currentTarget;
+    mainScene.emit(HUD_OBJECT_LEAVE, flightEl);
 }
 
 //borra un avión del DOM.

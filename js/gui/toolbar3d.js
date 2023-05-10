@@ -8,17 +8,17 @@ AFRAME.registerComponent('toolbar3d', {
         this.toolbar.setAttribute('id', 'toolbar3d');
         this.toolbar.setAttribute('look-at', '#camera');
         this.toolbar.setAttribute('class', "clickable");
-        this.toolbar.setAttribute('geometry', { primitive: 'box', width: 3, height: 0.2, depth: 0.05 });
+        this.toolbar.setAttribute('geometry', { primitive: 'box', width: 2, height: 0.2, depth: 0.05 });
         this.toolbar.setAttribute('color', '#000');
         this.toolbar.setAttribute('opacity', '0.4');
         this.toolbar.setAttribute('custom-draggable', '');
-        this.toolbar.setAttribute('position', { x: 0, y: -0.5, z: -1.5 });
+        this.toolbar.setAttribute('position', { x: 0, y: -0.5, z: -2 });
 
 
         // Establecemos el estado inicial de la entidad rectangular
         this.expanded = true;
 
-        this.xFoldPosition = -1.32;
+        this.xFoldPosition = -0.85;
         // Creamos el botón de animación como un a-box
         this.foldButton = this.createToolbarButton(0.15, 0.15, null,0.5,{ x: this.xFoldPosition, y: 0, z: 0.1 },true,
             () => this.animateToolbar(),
@@ -29,7 +29,7 @@ AFRAME.registerComponent('toolbar3d', {
         //Agregamos el toolbar al elemento.
         this.el.appendChild(this.toolbar);
 
-        this.hudEnableButton = this.createToolbarButton(0.3, 0.15, null,null, { x: -1, y: 0, z: 0.1 }, true,
+        this.hudEnableButton = this.createToolbarButton(0.3, 0.15, null,null, { x: -0.57, y: 0, z: 0.1 }, true,
              () => this.sceneEl.emit('hud-enable', null),
              () => this.sceneEl.emit('hud-disable', null),
              '#0a0', '#a00', 'Hud enable', 'Hud disable');
