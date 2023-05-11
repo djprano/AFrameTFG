@@ -36,12 +36,12 @@
     <!-- Camera -->
     <a-entity id="rig" position="0 0 0" movement-controls terrain-height >
       <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
-        raycaster="far: 1000; objects: .clickable" position="0 0 0" toolbar3d>
+        raycaster="far: 4000; objects: .clickable" position="0 0 0" toolbar3d>
       </a-entity>
       <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left"
-        raycaster="far: 1000; objects: .clickable"></a-entity>
+        raycaster="far: 4000; objects: .clickable"></a-entity>
       <a-entity id="right-hand" oculus-touch-controls="hand: right" laser-controls="hand: right"
-        raycaster="far: 1000; objects: .clickable"></a-entity>
+        raycaster="far: 4000; objects: .clickable"></a-entity>
     </a-entity>
     <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
 

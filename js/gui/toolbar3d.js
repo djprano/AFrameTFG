@@ -12,7 +12,7 @@ AFRAME.registerComponent('toolbar3d', {
         this.toolbar.setAttribute('color', '#000');
         this.toolbar.setAttribute('opacity', '0.4');
         this.toolbar.setAttribute('custom-draggable', '');
-        this.toolbar.setAttribute('position', { x: 0, y: -0.5, z: -2 });
+        this.toolbar.setAttribute('position', { x: 0, y: -0.7, z: -2 });
 
 
         // Establecemos el estado inicial de la entidad rectangular
