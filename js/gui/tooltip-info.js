@@ -3,13 +3,21 @@ AFRAME.registerComponent('tooltip-info', {
         info: { type: 'string', default: '' }
     },
     init: function () {
+        // Recuperamos el elemento escena.
+        this.sceneEl = document.querySelector("a-scene");
+
         // Agregamos eventos para cuando se entra y se sale de la entidad.
         this.el.addEventListener('mouseenter', this.onMouseEnter.bind(this));
         this.el.addEventListener('mouseleave', this.onMouseLeave.bind(this));
+        //Escuchamos los eventos para habilitar o dehabilitar el info.
+        this.enabled = false;
+        this.sceneEl.addEventListener('tooltip-info-disable', () => this.enabled = false);
+        this.sceneEl.addEventListener('tooltip-info-enable', () => this.enabled = true);
+
 
         // Inicializamos la posición del texto
         const box = new THREE.Box3().setFromObject(this.el.object3D);
-        let highestPoint = box.max.y+0.5;
+        let highestPoint = box.max.y + 0.5;
         const position = new THREE.Vector3();
         box.getCenter(position);
         position.y = highestPoint;
@@ -27,6 +35,7 @@ AFRAME.registerComponent('tooltip-info', {
         this.el.appendChild(this.textEl);
     },
     onMouseEnter: function () {
+        if(!this.enabled)return;
         // Guardar el color original
         this.originalColor = this.el.getAttribute("material").color;
 
@@ -36,6 +45,7 @@ AFRAME.registerComponent('tooltip-info', {
 
     },
     onMouseLeave: function () {
+        if(!this.enabled)return;
         // Restauramos el material original y ocultamos el texto
         // Devolver el color original
         this.el.setAttribute("material", { color: this.originalColor });

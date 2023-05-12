@@ -8,7 +8,7 @@ AFRAME.registerComponent('toolbar3d', {
         this.toolbar.setAttribute('id', 'toolbar3d');
         this.toolbar.setAttribute('look-at', '#camera');
         this.toolbar.setAttribute('class', "clickable");
-        this.toolbar.setAttribute('geometry', { primitive: 'box', width: 2, height: 0.2, depth: 0.05 });
+        this.toolbar.setAttribute('geometry', { primitive: 'box', width: 1, height: 0.2, depth: 0.05 });
         this.toolbar.setAttribute('color', '#000');
         this.toolbar.setAttribute('opacity', '0.4');
         this.toolbar.setAttribute('custom-draggable', '');
@@ -18,9 +18,9 @@ AFRAME.registerComponent('toolbar3d', {
         // Establecemos el estado inicial de la entidad rectangular
         this.expanded = true;
 
-        this.xFoldPosition = -0.85;
+        this.xFoldPosition = -0.37;
         // Creamos el botón de animación como un a-box
-        this.foldButton = this.createToolbarButton(0.15, 0.15, null,0.5,{ x: this.xFoldPosition, y: 0, z: 0.1 },true,
+        this.foldButton = this.createToolbarButton('foldButton',0.15, 0.15, null,0.5,{ x: this.xFoldPosition, y: 0, z: 0.06 },true,
             () => this.animateToolbar(),
             () => this.animateToolbar(),
             '#000', '#000', '>', '<');
@@ -29,17 +29,26 @@ AFRAME.registerComponent('toolbar3d', {
         //Agregamos el toolbar al elemento.
         this.el.appendChild(this.toolbar);
 
-        this.hudEnableButton = this.createToolbarButton(0.3, 0.15, null,null, { x: -0.57, y: 0, z: 0.1 }, true,
+        //Creamos un botón para habilitar el hud
+        this.hudEnableButton = this.createToolbarButton('hudEnableButton',0.3, 0.15, null,null, { x: -0.09, y: 0, z: 0.06 }, true,
              () => this.sceneEl.emit('hud-enable', null),
              () => this.sceneEl.emit('hud-disable', null),
              '#0a0', '#a00', 'Hud enable', 'Hud disable');
         this.toolbar.appendChild(this.hudEnableButton);
 
+        //Creamos un botón para habilitar el info.
+        this.infoEnableButton = this.createToolbarButton('infoEnableButton',0.3, 0.15, null,null, { x: 0.29, y: 0, z: 0.06 }, true,
+            () => this.sceneEl.emit('tooltip-info-enable', null),
+            () => this.sceneEl.emit('tooltip-info-disable', null),
+            '#0a0', '#a00', 'Info enable', 'Info disable');
+       this.toolbar.appendChild(this.infoEnableButton);
+
     },
-    createToolbarButton: function (width, height, text,texSize, position, toogle, enableFunction, disableFunction, enableColor, disableColor, enableText, disableText) {
+    createToolbarButton: function (id,width, height, text,texSize, position, toogle, enableFunction, disableFunction, enableColor, disableColor, enableText, disableText) {
         // Creamos el botón de animación como un a-box
         let toolBarButton = document.createElement('a-box');
         let finalTextSize = texSize != null && texSize != undefined ? texSize : 0.2;
+        toolBarButton.setAttribute('id', id);
         toolBarButton.setAttribute('width', width);
         toolBarButton.setAttribute('height', height);
         toolBarButton.setAttribute('depth', 0.05);
@@ -52,14 +61,14 @@ AFRAME.registerComponent('toolbar3d', {
         toolBarButton.addEventListener('mouseenter', () => {
             toolBarButton.setAttribute('material', 'color', 'orange');
         });
-        toolBarButton.addEventListener('mouseleave', () => toolBarButton.setAttribute('material', 'color', this.enable ? enableColor:disableColor));
-        this.enable = false;
+        toolBarButton.addEventListener('mouseleave', () => toolBarButton.setAttribute('material', 'color', enable ? enableColor:disableColor));
+        let enable = false;
         if(toogle){
             toolBarButton.appendChild(this.createTextElement('texId', disableText, finalTextSize));
             toolBarButton.addEventListener('click', () => {
-                this.enable = !this.enable;
+                enable = !enable;
                 toolBarButton.removeChild(toolBarButton.querySelector('#'+'texId'));
-                if (this.enable) {
+                if (enable) {
                     toolBarButton.appendChild(this.createTextElement('texId', enableText, finalTextSize));
                     toolBarButton.setAttribute('color', enableColor);
                     toolBarButton.setAttribute('depth', 0.01);
@@ -79,11 +88,7 @@ AFRAME.registerComponent('toolbar3d', {
     },
     animateToolbar: function () {
         this.expanded = !this.expanded;
-        if(this.expanded){
-            this.hudEnableButton.setAttribute('visible', true);
-        }else{
-            this.hudEnableButton.setAttribute('visible', false);
-        }
+
         // Calculamos la escala inicial y final de la entidad rectangular
         var startToolbarScale = this.toolbar.getAttribute('scale');
         var endToolbarScale = this.expanded ? '1 1 1' : '0.1 1 1';
@@ -137,6 +142,14 @@ AFRAME.registerComponent('toolbar3d', {
             dur: 1000,
             easing: 'linear'
         });
+
+        if(this.expanded){
+            this.hudEnableButton.setAttribute('visible', true);
+            this.infoEnableButton.setAttribute('visible', true);
+        }else{
+            this.hudEnableButton.setAttribute('visible', false);
+            this.infoEnableButton.setAttribute('visible', false);
+        }
 
     },
     createTextElement: function (id, simbol, scale) {
