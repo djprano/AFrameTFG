@@ -160,7 +160,7 @@ AFRAME.registerComponent('toolbar3d', {
         buttonText.setAttribute('align', 'center');
         buttonText.setAttribute('color', '#fff');
         buttonText.setAttribute('scale', { x: scale, y: scale, z: scale });
-        buttonText.setAttribute('position', '0 0 0.025');
+        buttonText.setAttribute('position', '0 0 0.03');
         return buttonText;
     }
 });
