@@ -9,7 +9,8 @@
 
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
-  <script src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
+  <script
+    src="https://unpkg.com/aframe-terrain-model-component@1.0.1/dist/aframe-terrain-model-component.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
@@ -24,6 +25,8 @@
   <script src="js/gui/oculus-test.js" type="module"></script>
   <script src="js/gui/tooltip-info.js" type="module"></script>
   <script src="js/gui/toolbar3d.js" type="module"></script>
+  <script src="js/gui/camrender.js"></script>
+  <script src="js/gui/canvas-updater.js"></script>
 </head>
 
 <body>
@@ -32,9 +35,10 @@
       <img crossorigin="anonymous" id="skyImage" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       <img crossorigin="anonymous" id="groundTexture" src="data/vatry_map.png">
       <a-asset-item id="plane" src="plane/scene.gltf"></a-asset-item>
+      <canvas id="cameraOnBoard"></canvas>
     </a-assets>
     <!-- Camera -->
-    <a-entity id="rig" position="0 0 0" movement-controls terrain-height >
+    <a-entity id="rig" position="0 0 0" movement-controls terrain-height>
       <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
         raycaster="far: 4000; objects: .clickable" position="0 0 0" toolbar3d>
       </a-entity>
@@ -42,6 +46,8 @@
         raycaster="far: 4000; objects: .clickable"></a-entity>
       <a-entity id="right-hand" oculus-touch-controls="hand: right" laser-controls="hand: right"
         raycaster="far: 4000; objects: .clickable"></a-entity>
+        <a-entity id="cameraOnBoarEntity" camera="active: false" camrender="cid:cameraOnBoard" position="0 0 0"
+        rotation="0 -180 0"></a-entity>
     </a-entity>
     <a-sky id="sky" src="#skyImage" theta-length="90" radius="1000"></a-sky>
 
@@ -49,9 +55,6 @@
       light="type: directional; color: #fef7ec; intensity: 0.5"></a-sphere>
 
     <a-entity light="type: directional; color: #fef7ec; intensity: 0.4" position="133 500 580"></a-entity>
-
-    </a-entity>
-
   </a-scene>
 </body>
 

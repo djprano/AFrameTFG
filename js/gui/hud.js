@@ -2,6 +2,7 @@ AFRAME.registerComponent('hud', {
   init: function () {
     // Recuperamos el elemento escena.
     this.sceneEl = document.querySelector("a-scene");
+
     // Controla si está habilidato el hud.
     this.disable = true;
     //Controla si el panel del hud se está mostrando.
@@ -28,15 +29,16 @@ AFRAME.registerComponent('hud', {
     this.hudEl.setAttribute('custom-draggable', '');
     this.hudEl.setAttribute('look-at', '#camera');
 
+
     // Crear un botón close para el HUD.
-    this.closeButtonEl = this.createHudButton('hud-close-button',0.4, 0.2, 0.4,{ x: -0.4, y: -0.8, z: 0.01 },false,
+    this.closeButtonEl = this.createHudButton('hud-close-button',0.4, 0.2, 0.4,{ x: -0.485, y: -0.85, z: 0.01 },false,
       () => true,
       () => this.hideData(), null,
       '#000', '#000', 'Close', null);
-    this.cameraOnBoardButtonEl = this.createHudButton('hud-cameraOnBoard-button',0.8, 0.2, 0.4,{ x: 0.32, y: -0.8, z: 0.01 },true,
+    this.cameraOnBoardButtonEl = this.createHudButton('hud-cameraOnBoard-button',0.8, 0.2, 0.4,{ x: 0.30, y: -0.85, z: 0.01 },true,
     () => this.objSelected!=null && this.objSelected != undefined,
-    () => this.exitCameraOnBoard(), 
-    () => this.cameraOnBoard(),
+    () => this.cameraOnBoard(), 
+    () => this.exitCameraOnBoard(),
     '#111', '#000', 'Close on board', 'Camera on board');
 
     this.hudEl.appendChild(this.closeButtonEl);
@@ -47,6 +49,19 @@ AFRAME.registerComponent('hud', {
     this.contentEl.setAttribute('id', 'hud-content');
     this.contentEl.setAttribute('position', '0 0 0');
     this.hudEl.appendChild(this.contentEl);
+
+    this.cameraOnBoardView = document.createElement('a-plane');
+    this.cameraOnBoardView.setAttribute('position', { x: 0, y: 0.13, z: 0.015 });
+    this.cameraOnBoardView.setAttribute('width', '2.2');
+    this.cameraOnBoardView.setAttribute('height', '2.4');
+    this.cameraOnBoardView.setAttribute('scale', '0 0 0');
+    this.cameraOnBoardView.setAttribute('material', {
+      src: '#cameraOnBoard',
+      shader: 'flat'
+    });
+    this.cameraOnBoardView.setAttribute('canvas-updater','');
+    this.onBoardViewExpanded = false;
+    this.hudEl.appendChild(this.cameraOnBoardView);
 
     // Registrar el evento 'mostrar' para mostrar el HUD.
     this.sceneEl.addEventListener('hud-show', (event) => {
@@ -95,7 +110,6 @@ AFRAME.registerComponent('hud', {
 
     //Agregamos el hud a la camara.
     this.el.appendChild(this.hudEl);
-
   },
   /**
    * Función que crea una entidad anillo para señalar el objeto seleccionado
@@ -285,47 +299,39 @@ AFRAME.registerComponent('hud', {
     return jsonEl;
   },
   cameraOnBoard: function () {
-    if (this.objSelected != undefined && this.objSelected != null) {
-      return;
-    }
-    //Activamos el botón de salir
-    this.sceneEl.emit('toolbar-show-exitOnBoardButton', null);
-    //Desactivamos el ring
-    this.ring.setAttribute('visible', false);
-    //Desactivamos los eventos
-    this.disable = true;
-    //Creamos la cámara secundaria
-    // Crear una nueva cámara y agregarla al objeto seleccionado.
-    this.cameraEl = document.createElement('a-entity');
-    this.cameraEl.setAttribute('camera', {
-      active: false // La cámara no está activa inicialmente
-    });
+    if (this.objSelected == undefined || this.objSelected == null) return;
 
-    // Copiamos los atributos de la cámara principal en la secundaria menos la posición y el control.
+    //Creamos una nueva cámara.
+    this.cameraOnBoardEntity = document.createElement('a-entity');
+    this.cameraOnBoardEntity.setAttribute('id', 'cameraOnBoarEntity');
+    this.cameraOnBoardEntity.setAttribute('camera', 'active: false');
+    this.cameraOnBoardEntity.setAttribute('camrender', 'cid:cameraOnBoard');
+    this.cameraOnBoardEntity.setAttribute('position', '0 0 0');
+    this.cameraOnBoardEntity.setAttribute('rotation', '-16 -180 0');
 
-    Array.from(this.camera.attributes).forEach(attribute => {
-      let name = attribute.name;
-      let value = attribute.value;
-      if (name !== 'position' && name !== 'wasd-controls' && name !== 'id' && name !== 'camera' && name !== 'hud') {
-        this.cameraEl.setAttribute(name, value);
-      }
-    });
-    this.cameraEl.setAttribute('position', '0 0 0');
-
-    this.objSelected.appendChild(this.cameraEl);
-    this.cameraEl.setAttribute('active', true);
-    this.camera.setAttribute('camera', { active: false });
+    this.objSelected.appendChild(this.cameraOnBoardEntity);
+    this.animateOnBoardView();
   },
   exitCameraOnBoard: function () {
-    if (this.objSelected != undefined && this.objSelected != null) {
-      return;
-    }
-    //Activamos el ring
-    this.ring.setAttribute('visible', true);
-    //Activamos los eventos
-    this.disable = false;
-    this.camera.setAttribute('camera', { active: true });
-    this.cameraEl.setAttribute('active', false);
+    if (this.objSelected == undefined || this.objSelected == null) return;
+        this.animateOnBoardView();
+    this.cameraOnBoardEntity.remove();
+  },
+  animateOnBoardView: function () {
+    // Calculamos la escala inicial y final de la entidad rectangular
+    this.onBoardViewExpanded = !this.onBoardViewExpanded;
+    var startViewScale = this.cameraOnBoardView.getAttribute('scale');
+    var endViewScale = this.onBoardViewExpanded ? '0.6 0.6 1' : '0 0 0';
+
+    // Creamos la animación del toolbar
+    this.cameraOnBoardView.setAttribute('animation', {
+      delay: 100,
+      property: 'scale',
+      from: startViewScale.x + ' ' + startViewScale.y + ' ' + startViewScale.z,
+      to: endViewScale,
+      dur: 500,
+      easing: 'linear'
+    });
   }
 });
 
