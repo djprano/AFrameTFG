@@ -194,9 +194,12 @@ function handleMouseClick(evt) {
     // Crear un json con los datos del vuelo.
     let flightData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE)).data;
     let jsonData = {};
-    jsonData["ID"] = flightData[OpenSkyModel.ID];
-    jsonData["Altitude"] = flightData[OpenSkyModel.ALTITUDE];
     jsonData["Name"] = flightData[OpenSkyModel.NAME];
+    jsonData["ID"] = flightData[OpenSkyModel.ID];
+    jsonData["Origin"] = flightData[OpenSkyModel.ORIGIN_COUNTRY];
+    jsonData["Velocity"] = flightData[OpenSkyModel.VELOCITY]+' m/s';
+    jsonData["Altitude"] = flightData[OpenSkyModel.ALTITUDE]+' m';
+    
 
     mainScene.emit(HUD_SHOW_JSON, jsonData);
     mainScene.emit(HUD_OBJECT_SELECTED, flightEl);

@@ -305,7 +305,7 @@ AFRAME.registerComponent('hud', {
     this.cameraOnBoardEntity = document.createElement('a-entity');
     this.cameraOnBoardEntity.setAttribute('id', 'cameraOnBoarEntity');
     this.cameraOnBoardEntity.setAttribute('camera', 'active: false');
-    this.cameraOnBoardEntity.setAttribute('camrender', 'cid:cameraOnBoard');
+    this.cameraOnBoardEntity.setAttribute('camrender', 'cid:cameraOnBoard;fps:25');
     this.cameraOnBoardEntity.setAttribute('position', '0 0 0');
     this.cameraOnBoardEntity.setAttribute('rotation', '-16 -180 0');
 

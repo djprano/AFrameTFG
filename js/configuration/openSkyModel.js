@@ -6,6 +6,12 @@ export const ID = 0;
 //Nombre del vuelo
 export const NAME = 1;
 
+//Pais de origen
+export const  ORIGIN_COUNTRY = 2;
+
+//Pais de origen
+export const  VELOCITY = 9;
+
 //Coordenada longitud
 export const LONG = 5;
 

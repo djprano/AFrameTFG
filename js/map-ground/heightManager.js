@@ -6,7 +6,7 @@ class HeightManager {
     //**Constructor */
     constructor() {
         this.mainScene = document.querySelector('a-scene');
-        this.zMagnification = 350;
+        this.zMagnification = 200;
         this.terrainListeners = [];
         this.raycaster = new THREE.Raycaster(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0));
     }
@@ -65,7 +65,7 @@ class HeightManager {
             planeHeight: this.groundSize.height,
             segmentsWidth: 199,
             segmentsHeight: 199,
-            zPosition: 350
+            zPosition: this.zMagnification
         };
         //calculos previos para convertir posición 3D a posicion array de alturas
         this.gridSize = { height: atributes.segmentsHeight, width: atributes.segmentsWidth };
