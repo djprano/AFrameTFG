@@ -55,7 +55,10 @@ export var INIT_CAM_POSITION;
 //Fichero de edificios
 export var BUILDING_FILE_NAME;
 
+//Carpeta de datos de vuelos
 export var FLIGHT_LOCAL_FOLDER;
+
+export var MAP_RASTER_FILE;
 
 export function setMerConfig(latmin,latmax,longmin,longmax){
     LAT_MIN = latmin;
@@ -74,4 +77,8 @@ export function setBuildingFileName(filename){
 
 export function setFlightLocalFolder(folder){
     FLIGHT_LOCAL_FOLDER = folder;
+}
+
+export function setMapRaster(rasterFile){
+    MAP_RASTER_FILE = rasterFile;
 }

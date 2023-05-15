@@ -58,8 +58,8 @@ class HeightManager {
         let terrainEl = document.createElement('a-entity');
         terrainEl.setAttribute('id', "terrain");
         let atributes = {
-            wireframe: true,
-            map: 'url(data/vatry_map.png)',
+            wireframe: false,
+            map: 'url(' + OpenSkyModel.MAP_RASTER_FILE + ')',
             dem: 'url(data/smallMap.bin)',
             planeWidth: this.groundSize.width,
             planeHeight: this.groundSize.height,
@@ -144,7 +144,7 @@ class HeightManager {
                         buildingProperties.height = height / OpenSkyModel.FACTOR;
                         item.setAttribute("id", feature.id);
                         item.setAttribute("geometry", buildingProperties);
-                        item.setAttribute("material", { color: '#8aebff', roughness: 0.8, metalness: 0.8 });
+                        item.setAttribute("material", { color: '#8aebff', roughness: 0.8, metalness: 0.3 });
                         let infoValue = feature.properties.source;
                         if (infoValue != null && infoValue != undefined) {
                             item.setAttribute('tooltip-info', { info: infoValue });

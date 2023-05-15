@@ -289,7 +289,7 @@ AFRAME.registerComponent('hud', {
       let textEl = document.createElement('a-text');
       let value = propiedad + ': ' + jsonData[propiedad];
       textEl.setAttribute('value', propiedad + ': ' + jsonData[propiedad]);
-      textEl.setAttribute('position', '-0.3a ' + (-0.1 * Object.keys(jsonData).indexOf(propiedad) + 0.5) + ' 0');
+      textEl.setAttribute('position', { x: -0.4, y: (-0.15 * Object.keys(jsonData).indexOf(propiedad) + 0.5), z: 0 });
       textEl.setAttribute('height', 2);
       textEl.setAttribute('width', 2);
       textEl.setAttribute('align', 'left');
@@ -334,6 +334,3 @@ AFRAME.registerComponent('hud', {
     });
   }
 });
-
-
-
