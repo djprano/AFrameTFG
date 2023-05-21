@@ -1,9 +1,53 @@
-<mxfile host="app.diagrams.net" modified="2023-05-21T19:31:29.962Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" version="21.3.2" etag="4Ogwecg1_F-oOZTjm4PP" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-21T19:44:41.908Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="yiwotnuBayuSHdZk2uXS" version="21.3.2" type="github">
   <diagram name="Página-1" id="DQIuLxgJX9-T1ToGNVR-">
-    <mxGraphModel>
+    <mxGraphModel dx="1434" dy="926" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="S2x0MT0YMbnq7Fj3SX19-3" target="S2x0MT0YMbnq7Fj3SX19-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-3" value="&lt;b&gt;WebGL&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;perimeterSpacing=0;arcSize=50;fillColor=#A0B7F6;strokeColor=#658BF3;" vertex="1" parent="1">
+          <mxGeometry x="354" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="S2x0MT0YMbnq7Fj3SX19-4" target="S2x0MT0YMbnq7Fj3SX19-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="S2x0MT0YMbnq7Fj3SX19-4" target="S2x0MT0YMbnq7Fj3SX19-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-4" value="&lt;b&gt;A-Frame&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;perimeterSpacing=0;arcSize=50;fillColor=#A0B7F6;strokeColor=#658BF3;" vertex="1" parent="1">
+          <mxGeometry x="354" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="S2x0MT0YMbnq7Fj3SX19-5" target="S2x0MT0YMbnq7Fj3SX19-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-5" value="&lt;b&gt;Three.js&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;perimeterSpacing=0;arcSize=50;fillColor=#A0B7F6;strokeColor=#658BF3;" vertex="1" parent="1">
+          <mxGeometry x="354" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-8" value="Sensores de &lt;br&gt;posición y movimiento." style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S2x0MT0YMbnq7Fj3SX19-6" target="S2x0MT0YMbnq7Fj3SX19-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-6" value="Gafas VR" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#a0b7f6;gradientDirection=north;fillColor=#6C7CA6;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ar_vr;" vertex="1" parent="1">
+          <mxGeometry x="127.60000000000001" y="320" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-9" value="Teclado y ratón" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="S2x0MT0YMbnq7Fj3SX19-7" target="S2x0MT0YMbnq7Fj3SX19-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="201" />
+              <mxPoint x="270" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-7" value="Escritorio" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Personal_Computer.svg;" vertex="1" parent="1">
+          <mxGeometry x="133.8" y="170" width="45.6" height="61.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-12" value="Navegador web" style="image;html=1;image=img/lib/clip_art/computers/Monitor_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="600" y="250" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="S2x0MT0YMbnq7Fj3SX19-14" value="&lt;b&gt;OpenGL&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;perimeterSpacing=0;arcSize=50;fillColor=#A0B7F6;strokeColor=#658BF3;" vertex="1" parent="1">
+          <mxGeometry x="354" y="585" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
