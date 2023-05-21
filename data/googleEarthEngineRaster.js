@@ -1,4 +1,4 @@
-var geometry = ee.Geometry.Rectangle(3.7545776367187,48.491151723988,4.6238708496094,49.027963936994);;
+var geometry = ee.Geometry.Rectangle(3.7545776367187,48.491151723988,4.6238708496094,49.027963936994);
 
 // Convierte la geometría a un objeto Feature y establece un nombre
 var rectangulo = ee.Feature(geometry, {nombre: 'Mi rectángulo'});
