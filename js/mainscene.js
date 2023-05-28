@@ -124,7 +124,7 @@ function updateData(data) {
                 //Generamos el elemento gltf-model de vuelo y el objeto wrapper que contiene la información del vuelo
                 // y las posiciones en el mundo 3d para la animación.
                 entityEl = createFlightElement(id);
-                cacheData = new CacheData.FlightCacheData(id, flight);
+                cacheData = new CacheData.FlightCacheData(id, flight,mainScene);
             }
 
             cacheData.newPosition = newPosition;
@@ -192,7 +192,9 @@ const ID_ATRIBUTE = 'id';
 function handleMouseClick(evt) {
     const flightEl = evt.currentTarget;
     // Crear un json con los datos del vuelo.
-    let flightData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE)).data;
+    let flightCacheData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE));
+    let flightData = flightCacheData.data;
+    flightEl.object3D.userData.points = flightCacheData.points ;
     let jsonData = {};
     jsonData["Name"] = flightData[OpenSkyModel.NAME];
     jsonData["ID"] = flightData[OpenSkyModel.ID];

@@ -116,19 +116,6 @@ AFRAME.registerComponent('toolbar3d', {
             easing: 'linear'
         });
 
-        // // Creamos la animación de la posición X de la entidad rectangular
-        // let startPosX = this.foldButton.getAttribute('position').x; 
-        // let endPosX = this.expanded ? this.xFoldPosition : 0;
-
-        // this.foldButton.setAttribute('animation__positionX', {
-        //     delay: 100,
-        //     property: 'position.x',
-        //     from: startPosX,
-        //     to: endPosX,
-        //     dur: 500,
-        //     easing: 'linear'
-        // });
-
         // Calculamos la escala inicial y final de la entidad rectangular
         var startFoldButtonScale = this.toolbar.getAttribute('scale');
         var endFoldButtonScale = this.expanded ? '1 1 1' : '10 1 1';

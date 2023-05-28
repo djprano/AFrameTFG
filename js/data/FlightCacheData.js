@@ -3,9 +3,11 @@
 export class FlightCacheData {
 
     //Constructor
-    constructor(id, data) {
+    constructor(id, data,mainScene) {
         this._id = id;
         this._data = data;
+        this._points = [];
+        this.mainScene = mainScene;
     }
 
     get lastPosition() {
@@ -43,8 +45,16 @@ export class FlightCacheData {
     get data(){
         return this._data;
     }
+
+    get points(){
+        return this._points;
+    }
     //Guardarmos los datos de new en last
     backupData(){
+        if(this.lastPosition != undefined && this.lastPosition != null){
+            this._points.push(this.lastPosition);
+            this.mainScene.emit('flightCacheData_push_'+this._id,this.lastPosition);
+        }
         this.lastPosition = this.newPosition;
         this.lastRotation = this.newRotation;
     }

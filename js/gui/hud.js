@@ -31,10 +31,10 @@ AFRAME.registerComponent('hud', {
 
 
     // Crear un botón close para el HUD.
-    this.closeButtonEl = this.createHudButton('hud-close-button',0.4, 0.2, 0.4,{ x: -0.485, y: -0.85, z: 0.01 },false,
+    this.closeButtonEl = this.createHudButton('hud-close-button',0.16, 0.16, 0.4,{ x: 0.8, y: 0.95, z: 0.01 },false,
       () => true,
       () => this.hideData(), null,
-      '#000', '#000', 'Close', null);
+      '#444', '#444', 'X', null);
     this.cameraOnBoardButtonEl = this.createHudButton('hud-cameraOnBoard-button',0.8, 0.2, 0.4,{ x: 0.30, y: -0.85, z: 0.01 },true,
     () => this.objSelected!=null && this.objSelected != undefined,
     () => this.cameraOnBoard(), 
@@ -152,6 +152,14 @@ AFRAME.registerComponent('hud', {
     //creamos el anillo de selección.
     this.createRing();
     data.appendChild(this.ring);
+    //creamos el track
+    let trackEntity = document.createElement('a-entity');
+    trackEntity.setAttribute('id','track');
+    trackEntity.setAttribute('track', {
+      points: data.object3D.userData.points,
+      id:data.getAttribute('id')
+    });
+    this.sceneEl.appendChild(trackEntity);
     this.objSelected = data;
   },
   /**
