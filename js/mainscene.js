@@ -223,6 +223,8 @@ function handleMouseLeave(evt) {
 function removeFlightElement(id) {
     let entityEl = document.getElementById(id);
     entityEl.parentNode.removeChild(entityEl);
+    //limpiamos objetos asociados
+    flightsCache.get(id).clear();
     flightsCache.delete(id);
 }
 

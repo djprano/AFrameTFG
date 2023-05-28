@@ -1,5 +1,6 @@
 AFRAME.registerComponent('hud', {
   init: function () {
+    this.buttonEnabled = 'button-enabled';
     // Recuperamos el elemento escena.
     this.sceneEl = document.querySelector("a-scene");
 
@@ -31,18 +32,26 @@ AFRAME.registerComponent('hud', {
 
 
     // Crear un botón close para el HUD.
-    this.closeButtonEl = this.createHudButton('hud-close-button',0.16, 0.16, 0.4,{ x: 0.8, y: 0.95, z: 0.01 },false,
+    this.closeButtonEl = this.createHudButton('hud-close-button', 0.16, 0.16, 0.4, { x: 0.8, y: 0.95, z: 0.01 }, false,
       () => true,
       () => this.hideData(), null,
       '#444', '#444', 'X', null);
-    this.cameraOnBoardButtonEl = this.createHudButton('hud-cameraOnBoard-button',0.8, 0.2, 0.4,{ x: 0.30, y: -0.85, z: 0.01 },true,
-    () => this.objSelected!=null && this.objSelected != undefined,
-    () => this.cameraOnBoard(), 
-    () => this.exitCameraOnBoard(),
-    '#111', '#000', 'Close on board', 'Camera on board');
+    // Botón que activa la camara de abordo.
+    this.cameraOnBoardButtonEl = this.createHudButton('hud-cameraOnBoard-button', 0.8, 0.2, 0.4, { x: 0.34, y: -0.85, z: 0.01 }, true,
+      () => this.objSelected != null && this.objSelected != undefined,
+      () => this.cameraOnBoard(),
+      () => this.exitCameraOnBoard(),
+      '#111', '#000', 'Close on board', 'Camera on board');
+    // Botón que activa la linea de trayecto del avión seleccionado.
+    this.trackButtonEl = this.createHudButton('hud-track-button', 0.55, 0.2, 0.4, { x: -0.46, y: -0.85, z: 0.01 }, true,
+      () => this.objSelected != null && this.objSelected != undefined,
+      () => this.sceneEl.emit('flightCacheData_show_' + this.objSelected.getAttribute('id'), null),
+      () => this.sceneEl.emit('flightCacheData_hide_' + this.objSelected.getAttribute('id'), null),
+      '#111', '#000', 'Hide track', 'Show track');
 
     this.hudEl.appendChild(this.closeButtonEl);
     this.hudEl.appendChild(this.cameraOnBoardButtonEl);
+    this.hudEl.appendChild(this.trackButtonEl);
 
     // Crear un contenedor para el contenido del HUD.
     this.contentEl = document.createElement('a-entity');
@@ -59,7 +68,7 @@ AFRAME.registerComponent('hud', {
       src: '#cameraOnBoard',
       shader: 'flat'
     });
-    this.cameraOnBoardView.setAttribute('canvas-updater','');
+    this.cameraOnBoardView.setAttribute('canvas-updater', '');
     this.onBoardViewExpanded = false;
     this.hudEl.appendChild(this.cameraOnBoardView);
 
@@ -154,10 +163,10 @@ AFRAME.registerComponent('hud', {
     data.appendChild(this.ring);
     //creamos el track
     let trackEntity = document.createElement('a-entity');
-    trackEntity.setAttribute('id','track');
+    trackEntity.setAttribute('id', 'track');
     trackEntity.setAttribute('track', {
       points: data.object3D.userData.points,
-      id:data.getAttribute('id')
+      id: data.getAttribute('id')
     });
     this.sceneEl.appendChild(trackEntity);
     this.objSelected = data;
@@ -224,15 +233,19 @@ AFRAME.registerComponent('hud', {
 
     //Borramos el selector.
     if (this.objSelected != null) {
-      if (this.cameraEl !== null && this.cameraEl !== undefined) {
-        this.exitCameraOnBoard();
+      if (this.cameraOnBoardButtonEl.getAttribute(this.buttonEnabled) == 'true') {
+        this.cameraOnBoardButtonEl.emit('click', null);
       }
-      this.objSelected.removeChild(this.ring);
+      if (this.trackButtonEl.getAttribute(this.buttonEnabled) == 'true') {
+        //ocultamos el track
+        this.trackButtonEl.emit('click', null);
+      }
+    this.objSelected.removeChild(this.ring);
       this.objSelected = null;
     }
     this.showed = false;
   },
-  createHudButton: function (id,width, height, texSize, position, toogle, toogleCondition , enableFunction, disableFunction, enableColor, disableColor, enableText, disableText) {
+  createHudButton: function (id, width, height, texSize, position, toogle, toogleCondition, enableFunction, disableFunction, enableColor, disableColor, enableText, disableText) {
     // Creamos el botón de animación como un a-box
     let hudButton = document.createElement('a-box');
     let finalTextSize = texSize != null && texSize != undefined ? texSize : 0.2;
@@ -240,7 +253,7 @@ AFRAME.registerComponent('hud', {
     hudButton.setAttribute('width', width);
     hudButton.setAttribute('height', height);
     hudButton.setAttribute('depth', 0.05);
-    hudButton.setAttribute('color', toogle ? disableColor:enableColor);
+    hudButton.setAttribute('color', toogle ? disableColor : enableColor);
     hudButton.setAttribute('opacity', '0.8');
     hudButton.setAttribute('position', position);
     hudButton.setAttribute('class', "clickable");
@@ -251,15 +264,16 @@ AFRAME.registerComponent('hud', {
       hudButton.setAttribute('material', 'color', 'orange');
     });
     hudButton.addEventListener('mouseleave', () => hudButton.setAttribute('material', 'color', this.enable ? enableColor : disableColor));
-    this.enable = false;
+    hudButton.setAttribute(this.buttonEnabled, 'false');
     if (toogle) {
       hudButton.addEventListener('click', () => {
-        if(!toogleCondition()){
+        if (!toogleCondition()) {
           return;
         }
-        this.enable = !this.enable;
+        let enableValue = hudButton.getAttribute(this.buttonEnabled) == 'true' ? 'false' : 'true';
+        hudButton.setAttribute(this.buttonEnabled, enableValue);
         hudButton.removeChild(hudButton.querySelector('#' + 'texId'));
-        if (this.enable) {
+        if (enableValue == 'true') {
           hudButton.appendChild(this.createTextElement('texId', enableText, finalTextSize));
           hudButton.setAttribute('color', enableColor);
           hudButton.setAttribute('depth', 0.01);
@@ -278,15 +292,15 @@ AFRAME.registerComponent('hud', {
     return hudButton;
   },
   createTextElement: function (id, simbol, scale) {
-      // Creamos el elemento de texto
-      var buttonText = document.createElement('a-text');
-      buttonText.setAttribute('value', simbol);
-      buttonText.setAttribute('id', id);
-      buttonText.setAttribute('align', 'center');
-      buttonText.setAttribute('color', '#fff');
-      buttonText.setAttribute('scale', { x: scale, y: scale, z: scale });
-      buttonText.setAttribute('position', '0 0 0.025');
-      return buttonText;
+    // Creamos el elemento de texto
+    var buttonText = document.createElement('a-text');
+    buttonText.setAttribute('value', simbol);
+    buttonText.setAttribute('id', id);
+    buttonText.setAttribute('align', 'center');
+    buttonText.setAttribute('color', '#fff');
+    buttonText.setAttribute('scale', { x: scale, y: scale, z: scale });
+    buttonText.setAttribute('position', '0 0 0.025');
+    return buttonText;
   },
   json2TextComponent: function (jsonData) {
     // Crear un elemento de texto para cada posición del array.
@@ -322,7 +336,7 @@ AFRAME.registerComponent('hud', {
   },
   exitCameraOnBoard: function () {
     if (this.objSelected == undefined || this.objSelected == null) return;
-        this.animateOnBoardView();
+    this.animateOnBoardView();
     this.cameraOnBoardEntity.remove();
   },
   animateOnBoardView: function () {

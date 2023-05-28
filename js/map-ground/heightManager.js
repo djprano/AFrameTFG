@@ -144,7 +144,7 @@ class HeightManager {
                         buildingProperties.height = height / OpenSkyModel.FACTOR;
                         item.setAttribute("id", feature.id);
                         item.setAttribute("geometry", buildingProperties);
-                        item.setAttribute("material", { color: '#8aebff', roughness: 0.8, metalness: 0.3 });
+                        item.setAttribute("material", { color: '#88e9fd', roughness: 0.8, metalness: 0.5 });
                         let infoValue = feature.properties.source;
                         if (infoValue != null && infoValue != undefined) {
                             item.setAttribute('tooltip-info', { info: infoValue });

@@ -49,6 +49,9 @@ export class FlightCacheData {
     get points(){
         return this._points;
     }
+    clear(){
+        this.mainScene.emit('flightCacheData_clear_'+this._id,null);
+    }
     //Guardarmos los datos de new en last
     backupData(){
         if(this.lastPosition != undefined && this.lastPosition != null){
