@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-03T16:46:18.863Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="8422APUySqW5vfwwiGq5" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-03T16:49:36.851Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="NVVaZl5ABDXKQXS1cj2n" version="21.3.2" type="github">
   <diagram name="Página-1" id="MT6m2zrHwECblgyKmkDN">
-    <mxGraphModel dx="2876" dy="1323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2876" dy="1241" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -12,6 +12,9 @@
         </mxCell>
         <mxCell id="cEreoVwPH2V9dTDcCDwE-89" value="&lt;font&gt;&lt;span style=&quot;font-size: 18px&quot;&gt;Arquitectura de la aplicación&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=11;fontColor=default;fontFamily=Helvetica;" vertex="1" parent="cEreoVwPH2V9dTDcCDwE-87">
           <mxGeometry x="1007.0029508196722" y="711.1764705882352" width="699.7868852459015" height="45.882352941176464" as="geometry" />
+        </mxCell>
+        <mxCell id="cEreoVwPH2V9dTDcCDwE-92" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.json;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="cEreoVwPH2V9dTDcCDwE-87">
+          <mxGeometry x="860" y="23.1" width="70" height="75.8" as="geometry" />
         </mxCell>
         <mxCell id="cEreoVwPH2V9dTDcCDwE-19" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3D8BCD;arcSize=9;strokeColor=#004C99;" vertex="1" parent="1">
           <mxGeometry x="-140" y="750" width="300" height="195.00000000000003" as="geometry" />
@@ -276,6 +279,9 @@
         </mxCell>
         <mxCell id="cEreoVwPH2V9dTDcCDwE-23" value="vatryConf.js" style="whiteSpace=wrap;html=1;align=center;fillColor=#FFC957;strokeColor=#FFAD00;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="30" y="863" width="110" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="cEreoVwPH2V9dTDcCDwE-93" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=1;jumpStyle=arc;jumpSize=14;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;shadow=0;labelBackgroundColor=default;labelBorderColor=none;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=open;endSize=12;" edge="1" parent="1" source="cEreoVwPH2V9dTDcCDwE-12" target="cEreoVwPH2V9dTDcCDwE-92">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
