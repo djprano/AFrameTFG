@@ -2,8 +2,8 @@ import * as OpenSkyModel from "../configuration/openSkyModel.js";
 
 class MapConversion {
     constructor() {
-        let longDispDegrees = OpenSkyModel.LONG_MIN + ((OpenSkyModel.LONG_MAX - OpenSkyModel.LONG_MIN) / 2);
-        let latDispDegrees = OpenSkyModel.LAT_MIN + ((OpenSkyModel.LAT_MAX - OpenSkyModel.LAT_MIN) / 2);
+        let longDispDegrees = (OpenSkyModel.LONG_MAX + OpenSkyModel.LONG_MIN) / 2;
+        let latDispDegrees = (OpenSkyModel.LAT_MAX + OpenSkyModel.LAT_MIN) / 2;
         this.displacement = this.degreeToMeter(latDispDegrees, longDispDegrees);
     }
     degreeToMeter(lat, long) {
