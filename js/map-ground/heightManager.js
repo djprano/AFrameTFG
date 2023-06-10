@@ -59,8 +59,8 @@ class HeightManager {
         terrainEl.setAttribute('id', "terrain");
         let atributes = {
             wireframe: false,
-            map: 'url(' + OpenSkyModel.MAP_RASTER_FILE + ')',
-            dem: 'url(data/smallMap.bin)',
+            map: 'url(data/' + OpenSkyModel.MAP_RASTER_FILE + ')',
+            dem: 'url(data/' + OpenSkyModel.MAP_DEM_FILE + ')',
             planeWidth: this.groundSize.width,
             planeHeight: this.groundSize.height,
             segmentsWidth: 199,

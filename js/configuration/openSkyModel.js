@@ -58,7 +58,11 @@ export var BUILDING_FILE_NAME;
 //Carpeta de datos de vuelos
 export var FLIGHT_LOCAL_FOLDER;
 
+//fichero con la capa raster del terreno.
 export var MAP_RASTER_FILE;
+
+//fichero con la capa raster del terreno.
+export var MAP_DEM_FILE;
 
 export function setMerConfig(latmin,latmax,longmin,longmax){
     LAT_MIN = latmin;
@@ -81,4 +85,8 @@ export function setFlightLocalFolder(folder){
 
 export function setMapRaster(rasterFile){
     MAP_RASTER_FILE = rasterFile;
+}
+
+export function setMapDem(demFile){
+    MAP_DEM_FILE = demFile;
 }

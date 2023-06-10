@@ -4,4 +4,5 @@ OpenSkyModel.setMerConfig(48.491151723988,49.027963936994,3.7545776367187,4.6238
 OpenSkyModel.setCamPosition(48.77837,4.20150);
 OpenSkyModel.setBuildingFileName('vatry_building');
 OpenSkyModel.setFlightLocalFolder('_vatry');
-OpenSkyModel.setMapRaster('data/vatry_map.jpg');
+OpenSkyModel.setMapRaster('vatry_map.jpg');
+OpenSkyModel.setMapDem('vatry_dem.bin');
