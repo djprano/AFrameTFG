@@ -64,6 +64,9 @@ export var MAP_RASTER_FILE;
 //fichero con la capa raster del terreno.
 export var MAP_DEM_FILE;
 
+//Altura de la cámara al terreno en unidades 3D;
+export var CAM_HEIGHT = 2;
+
 export function setMerConfig(latmin,latmax,longmin,longmax){
     LAT_MIN = latmin;
     LAT_MAX = latmax;
@@ -89,4 +92,8 @@ export function setMapRaster(rasterFile){
 
 export function setMapDem(demFile){
     MAP_DEM_FILE = demFile;
+}
+
+export function setCamHeight(height){
+    CAM_HEIGHT = height;
 }

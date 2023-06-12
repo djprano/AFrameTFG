@@ -8,7 +8,7 @@ const intervalTime = 200;
 AFRAME.registerComponent('terrain-height', {
     init: function () {
         this.mainScene = document.querySelector('a-scene');
-        this.personHeight = 2;
+        this.personHeight = OpenSkyModel.CAM_HEIGHT;
         this.loaded = false;
         let initCamPosition = mapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
         heightManager.addTerrainLoadedListener(() => {
