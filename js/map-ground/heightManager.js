@@ -133,7 +133,7 @@ class HeightManager {
                         let buildingProperties = { primitive: "building", points: wayPoints, terrainHeight: terrainHeight };
                         let featureHeight = feature.properties["height"];
                         let levels = feature.properties["building:levels"];
-                        let metersByLevel = 3;
+                        let metersByLevel = 6;
                         let height;
                         //prioridad a la propiedad altura si no usamos 
                         if (featureHeight != undefined && featureHeight != null) {
