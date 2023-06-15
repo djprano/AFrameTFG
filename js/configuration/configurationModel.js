@@ -58,6 +58,12 @@ export var BUILDING_FILE_NAME;
 //Carpeta de datos de vuelos
 export var FLIGHT_LOCAL_FOLDER;
 
+//Establece el comportamiento local o tiempo real contra una API
+export var IS_LOCAL_API_MODE = true;
+
+//Etablece el intervalo de actualización de los datos en ms.
+export var DAO_INTERVAL = 1000;
+
 //fichero con la capa raster del terreno.
 export var MAP_RASTER_FILE;
 
@@ -96,4 +102,12 @@ export function setMapDem(demFile){
 
 export function setCamHeight(height){
     CAM_HEIGHT = height;
+}
+
+export function setLocalApiMode(mode){
+    IS_LOCAL_API_MODE = mode;
+}
+
+export function setDaoInterval(interval){
+    DAO_INTERVAL = interval;
 }

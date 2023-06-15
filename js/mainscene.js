@@ -1,6 +1,6 @@
 //LocalApi
-import { LocalApi } from "./data/readApiLocalOpenSky.js";
-import * as OpenSkyModel from "./configuration/openSkyModel.js";
+import { AdsbDao } from "./data/readDataApi.js";
+import * as configuration from "./configuration/configurationModel.js";
 import mapConversion from "./gis/mapConversion.js";
 import * as CacheData from "./data/FlightCacheData.js";
 import heightManager from "./map-ground/heightManager.js";
@@ -20,7 +20,7 @@ var contador = 0;
 /*****Constantes****/
 const intervalTime = 1000;
 
-var localApi = new LocalApi();
+var adsbDao = new AdsbDao();
 
 //Cache de vuelos, será mantenida por cada evento.
 var flightsCache = new Map();
@@ -34,14 +34,8 @@ AFRAME.registerComponent('main-scene', {
         rig = mainScene.querySelector('#rig');
         hudEl = mainScene.querySelector('#hud');
         //Cam position
-        let initCamPosition = mapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
+        let initCamPosition = mapConversion.degreeToWorld(configuration.INIT_CAM_POSITION.lat, configuration.INIT_CAM_POSITION.long);
         initCamPosition.y = 40;
-
-        // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MAX,'maxmax',mainScene);
-        // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MAX,'maxmin',mainScene);
-        // MapConversion.createCorner(OpenSkyModel.LONG_MAX,OpenSkyModel.LAT_MIN,'minmax',mainScene);
-        // MapConversion.createCorner(OpenSkyModel.LONG_MIN,OpenSkyModel.LAT_MIN,'minmin',mainScene);
-
 
         heightManager.createMapGround();
         // Set up throttling.
@@ -51,7 +45,7 @@ AFRAME.registerComponent('main-scene', {
 
     invertalEvent: function () {
         // Called every second.
-        localApi.getJsonOpenSky().then(openSkyData => updateData(openSkyData))
+        adsbDao.getJsonData().then(jsonData => updateData(jsonData))
     },
 
     tick: function (t, dt) {
@@ -65,8 +59,8 @@ AFRAME.registerComponent('main-scene', {
 //Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
 
-    let latlong = mapConversion.degreeToMeter(flight[OpenSkyModel.LAT], flight[OpenSkyModel.LONG]);
-    let mercatorVector = { x: latlong.x, y: flight[OpenSkyModel.ALTITUDE], z: latlong.y };
+    let latlong = mapConversion.degreeToMeter(flight[configuration.LAT], flight[configuration.LONG]);
+    let mercatorVector = { x: latlong.x, y: flight[configuration.ALTITUDE], z: latlong.y };
     return mapConversion.mercatorToWorld(mercatorVector);
 }
 
@@ -74,8 +68,8 @@ function flightVectorExtractor(flight) {
 function createElementText(flight) {
     //creamos el texto del nombre del vuelo
     let entityText = document.createElement('a-text');
-    entityText.setAttribute('value', flight[OpenSkyModel.NAME]);
-    entityText.setAttribute('scale', { x: OpenSkyModel.scaleText, y: OpenSkyModel.scaleText, z: OpenSkyModel.scaleText });
+    entityText.setAttribute('value', flight[configuration.NAME]);
+    entityText.setAttribute('scale', { x: configuration.scaleText, y: configuration.scaleText, z: configuration.scaleText });
     entityText.setAttribute('position', { x: 0, y: 30, z: 0 });
     entityText.setAttribute('height', 10);
     entityText.setAttribute('width', 10);
@@ -94,18 +88,18 @@ function updateData(data) {
 
     //Filtramos vuelos con nombre indefinido de vuelo ya que será nuestro primary key.
     data.states.filter(flight => flight != null &&
-        flight[OpenSkyModel.ID] != null &&
-        flight[OpenSkyModel.ID] != undefined &&
-        flight[OpenSkyModel.ID] != "").
+        flight[configuration.ID] != null &&
+        flight[configuration.ID] != undefined &&
+        flight[configuration.ID] != "").
         forEach(flight => {
             //Extraemos la información del vuelo necesaria.
-            let id = flight[OpenSkyModel.ID];
+            let id = flight[configuration.ID];
 
             //Guardamos el vuelo que estamos actualizando en el set
             updateFlights.add(id);
 
             //Orientación al norte
-            let rotationY = -flight[OpenSkyModel.TRUE_TRACK] + 180;
+            let rotationY = -flight[configuration.TRUE_TRACK] + 180;
             rotationY = { x: 0, y: rotationY, z: 0 };
 
             let entityEl;
@@ -171,7 +165,7 @@ function createFlightElement(id) {
     entityEl.setAttribute('id', id);
     entityEl.setAttribute('gltf-model', "#plane");
     entityEl.setAttribute('class', "clickable");
-    entityEl.setAttribute('scale', { x: OpenSkyModel.scale, y: OpenSkyModel.scale, z: OpenSkyModel.scale });
+    entityEl.setAttribute('scale', { x: configuration.scale, y: configuration.scale, z: configuration.scale });
     entityEl.setAttribute('hover-scale', 'maxScale: 10; maxDistance: 10000');
 
     entityEl.addEventListener('mouseenter', evt => handleMouseEnter(evt));
@@ -196,11 +190,11 @@ function handleMouseClick(evt) {
     let flightData = flightCacheData.data;
     flightEl.object3D.userData.points = flightCacheData.points ;
     let jsonData = {};
-    jsonData["Name"] = flightData[OpenSkyModel.NAME];
-    jsonData["ID"] = flightData[OpenSkyModel.ID];
-    jsonData["Origin"] = flightData[OpenSkyModel.ORIGIN_COUNTRY];
-    jsonData["Velocity"] = flightData[OpenSkyModel.VELOCITY]+' m/s';
-    jsonData["Altitude"] = flightData[OpenSkyModel.ALTITUDE]+' m';
+    jsonData["Name"] = flightData[configuration.NAME];
+    jsonData["ID"] = flightData[configuration.ID];
+    jsonData["Origin"] = flightData[configuration.ORIGIN_COUNTRY];
+    jsonData["Velocity"] = flightData[configuration.VELOCITY]+' m/s';
+    jsonData["Altitude"] = flightData[configuration.ALTITUDE]+' m';
     
 
     mainScene.emit(HUD_SHOW_JSON, jsonData);
@@ -229,7 +223,7 @@ function removeFlightElement(id) {
 }
 
 function getBoundingString() {
-    return OpenSkyModel.LAT_MIN + "," + OpenSkyModel.LONG_MIN + "," + OpenSkyModel.LAT_MAX + "," + OpenSkyModel.LONG_MAX;
+    return configuration.LAT_MIN + "," + configuration.LONG_MIN + "," + configuration.LAT_MAX + "," + configuration.LONG_MAX;
 }
 
 //Función para debugear el terreno calcula la coordenada 3D y pone una caja en cada vertice.

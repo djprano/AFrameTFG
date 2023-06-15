@@ -1,9 +1,9 @@
-import * as OpenSkyModel from "../configuration/openSkyModel.js";
+import * as configuration from "../configuration/configurationModel.js";
 
 class MapConversion {
     constructor() {
-        let longDispDegrees = (OpenSkyModel.LONG_MAX + OpenSkyModel.LONG_MIN) / 2;
-        let latDispDegrees = (OpenSkyModel.LAT_MAX + OpenSkyModel.LAT_MIN) / 2;
+        let longDispDegrees = (configuration.LONG_MAX + configuration.LONG_MIN) / 2;
+        let latDispDegrees = (configuration.LAT_MAX + configuration.LAT_MIN) / 2;
         this.displacement = this.degreeToMeter(latDispDegrees, longDispDegrees);
     }
     degreeToMeter(lat, long) {
@@ -17,18 +17,18 @@ class MapConversion {
     //Esta función comvierte una coordenada mercator a una coordenada en el mundo 3d
     //En el 3d tenemos conversiones de factor , desplazamiento y cambio de ejes.
     mercatorToWorld(mercatorVector) {
-        let xWorld = (mercatorVector.x - this.displacement.x) / OpenSkyModel.FACTOR;
-        let yWorld = (mercatorVector.z - this.displacement.y) / OpenSkyModel.FACTOR;
-        let altitudeWorld = mercatorVector.y == null ? 0 : mercatorVector.y / OpenSkyModel.FACTOR;
+        let xWorld = (mercatorVector.x - this.displacement.x) / configuration.FACTOR;
+        let yWorld = (mercatorVector.z - this.displacement.y) / configuration.FACTOR;
+        let altitudeWorld = mercatorVector.y == null ? 0 : mercatorVector.y / configuration.FACTOR;
 
         return { x: xWorld, y: altitudeWorld, z: -yWorld };
     }
 
     //Convierte los datos del mundo 3D a un vector en mercator en metros
     worldtoMercator(worldVector) {
-        let xMercator = (worldVector.x * OpenSkyModel.FACTOR) + this.displacement.x;
-        let yMercator = (-worldVector.z * OpenSkyModel.FACTOR) + this.displacement.y;
-        let altitude = worldVector.y * OpenSkyModel.FACTOR;
+        let xMercator = (worldVector.x * configuration.FACTOR) + this.displacement.x;
+        let yMercator = (-worldVector.z * configuration.FACTOR) + this.displacement.y;
+        let altitude = worldVector.y * configuration.FACTOR;
 
         return { x: xMercator, y: altitude, z: yMercator };
     }
@@ -63,7 +63,7 @@ class MapConversion {
 
     getGroundSize() {
 
-        let latlongMax = this.degreeToMeter(OpenSkyModel.LAT_MAX, OpenSkyModel.LONG_MAX);
+        let latlongMax = this.degreeToMeter(configuration.LAT_MAX, configuration.LONG_MAX);
         let sizeMeters = this.mercatorToWorld({ x: latlongMax.x, y: 0, z: latlongMax.y });
         return {
             width: Math.abs(sizeMeters.x * 2),

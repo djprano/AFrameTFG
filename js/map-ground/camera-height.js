@@ -1,5 +1,5 @@
 import heightManager from "./heightManager.js";
-import * as OpenSkyModel from "../configuration/openSkyModel.js";
+import * as configuration from "../configuration/configurationModel.js";
 import mapConversion from "../gis/mapConversion.js";
 
 /*****Constantes****/
@@ -8,9 +8,9 @@ const intervalTime = 200;
 AFRAME.registerComponent('terrain-height', {
     init: function () {
         this.mainScene = document.querySelector('a-scene');
-        this.personHeight = OpenSkyModel.CAM_HEIGHT;
+        this.personHeight = configuration.CAM_HEIGHT;
         this.loaded = false;
-        let initCamPosition = mapConversion.degreeToWorld(OpenSkyModel.INIT_CAM_POSITION.lat, OpenSkyModel.INIT_CAM_POSITION.long);
+        let initCamPosition = mapConversion.degreeToWorld(configuration.INIT_CAM_POSITION.lat, configuration.INIT_CAM_POSITION.long);
         heightManager.addTerrainLoadedListener(() => {
             // Establece una altura inicial para la cámara
             this.el.object3D.position.y = heightManager.getTerrainHeight(initCamPosition.x, initCamPosition.z) + this.personHeight;

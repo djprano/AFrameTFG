@@ -1,5 +1,5 @@
 import mapConversion from "../gis/mapConversion.js";
-import * as OpenSkyModel from "../configuration/openSkyModel.js";
+import * as configuration from "../configuration/configurationModel.js";
 
 class HeightManager {
 
@@ -59,8 +59,8 @@ class HeightManager {
         terrainEl.setAttribute('id', "terrain");
         let atributes = {
             wireframe: false,
-            map: 'url(data/' + OpenSkyModel.MAP_RASTER_FILE + ')',
-            dem: 'url(data/' + OpenSkyModel.MAP_DEM_FILE + ')',
+            map: 'url(data/' + configuration.MAP_RASTER_FILE + ')',
+            dem: 'url(data/' + configuration.MAP_DEM_FILE + ')',
             planeWidth: this.groundSize.width,
             planeHeight: this.groundSize.height,
             segmentsWidth: 199,
@@ -95,7 +95,7 @@ class HeightManager {
     createBuildings(heightData, groundSize, gridSize, zMagnification) {
 
         // createVertexDebug(heightData,gridSize,groundSize,zMagnification);
-        let dataUrl = new URL('../../data/' + OpenSkyModel.BUILDING_FILE_NAME + '.geojson', import.meta.url);
+        let dataUrl = new URL('../../data/' + configuration.BUILDING_FILE_NAME + '.geojson', import.meta.url);
 
         fetch(dataUrl)
             .then((response) => response.json())
@@ -141,7 +141,7 @@ class HeightManager {
                         } else {
                             height = levels != undefined ? levels * metersByLevel : 70;
                         }
-                        buildingProperties.height = height / OpenSkyModel.FACTOR;
+                        buildingProperties.height = height / configuration.FACTOR;
                         item.setAttribute("id", feature.id);
                         item.setAttribute("geometry", buildingProperties);
                         item.setAttribute("material", { color: '#88e9fd', roughness: 0.8, metalness: 0.5 });
