@@ -23,7 +23,7 @@ class AdsbDao {
         let user = configuration.apiUser
         let password = configuration.apiPassword;
         const credentials = user + ':' +  password;
-        return encodedCredentials = Buffer.from(credentials).toString('base64');
+        return btoa(credentials);
     }
 
     //Función recursiva para cargar todos los ficheros de manera sincrona y secuencial

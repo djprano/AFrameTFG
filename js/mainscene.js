@@ -11,14 +11,11 @@ var mainScene;
 var sky;
 var cam;
 var rig;
-var lastFlight;
 var hudEl;
 
 
-var contador = 0;
-
 /*****Constantes****/
-const intervalTime = 1000;
+const intervalTime = configuration.daoInterval;
 
 var adsbDao = new AdsbDao();
 
@@ -150,8 +147,6 @@ function updateData(data) {
             //Guardarmos el vuelo en la cache
             flightsCache.set(id, cacheData);
 
-            //salvamos la posición del último vuelo para mover la cámara
-            lastFlight = newPosition;
         });
 
     //Borrado de vuelos no actualizados para no dejar un avión congelado.
