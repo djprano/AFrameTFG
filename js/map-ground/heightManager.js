@@ -59,8 +59,8 @@ class HeightManager {
         terrainEl.setAttribute('id', "terrain");
         let atributes = {
             wireframe: false,
-            map: 'url(data/' + configuration.MAP_RASTER_FILE + ')',
-            dem: 'url(data/' + configuration.MAP_DEM_FILE + ')',
+            map: 'url(data/' + configuration.mapRasterFile + ')',
+            dem: 'url(data/' + configuration.mapDemFile + ')',
             planeWidth: this.groundSize.width,
             planeHeight: this.groundSize.height,
             segmentsWidth: 199,
@@ -95,7 +95,7 @@ class HeightManager {
     createBuildings(heightData, groundSize, gridSize, zMagnification) {
 
         // createVertexDebug(heightData,gridSize,groundSize,zMagnification);
-        let dataUrl = new URL('../../data/' + configuration.BUILDING_FILE_NAME + '.geojson', import.meta.url);
+        let dataUrl = new URL('../../data/' + configuration.buildingFileName + '.geojson', import.meta.url);
 
         fetch(dataUrl)
             .then((response) => response.json())

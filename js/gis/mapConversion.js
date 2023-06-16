@@ -2,8 +2,8 @@ import * as configuration from "../configuration/configurationModel.js";
 
 class MapConversion {
     constructor() {
-        let longDispDegrees = (configuration.LONG_MAX + configuration.LONG_MIN) / 2;
-        let latDispDegrees = (configuration.LAT_MAX + configuration.LAT_MIN) / 2;
+        let longDispDegrees = (configuration.longMax + configuration.longMin) / 2;
+        let latDispDegrees = (configuration.latMax + configuration.latMin) / 2;
         this.displacement = this.degreeToMeter(latDispDegrees, longDispDegrees);
     }
     degreeToMeter(lat, long) {
@@ -63,7 +63,7 @@ class MapConversion {
 
     getGroundSize() {
 
-        let latlongMax = this.degreeToMeter(configuration.LAT_MAX, configuration.LONG_MAX);
+        let latlongMax = this.degreeToMeter(configuration.latMax, configuration.longMax);
         let sizeMeters = this.mercatorToWorld({ x: latlongMax.x, y: 0, z: latlongMax.y });
         return {
             width: Math.abs(sizeMeters.x * 2),

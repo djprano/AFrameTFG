@@ -8,9 +8,9 @@ const intervalTime = 200;
 AFRAME.registerComponent('terrain-height', {
     init: function () {
         this.mainScene = document.querySelector('a-scene');
-        this.personHeight = configuration.CAM_HEIGHT;
+        this.personHeight = configuration.camHeight;
         this.loaded = false;
-        let initCamPosition = mapConversion.degreeToWorld(configuration.INIT_CAM_POSITION.lat, configuration.INIT_CAM_POSITION.long);
+        let initCamPosition = mapConversion.degreeToWorld(configuration.initCamPosition.lat, configuration.initCamPosition.long);
         heightManager.addTerrainLoadedListener(() => {
             // Establece una altura inicial para la cámara
             this.el.object3D.position.y = heightManager.getTerrainHeight(initCamPosition.x, initCamPosition.z) + this.personHeight;

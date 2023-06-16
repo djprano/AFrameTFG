@@ -34,7 +34,7 @@ AFRAME.registerComponent('main-scene', {
         rig = mainScene.querySelector('#rig');
         hudEl = mainScene.querySelector('#hud');
         //Cam position
-        let initCamPosition = mapConversion.degreeToWorld(configuration.INIT_CAM_POSITION.lat, configuration.INIT_CAM_POSITION.long);
+        let initCamPosition = mapConversion.degreeToWorld(configuration.initCamPosition.lat, configuration.initCamPosition.long);
         initCamPosition.y = 40;
 
         heightManager.createMapGround();
@@ -223,7 +223,7 @@ function removeFlightElement(id) {
 }
 
 function getBoundingString() {
-    return configuration.LAT_MIN + "," + configuration.LONG_MIN + "," + configuration.LAT_MAX + "," + configuration.LONG_MAX;
+    return configuration.latMin + "," + configuration.longMin + "," + configuration.latMax + "," + configuration.longMax;
 }
 
 //Función para debugear el terreno calcula la coordenada 3D y pone una caja en cada vertice.

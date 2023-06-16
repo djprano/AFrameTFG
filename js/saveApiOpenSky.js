@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as OpenSkyModel from "./configuration/openSkyModel.js";
+import * as configuration from "./configuration/configurationModel.js";
 
 var user = 'xxxxxx';
 var password = 'xxxxx';
@@ -12,7 +12,7 @@ var pathReference;
 
 export function main(){
     pathReference = 'C:\\Users\\djpra\\Documentos\\workspaceTFG\\AFrameTest\\openSkyData'+saveFolder+'\\';
-    var endpoint = 'https://opensky-network.org/api/states/all?lamin='+OpenSkyModel.LAT_MIN+'&lomin='+OpenSkyModel.LONG_MIN+'&lamax='+OpenSkyModel.LAT_MAX+'&lomax='+OpenSkyModel.LONG_MAX;
+    var endpoint = 'https://opensky-network.org/api/states/all?lamin='+configuration.latMin+'&lomin='+configuration.longMin+'&lamax='+configuration.latMax+'&lomax='+configuration.longMax;
     setInterval(() => {
         fetch(endpoint, {
             method: 'GET',
