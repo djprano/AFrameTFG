@@ -39,9 +39,22 @@ export const scale = SIMBOL_MAGNIFICATION / FACTOR;
 export const scaleText = SIMBOL_MAGNIFICATION_TEXT / FACTOR;
 
 //********************Credenciales para la API */
+// usuario para la API remota.
 export var apiUser;
 
+// contraseña para la API remota.
 export var apiPassword;
+
+//********************Credenciales para la DAO */
+
+//Establece el comportamiento local o tiempo real contra una API
+export var isLocalApiMode = true;
+
+//Etablece el intervalo de actualización de los datos en ms.
+export var daoInterval = 1000;
+
+//Establece el indice inicial para la obtención de datos locales.
+export var daoLocalIndex = 0; 
 
 //MER(Minimun Enclosing Rectangle) en grados del escenario.
 
@@ -61,12 +74,6 @@ export var buildingFileName;
 
 //Carpeta de datos de vuelos
 export var flightLocalFolder;
-
-//Establece el comportamiento local o tiempo real contra una API
-export var isLocalApiMode = true;
-
-//Etablece el intervalo de actualización de los datos en ms.
-export var daoInterval = 1000;
 
 //fichero con la capa raster del terreno.
 export var mapRasterFile;
@@ -116,10 +123,15 @@ export function setDaoInterval(interval){
     daoInterval = interval;
 }
 
+export function setDaoLocalIndex(index){
+    daoLocalIndex = index;
+}
+
 export function setApiUsuer(user){
     apiUser = user;
 }
 
 export function setApiPassword(password){
     apiPassword = password;
+
 }

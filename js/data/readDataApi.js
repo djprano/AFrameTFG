@@ -6,9 +6,8 @@ class AdsbDao {
     constructor() {
         this.fn = 'response';
         this.pathReference = '../../flightData' + configuration.flightLocalFolder + '//';
-        this.length = 333;
         this.isLoaded = false;
-        this.index = 70;
+        this.index = configuration.daoLocalIndex;
         this.endpoint = 'https://opensky-network.org/api/states/all?lamin=' + configuration.latMin + '&lomin=' + configuration.longMin + '&lamax=' + configuration.latMax + '&lomax=' + configuration.longMax;
     }
 
