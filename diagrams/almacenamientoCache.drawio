@@ -1,9 +1,58 @@
-<mxfile host="app.diagrams.net" modified="2023-06-17T19:13:04.299Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" version="21.4.0" etag="aZdhYIDsUX4QXQe2-kXZ" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-17T19:17:45.347Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="KGNlIpil_Ivznx6pmdrX" version="21.4.0" type="github">
   <diagram name="Página-1" id="YWC-5kBf5ZloTJJkoGqU">
-    <mxGraphModel>
+    <mxGraphModel dx="989" dy="639" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="PHEo8A413NsqijlnCYZb-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="308.18" y="344" width="210" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3D8BCD;arcSize=9;strokeColor=#004C99;" vertex="1" parent="PHEo8A413NsqijlnCYZb-1">
+          <mxGeometry width="210" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-3" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;flightData_folder&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=14;fontFamily=Courier New;" vertex="1" parent="PHEo8A413NsqijlnCYZb-1">
+          <mxGeometry x="77.44346456692912" y="213.33234567901232" width="55.118110236220474" height="19.753086419753085" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-4" value="" style="group" vertex="1" connectable="0" parent="PHEo8A413NsqijlnCYZb-1">
+          <mxGeometry x="75" y="10" width="60" height="176.26" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-5" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;1&lt;/font&gt;" style="dashed=0;outlineConnect=0;html=1;align=right;labelPosition=left;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.weblogos.json;fontFamily=Helvetica;fontSize=11;fontColor=default;fontStyle=1;labelBackgroundColor=none;labelBorderColor=none;spacing=5;" vertex="1" parent="PHEo8A413NsqijlnCYZb-4">
+          <mxGeometry x="14.009999999999991" width="36.86" height="37.63" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-6" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;2&lt;/span&gt;" style="dashed=0;outlineConnect=0;html=1;align=right;labelPosition=left;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.weblogos.json;fontFamily=Helvetica;fontSize=12;fontColor=default;fontStyle=1;labelBackgroundColor=none;labelBorderColor=none;spacing=5;" vertex="1" parent="PHEo8A413NsqijlnCYZb-4">
+          <mxGeometry x="14.009999999999991" y="40" width="36.86" height="37.63" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-7" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;3&lt;/span&gt;" style="dashed=0;outlineConnect=0;html=1;align=right;labelPosition=left;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.weblogos.json;fontFamily=Helvetica;fontSize=12;fontColor=default;fontStyle=1;labelBackgroundColor=none;labelBorderColor=none;spacing=5;" vertex="1" parent="PHEo8A413NsqijlnCYZb-4">
+          <mxGeometry x="14.009999999999991" y="80" width="36.86" height="37.63" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-8" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;N&lt;/span&gt;" style="dashed=0;outlineConnect=0;html=1;align=right;labelPosition=left;verticalLabelPosition=middle;verticalAlign=middle;shape=mxgraph.weblogos.json;fontFamily=Helvetica;fontSize=12;fontColor=default;fontStyle=1;labelBackgroundColor=none;labelBorderColor=none;spacing=5;" vertex="1" parent="PHEo8A413NsqijlnCYZb-4">
+          <mxGeometry x="14.009999999999991" y="138.63" width="36.86" height="37.63" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-9" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;...&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;horizontal=0;fontFamily=Georgia;fontStyle=1;spacingTop=0;fontSize=19;" vertex="1" parent="PHEo8A413NsqijlnCYZb-4">
+          <mxGeometry y="113.63" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-10" value="datos geodésicos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PHEo8A413NsqijlnCYZb-13" target="PHEo8A413NsqijlnCYZb-17">
+          <mxGeometry x="-0.4141" y="11" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-12" value="petición" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="PHEo8A413NsqijlnCYZb-13" target="PHEo8A413NsqijlnCYZb-18">
+          <mxGeometry x="0.3637" y="-27" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-34" value="almacenamiento en formato JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PHEo8A413NsqijlnCYZb-13" target="PHEo8A413NsqijlnCYZb-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-13" value="saveApiOpenSky.js" style="whiteSpace=wrap;html=1;align=center;fillColor=#FFC957;strokeColor=#FFAD00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="330" y="250" width="166.35" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-17" value="configurationModel.js" style="whiteSpace=wrap;html=1;align=center;fillColor=#FFC957;strokeColor=#FFAD00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="161.65" y="180" width="146.35" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="PHEo8A413NsqijlnCYZb-18" value="&lt;h1 style=&quot;box-sizing: border-box; margin-top: 0px; font-family: &amp;quot;Roboto Slab&amp;quot;, ff-tisa-web-pro, Georgia, Arial, sans-serif; font-size: 11px; margin-bottom: 24px; color: rgb(64, 64, 64); text-align: start;&quot;&gt;OpenSky REST API&lt;/h1&gt;" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];verticalLabelPosition=top;align=center;verticalAlign=bottom;shape=mxgraph.kubernetes.icon;prIcon=api;fontSize=11;labelBackgroundColor=none;labelPosition=center;spacingBottom=-25;" vertex="1" parent="1">
+          <mxGeometry x="358.18" y="40" width="110" height="78" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
