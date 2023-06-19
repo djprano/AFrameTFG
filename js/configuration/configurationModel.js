@@ -84,6 +84,9 @@ export var mapDemFile;
 //Altura de la cámara al terreno en unidades 3D;
 export var camHeight = 2;
 
+//Altura en la que empiza a tenerse en cuenta el relieve del suelo para el cálculo de la altura del avión.
+export var heightThresholdToLand = 150;
+
 export function setMerConfig(latmin, latmax, longmin, longmax) {
     latMin = latmin;
     latMax = latmax;

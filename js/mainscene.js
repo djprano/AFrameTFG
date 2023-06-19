@@ -59,8 +59,11 @@ function flightVectorExtractor(flight) {
     //convertimos a un vector en el mundo 3D
     let resultVector = mapConversion.mercatorToWorld(mercatorVector);
     //obetenemos la altura sobre el terreno
-    let terrainHeight = heightManager.getTerrainHeight(resultVector.x,resultVector.z);
-    resultVector.y = terrainHeight + (flight[configuration.ALTITUDE]/configuration.FACTOR);
+    let terrainHeight = heightManager.getTerrainHeight(resultVector.x, resultVector.z);
+    //Calculamos la altura en el mundo 3D y si está por debajo del umbral de aterrizar le sumamos la altura del terreno si no el promedio de alturas.
+    const flightHeight = flight[configuration.ALTITUDE] / configuration.FACTOR;
+    let toLandCondition = (flight[configuration.ALTITUDE] < configuration.heightThresholdToLand) || (flight[configuration.ALTITUDE] == undefined) || (flight[configuration.ALTITUDE] == null);
+    resultVector.y = toLandCondition ?  terrainHeight + flightHeight : heightManager.getAverageHeight() + flightHeight;
     return resultVector;
 }
 
@@ -119,7 +122,7 @@ function updateData(data) {
                 //Generamos el elemento gltf-model de vuelo y el objeto wrapper que contiene la información del vuelo
                 // y las posiciones en el mundo 3d para la animación.
                 entityEl = createFlightElement(id);
-                cacheData = new CacheData.FlightCacheData(id, flight,mainScene);
+                cacheData = new CacheData.FlightCacheData(id, flight, mainScene);
             }
 
             cacheData.newPosition = newPosition;
@@ -185,7 +188,7 @@ function handleMouseClick(evt) {
     const flightEl = evt.currentTarget;
     // Crear un json con los datos del vuelo.
     let flightCacheData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE));
-    flightEl.object3D.userData.points = flightCacheData.points ;
+    flightEl.object3D.userData.points = flightCacheData.points;
     mainScene.emit(HUD_SHOW_JSON, flightCacheData.getJsonData());
     mainScene.emit(HUD_OBJECT_SELECTED, flightEl);
 }

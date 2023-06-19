@@ -78,11 +78,31 @@ class HeightManager {
             this.mesh = evt.target.components['terrain-model'].mesh;
             this.createBuildings(this.heightData, mapConversion.getGroundSize(), this.gridSize, atributes.zPosition);
             this.terrainListeners.forEach(listener => listener());
+            //calculamos la media de todas las alturas
+            this.calculateAverageHeight();
         });
 
         //ajuste de la esfera de cielo
         let skyEl = document.getElementById("sky");
         skyEl.setAttribute("radius", Math.min(this.groundSize.width, this.groundSize.height) / 2);
+    }
+
+    /**
+     * Calcula el promedio ded alturas evitando desbordamientos.
+     */
+    calculateAverageHeight(){
+        this.average = 0;
+        for (let i = 0; i < this.heightData.length; i++) {
+            this.average += (this.indexToHeight(i) - this.average) / (i + 1);
+        }
+    }
+
+    /**
+     * Responsable de devolver el dato del promedio de todas las alturas precalculado.
+     * @returns La media de la altura precalculada.
+     */
+    getAverageHeight(){
+        return this.average;
     }
 
     /**
