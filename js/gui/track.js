@@ -34,6 +34,8 @@ AFRAME.registerComponent("track", {
         geometry.userData = { points: this.data.points };
     },
     clear: function () {
-        this.el.parentNode.removeChild(this.el);
+        if(this.el.parentNode != null && this.el.parentNode != undefined){
+            this.el.parentNode.removeChild(this.el);
+        }
     }
 });

@@ -35,8 +35,15 @@ AFRAME.registerComponent('main-scene', {
         initCamPosition.y = 40;
 
         heightManager.createMapGround();
-        // Set up throttling.
-        this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
+        // Establecemos la función de intervalo cuando se carga el terreno y la inicializamos a vacio para no provocar condiciones de carrera.
+        this.throttledFunction = ()=>{
+            //Nothing
+        };
+        // Cuando se cargue el terreno establecemos la correcta.
+        heightManager.addTerrainLoadedListener(() => {
+            this.throttledFunction = AFRAME.utils.throttle(this.invertalEvent, intervalTime, this);
+        });
+        
         rig.setAttribute('position', initCamPosition);
     },
 
@@ -84,7 +91,11 @@ function createElementText(flight) {
 
 //Funcion que actualiza los elementos de la escena.
 function updateData(data) {
-    if (data == null || data == undefined) return;
+    //Controlamos que no se consuman datos erroneos.
+    if (data == null || data == undefined || data.states == null || data.states == undefined){
+        console.log("dato de la API erroneo: " + JSON.stringify(data));
+        return;
+    }
     //creamos un set con los id que vamos a generar en esta actualización para mantenimiento de aviones, 
     //todos los no actualizados se borran
     let updateFlights = new Set();
