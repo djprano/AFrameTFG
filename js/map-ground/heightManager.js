@@ -88,7 +88,7 @@ class HeightManager {
     }
 
     /**
-     * Calcula el promedio ded alturas evitando desbordamientos.
+     * Calcula el promedio ded evitando desbordamientos.
      */
     calculateAverageHeight(){
         this.average = 0;
@@ -165,7 +165,8 @@ class HeightManager {
                         item.setAttribute("id", feature.id);
                         item.setAttribute("geometry", buildingProperties);
                         item.setAttribute("material", { color: '#88e9fd', roughness: 0.8, metalness: 0.5 });
-                        let infoValue = feature.properties.source;
+                        //Convertimos las propiedades del edificio en un string formateado.
+                        let infoValue = JSON.stringify(feature.properties, null, 2).slice(2,-2);
                         if (infoValue != null && infoValue != undefined) {
                             item.setAttribute('tooltip-info', { info: infoValue });
                             item.setAttribute('class', "clickable");

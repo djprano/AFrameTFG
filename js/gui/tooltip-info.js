@@ -17,7 +17,7 @@ AFRAME.registerComponent('tooltip-info', {
 
         // Inicializamos la posición del texto
         const box = new THREE.Box3().setFromObject(this.el.object3D);
-        let highestPoint = box.max.y + 0.5;
+        let highestPoint = box.max.y + 1;
         const position = new THREE.Vector3();
         box.getCenter(position);
         position.y = highestPoint;
