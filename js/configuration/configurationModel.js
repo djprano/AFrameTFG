@@ -7,10 +7,10 @@ export const ID = 0;
 export const NAME = 1;
 
 //Pais de origen
-export const  ORIGIN_COUNTRY = 2;
+export const ORIGIN_COUNTRY = 2;
 
 //Pais de origen
-export const  VELOCITY = 9;
+export const VELOCITY = 9;
 
 //Coordenada longitud
 export const LONG = 5;
@@ -30,7 +30,7 @@ export const TRUE_TRACK = 10;
 export const FACTOR = 100;
 
 //Constante de creacimiento del simbolo
-const SIMBOL_MAGNIFICATION = 4;
+const SIMBOL_MAGNIFICATION = 3;
 
 const SIMBOL_MAGNIFICATION_TEXT = 500;
 
@@ -54,7 +54,7 @@ export var isLocalApiMode = true;
 export var daoInterval = 1000;
 
 //Establece el indice inicial para la obtención de datos locales.
-export var daoLocalIndex = 0; 
+export var daoLocalIndex = 0;
 
 //MER(Minimun Enclosing Rectangle) en grados del escenario.
 
@@ -84,54 +84,54 @@ export var mapDemFile;
 //Altura de la cámara al terreno en unidades 3D;
 export var camHeight = 2;
 
-export function setMerConfig(latmin,latmax,longmin,longmax){
+export function setMerConfig(latmin, latmax, longmin, longmax) {
     latMin = latmin;
     latMax = latmax;
     longMin = longmin;
     longMax = longmax;
 }
 
-export function setCamPosition(lat,long){
-    initCamPosition = {lat:lat,long:long};
+export function setCamPosition(lat, long) {
+    initCamPosition = { lat: lat, long: long };
 }
 
-export function setBuildingFileName(filename){
+export function setBuildingFileName(filename) {
     buildingFileName = filename;
 }
 
-export function setFlightLocalFolder(folder){
+export function setFlightLocalFolder(folder) {
     flightLocalFolder = folder;
 }
 
-export function setMapRaster(rasterFile){
+export function setMapRaster(rasterFile) {
     mapRasterFile = rasterFile;
 }
 
-export function setMapDem(demFile){
+export function setMapDem(demFile) {
     mapDemFile = demFile;
 }
 
-export function setCamHeight(height){
+export function setCamHeight(height) {
     camHeight = height;
 }
 
-export function setLocalApiMode(mode){
+export function setLocalApiMode(mode) {
     isLocalApiMode = mode;
 }
 
-export function setDaoInterval(interval){
+export function setDaoInterval(interval) {
     daoInterval = interval;
 }
 
-export function setDaoLocalIndex(index){
+export function setDaoLocalIndex(index) {
     daoLocalIndex = index;
 }
 
-export function setApiUsuer(user){
+export function setApiUsuer(user) {
     apiUser = user;
 }
 
-export function setApiPassword(password){
+export function setApiPassword(password) {
     apiPassword = password;
 
 }

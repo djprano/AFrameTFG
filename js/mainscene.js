@@ -51,14 +51,17 @@ AFRAME.registerComponent('main-scene', {
 }
 );
 
-
-
 //Extrae una coordenada 3D con sus conversiones afines de los datos de un vuelo.
 function flightVectorExtractor(flight) {
-
+    //obtenemos coordenadas geodesicas y las proyectamos.
     let latlong = mapConversion.degreeToMeter(flight[configuration.LAT], flight[configuration.LONG]);
-    let mercatorVector = { x: latlong.x, y: flight[configuration.ALTITUDE], z: latlong.y };
-    return mapConversion.mercatorToWorld(mercatorVector);
+    let mercatorVector = { x: latlong.x, y: 0, z: latlong.y };
+    //convertimos a un vector en el mundo 3D
+    let resultVector = mapConversion.mercatorToWorld(mercatorVector);
+    //obetenemos la altura sobre el terreno
+    let terrainHeight = heightManager.getTerrainHeight(resultVector.x,resultVector.z);
+    resultVector.y = terrainHeight + (flight[configuration.ALTITUDE]/configuration.FACTOR);
+    return resultVector;
 }
 
 //Crea el texto encima del avión.
@@ -110,6 +113,7 @@ function updateData(data) {
                 entityEl = document.getElementById(id);
 
                 cacheData = flightsCache.get(id);
+                cacheData.data = flight;
                 cacheData.backupData();//mueve los datos de las variables new a las variables last
             } else {
                 //Generamos el elemento gltf-model de vuelo y el objeto wrapper que contiene la información del vuelo
@@ -161,8 +165,7 @@ function createFlightElement(id) {
     entityEl.setAttribute('gltf-model', "#plane");
     entityEl.setAttribute('class', "clickable");
     entityEl.setAttribute('scale', { x: configuration.scale, y: configuration.scale, z: configuration.scale });
-    entityEl.setAttribute('hover-scale', 'maxScale: 10; maxDistance: 10000');
-
+    entityEl.setAttribute('hover-scale', 'limitDistance: 50');
     entityEl.addEventListener('mouseenter', evt => handleMouseEnter(evt));
     entityEl.addEventListener('click', evt => handleMouseClick(evt));
     entityEl.addEventListener('mouseleave', evt => handleMouseLeave(evt));
@@ -182,17 +185,8 @@ function handleMouseClick(evt) {
     const flightEl = evt.currentTarget;
     // Crear un json con los datos del vuelo.
     let flightCacheData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE));
-    let flightData = flightCacheData.data;
     flightEl.object3D.userData.points = flightCacheData.points ;
-    let jsonData = {};
-    jsonData["Name"] = flightData[configuration.NAME];
-    jsonData["ID"] = flightData[configuration.ID];
-    jsonData["Origin"] = flightData[configuration.ORIGIN_COUNTRY];
-    jsonData["Velocity"] = flightData[configuration.VELOCITY]+' m/s';
-    jsonData["Altitude"] = flightData[configuration.ALTITUDE]+' m';
-    
-
-    mainScene.emit(HUD_SHOW_JSON, jsonData);
+    mainScene.emit(HUD_SHOW_JSON, flightCacheData.getJsonData());
     mainScene.emit(HUD_OBJECT_SELECTED, flightEl);
 }
 

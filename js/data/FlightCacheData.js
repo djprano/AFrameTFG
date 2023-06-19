@@ -1,3 +1,4 @@
+import * as configuration from "../configuration/configurationModel.js";
 //Clase wrapper que contiene la información de la posición anterior y la nueva posicón y será almacenado en la cache.
 
 export class FlightCacheData {
@@ -42,6 +43,11 @@ export class FlightCacheData {
         this._newRotation = rotation;
     }
 
+    set data(data){
+        this._data = data;
+        this.mainScene.emit('flightCacheData_setData_'+this._id,this.getJsonData());
+    }
+
     get data(){
         return this._data;
     }
@@ -60,5 +66,15 @@ export class FlightCacheData {
         }
         this.lastPosition = this.newPosition;
         this.lastRotation = this.newRotation;
+    }
+
+    getJsonData() {
+        let jsonData = {};
+        jsonData["Name"] = this._data[configuration.NAME];
+        jsonData["ID"] = this._data[configuration.ID];
+        jsonData["Origin"] = this._data[configuration.ORIGIN_COUNTRY];
+        jsonData["Velocity"] = this._data[configuration.VELOCITY] + ' m/s';
+        jsonData["Altitude"] = this._data[configuration.ALTITUDE] + ' m';
+        return jsonData;
     }
 }

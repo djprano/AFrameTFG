@@ -2,36 +2,37 @@ import * as fs from 'fs';
 import * as configuration from "./configuration/configurationModel.js";
 
 var user = 'xxxxxx';
-var password = 'xxxxx';
+var password = 'xxxxxxx';
 var fn = 'response';
-var saveFolder;
+var saveFolder = 'madrid2';
 var index = 0;
 var pathReference;
+var interval = 5100;
 
 
 
-export function main(){
-    pathReference = 'C:\\Users\\djpra\\Documentos\\workspaceTFG\\AFrameTest\\openSkyData'+saveFolder+'\\';
-    var endpoint = 'https://opensky-network.org/api/states/all?lamin='+configuration.latMin+'&lomin='+configuration.longMin+'&lamax='+configuration.latMax+'&lomax='+configuration.longMax;
+export function main() {
+    pathReference = 'C:\\Users\\djpra\\Documentos\\workspaceTFG\\AFrameTest\\flightData_' + saveFolder + '\\';
+    var endpoint = 'https://opensky-network.org/api/states/all?lamin=' + configuration.latMin + '&lomin=' + configuration.longMin + '&lamax=' + configuration.latMax + '&lomax=' + configuration.longMax;
     setInterval(() => {
         fetch(endpoint, {
             method: 'GET',
-            headers: { 'Authorization': 'Basic ' + btoa(user + ':' + password) }
+            headers: { 'Authorization': 'Basic ' + Buffer.from(user + ':' + password, 'base64') }
         }).then(response => response.json()).then(json => {
-            if(json != undefined && json != null && !isEmptyObject(json)){
+            if (json != undefined && json != null && !isEmptyObject(json)) {
                 saveJson(json, index++);
-            }        
+            }
         });
-    }, 5500);
+    }, interval);
 }
 
-export function saveJson(jsonData,iteration){
+export function saveJson(jsonData, iteration) {
 
     if (!fs.existsSync(pathReference)) {
         fs.mkdirSync(pathReference);
     }
-    console.log("saving the iteration "+iteration);
-    fs.writeFile(pathReference+fn+iteration+'.json', JSON.stringify(jsonData),'utf8', function(err) {
+    console.log("saving the iteration " + iteration);
+    fs.writeFile(pathReference + fn + iteration + '.json', JSON.stringify(jsonData), 'utf8', function (err) {
         if (err) {
             console.log(err);
         }
@@ -46,11 +47,11 @@ function isEmptyObject(obj) {
     return true;
 }
 
-export function setUser(u){
+export function setUser(u) {
     user = u;
 }
 
-export function setPassword(p){
+export function setPassword(p) {
     password = p;
 }
 

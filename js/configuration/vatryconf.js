@@ -10,4 +10,4 @@ configuration.setLocalApiMode(true);
 configuration.setDaoInterval(1000);
 configuration.setDaoLocalIndex(70);
 configuration.setApiUsuer('xxxx');
-configuration.setApiPassword('xxxx');
+configuration.setApiPassword('xxxxx');

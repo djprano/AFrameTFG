@@ -145,8 +145,18 @@ AFRAME.registerComponent('hud', {
     this.triangle.setAttribute('scale', '20 20 1');
     this.triangle.setAttribute('rotation', '0 -180 0');
     this.triangle.setAttribute('look-at', '#camera');
-  }
-  ,
+  },
+  addUpdateEventListener: function (id) {
+    this.updateEventListenerName = 'flightCacheData_setData_' + id;
+    this.updateEventListenerFuction = newData =>{
+
+      this.showData(this.json2TextComponent(newData.detail))
+    };
+    this.sceneEl.addEventListener(this.updateEventListenerName, this.updateEventListenerFuction);
+  },
+  removeUpdateEventListener: function () {
+    this.sceneEl.removeEventListener(this.updateEventListenerName, this.updateEventListenerFuction);
+  },
   /**
    * Evento para señalar el elemento data con una geometría que indique que está señalado.
    * @param {HTMLElement} data elemento seleccionado del que vamos a mostrar la información en el hud.
@@ -157,7 +167,11 @@ AFRAME.registerComponent('hud', {
 
     if (this.objSelected != undefined && this.objSelected != null) {
       this.objSelected.removeChild(this.ring);
+      this.removeUpdateEventListener();
     }
+    //Añadimos el listener de eventos de actualización de datos del hud
+    const id = data.getAttribute('id');
+    this.addUpdateEventListener(id);
     //creamos el anillo de selección.
     this.createRing();
     data.appendChild(this.ring);
@@ -166,7 +180,7 @@ AFRAME.registerComponent('hud', {
     trackEntity.setAttribute('id', 'track');
     trackEntity.setAttribute('track', {
       points: data.object3D.userData.points,
-      id: data.getAttribute('id')
+      id: id
     });
     this.sceneEl.appendChild(trackEntity);
     this.objSelected = data;
@@ -189,19 +203,16 @@ AFRAME.registerComponent('hud', {
     //Comprobamos que está habilitado el hud.
     if (this.disable) return;
     data.removeChild(this.triangle);
-  }
-  ,
+  },
   disableHud: function () {
     if (this.showed) {
       this.hideData();
     }
     this.disable = true;
-  }
-  ,
+  },
   enableHud: function () {
     this.disable = false;
-  }
-  ,
+  },
   showData: function (data) {
     //Comprobamos que está habilitado el hud.
     if (this.disable) return;
@@ -240,7 +251,8 @@ AFRAME.registerComponent('hud', {
         //ocultamos el track
         this.trackButtonEl.emit('click', null);
       }
-    this.objSelected.removeChild(this.ring);
+      this.objSelected.removeChild(this.ring);
+      this.removeUpdateEventListener();
       this.objSelected = null;
     }
     this.showed = false;
