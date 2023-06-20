@@ -29,6 +29,9 @@ export const TRUE_TRACK = 10;
 //Constante de escalado en metros, se usa para no tener distancias en metros si no que en un factor representado por estas constante.
 export const FACTOR = 100;
 
+//Constante de escalado para la altura, para comprimir las distancias.
+export const HIGHT_FACTOR = 60;
+
 //Constante de creacimiento del simbolo
 const SIMBOL_MAGNIFICATION = 3;
 

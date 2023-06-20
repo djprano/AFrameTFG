@@ -68,7 +68,7 @@ function flightVectorExtractor(flight) {
     //obetenemos la altura sobre el terreno
     let terrainHeight = heightManager.getTerrainHeight(resultVector.x, resultVector.z);
     //Calculamos la altura en el mundo 3D y si está por debajo del umbral de aterrizar le sumamos la altura del terreno si no el promedio de alturas.
-    const flightHeight = flight[configuration.ALTITUDE] / configuration.FACTOR;
+    const flightHeight = flight[configuration.ALTITUDE] / configuration.HIGHT_FACTOR;
     let toLandCondition = (flight[configuration.ALTITUDE] < configuration.heightThresholdToLand) || (flight[configuration.ALTITUDE] == undefined) || (flight[configuration.ALTITUDE] == null);
     resultVector.y = toLandCondition ?  terrainHeight + flightHeight : heightManager.getAverageHeight() + flightHeight;
     return resultVector;
@@ -179,7 +179,7 @@ function createFlightElement(id) {
     entityEl.setAttribute('gltf-model', "#plane");
     entityEl.setAttribute('class', "clickable");
     entityEl.setAttribute('scale', { x: configuration.scale, y: configuration.scale, z: configuration.scale });
-    entityEl.setAttribute('hover-scale', 'limitDistance: 50');
+    entityEl.setAttribute('hover-scale', 'limitDistance: 100');
     entityEl.addEventListener('mouseenter', evt => handleMouseEnter(evt));
     entityEl.addEventListener('click', evt => handleMouseClick(evt));
     entityEl.addEventListener('mouseleave', evt => handleMouseLeave(evt));
