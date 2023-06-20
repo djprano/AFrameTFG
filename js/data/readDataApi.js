@@ -9,6 +9,7 @@ class AdsbDao {
         this.isLoaded = false;
         this.index = configuration.daoLocalIndex;
         this.endpoint = 'https://opensky-network.org/api/states/all?lamin=' + configuration.latMin + '&lomin=' + configuration.longMin + '&lamax=' + configuration.latMax + '&lomax=' + configuration.longMax;
+        this.setCredentials();
     }
 
     getJsonData() {
@@ -18,11 +19,15 @@ class AdsbDao {
         return promise;
     }
 
-    getCredentials() {
+    setCredentials() {
         let user = configuration.apiUser
         let password = configuration.apiPassword;
         const credentials = user + ':' +  password;
-        return btoa(credentials);
+        this.credentials =  btoa(credentials);
+    }
+
+    getCredentials(){
+        return this.credentials;
     }
 
     //Función recursiva para cargar todos los ficheros de manera sincrona y secuencial
