@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-25T08:43:22.568Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="JGQsfpogwjCAbG1C0526" version="21.5.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-25T08:43:39.018Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="AanRazP6y3nLxmhH1kcY" version="21.5.0" type="github">
   <diagram name="Página-1" id="T-tX-E0WFME_v2_7o-ng">
     <mxGraphModel dx="1434" dy="869" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -83,7 +83,7 @@
         <mxCell id="I3Zqn_K7sR82rEAsZfhw-21" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Sprint 2&lt;br&gt;Gestión del terreno y edificios.&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;align=center;fillColor=#A0B7F6;strokeColor=#658BF3;fontStyle=1;spacingRight=0;fontFamily=Verdana;" vertex="1" parent="1">
           <mxGeometry x="361" y="210" width="186" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="I3Zqn_K7sR82rEAsZfhw-22" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Sprint 3&lt;br&gt;Interfaz gráfica modo VR&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;align=center;fillColor=#A0B7F6;strokeColor=#658BF3;fontStyle=1;spacingRight=0;fontFamily=Verdana;" vertex="1" parent="1">
+        <mxCell id="I3Zqn_K7sR82rEAsZfhw-22" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Sprint 3&lt;br&gt;Interfaz gráfica y modo VR&lt;br&gt;&lt;/font&gt;" style="whiteSpace=wrap;html=1;align=center;fillColor=#A0B7F6;strokeColor=#658BF3;fontStyle=1;spacingRight=0;fontFamily=Verdana;" vertex="1" parent="1">
           <mxGeometry x="547" y="280" width="196" height="60" as="geometry" />
         </mxCell>
       </root>
