@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{import}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k+kr}{as}\PYG{+w}{ }\PYG{n+nx}{configuration}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}./configurationModel.js\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{c+c1}{//Establece las coordenadas geodésicas del escenario (latmin, latmax, longmin, longmax).}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMerConfig}\PYG{p}{(}\PYG{l+m+mf}{40.0234170}\PYG{p}{,}\PYG{l+m+mf}{40.7441446}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{4.2041338}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.2538165}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setCamPosition}\PYG{p}{(}\PYG{l+m+mf}{40.50}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.54}\PYG{p}{);}\PYG{c+c1}{//posición de la cámara.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setBuildingFileName}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}madrid\PYGZus{}building\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//carpeta de edificios.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setFlightLocalFolder}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZus{}madrid\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//carpeta caché de vuelos.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMapRaster}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Madrid\PYGZus{}raster.jpg\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//fichero raster del terreno}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMapDem}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}madrid\PYGZus{}dem.bin\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//fichero de alturas del terreno}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setLocalApiMode}\PYG{p}{(}\PYG{k+kc}{true}\PYG{p}{);}\PYG{c+c1}{//establece el modo offline datos cacheados.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoInterval}\PYG{p}{(}\PYG{l+m+mf}{1000}\PYG{p}{);}\PYG{c+c1}{//intervalo de refresco.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoLocalIndex}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{);}\PYG{c+c1}{//indice del fichero por donde comienza.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setApiUsuer}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}xxxx\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//Establece el usuario para el modo online}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setApiPassword}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}xxxxx\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//Establece la contraseña para el modo online}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{degreeToMeter}\PYG{p}{(}\PYG{n+nx}{lat}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kr}{long}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{latlng}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{latLng}\PYG{p}{(}\PYG{n+nx}{lat}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kr}{long}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{Projection}\PYG{p}{.}\PYG{n+nx}{Mercator}\PYG{p}{.}\PYG{n+nx}{project}\PYG{p}{(}\PYG{n+nx}{latlng}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

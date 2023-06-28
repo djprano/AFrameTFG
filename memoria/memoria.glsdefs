@@ -1,0 +1,196 @@
+\glsdefs@newdocentry{3D}%
+{%
+name={3D},%
+sort={3D},%
+type={main},%
+first={3D},%
+firstplural={3Ds},%
+text={3D},%
+plural={3Ds},%
+description={ Se refiere a la representación tridimensional de objetos o entornos en un espacio virtual. En el contexto de gráficos y visualización, el término 3D se utiliza para describir la capacidad de representar objetos con altura, anchura y profundidad, añadiendo así una dimensión adicional a la imagen o escena. },%
+descriptionplural={ Se refiere a la representación tridimensional de objetos o entornos en un espacio virtual. En el contexto de gráficos y visualización, el término 3D se utiliza para describir la capacidad de representar objetos con altura, anchura y profundidad, añadiendo así una dimensión adicional a la imagen o escena. },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{API}%
+{%
+name={API},%
+sort={API},%
+type={main},%
+first={API},%
+firstplural={APIs},%
+text={API},%
+plural={APIs},%
+description={ Siglas de ''Application Programming Interface'' (Interfaz de Programación de Aplicaciones). Se refiere a un conjunto de reglas y protocolos que permiten la comunicación y la interacción entre diferentes software o componentes de un sistema. Una API define las formas en que los programas pueden solicitar servicios o funcionalidades de otro software y cómo pueden intercambiar datos entre sí },%
+descriptionplural={ Siglas de ''Application Programming Interface'' (Interfaz de Programación de Aplicaciones). Se refiere a un conjunto de reglas y protocolos que permiten la comunicación y la interacción entre diferentes software o componentes de un sistema. Una API define las formas en que los programas pueden solicitar servicios o funcionalidades de otro software y cómo pueden intercambiar datos entre sí },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{framework}%
+{%
+name={Framework},%
+sort={Framework},%
+type={main},%
+first={Framework},%
+firstplural={Frameworks},%
+text={Framework},%
+plural={Frameworks},%
+description={ Conjunto estructurado de herramientas, bibliotecas, componentes y estándares que proporciona una base para el desarrollo de software },%
+descriptionplural={ Conjunto estructurado de herramientas, bibliotecas, componentes y estándares que proporciona una base para el desarrollo de software },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{GIS}%
+{%
+name={GIS},%
+sort={GIS},%
+type={main},%
+first={GIS},%
+firstplural={GISs},%
+text={GIS},%
+plural={GISs},%
+description={También conocido por sus siglas en español SIG (Sistema de Información Geográfica).Es un sistema para recopilar, gestionar, manipular y analizar datos procedentes del mundo real que están vinculados a una referencia espacial},%
+descriptionplural={También conocido por sus siglas en español SIG (Sistema de Información Geográfica).Es un sistema para recopilar, gestionar, manipular y analizar datos procedentes del mundo real que están vinculados a una referencia espacial},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{OpenGL}%
+{%
+name={OpenGL},%
+sort={OpenGL},%
+type={main},%
+first={OpenGL},%
+firstplural={OpenGLs},%
+text={OpenGL},%
+plural={OpenGLs},%
+description={Una API de gráficos en 2D y 3D de código abierto, que proporciona una interfaz estándar para interactuar con la GPU. Es una de las librerías de gráficos 3D más utilizadas en la industria de desarrollo de aplicaciones y juegos.},%
+descriptionplural={Una API de gráficos en 2D y 3D de código abierto, que proporciona una interfaz estándar para interactuar con la GPU. Es una de las librerías de gráficos 3D más utilizadas en la industria de desarrollo de aplicaciones y juegos.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{GPU}%
+{%
+name={GPU},%
+sort={GPU},%
+type={main},%
+first={GPU},%
+firstplural={GPUs},%
+text={GPU},%
+plural={GPUs},%
+description={"Graphics Processing Unit" (Unidad de Procesamiento Gráfico). Se trata de el componente de computación diseñado para realizar tareas relacionadas con la renderización para la visualización de gráficos en tiempo real en una computadora.},%
+descriptionplural={"Graphics Processing Unit" (Unidad de Procesamiento Gráfico). Se trata de el componente de computación diseñado para realizar tareas relacionadas con la renderización para la visualización de gráficos en tiempo real en una computadora.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{backend}%
+{%
+name={Backend},%
+sort={Backend},%
+type={main},%
+first={Backend},%
+firstplural={Backends},%
+text={Backend},%
+plural={Backends},%
+description={También conocido como el lado del servidor, se refiere a la parte de un sistema o aplicación que se encarga procesar la lógica, los datos y la funcionalidad que no es visible directamente para los usuarios finales en el la parte servidora. Es la responsable de gestionar el control y la gestión del modelo de negocio y enviarlos a la vista para que los muestre.},%
+descriptionplural={También conocido como el lado del servidor, se refiere a la parte de un sistema o aplicación que se encarga procesar la lógica, los datos y la funcionalidad que no es visible directamente para los usuarios finales en el la parte servidora. Es la responsable de gestionar el control y la gestión del modelo de negocio y enviarlos a la vista para que los muestre.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+

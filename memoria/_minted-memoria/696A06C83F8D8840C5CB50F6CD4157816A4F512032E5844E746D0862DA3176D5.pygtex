@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Camera \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}entity} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}rig\PYGZdq{}} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 0 0\PYGZdq{}} \PYG{n+na}{movement\PYGZhy{}controls} \PYG{n+na}{terrain\PYGZhy{}height}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}entity} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}camera\PYGZdq{}} \PYG{n+na}{hud} \PYG{n+na}{camera} \PYG{n+na}{look\PYGZhy{}controls}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}reverseMouseDrag:false\PYGZdq{}} \PYG{n+na}{cursor}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}rayOrigin: mouse; fuse: false\PYGZdq{}}
+    \PYG{n+na}{raycaster}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}far: 4000; objects: .clickable\PYGZdq{}} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 0 0\PYGZdq{}} \PYG{n+na}{toolbar3d}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}entity}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}entity} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}left\PYGZhy{}hand\PYGZdq{}} \PYG{n+na}{oculus\PYGZhy{}touch\PYGZhy{}controls}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}hand: left\PYGZdq{}} \PYG{n+na}{laser\PYGZhy{}controls}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}hand: left\PYGZdq{}}
+    \PYG{n+na}{raycaster}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}far: 4000; objects: .clickable\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}entity}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}entity} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}right\PYGZhy{}hand\PYGZdq{}} \PYG{n+na}{oculus\PYGZhy{}touch\PYGZhy{}controls}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}hand: right\PYGZdq{}} \PYG{n+na}{laser\PYGZhy{}controls}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}hand: right\PYGZdq{}}
+    \PYG{n+na}{raycaster}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}far: 4000; objects: .clickable\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}entity}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}entity} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cameraOnBoarEntity\PYGZdq{}} \PYG{n+na}{camera}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}active: false\PYGZdq{}} \PYG{n+na}{camrender}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cid:cameraOnBoard;fps:25\PYGZdq{}} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 0 0\PYGZdq{}}
+    \PYG{n+na}{rotation}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 \PYGZhy{}180 0\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}entity}\PYG{p}{\PYGZgt{}}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}entity}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

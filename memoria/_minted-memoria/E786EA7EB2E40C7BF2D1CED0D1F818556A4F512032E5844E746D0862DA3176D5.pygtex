@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{html}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://aframe.io/releases/1.4.0/aframe.min.js\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{body}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}scene}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}box} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZhy{}1 0.5 \PYGZhy{}3\PYGZdq{}} \PYG{n+na}{rotation}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 45 0\PYGZdq{}} \PYG{n+na}{color}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}4CC3D9\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}box}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}sphere} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 1.25 \PYGZhy{}5\PYGZdq{}} \PYG{n+na}{radius}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}1.25\PYGZdq{}} \PYG{n+na}{color}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}EF2D5E\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}sphere}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}cylinder} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}1 0.75 \PYGZhy{}3\PYGZdq{}} \PYG{n+na}{radius}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0.5\PYGZdq{}} \PYG{n+na}{height}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}1.5\PYGZdq{}} \PYG{n+na}{color}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}FFC65D\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}cylinder}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}plane} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 0 \PYGZhy{}4\PYGZdq{}} \PYG{n+na}{rotation}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZhy{}90 0 0\PYGZdq{}} \PYG{n+na}{width}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}4\PYGZdq{}} \PYG{n+na}{height}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}4\PYGZdq{}} \PYG{n+na}{color}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}7BC8A4\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}plane}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}sky} \PYG{n+na}{color}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}ECECEC\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}sky}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{a\PYGZhy{}scene}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{body}\PYG{p}{\PYGZgt{}}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{html}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

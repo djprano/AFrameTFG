@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{import}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k+kr}{as}\PYG{+w}{ }\PYG{n+nx}{configuration}\PYG{+w}{ }\PYG{k+kr}{from}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}./configurationModel.js\PYGZdq{}}\PYG{p}{;}
+\PYG{c+c1}{//Coordenadas del escenario latmin, latmax, longmin, longmax.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMerConfig}\PYG{p}{(}\PYG{l+m+mf}{40.0234170}\PYG{p}{,}\PYG{l+m+mf}{40.7441446}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{4.2041338}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.2538165}\PYG{p}{);}
+\PYG{c+c1}{//Coordenadas de la posición inicial del usuario.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setCamPosition}\PYG{p}{(}\PYG{l+m+mf}{40.4893}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.52254}\PYG{p}{);}
+\PYG{c+c1}{//Nombre del fichero de edificios sin extensión ubicado en la carpeta}
+\PYG{c+c1}{//\PYGZdq{}data\PYGZdq{} del proyecto.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setBuildingFileName}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}madrid\PYGZus{}building\PYGZsq{}}\PYG{p}{);}
+\PYG{c+c1}{//sufijo de la carpeta que contiene los vuelos, debe contener el prefijo \PYGZdq{}flightData\PYGZdq{}}
+\PYG{c+c1}{//Opcional solo para uso offline.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setFlightLocalFolder}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZus{}madrid\PYGZsq{}}\PYG{p}{);}
+\PYG{c+c1}{//fichero con la capa raster del terreno ubicado en la carpeta}
+\PYG{c+c1}{//\PYGZdq{}data\PYGZdq{} del proyecto.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMapRaster}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Madrid\PYGZus{}raster.jpg\PYGZsq{}}\PYG{p}{);}
+\PYG{c+c1}{//fichero binario de alturas para el terreno ubicado en la carpeta}
+\PYG{c+c1}{//\PYGZdq{}data\PYGZdq{} del proyecto.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMapDem}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}madrid\PYGZus{}dem.bin\PYGZsq{}}\PYG{p}{);}
+\PYG{c+c1}{//Establece si queremos lanzar la aplicación en modo offline con los datos de la carpeta}
+\PYG{c+c1}{//caché.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setLocalApiMode}\PYG{p}{(}\PYG{k+kc}{true}\PYG{p}{);}
+\PYG{c+c1}{//Intervalo de refresco de los datos, cada cuanto se realiza una petición.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoInterval}\PYG{p}{(}\PYG{l+m+mf}{2000}\PYG{p}{);}
+\PYG{c+c1}{//En caso de modo offline por cual fichero queremos empezar la reproducción.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoLocalIndex}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{);}
+\PYG{c+c1}{//Usuario de la API OpenSky si no se posee uno simplemente hay que registrarse.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setApiUsuer}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}xxxx\PYGZsq{}}\PYG{p}{);}
+\PYG{c+c1}{//Contraseña de la web OpenSky.}
+\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setApiPassword}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}xxxxx\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}
