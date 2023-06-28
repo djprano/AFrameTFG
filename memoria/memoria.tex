@@ -1716,9 +1716,9 @@ La segunda funcionalidad que ofrece el panel HUD es la capacidad de visualizar u
 \subsection{Desplazamiento de la barra de herramientas y pantalla frontal de visualización (HUD)}
 \label{subsec:customDraggable}
 Como mencionamos anteriormente, es de vital importancia brindar al usuario principal la capacidad de desplazar los componentes HUD de nuestra aplicación. Por lo tanto, en esta sección abordaremos el componente que nos permite arrastrar y mover nuestros componentes HUD a cualquier parte de nuestra área visual.
-Tanto el componente pantalla frontal de visualización (HUD) \ref{subsec:hud} como el componente barra de herramientas \ref{subsec:toolbar3d} configuran en su entidad principal el componente detallado en esta sección "custom-draggable" para que el usuario principal tenga la capacidad de desplazar las entidades donde no le moleste.
+Tanto el componente pantalla frontal de visualización \emph{HUD} \ref{subsec:hud} como el componente barra de herramientas \ref{subsec:toolbar3d} configuran en su entidad principal el componente detallado en esta sección "custom-draggable" para que el usuario principal tenga la capacidad de desplazar las entidades donde no le moleste.
 
-Implementar esta funcionalidad requirió mucho tiempo y esfuerzo, probando diversas estrategias e incluso explorando bibliotecas como A-frame-super-hands\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, aunque sin éxito. Esto se debe a que nuestro caso difiere significativamente de las aplicaciones convencionales.
+Implementar esta funcionalidad requirió mucho tiempo y esfuerzo, probando diversas estrategias e incluso explorando bibliotecas como \emph{A-frame-super-hands}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, aunque sin éxito. Esto se debe a que nuestro caso difiere significativamente de las aplicaciones convencionales.
 
 El componente super-hands está diseñado para agarrar y mover componentes que se encuentran en una posición absoluta, pero no está preparado para componentes que se encuentran en una posición relativa dentro de la estructura del esqueleto del usuario principal. Esta es la principal razón por la que no fue posible reutilizar ningún componente de las bibliotecas probadas, y se tuvo que desarrollar un componente propio. En este proceso, se encontró una solución ingeniosa para calcular la posición de manera eficiente, de manera distinta a cómo lo hacen las bibliotecas mencionadas. 
 
@@ -1740,11 +1740,12 @@ Para permitir que los componentes que viajan con la cámara principal puedan ser
 
 Además, cuando arrastramos el componente con el ratón o el mando de las gafas de realidad virtual, es fundamental que siga el movimiento realizado para dar la sensación de arrastre.
 
-Después de explorar diversas estrategias, llegamos a la conclusión de que la técnica más sencilla y eficiente es utilizar un raycaster. Un componente raycaster es una herramienta fundamental en entornos 3D que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse. Cuando recibimos el evento de presionar el botón para arrastrar en la entidad, guardamos el componente raycaster que generó dicho evento en la instancia. También registramos la posición de intersección entre el raycaster y el elemento HUD y hacemos transparente la entidad para dar la sensación de que tenemos agarrada la entidad. Luego, cambiamos al estado de "presionado" y creamos una entidad plana ficticia e invisible que colocamos justo frente a la cámara principal, a la misma distancia que el elemento HUD tal y como vemos en la figura\ref{fig:raycaster}. A partir de este punto, mientras estemos en el estado de "presionado" (es decir, arrastrando), en cada evento de la función tick, calculamos la intersección entre el plano ficticio y el raycaster que generó el evento de agarre. A partir de esta intersección, determinamos el desplazamiento realizado, que es un vector que contiene los incrementos de las coordenadas horizontales y verticales. Luego, convertimos este vector en uno relativo a la cámara y lo sumamos al vector de posición del elemento agarrado. De esta manera, logramos arrastrar y mover cualquier entidad que esté dentro de la jerarquía de la cámara en el plano deseado.
+Después de explorar diversas estrategias, llegamos a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{raycaster}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \emph{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse. Cuando recibimos el evento de presionar el botón para arrastrar en la entidad, guardamos el componente \emph{raycaster} que generó dicho evento en la instancia. 
+También registramos la posición de intersección entre el \emph{raycaster} y el elemento \emph{HUD} y hacemos transparente la entidad para dar la sensación de que tenemos agarrada la entidad. Luego, cambiamos al estado de "presionado" y creamos una entidad plana ficticia e invisible que colocamos justo frente a la cámara principal, a la misma distancia que el elemento \emph{HUD} tal y como vemos en la figura\ref{fig:raycaster}. A partir de este punto, mientras estemos en el estado de "presionado" (es decir, arrastrando), en cada evento de la función \emph{tick}, calculamos la intersección entre el plano ficticio y el \emph{raycaster} que generó el evento de agarre. A partir de esta intersección, determinamos el desplazamiento realizado, que es un vector que contiene los incrementos de las coordenadas horizontales y verticales. Luego, convertimos este vector en uno relativo a la cámara y lo sumamos al vector de posición del elemento agarrado. De esta manera, logramos arrastrar y mover cualquier entidad que esté dentro de la jerarquía de la cámara en el plano deseado.
 
 Finalmente, cuando soltamos el botón del mando o el ratón, cambiamos al estado de "no presionado" para fijar la posición de la entidad y evitar que siga siendo desplazada en cada evento de la función tick.
 
-Es importante destacar que todas las entidades HUD contienen el componente "look-at"\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de A-Frame, el cual garantiza que siempre estén orientadas hacia la cámara.
+Es importante destacar que todas las entidades \emph{HUD} contienen el componente \emph{look-at}\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de \emph{A-Frame}, el cual garantiza que siempre estén orientadas hacia la cámara.
 
 \begin{figure}[H]
   \centering
@@ -1911,6 +1912,127 @@ En la línea 20 donde se encuentra `\emph{configuraciónEscenario.js}`, debemos 
 \end{minted}
 \section{Componentes reutilizables}
 \label{sec:componentesreutilizables}
+En esta sección, se presentarán en detalle los componentes de la aplicación que pueden ser reutilizados en otros proyectos a través de la configuración. Además, se presentarán aquellos componentes que pueden servir como base para su uso con pequeñas modificaciones. También se incluirán instrucciones detalladas sobre cómo llevar a cabo la reutilización de estos componentes.
+\subsection{Componente de Información Contextual Interactiva}
+Este componente tiene la función de mostrar información contextual sobre una entidad específica. Permite al usuario obtener detalles adicionales o aclaraciones sobre el elemento seleccionado. Si deseas obtener más información sobre cómo implementarlo y utilizarlo, te recomiendo consultar la sección \ref{subsec:tooltip} donde se brindarán más detalles al respecto.
+\subsubsection{ruta}
+{\scriptsize
+	\url{https://github.com/djprano/AFrameTFG/blob/main/js/gui/tooltip-info.js}
+}
+
+\subsubsection{Guía del programador}
+\label{subsub:clickable}
+Para que este componente funcione es un requisito que la entidad sea de la clase \emph{clickable} por lo tanto , debes establecer la clase de la siguiente forma:
+{\scriptsize
+	\begin{verbatim}
+		entidadEl.setAttribute('class', "clickable");
+	\end{verbatim}
+}
+Después simplemente debes calcular el literal que quieres establecer como texto contextual para la entidad y pasarlo como argumento del componente cuando se configura en la entidad.
+\subsubsection{Ejemplo de uso}
+{\scriptsize
+	\begin{verbatim}
+		entidadEl.setAttribute('tooltip-info', { info: "Texto contextual" });
+	\end{verbatim}
+}
+
+\subsection{Componente arrastrar entidades HUD}
+En esta sección hablaremos del componente que permite al usuario cambiar de posición una entidad relativa a la cámara , moviendose a lo largo de un plano perpendicular a la cámara es decir que no permite arrastrar la entidad en la dimensión de profundidad solo en altura y anchura. 
+\subsubsection{ruta}
+{\scriptsize
+	\url{https://github.com/djprano/AFrameTFG/blob/main/js/gui/custom-draggable.js}
+}
+\subsubsection{Guía del programador}
+Para asegurarnos de poder interactuar con todos los componentes mediante eventos del ratón o del controlador de las gafas de realidad virtual, es necesario que la entidad en la que vamos a configurar este componente sea de la clase \emph{clickable} (vease  \ref{subsub:clickable} para obtener más detalles al respecto).
+Además, otro requisito importante que mencionamos previamente en la descripción, pero es necesario resaltarlo, es que este componente está diseñado específicamente para mover o arrastrar entidades en altura o anchura, pero no en profundidad. Además, estas entidades deben estar ubicadas dentro de la jerarquía de la cámara.
+Por último, es recomendable configurar el componente \emph{look-at}\footnote{\url{https://www.npmjs.com/package/aframe-look-at-component}} en la entidad que vamos a mover. Esto permitirá que la entidad siempre se oriente hacia la dirección en la que se está mirando.
+\subsubsection{Ejemplo de uso}
+{\scriptsize
+	\begin{verbatim}
+		//Establecemos la clase clickable
+		hudEl.setAttribute('class', "clickable");
+		//Configuramos el componente look-at para que mire al elemento camera
+		hudEl.setAttribute('look-at', '#camera');
+		//Configuramos el componente que nos permite desplazar la entidad con los controladores
+		hudEl.setAttribute('custom-draggable', '');
+	\end{verbatim}
+}
+\subsection{Componente barra de herramientas 3D}
+En esta sección vamos a detallar como reutilizar el componente de barra de herramientas que junto con el componente \emph{custom-draggable} del que hablamos en la sección anterior proporciona un elemento en el mundo de realidad virtual con botones conmutables que viajan con la cámara permitiendo activar o desactivar funcionalidades de la aplicación al usuario.
+\subsubsection{ruta}
+{\scriptsize
+	\url{https://github.com/djprano/AFrameTFG/blob/main/js/gui/toolbar3d.js}
+}
+\subsubsection{Guía del programador}
+Para reutilizar este componente, es necesario agregarlo a la entidad de la cámara. Se trata de un componente diseñado para viajar con la cámara y añadir una superficie desplazable que proporciona botones con funcionalidades para la aplicación.
+
+Para ello, puedes crear un componente que herede del código existente y sobrescribir el método \emph{init}. También es posible copiar el código y simplemente definir tu propio método \emph{init}.
+
+Dentro de este método, debes añadir los botones y establecer su funcionalidad. Para crear un botón, utiliza la función interna llamada \emph{createToolbarButton}, la cual recibe los siguientes parámetros:
+
+\begin{itemize}
+	\item \textbf{id}: Identificador del elemento que se va a crear.
+	\item \textbf{widht}: Ancho del botón.
+	\item \textbf{hight}: Alto del botón.
+	\item \textbf{deep}: Grosor del botón.
+	\item \textbf{text}: Texto del botón en caso de ser pulsable.
+	\item \textbf{texSize}: Tamaño de la letra del botón.
+	\item \textbf{position}: Vector de posición relativa al panel de la barra de herramientas.
+	\item \textbf{tooble}: Booleano que indica si es un botón conmutable.
+	\item \textbf{enableFucntion}: Función que se ejecuta cuando el botón conmutable es activado.
+	\item \textbf{disableFunction}: Función que se ejecuta cuando el botón conmutable es desactivado.
+	\item \textbf{enableColor}: Color del botón conmutable cuando está activado.
+	\item \textbf{disableColor}: Color del botón conmutable cuando está desactivado.
+	\item \textbf{enableText}: Texto del botón conmutable cuando está activado.
+	\item \textbf{disableText}: Texto del botón conmutable cuando está desactivado.
+\end{itemize}
+
+De esta manera, al crear los botones con su funcionalidad y agregar este componente dentro de la cámara, obtendremos una barra de herramientas en la aplicación que se necesite.
+\subsubsection{Ejemplo de uso}
+A continuación mostramos un ejemplo para la creación de un botón:
+\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, breaklines]{javascript}
+//Creamos un botón para habilitar el hud
+this.hudEnableButton = this.createToolbarButton('hudEnableButton',0.3, 0.15, null,null, { x: -0.09, y: 0, z: 0.06 }, true,
+() => this.sceneEl.emit('hud-enable', null),
+() => this.sceneEl.emit('hud-disable', null),
+'#0a0', '#a00', 'Hud enable', 'Hud disable');
+this.toolbar.appendChild(this.hudEnableButton);
+\end{minted}
+
+Para agregar el componente a la cámara tan solo debemos configurarlo en nuestro html:
+\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, breaklines]{html}
+<a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
+raycaster="far: 4000; objects: .clickable" position="0 0 0" toolbar3d>
+\end{minted}
+\subsection{Geometría edificio}
+El siguiente componente es una implementación personalizada de geometría en \textsc{Three.js}, diseñado específicamente para representar edificios utilizando las coordenadas de su contorno. Este componente se encarga de extruir el contorno proporcionado y realizar las transformaciones afines necesarias para posicionar la geometría en el lugar correcto en la escena tridimensional.Este componente personalizado resulta especialmente útil para proyectos que involucren la visualización de edificios y estructuras arquitectónicas en entornos 3D.
+\subsubsection{ruta}
+{\scriptsize
+	\url{https://github.com/djprano/AFrameTFG/blob/main/js/map-ground/building-geometry.js}
+}
+\subsubsection{Guía del programador}
+Para usar esta geometría necesitamos pasarle los siguientes parámetros:
+\begin{itemize}
+	\item \textbf{points}: Lista de puntos en coordenadas 2D que definen las posiciones X y Z del contorno donde vamos a dibujar el edificio.
+	\item \textbf{terrainHeight}: Altura del terreno, donde se asienta la geometría del edificio.
+	\item \textbf{height}: Altura del edificio.
+\end{itemize}
+Con estos datos y creando una entidad con la primitiva está geometría se creará un edificio en el escenario.
+\subsubsection{Ejemplo de uso}
+\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, breaklines]{javascript}
+	let wayPoints = [];
+	wayPoints.push({ x: 0, y: 1 });
+	wayPoints.push({ x: 1, y: 1 });
+	wayPoints.push({ x: 1, y: 0 });
+	wayPoints.push({ x: 0, y: 1 });
+	let buildingProperties = { primitive: "building", points: wayPoints, terrainHeight: 0 , height:20};
+	let item = document.createElement("a-entity");
+	item.setAttribute("geometry", buildingProperties);
+	item.setAttribute("material", { color: '#88e9fd', roughness: 0.8, metalness: 0.5 });
+	
+\end{minted}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONCLUSIONES %
@@ -1919,18 +2041,20 @@ En la línea 20 donde se encuentra `\emph{configuraciónEscenario.js}`, debemos 
 \clearpage
 \chapter{Conclusiones}
 \label{chap:conclusiones}
-
-
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
+El objetivo principal del proyecto consistió en desarrollar una aplicación que brindara una experiencia más inmersiva mediante el uso de tecnologías de realidad virtual. Se buscó replicar parte de la funcionalidad ofrecida por aplicaciones y servicios web de visualización de datos aeronáuticos, como se menciona en la sección \ref{sec:tecnosimilares}, pero en un entorno tridimensional en lugar de bidimensional.
 
+Se pretendía crear un prototipo que proporcionara una base de componentes que, en conjunto, actuaran como una plataforma sólida para la creación de funcionalidades adicionales. Además, se buscaba que esta base fuera adaptable a diferentes proyectos que involucraran datos geoespaciales y requirieran consultas en un entorno tridimensional. Esto resulta especialmente relevante para aplicaciones de sistemas de información geográfica que necesiten visualizar entidades geoespaciales.
+
+A nivel personal, ha sido una experiencia muy gratificante avanzar en cada iteración del proyecto y aprender nuevas bibliotecas y tecnologías que enriquecen mi conocimiento profesional. Cada obstáculo superado durante el desarrollo del proyecto ha representado una lección aprendida, la cual seguramente será de gran utilidad en mi futuro profesional.
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
-
-
-\section{Lecciones aprendidas}
-\label{sec:lecciones_aprendidas}
-
+\begin{itemize}
+	\item \textbf{Fundamentos de la Programación}: Esta asignatura sentó las bases fundamentales de la programación, proporcionándome los conocimientos necesarios para desenvolverme en cualquier lenguaje de programación. Aprendí las herramientas principales utilizadas para implementar la lógica de negocio en diversos lenguajes de programación.
+	\item \textbf{Aplicaciones Telemáticas}: Durante esta asignatura, adquirí experiencia en el desarrollo de aplicaciones del lado del \emph{Front-End}, utilizando lenguajes como \emph{JavaScript} y familiarizándome con el paradigma de la programación funcional. Además, amplié mis conocimientos en el desarrollo de componentes orientados a eventos, donde la lógica se encuentra desacoplada y la comunicación se realiza a través de eventos en el \emph{DOM}.
+	\item \textbf{Prácticas Académicas Externas}: Realicé mis prácticas en la empresa Indra, donde trabajé en un software de sistemas de información geográfica. Esta experiencia fue fundamental para mi desarrollo en el proyecto actual, especialmente en el aspecto geoespacial. Adquirí conocimientos sobre proyecciones, datums y transformaciones necesarias para el manejo de ficheros binarios de alturas, donde una matriz define un espacio georeferenciado.
+\end{itemize}
 \section{Trabajos futuros}
 \begin{enumerate}
     \item Lectura de varios ficheros de edificios, daría mas versatilidad a la carga de edificios, siendo posible guardar varios ficheros por cada consulta, y que el software carge todos los ficheros presentes en la carpeta configurada.

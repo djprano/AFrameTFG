@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{wayPoints}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[];}
+\PYG{+w}{	}\PYG{n+nx}{wayPoints}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{y}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{	}\PYG{n+nx}{wayPoints}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{y}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{	}\PYG{n+nx}{wayPoints}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{y}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{	}\PYG{n+nx}{wayPoints}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{y}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{	}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{buildingProperties}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{primitive}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}building\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{points}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{wayPoints}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{terrainHeight}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{height}\PYG{o}{:}\PYG{l+m+mf}{20}\PYG{p}{\PYGZcb{};}
+\PYG{+w}{	}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{item}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{createElement}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}a\PYGZhy{}entity\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{	}\PYG{n+nx}{item}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}geometry\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{buildingProperties}\PYG{p}{);}
+\PYG{+w}{	}\PYG{n+nx}{item}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}material\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{color}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}88e9fd\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{roughness}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.8}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{metalness}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{	}
+\end{Verbatim}

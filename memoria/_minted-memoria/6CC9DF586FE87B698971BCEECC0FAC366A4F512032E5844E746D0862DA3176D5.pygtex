@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{a\PYGZhy{}entity} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}camera\PYGZdq{}} \PYG{n+na}{hud} \PYG{n+na}{camera} \PYG{n+na}{look\PYGZhy{}controls}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}reverseMouseDrag:false\PYGZdq{}} \PYG{n+na}{cursor}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}rayOrigin: mouse; fuse: false\PYGZdq{}}
+\PYG{n+na}{raycaster}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}far: 4000; objects: .clickable\PYGZdq{}} \PYG{n+na}{position}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0 0 0\PYGZdq{}} \PYG{n+na}{toolbar3d}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}
