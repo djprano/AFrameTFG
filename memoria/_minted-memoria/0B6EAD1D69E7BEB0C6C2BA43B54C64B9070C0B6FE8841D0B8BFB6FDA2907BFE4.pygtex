@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{		}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{cacheData}\PYG{p}{.}\PYG{n+nx}{lastPosition}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n+nx}{cacheData}\PYG{p}{.}\PYG{n+nx}{newPosition}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}animation\PYGZus{}\PYGZus{}000\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{				}\PYG{n+nx}{property}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}position\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{				}\PYG{k+kr}{from}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{cacheData}\PYG{p}{.}\PYG{n+nx}{lastPosition}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{to}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{cacheData}\PYG{p}{.}\PYG{n+nx}{newPosition}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{autoplay}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{loop}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{easing}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}linear\PYGZsq{}}\PYG{p}{,}
+\PYG{+w}{				}\PYG{n+nx}{dur}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{intervalTime}
+\PYG{+w}{			}\PYG{p}{\PYGZcb{});}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

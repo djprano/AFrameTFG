@@ -176,7 +176,10 @@ Además, la pareja quizás no sea para siempre, pero tu madre sí.
 \chapter*{Resumen}
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-El propósito de este proyecto está centrado en la implementación de una solución inmersiva en realidad virtual, que brinda al usuario la capacidad de formar parte de una escena y manipularla para visualizar  información relacionada con datos aeronáuticos y geoespaciales.
+El propósito de este proyecto es implementar una solución basada en tecnologías de realidad virtual que permita al usuario sumergirse en una escena y manipularla para visualizar información relacionada con datos aeronáuticos y geoespaciales.
+
+Utilizando tecnologías de realidad virtual y aprovechando fuentes de datos aeronáuticos y geoespaciales, se pretende desarrollar una experiencia inmersiva en un entorno virtual que proporcione al usuario la posibilidad de interactuar y explorar, de manera intuitiva y atractiva visualmente, información relacionada con la aviación y la geografía. Este entorno representará una porción del mundo real e incluirá funciones como la visualización de trayectorias de vuelo y la capacidad de mostrar en tiempo real la posición de los aviones, así como la visualización y obtención de detalles sobre edificios, terrenos y otros elementos relevantes.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
@@ -185,9 +188,9 @@ El propósito de este proyecto está centrado en la implementación de una soluc
 %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
-Here comes a translation of the ``Resumen'' into English. 
-Please, double check it for correct grammar and spelling.
-As it is the translation of the ``Resumen'', which is supposed to be written at the end, this as well should be filled out just before submitting.
+The purpose of this project is to implement a solution based on virtual reality technologies that allows the user to immerse themselves in a scene and manipulate it to visualize information related to aeronautical and geospatial data.
+
+By utilizing virtual reality technologies and leveraging aeronautical and geospatial data sources, the aim is to develop an immersive experience in a virtual environment that provides users with the ability to interactively and visually explore aviation and geographical information in an intuitive and engaging manner. This environment will represent a portion of the real world and include features such as flight path visualization and real-time aircraft position display, as well as the visualization and retrieval of details about buildings, terrain, and other relevant elements.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,26 +223,26 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 \chapter{Introducción}
 \label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~\ref{sec:intro}
 \pagenumbering{arabic} % para empezar la numeración de página con números
-El proyecto se centra en la creación de una aplicación para visualización de espacios 3D que ofrezca la posibilidad de una experiencia inmersiva en realidad virtual. Irá dirigida a un entorno web, con el objetivo de poder ser compatible tanto en un entorno desktop como en un dispositivo de realidad virtual generando experiencia inmersiva en realidad virtual para la visualización de datos aeronáuticos y geoespaciales. 
+El proyecto se centra en la creación de una aplicación para visualización de espacios \textsc{3D} que ofrezca la posibilidad de una experiencia inmersiva en realidad virtual.
+Irá dirigida a un entorno web, con el objetivo de poder ser compatible tanto en un entorno \emph{desktop} como en un dispositivo de realidad virtual generando experiencia inmersiva en realidad virtual para la visualización de datos aeronáuticos y geoespaciales. 
 Los datos con los que vamos a trabajar pueden ser obtenidos en tiempo real o desde una caché local, y se representarán como entidades dentro de una escena tridimensional.
-Para lograr este propósito, hemos optado por utilizar un \Gls{framework} de desarrollo llamado A-Frame\footnote{\url{https://aframe.io/}}. Este framework proporciona una capa de abstracción fácil de usar y comprender, lo cual facilita una implementación más sencilla de conceptos como la creación de escenas en realidad virtual y la manipulación e interacción de objetos 3D. Estos aspectos se analizarán con mayor detalle en secciones posteriores. Por lo tanto la razón principal de usar A-Frame es centrar nuestro esfuerzo en la codificación del modelo negocio acelerando el proceso de desarrollo en la gestión y generación de modelos 3D, que es un proceso complejo y laborioso.
+Para lograr este propósito, hemos optado por utilizar un \Gls{framework} de desarrollo llamado \textsc{A-Frame}\footnote{\url{https://aframe.io/}}. Este \emph{framework} proporciona una capa de abstracción fácil de usar y comprender, lo cual facilita una implementación más sencilla de conceptos como la creación de escenas en realidad virtual y la manipulación e interacción de objetos \textsc{3D}. 
 
-Es importante destacar que la tecnología A-Frame se basa en la librería Three.js\footnote{\url{https://threejs.org/}}, que proporciona las funcionalidades esenciales para el desarrollo de gráficos 3D en entornos web. A su vez, Three.js se construye sobre WebGL\footnote{\url{https://www.khronos.org/webgl/}}, una \Gls{API} de gráficos en 3D basada en OpenGL. Esto permite a los desarrolladores web acceder directamente a la capacidad de procesamiento de gráficos de la tarjeta gráfica del dispositivo mediante el uso de JavaScript para controlar la renderización y la manipulación de los objetos 3D.
+Estos aspectos se analizarán con mayor detalle en secciones posteriores. 
+La razón principal de usar la tecnología \textsc{A-Frame} es centrar nuestro esfuerzo en la codificación del modelo negocio acelerando el proceso de desarrollo en la gestión y generación de modelos \textsc{3D}, que es un proceso complejo y laborioso.
 
-Esta arquitectura nos ofrece la ventaja de poder trabajar en un nivel de abstracción inferior cuando necesitamos abordar tareas más complejas relacionadas con objetos 3D. Además, podemos crear componentes reutilizables que serán útiles tanto en el proyecto actual como en proyectos futuros.
+Es importante destacar que la tecnología \textsc{A-Frame} se basa en la librería \textsc{Three.js}, que proporciona las funcionalidades esenciales para el desarrollo de gráficos \textsc{3D} en entornos web. A su vez, \textsc{Three.js} se construye sobre \textsc{WebGL}\footnote{\url{https://www.khronos.org/webgl/}}, una \Gls{API} de gráficos en \textsc{3D} basada en \textsc{OpenGL}. Esto permite a los desarrolladores web acceder directamente a la capacidad de procesamiento de gráficos de la tarjeta gráfica del dispositivo mediante el uso de \emph{JavaScript} para controlar la renderización y la manipulación de los objetos \textsc{3D}.
 
-En resumen, la combinación de A-Frame, Three.js y WebGL nos brinda un conjunto de herramientas poderosas para el desarrollo de experiencias 3D en entornos web, permitiéndonos aprovechar al máximo el potencial de la tarjeta gráfica del dispositivo y facilitando la reutilización de componentes en futuros proyectos.
+Esta arquitectura nos ofrece la ventaja de poder trabajar en un nivel de abstracción inferior cuando necesitamos abordar tareas más complejas relacionadas con objetos \textsc{3D}. Además, podemos crear componentes reutilizables que serán útiles tanto en el proyecto actual como en proyectos futuros.
 
-A continuación, se muestra el mapa de tecnologías, la Figura~\ref{figura:mapaTecnologias}. 
-
-
+En resumen, la combinación de \textsc{A-Frame}, \textsc{Three.js} y \textsc{WebGL} nos brinda un conjunto de herramientas poderosas para el desarrollo de experiencias \textsc{3D} en entornos web, permitiéndonos aprovechar al máximo el potencial de la tarjeta gráfica del dispositivo y facilitando la reutilización de componentes en futuros proyectos.
+A continuación en la figura ~\ref{figura:mapaTecnologias}, mostramos el mapa de tecnologías principales en las que se basa el prototipo que se va a realizar. 
  \begin{figure}[h]
     \centering
     \includegraphics[bb=0 0 564 586, width=10cm, keepaspectratio]{img/mapaFuncional.drawio.png}
     \caption{Mapa de tecnologías}
     \label{figura:mapaTecnologias}
  \end{figure}
-
 \clearpage
 \chapter{Objetivos}
 \label{chap:objetivos}
@@ -247,17 +250,17 @@ A continuación, se muestra el mapa de tecnologías, la Figura~\ref{figura:mapaT
 \section{Motivación}
 \label{sec:motivación}
 
-Después de trabajar durante seis años en el proyecto fullstack GIS llamado IGEA de Indra, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo de IGEA en el proyecto de software iTEC, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento constructivo.
+Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{GIS} llamado \textsc{IGEA} de la compañía \textsc{Indra}, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo del proyecto \textsc{IGEA} en una nueva aplicación de software para el proyecto \textsc{iTEC}, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento de conocimientos.
 
-El objetivo principal de esta integración fue reutilizar los componentes centrales de IGEA para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia de IGEA para gestionar de manera efectiva los datos. Este enfoque combinado permitió crear una solución poderosa y eficiente para iTEC.
+El objetivo principal de esta integración fue reutilizar los componentes centrales de \textsc{IGEA} para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia del proyecto \textsc{IGEA} para gestionar de manera efectiva los datos. Este enfoque permitió crear una solución poderosa y eficiente en poco tiempo para el proyecto\textsc{iTEC}.
 
-Desde el momento en que surgió el proyecto y comencé a analizar las necesidades, me di cuenta de la interesante oportunidad de combinar mi experiencia previa con las demandas de mi proyecto anterior. Específicamente, se me ocurrió la idea de visualizar información aeroespacial en un entorno de realidad virtual, ya que la representación bidimensional de datos aéreos resulta limitada y la dimensión de altura es fundamental. Además, la posibilidad de formar parte activa de la escena añade un valor significativo. En este sentido, el futuro de estas aplicaciones parece prometedor, ya que se vislumbra un encuentro entre dos mundos.
+Desde el momento en que comencé a buscar un proyecto para la fiscalización de mis estudios y comencé a analizar las posibilidades, me di cuenta de la interesante oportunidad de combinar mi experiencia laboral previa con las demandas de este proyecto. Específicamente, se me ocurrió la idea de visualizar información aeroespacial en un entorno de realidad virtual, ya que la representación bidimensional de datos aéreos resulta limitada y la dimensión de altura es fundamental para la gestión de espacios aereos. Además, la posibilidad de formar parte activa de la escena añade un valor significativo a las aplicaciones de consultas de datos. En este sentido, el futuro de estas aplicaciones parece prometedor.
 
 \section{Contexto}
 \label{sec:contexto}
 Durante la última década, la recopilación y transmisión de datos en tiempo real se han vuelto más accesibles, lo que ha creado nuevas oportunidades para el desarrollo de aplicaciones y servicios web que permiten a los usuarios visualizar el tráfico aéreo y los datos de vuelo en tiempo real.
 
-Uno de los sistemas que ha experimentado un gran desarrollo y éxito en el ámbito aeronáutico es el sistema de vigilancia automática dependiente de difusión (ADS-B)\ref{sec:adsb}. Este sistema permite que las aeronaves transmitan información precisa de sus sensores, como la posición, velocidad, altitud, orientación, entre otros datos relevantes. El crecimiento de esta tecnología ha llevado a empresas y plataformas como FlightRadar24 y OpenSky a expandir sus redes y ofrecer servicios, incluso gratuitos, que proporcionan estos metadatos a través de la web. Esto ha impulsado el aumento de aplicaciones de dos dimensiones que muestran información de vuelos en tiempo real mediante mapas interactivos.
+Uno de los sistemas que ha experimentado un gran desarrollo y éxito en el ámbito aeronáutico es el sistema de vigilancia automática dependiente de difusión \textsc{ADS-B}~\ref{sec:adsb}. Este sistema permite que las aeronaves transmitan información precisa de sus sensores, como la posición, velocidad, altitud, orientación, entre otros datos relevantes. El crecimiento de esta tecnología ha llevado a empresas y plataformas como FlightRadar24 y OpenSky a expandir sus redes y ofrecer servicios, incluso gratuitos, que proporcionan estos metadatos a través de la web. Esto ha impulsado el aumento de aplicaciones de dos dimensiones que muestran información de vuelos en tiempo real mediante mapas interactivos.
 
 FlightRadar24, una empresa destacada en este campo, ofrece servicios web que muestran información en tiempo real sobre vuelos en un mapa bidimensional. Además del seguimiento de vuelos, proporciona detalles como el origen y destino de los vuelos, números de vuelo, tipos de aviones, altitudes, rumbos y velocidades.
 
@@ -312,8 +315,6 @@ Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RESULTADOS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\clearpage
 \chapter{Resultados}
 \label{chap:resultados}
 \section{Planificación temporal}
@@ -331,7 +332,7 @@ Algunas de las características que utilizaremos de Scrum son las siguientes:
 \item Reuniones: Scrum incluye varias reuniones estructuradas para facilitar la colaboración y la toma de decisiones. Estas reuniones incluyen la Sprint Planning, donde se define el alcance del sprint, la Daily Scrum, una breve reunión diaria de seguimiento, y la Sprint Review, donde se revisa y se demuestra el trabajo realizado durante el sprint.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/scrum.jpg}
   \caption{Planificación temporal del desarrollo del prototipo.}
@@ -402,7 +403,7 @@ Además, se inició la captura de un raster para incorporar una referencia en fo
 Se implementan en el gestor principal de la escena las primeras interacciones con eventos. Se ha creado una entidad en forma de cono que se posiciona encima del avión para indicar visualmente el avión sobre el cual tenemos el ratón. Esta funcionalidad permite al usuario identificar fácilmente qué avión está siendo seleccionado o resaltado.
 
 \subsection{Resultado}
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=10cm, keepaspectratio]{img/Sprint1.png}
   \caption{Versión inicial.}
@@ -427,7 +428,7 @@ Hemos agrupado toda esta lógica en el archivo heightManager.js, que contendrá 
 
 Descargamos los datos de edificios y los preprocesamos según se detalla en la sección.\ref{subsec:buildingData} para poder usarlos en el gestor de terreno.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=6cm, keepaspectratio]{img/terrain_evento.jpg}
   \caption{Evento clave que emite el componente de terreno.}
@@ -497,7 +498,6 @@ Se lleva a cabo una reunión final con el \emph{Product Owner} para mostrarle el
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TECNOLOGIAS RELACIONADAS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
 \chapter{Tecnologías relacionadas}
 \label{chap:tecnologias}
 En este capítulo vamos a describir el contexto tecnológico en el que se encuentra asentado el prototipo de aplicación web, dando un repaso a todas las herramientas tecnológicas usada y estudiadas para el desarrollo del proyecto.
@@ -533,7 +533,7 @@ Existen tres tipos de transpondedores en función de su capacidad:
     \item El transpondedor \textbf{ADS-B OUT} es un transpondedor diseñado exclusivamente para la transmisión de datos. Cumple con el requisito mínimo establecido por muchas regulaciones y estándares de la aviación, en la figura \ref{fig:adsbtypes} podemos apreciar que el avión de la derecha al ser de este tipo solo emite datos.
     \item El transpondedor \textbf{ADS-B IN} es un transpondedor diseñado exclusivamente para la recepción de datos. Suelen ser utilizados por estaciones terrestres. Existen organizaciones como FlightRadar24 o OpenSky proporcionan transpondedores \textbf{ADS-B IN} de forma gratuita a cambio de completar un formulario. Estos transpondedores se utilizan para crear una red mundial que permite recibir información en tiempo real de todas las aeronaves, lo cual contribuye a alimentar los datos en sus servidores, especialmente en zonas con poca cobertura.
     \item El transpondedor de tipo \textbf{ADS-B IN \& OUT} es utilizado tanto en aviones como estaciones terrestres y presenta la capacidad tanto de emitir sus propios datos, como de recibir información de aviones y estaciones terrestres cercanas. Esta funcionalidad se implementa con el propósito de visualizar un radar en los controles de la aeronave, mostrando la posición de las aeronaves cercanas, así como para recibir información meteorológica u otros tipos de metadatos de las estaciones terrestres. En la Figura \ref{fig:adsbtypes}, se puede observar que tanto el avión a la izquierda como la estación terrestre son de tipo \textbf{ADS-B IN \& OUT}. Esto significa que el avión tiene la capacidad de recibir la información meteorológica transmitida por la estación terrestre, al mismo tiempo que transmite sus propios datos a dicha estación.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/adsbtypes.drawio.png}
   \caption{Ejemplo de tipos de transpondedor ADS-B.}
@@ -657,31 +657,31 @@ function createFlightElement(id) {
     return entityEl;
 }
 \end{minted}
-
-
 \section{HTML5}
 \label{sec:html5}
 \subsection{Introducción a la tecnología}
-HTML5 es la última versión del lenguaje de marcado de hipertexto HTML, el lenguaje usado para estructurar y presentar contenido en una web. Junto con la tecnología DOM\ref{sec:dom} HTML5 forma la base tecnológica para el desarrollo de aplicaciones web modernas. Mientras que HTML5 proporciona las herramientas de marcado para estructura y presentar la información en la web, la tecnologías DOM representa la estructura de ese contenido en forma de árbol de objetos para hacer los datos accesibles y manipulables mediante lenguajes de script.
-La combinación de HTML5 y DOM permite a los desarrolladores acceder, modificar y actualizar de forma dinámica los elementos y estilos de una página web.
+\textsc{HTML5} es la última versión del lenguaje de marcado de hipertexto \textsc{HTML}, el lenguaje usado para estructurar y presentar contenido en una web. Junto con la tecnología \textsc{DOM} \ref{sec:dom}, forma la base tecnológica para el desarrollo de aplicaciones web modernas. Mientras que \textsc{HTML5} proporciona las herramientas de marcado para estructura y presentar la información en la web, la tecnologías \textsc{DOM} representa la estructura de ese contenido en forma de árbol de objetos para hacer los datos accesibles y manipulables mediante lenguajes de script.
+La combinación de \textsc{HTML5} y \textsc{DOM} permite a los desarrolladores acceder, modificar y actualizar de forma dinámica los elementos y estilos de una página web.
 \subsection{Historia y evolución}
-En 2004, el WHATWG, liderado por Ian Hickson, inició el desarrollo de lo que ahora conocemos como HTML5  Su objetivo principal era mejorar la semántica y estructura del lenguaje HTML, además de agregar nuevas funcionalidades y capacidades para el desarrollo web moderno. El enfoque que resultó exitoso fue el de abordar los problemas y limitaciones que HTML presentaba en ese momento.
-Paralelamente, la W3C también estaba trabajando en la evolución de HTML, presentando XHTML como su propuesta. Sin embargo, a medida que el proyecto avanzaba, quedó claro que XHTML no era compatible con el ecosistema web existente. 
-En 2006, la W3C decidió abandonar el desarrollo de XHTML y unirse al grupo de trabajo WHATWG para colaborar en el desarrollo de HTML5.
-Durante el proceso de desarrollo de HTML5, se llevaron a cabo múltiples revisiones y actualizaciones con el fin de incorporar nuevas características, mejorar la semántica, definir APIs y abordar los desafíos técnicos y las necesidades emergentes de la web moderna.
-HTML5 introdujo una serie de mejoras semánticas,tales como la introducción de los elementos \textless header\textgreater ,\textless nav\textgreater,\textless section\textgreater, \textless article\textgreater, entre otros, que permiten una mejor estructuración y accesibilidad del contenido. Además, HTML5 incluyó capacidades multimedia nativas mediante la incorporación de elementos como \textless vídeo\textgreater y \textless audio\textgreater, lo que eliminó la necesidad de utilizar tecnologías complementarias como Flash.
-La especificación de HTML5 se finalizó oficialmente en octubre de 2014, marcando un hito importante en la evolución del desarrollo web.
-Desde entonces, HTML5 se ha convertido en el estándar predominantes para la creación de páginas y aplicaciones web modernas.
+En 2004, el \emph{WHATWG}, liderado por Ian Hickson, inició el desarrollo de lo que ahora conocemos como \textsc{HTML5}  Su objetivo principal era mejorar la semántica y estructura del lenguaje \textsc{HTML}, además de agregar nuevas funcionalidades y capacidades para el desarrollo web moderno. El enfoque que resultó exitoso fue el de abordar los problemas y limitaciones que \textsc{HTML} presentaba en ese momento.
+Paralelamente, la \textsc{W3C} también estaba trabajando en la evolución de \textsc{HTML}, presentando \textsc{XHTML} como su propuesta. Sin embargo, a medida que el proyecto avanzaba, quedó claro que \textsc{XHTML} no era compatible con el ecosistema web existente. 
+En 2006, la \textsc{W3C} decidió abandonar el desarrollo de \textsc{XHTML} y unirse al grupo de trabajo \textsc{WHATWG} para colaborar en el desarrollo de \textsc{HTML5}.
+Durante el proceso de desarrollo de \textsc{HTML5}, se llevaron a cabo múltiples revisiones y actualizaciones con el fin de incorporar nuevas características, mejorar la semántica, definir \textsc{APIs} y abordar los desafíos técnicos y las necesidades emergentes de la web moderna.
+\textsc{HTML5} introdujo una serie de mejoras semánticas,tales como la introducción de los elementos \emph{\textless header\textgreater ,\textless nav\textgreater,\textless section\textgreater, \textless article\textgreater}, entre otros, que permiten una mejor estructuración y accesibilidad del contenido. Además, \textsc{HTML5} incluyó capacidades multimedia nativas mediante la incorporación de elementos como \emph{\textless vídeo\textgreater y \textless audio\textgreater}, lo que eliminó la necesidad de utilizar tecnologías complementarias como Flash.
+La especificación de \textsc{HTML5} se finalizó oficialmente en octubre de 2014, marcando un hito importante en la evolución del desarrollo web.
+Desde entonces, \textsc{HTML5} se ha convertido en el estándar predominantes para la creación de páginas y aplicaciones web modernas.
 \subsection{Descripción técnica}
-HTML5 se basa en la combinación de las tecnologías HTML, CSS y JavaScript para proporcionar una plataforma de desarrollo web versátil y adaptada a las necesidades modernas. 
+\textsc{HTML5} se basa en la combinación de las tecnologías \textsc{HTML}, \textsc{CSS} y \textsc{JavaScript} para proporcionar una plataforma de desarrollo web versátil y adaptada a las necesidades modernas. 
 
-HTML5 ofrece a los desarrolladores una amplia gama de APIs que les permiten acceder y manipular diversas características del navegador. Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la API de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.
-La API de almacenamiento local permite a las aplicaciones web almacenar datos en el dispositivo del usuario, lo que acelera la experiencia del usuario debido al cacheo de muchos metadatos para mantener estados he incluso poder operar con aplicaciones de manera offline.
+\textsc{HTML5} ofrece a los desarrolladores una amplia gama de \textsc{APIs} que les permiten acceder y manipular diversas características del navegador. Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la API de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.
+La \textsc{API} de almacenamiento local permite a las aplicaciones web almacenar datos en el dispositivo del usuario, lo que acelera la experiencia del usuario debido al cacheo de muchos metadatos para mantener estados he incluso poder operar con aplicaciones de manera offline.
 
-Además, HTML5 ha introducido nuevas etiquetas semánticas y atributos que permiten una mejor estructuración del contenido y una mayor accesibilidad. Esto facilita a los motores de búsqueda y a los usuarios comprender la información presente en las páginas web de manera más precisa.
-
+Además, \textsc{HTML5} ha introducido nuevas etiquetas semánticas y atributos que permiten una mejor estructuración del contenido y una mayor accesibilidad. Esto facilita a los motores de búsqueda y a los usuarios comprender la información presente en las páginas web de manera más precisa.
 \subsection{Contexto y aplicación en el prototipo}
-\subsection{Ejemplos de uso}
+Esta tecnología es la base sobre la cual \textsc{A-Frame} crea la estructura del contenido de realidad virtual en el entorno web. 
+Como veremos en la sección \ref{sec:aframe} \textsc{A-Frame} utiliza una combinación de elementos \textsc{HTML5} como \emph{\textless a-scene\textgreater}, \emph{\textless a-entity\textgreater} y \emph{\textless a-camera\textgreater}, junto con componentes propios de \textsc{A-Frame}, para construir y definir objetos \textsc{3D}, cámaras, luces y la escena principal.
+
+En resumen, \textsc{A-Frame} utiliza tecnologías como \textsc{HTML5} y componentes propios para definir la jerarquía del escenario y la renderización de toda la escena.
 \section{JavaScript}
 \label{sec:javascript}
 \subsection{Introducción a la tecnología}
@@ -725,7 +725,16 @@ Proporciona herramientas para crear gráficos \Gls{3D} en el navegador de forma 
 \subsection{Contexto y aplicación en el prototipo}
  Tanto A-Frame como Three.js utilizan WebGL como tecnología para la renderización de escenas y objetos en 3D en un navegador web. Ambas bibliotecas se basan en esta tecnología para realizar operaciones sobre la tarjeta gráfica en el renderizado de sus escenarios.
 \section{WebXR}
+La tecnología \textsc{WebXR} es una agrupación de estándares que se utilizan en conjunto para habilitar la representación de escenas en 3D en hardware diseñado para la visualización de mundos virtuales (VR) o para agregar gráficos al mundo real (realidad aumentada). \textsc{WebXR} proporciona una combinación perfecta entre realidad aumentada y realidad virtual.
+
+Una de las ventajas principales de WebXR es que permite crear experiencias inmersivas directamente en un navegador web gracias a que está construido sobre \textsc{WebGL} \ref{sec:webgl}, sin necesidad de descargar ninguna aplicación adicional. Esto facilita el acceso a estas experiencias a través de múltiples dispositivos, ya que solo se necesita un navegador compatible para disfrutar de ellas.
+
+\textsc{WebXR} proporciona \emph{API} y funcionalidades que permiten interactuar con dispositivos de realidad virtual y realidad aumentada, como gafas \textsc{VR}, cascos \textsc{AR} o incluso dispositivos móviles con capacidades \textsc{AR}. Estas funcionalidades incluyen el seguimiento de la posición y la orientación del dispositivo, renderización de escenas \textsc{3D}, detección de gestos y eventos de interacción, entre otros.
+
 \section{VR}
+La realidad virtual (VR) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de hardware y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
+\subsection{Contexto y aplicación en el prototipo}
+El prototipo de este proyecto está diseñado para funcionar con dispositivos que generan entornos virtuales, permitiendo una inmersión completa y realista en dicho entorno. Para lograr esto, se utilizan las herramientas proporcionadas por la plataforma A-Frame, como se describe en la sección \ref{sec:aframe}. 
 \section{Node JS}
 \subsection{Introducción a la tecnología}
 Node.js es un entorno de código abierto y multiplataforma que permite la ejecución de código JavaScript de forma asíncrona, con capacidades de entrada y salida de datos, y una arquitectura orientada a eventos. Está basado en el motor V8 de Google y fue creado con el objetivo de desarrollar programas de red que puedan ser ejecutados en el lado del servidor.
@@ -835,7 +844,7 @@ A-Frame es el motor principal de renderizado del prototipo, ya que toda la aplic
   </body>
 </html>
 \end{minted}
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/gettingstarted_Aframe.jpg}
   \caption{Escena principal del Getting Started de A-Frame.}
@@ -906,7 +915,7 @@ Una de las ventajas de VSCode es su integración con herramientas de control de 
 \section{Arquitectura general de la aplicación} 
 \label{sec:arquitectura}
 Se ha diseñado una arquitectura modular tal y como podemos ver en la figura~\ref{fig:arquitectura}, donde se ha dividido la lógica de la aplicación en distintos ficheros que se han organizado por responsabilidad a través de en las siguientes carpetas:
-\begin{table}[H]
+\begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|l|p{13cm}|}
 			\hline
@@ -923,7 +932,7 @@ Se ha diseñado una arquitectura modular tal y como podemos ver en la figura~\re
 \end{table}
 A continuación, se presenta un diagrama \ref{fig:javascriptFiles} que muestra la estructura de archivos en la cual hemos organizado la lógica de nuestra aplicación. 
 Esta lógica está estrechamente relacionada con la arquitectura general de la aplicación, la cual se muestra en la figura \ref{fig:arquitectura}. En este diagrama, se puede observar la distribución de las secciones y la relación entre los componentes creados. Además, se puede apreciar la comunicación de eventos entre las diferentes partes de la arquitectura.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=6cm, keepaspectratio]{img/ficheros.drawio.png}
   \caption{Estructura de ficheros JavaScript.}
@@ -931,7 +940,7 @@ Esta lógica está estrechamente relacionada con la arquitectura general de la a
 \end{figure}
 
 \begin{center}
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=18cm, keepaspectratio]{img/Arquitectura.png}
   \caption{Arquitectura general}
@@ -968,35 +977,36 @@ Esta estrategia garantiza que los datos aeronáuticos se actualicen regularmente
 
 \subsection{Movimiento fluido de aviones dentro de la escena}
 \label{subsec:movimientoFluido}
-Para lograr un movimiento fluido de los aviones dentro de la escena, vamos a crear una interpolación lineal utilizando las animaciones proporcionadas por A-Frame, tal como se muestra en el código de la Figura \ref{codigo:movimientoFluido}. En esta implementación, cada vez que se ejecute el método de actualización de la escena en intervalos de tiempo regulares, crearemos una animación que interpolará de forma lineal la posición anterior y la nueva del avión. Esta animación tendrá una duración igual al intervalo de actualización.
+Para lograr un movimiento fluido de los aviones dentro de la escena, vamos a crear una interpolación lineal utilizando las animaciones proporcionadas por \textsc{A-Frame}, tal como se muestra en el código de la Figura \ref{codigo:movimientoFluido}. En esta implementación, cada vez que se ejecute el método de actualización de la escena en intervalos de tiempo regulares, crearemos una animación que interpolará de forma lineal la posición anterior y la nueva del avión. Esta animación tendrá una duración igual al intervalo de actualización.
+\begin{figure}[h]
+	\centering
+	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
+		if (cacheData.lastPosition != cacheData.newPosition) {
+			entityEl.setAttribute('animation__000', {
+				property: 'position',
+				from: cacheData.lastPosition,
+				to: cacheData.newPosition,
+				autoplay: true,
+				loop: 0,
+				easing: 'linear',
+				dur: intervalTime
+			});
+		}
+	\end{minted}
+	\caption{Animación para movimiento fluido interpolando posiciones de manera lineal.
+		\label{codigo:movimientoFluido}}
+\end{figure}
 
-Para llevar a cabo esta tarea, es necesario mantener una caché de las entidades presentes en la escena y poder consultar rápidamente si existen y cuáles son sus datos antiguos. Además, esta caché nos será útil más adelante para implementar la funcionalidad que muestra el trayecto de un avión seleccionado en tiempo real.
+Para llevar a cabo esta tarea, es necesario mantener una caché de las entidades presentes en la escena y poder consultar rápidamente si existen y cuáles son sus datos antiguos. Además, esta caché nos será útil más adelante para implementar la funcionalidad que muestra el trayecto de un avión seleccionado en tiempo real, véase la sección \ref{subsec:track} para más información.
 
 Dentro del archivo \emph{mainScene.js}, encontraremos una variable llamada \emph{flightsCache}, la cual es un mapa que contiene una instancia de la clase FlightCacheData\ref{subsec:datosCacheVuelo} definida en el archivo \emph{FlightCacheData.js}. Este mapa de objetos en caché será responsable de mantener el estado de los aviones en el mapa y nos permitirá consultar si un avión existe en la escena y cuál fue su posición anterior para la creación de la animación.
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=9cm, keepaspectratio]{img/movimientoFluido.drawio.png}
+	\includegraphics[width=12cm, keepaspectratio]{img/movimientoFluido.drawio.png}
 	\caption{Animación A-Frame movimiento fluido.}
 	\label{fig:movimientoFluido}
 \end{figure}
-\begin{figure}[H]
-\centering
-\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
-if (cacheData.lastPosition != cacheData.newPosition) {
-    entityEl.setAttribute('animation__000', {
-        property: 'position',
-        from: cacheData.lastPosition,
-        to: cacheData.newPosition,
-        autoplay: true,
-        loop: 0,
-        easing: 'linear',
-        dur: intervalTime
-    });
-}
-\end{minted}
-\caption{Animación para movimiento fluido interpolando posiciones de manera lineal.
-\label{codigo:movimientoFluido}}
-\end{figure}
+
 
 \clearpage
 \section{Gestión de la configuración de la aplicación}
@@ -1004,7 +1014,7 @@ if (cacheData.lastPosition != cacheData.newPosition) {
 Debido a la naturaleza altamente reutilizable y configurable de nuestra aplicación, hemos dedicado especial atención a la parametrización de todos los componentes. Nuestro objetivo es que la creación de cualquier tipo de escenario se centre en un único archivo de configuración, simplificando así el proceso de establecer los parámetros necesarios para su correcto funcionamiento.
 
 Para lograr esto, hemos desarrollado una pieza clave llamada `configurationModel.js`, que contiene un módulo utilizado por todos los componentes de la aplicación. Este módulo almacena todos los parámetros específicos de un escenario en particular. Para establecer los valores internos de `configurationModel.js`, creamos un archivo JavaScript que invoca los métodos `set` del módulo, configurando así todas las propiedades necesarias para el escenario tal y como podemos ver en la figura \ref{codigo:madridConf}. Como resultado, el archivo HTML principal de nuestro escenario carga el módulo de configuración y el archivo JavaScript que establece las propiedades requeridas para su correcto funcionamiento como se puede apreciar en la figura \ref{codigo:cargaConfiguracion}.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
     import * as configuration from "./configurationModel.js";
@@ -1024,7 +1034,7 @@ Para lograr esto, hemos desarrollado una pieza clave llamada `configurationModel
 \caption{Configuración del escenario de Madrid.
 \label{codigo:madridConf}}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{html}
   <script src="js/configuration/configurationModel.js" type="module"></script>
@@ -1053,21 +1063,21 @@ Dado que muchos servicios y datos geoespaciales se basan en el Datum WGS84, es i
 
 Por otro lado, un sistema de proyección cartográfica es una metodología que permite representar la forma curva de la Tierra en un plano, como un mapa. Dado que la Tierra es un objeto tridimensional, es necesario utilizar proyecciones cartográficas para convertir la superficie esférica en un plano bidimensional. Estas proyecciones utilizan fórmulas matemáticas y parámetros específicos para lograr una representación precisa y adecuada de la Tierra en un mapa plano.
 En nuestra aplicación, para convertir las coordenadas geoespaciales en un plano bidimensional, utilizaremos una proyección Mercator. La proyección Mercator es una de las proyecciones cartográficas más comunes y ampliamente utilizadas. Fue desarrollada por Gerardus Mercator en el siglo XVI y se caracteriza por preservar los ángulos rectos y las formas de las áreas pequeñas, lo que la hace adecuada para representar regiones con menor extensión latitudinal.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/Latitud_y_Longitud_en_la_Tierra.svg.png}
   \caption{Coordenadas geográficas latitud y longitud.}
   \label{fig:latlong}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/simple-cylindrical-projection-earth-map-globe-mercator.jpg}
   \caption{Proyección cilíndrica Mercator.}
   \label{fig:mercator}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{minipage}{0.7\textwidth}
 Hablemos ahora del sistema de coordenadas de A-Frame, en el contexto del sistema de referencia 3D utilizado en A-Frame, se sigue la regla de la mano derecha. Esta regla establece la orientación de los ejes X, Y y Z en el espacio tridimensional.
 Según la regla de la mano derecha, si extendemos el pulgar, el índice y el dedo medio de nuestra mano derecha de manera que sean perpendiculares entre sí, podemos asignar los ejes de la siguiente manera:
@@ -1092,7 +1102,7 @@ En este punto, nos enfrentamos al primer problema que debemos abordar en las con
 La coordenada Y, que representa la latitud en el sistema geoespacial, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje Z y aumenta en dirección opuesta. Por lo tanto, esto es algo que debemos tener en cuenta al diseñar nuestras fórmulas de conversión.
 
 Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo la posición con coordenada (x=8, y=-7) en el sistema geoespacial se representa de manera diferente en ambos sistemas de referencia.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=13cm, keepaspectratio]{img/sistemasDeReferencia.drawio.png}
   \caption{Vista aerea de los sistemas de referencia.}
@@ -1102,7 +1112,7 @@ Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo l
 El siguiente problema al que nos enfrentamos está relacionado con las dimensiones de nuestra aplicación. Si consideramos cuidadosamente los escenarios que vamos a representar, el radio de alcance del escenario en kilómetros es considerablemente grande. A-Frame trabaja con unidades de metros, lo cual es adecuado para aplicaciones de realidad aumentada donde se busca que las dimensiones en el mundo 3D sean equivalentes a la realidad. Sin embargo, en el caso de nuestra aplicación, nuestro objetivo es asegurar que los aviones se puedan visualizar correctamente incluso a distancias de varios kilómetros. Manejar dimensiones tan grandes plantea problemas en el renderizado de objetos lejanos y en la interacción con entidades distantes, además de dificultades en el manejo de coordenadas 3D con unidades tan grandes.
 
 Para ilustrar este concepto, consideremos el escenario de la demo de Vatry, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan [xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094). Utilizando un pequeño script en Google Earth Engine, podemos calcular las distancias de altura y anchura para este rectángulo:
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
 // Cargar el rectángulo de coordenadas geodésicas
@@ -1136,7 +1146,7 @@ print('Anchura del rectángulo:', anchura);
 \label{codigo:dimensionesVatry}
 }
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
 Primera coordenada:
@@ -1182,7 +1192,7 @@ Para la conversión de coordenadas de WGS84 en grados a metros, hemos optado por
 A continuación, en la Figura \ref{formula:desplazamiento}, se presenta el cálculo del desplazamiento. Se puede observar que primero se calculan las coordenadas geodésicas del centro del escenario. Para ello, se toma el punto medio de la latitud y la longitud. Dado que deseamos desplazar el centro del escenario al punto (0,0,0) en el mundo 3D, es necesario tener previamente calculado el desplazamiento en metros que se aplicará a cada coordenada.
 
 Posteriormente, se utiliza una función que realiza la conversión a metros mediante la proyección de Mercator \ref{funcion:deegreeToMeter}. Esto da como resultado las coordenadas geodésicas del centro del escenario expresadas en metros. Estas coordenadas representan el desplazamiento que se aplicará a cada coordenada para lograr que el mapa esté centrado en el punto (0,0,0).
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{align*}
 \text{long} &= \frac{{\text{LONG\_MIN} + \text{LONG\_MAX}}}{2} \\
 \text{lat} &= \frac{{\text{LAT\_MIN} + \text{LAT\_MAX}}}{2} \\
@@ -1203,7 +1213,7 @@ Esta función realiza la operación inversa a la función descrita en \ref{funci
 \label{funcion:mercatorToWorld}
 Esta función se encargará de realizar la conversión de una coordenada cartesiana en proyección Mercator a una coordenada en el mundo 3D. Su objetivo principal es aplicar las transformaciones mencionadas anteriormente para abordar los problemas de representación, que incluyen la inversión del eje Z, el desplazamiento y el escalado. Para lograr esto, la función hará uso del desplazamiento calculado en el constructor de la clase. A continuación, se presentan las fórmulas que serán aplicadas:
 
-\begin{figure}[H]
+\begin{figure}[h]
     \begin{align*}
     x_{\text{World}} &= \frac{\mathbf{\mathrm{mercatorVector}}_{\text{x}} - \mathbf{\mathrm{displacement}}_{\text{x}}}{\mathbf{\mathrm{FACTOR}}} \\
     y_{\text{World}} &= \frac{\mathbf{\mathrm{mercatorVector}}_{\text{z}} - \mathbf{\mathrm{displacement}}_{\text{y}}}{\mathbf{\mathrm{FACTOR}}} \\\\
@@ -1220,7 +1230,7 @@ Esta función se encargará de realizar la conversión de una coordenada cartesi
 \label{funcion:worldtoMercator}
 Esta función tiene la responsabilidad de realizar la operación inversa a la función mencionada en \ref{funcion:mercatorToWorld}. Su objetivo es convertir un vector del escenario 3D en una coordenada cartesiana en proyección Mercator, aplicando todas las operaciones inversas al escalado, la inversión de ejes y el desplazamiento realizados por la función mercatorToWorld \ref{funcion:mercatorToWorld}. A continuación, se presentan las fórmulas que serán aplicadas:
 
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{align*}
 x_{\text{Mercator}} &= (\mathbf{\mathrm{worldVector}}_{\text{x}} \times \mathbf{\mathrm{FACTOR}}) + \mathbf{\mathrm{displacement}}_{\text{x}} \\
 y_{\text{Mercator}} &= (\mathbf{\mathrm{worldVector}}_{\text{z}} \times \mathbf{\mathrm{FACTOR}}) + \mathbf{\mathrm{displacement}}_{\text{y}} \\
@@ -1261,7 +1271,7 @@ Cada celda en la matriz representa una unidad de área cuadrada y contiene un va
 
 Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un datum de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/dem.png}
   \caption{Representación del contenido de un fichero DEM.}
@@ -1280,7 +1290,7 @@ Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
 \label{manual:generacionDem}
 \begin{enumerate}
     \item Primero, procedemos a descargar la zona de interés de los servidores de Copernicus, que contiene el área correspondiente a las coordenadas donde generaremos el archivo DEM. Para realizar esto, visitamos la página \url{https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1} y observamos en la Figura \ref{fig:copernicus} los cuadrantes relevantes para extraer el archivo DEM de Madrid, que son E30N10 (30º Este 10º Norte) y E30N20 (30º Este 20º Norte). Por lo tanto, procedemos a descargar los binarios correspondientes a estas áreas.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/copernicus.jpg}
   \caption{Visor online de ficheros DEM Copernicus.}
@@ -1327,7 +1337,7 @@ Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
     \end{verbatim}
     }
     
-    \begin{figure}[H]
+    \begin{figure}[h]
       \centering
       \includegraphics[width=8cm, keepaspectratio]{img/smallMap.png}
       \caption{Fichero de alturas smallMap.png visto como imagen en blanco y negro.}
@@ -1357,7 +1367,7 @@ En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estamos u
     En la figura \ref{fig:dem}, se muestra el resultado de la exportación. Mientras que en la figura \ref{fig:demAframe}, se presenta una escena simple en A-Frame donde visualizamos el raster exportado sobre una malla con las alturas obtenidas del fichero DEM de Madrid. En esta representación, se pueden apreciar claramente las montañas y las alturas alrededor del aeropuerto de Madrid.
 \end{enumerate}
 \label{manual:generacionRaster}
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 var geometry = ee.Geometry.Rectangle(-4.204133836988655,40.023417003380956, -3.253816454176155,40.744144594569384);
@@ -1381,14 +1391,14 @@ Export.image.toDrive({image: RGB,description: 'Sentinel2_RGB',scale: 20,crs:epsg
 }
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/Madrid_raster.jpg}
   \caption{Raster de Madrid generado con Google Earth Engine.}
   \label{fig:demMadrid}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/madrid_terrain.jpg}
   \caption{Resultado final del componente con la textura de Madrid y el fichero DEM generado.}
@@ -1414,7 +1424,7 @@ En el gestor de alturas, se han implementado dos métodos para calcular la altur
 A continuación, se explicarán ambos métodos y las fórmulas que se han deducido y aplicado:
 \begin{enumerate}
     \item En el método de alto rendimiento, se está haciendo:
-    \begin{figure}[H]
+    \begin{figure}[h]
         \begin{align*}
         index_{\text{x}} &=\mathbf{\mathrm{round}}\left(\frac{\mathbf{\mathrm{vector3D}}_{\text{x}} + \frac{\mathbf{\mathrm{terrainWidth}}_{\text{3D}}}{2}}{\mathbf{\mathrm{cellWidth}}}\right) \\\\
         index_{\text{y}} &=\mathbf{\mathrm{round}}\left(\frac{\mathbf{\mathrm{vector3D}}_{\text{z}} + \frac{\mathbf{\mathrm{terrainHeight}}_{\text{3D}}}{2}}{\mathbf{\mathrm{cellHeight}}}\right) \\\\
@@ -1431,7 +1441,7 @@ A continuación, se explicarán ambos métodos y las fórmulas que se han deduci
     La el punto de intersección representará la altura del terreno, de esta manera no se tienen alturas discretas, sino que se calcula la posición de la superficie real que interpola los puntos discretos de las alturas.
 \end{enumerate}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=10cm, keepaspectratio]{img/terrain.drawio.png}
   \caption{Diagrama de matriz de alturas.}
@@ -1485,7 +1495,7 @@ Para calcular la altura del terreno, obtenemos el centroide de la lista de punto
 
 En nuestra implementación, comenzamos creando una geometría bidimensional en Three.js a partir de la lista de coordenadas del edificio. Sin embargo, surge un problema al realizar la extrusión, ya que las coordenadas utilizadas para crear la forma son (x, y, 0), cuando en realidad deberían ser (x, 0, y) para que la forma se sitúe sobre el terreno en lugar del plano que representa la altura. Por lo tanto, después de crear la forma, aplicamos una rotación de 90 grados alrededor del eje X para colocar el edificio en su posición original. Luego, ajustamos la altura del edificio aplicando una traslación en el eje Y que incluye la altura del terreno y la altura del edificio. De esta manera, el edificio queda correctamente posicionado y anclado al terreno.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=10cm, keepaspectratio]{img/buildings.jpg}
   \caption{Edificios extruidos sobre el terreno.}
@@ -1501,7 +1511,7 @@ Es importante tener en cuenta que el tamaño del personaje no sigue la misma esc
 El componente inicialmente se suscribe al cargador del terreno para establecer la altura correspondiente a la posición inical del personaje una vez que el terreno se haya inicializado. También crea una función de throttledFunction, como se explica en \ref{sec:mainScene}, para aumentar el rendimiento. Esta función actualiza la posición de la cámara cada 200 ms, lo que implica que la altura de la cámara se actualiza 5 veces por segundo. Esto proporciona una experiencia satisfactoria con una pequeña penalización en el rendimiento.
 
 Para calcular la altura, se obtiene el vector actual del objeto 3D de la cámara y del objeto que agrupa al personaje y que contiene la cámara. Para obtener la posición real de la cámara en el mapa, se realiza un cálculo teniendo en cuenta la configuración establecida en el proyecto para el personaje principal, como se muestra en la figura \ref{codigo:rig}:
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{html}
 <!-- Camera -->
@@ -1543,9 +1553,8 @@ En esta sección, vamos a describir cómo se gestiona la caché a través de la 
 Estos objetos se instancian cuando un vuelo aparece en el escenario y se mantienen siempre y cuando el vuelo esté presente en cada lectura de datos de la API. Actúan como objetos DTO (Data Transfer Object) para mantener el estado del avión.
 
 Estos objetos son necesarios para el cacheo de la posición antigua dentro del escenario, lo cual es crucial para generar animaciones que proporcionen un movimiento fluido de los aviones. Además, cada vez que se actualiza la posición de un avión, se emite un evento al componente encargado de pintar el trayecto del vuelo. De esta manera, el componente puede actualizar su geometría y mostrar el trayecto de los aviones desde su entrada en el escenario hasta su posición actual.
-
+\\
 Como ya se describió en la sección \ref{subsec:movimientoFluido}, estos objetos se almacenan en un mapa indexado a través de su identificador para que su recuperación sea eficiente, servirán para mantener el estado de un vuelo específico en el escenario. Esto permite que el gestor del escenario genere una animación utilizando el vector de la caché y el nuevo vector leído de la API para lograr un movimiento fluido, y también actualiza la geometría responsable de representar el trayecto del avión en el escenario mediante un evento emitido sobre el escenario.
-
 \subsection{Objeto de acceso a datos ADS-B (DAO)}
 \label{subsec:dao}
 El objeto de acceso a datos, comúnmente conocido como DAO (Data Access Object), es el objeto responasable de la obtención de los datos ADS-B. Como se muestra en la figura \ref{fig:dao}, el DAO accede al gestor de configuración para verificar si está configurado para acceder en tiempo real o utilizar datos en caché. En el caso de que esté configurado para usar datos en caché, el DAO consulta al gestor de configuración la carpeta y el índice desde donde debe comenzar a leer. En cada evento de actualización, el DAO lee un archivo JSON de la carpeta especificada y lo proporciona al gestor principal de la escena.
@@ -1554,7 +1563,7 @@ Si la configuración del DAO está establecida en tiempo real, se realizará una
 
 El gestor principal de la escena utiliza los datos proporcionados por el DAO para crear las instancias en caché de cada vuelo. Como se muestra en la figura \ref{fig:dao}, el gestor principal mantiene un mapa que almacena la caché de los vuelos, indexados por su identificador único de vuelo (ICAO24). En cada evento temporal, el gestor principal se encarga de mantener la tabla de caché. Si un vuelo no ha sido actualizado, se elimina de la tabla. Si ha sido actualizado, se actualiza la instancia de datos en caché correspondiente. Si el vuelo no existe en la tabla, se inserta en ella. De esta manera, la tabla de caché representa de manera precisa los vuelos presentes en la escena en ese momento específico.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=10cm, keepaspectratio]{img/adsbDao.png}
   \caption{Diagrama del objeto de acceso a datos ADS-B (DAO).}
@@ -1566,13 +1575,13 @@ El gestor principal de la escena utiliza los datos proporcionados por el DAO par
 Para asegurar el correcto funcionamiento del componente de acceso a los datos mencionado en la sección anterior \ref{subsec:dao}, es necesario contar con un componente encargado del almacenamiento de los datos en una carpeta de caché. Posteriormente, el DAO puede consultar esta carpeta en caso de que esté configurado en el modo local.
 
 Este componente está implementado en JavaScript y se ejecuta en el entorno de Node.js. Su función principal es cargar previamente la configuración de un escenario específico, que incluye parámetros como el rectángulo geodésico para la obtención de datos y el intervalo de tiempo en el que se debe establecer el temporizador para realizar una petición a la API en cada evento. Además, este componente se encarga de almacenar el resultado de cada petición en un archivo dentro de la carpeta de caché, como se muestra en la figura \ref{fig:saveApiData}.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/almacenamientoCache.drawio.png}
   \caption{Diagrama de consulta y almacenamiento de datos ADS-B en caché.}
   \label{fig:saveApiData}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/captura_datos_madrid.jpg}
   \caption{Ejecución con Node.js del almacenamiento de datos ADS-B en caché.}
@@ -1590,7 +1599,7 @@ El objetivo principal de todos los componentes desarrollados en esta aplicación
 Correcto, uno de los desafíos encontrados en la usabilidad de la aplicación se refiere a la selección de aviones. Dado que los aviones en la realidad se encuentran a distancias significativas en términos de altura y dimensiones del escenario, sin aplicar técnicas para visualizar objetos distantes, sería imposible seleccionarlos y visualizarlos correctamente.
 
 Para abordar este problema, se ha optado por una solución que sacrifica un poco de realismo dentro del escenario. Cuando un objeto supera cierto umbral de distancia, se aplica un proceso de ampliación que simula que el tamaño del símbolo del avión se mantiene más o menos constante. Con esta solución, facilitamos al usuario la capacidad de seleccionar aviones distantes. Puedes observar las capturas de pantalla que ilustran el componente de ampliación con y sin selección en las figuras \ref{fig:con-hover} y \ref{fig:sin-hover}.
-\begin{figure}[H]
+\begin{figure}[h]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
     \includegraphics[width=7cm, keepaspectratio]{img/sin_hover.jpg}
@@ -1608,7 +1617,7 @@ El componente se agrega a cada entidad que representa un vuelo y calcula la dist
 
 Todos estos parámetros, como el divisor del factor de ampliación y la distancia a partir de la cual se comienza a aplicar el escalado, son configurables, lo que brinda al usuario la capacidad de ajustar la visualización de los tamaños en diferentes distancias según sus preferencias.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{align*}
 \text{{Factor de Ampliacición}} = \left(\frac{{\text{{distancia}} - \text{{distancia umbral}}}}{{\text{{divisor ampliación}}}}\right) + 1\\
 \end{align*}
@@ -1622,7 +1631,7 @@ En esta sección, describiremos el componente encargado de mostrar los metadatos
 
 Como se explicó anteriormente en la sección \ref{subsec:buildingGeometry}, al procesar la información de la capa de edificios extraída de los datos de OpenStreetMap, tenemos la capacidad de extraer los metadatos asociados a cada edificio generado. Por lo tanto, se ha creado un componente al cual se le puede proporcionar un texto como argumento y tiene la responsabilidad de generar un texto que siempre mire hacia la cámara y se posicione sobre la entidad correspondiente. Este texto solo es visible cuando el ratón o el raycaster están posicionados sobre la entidad. Además, el componente genera un material de color rojizo para indicar el elemento seleccionado del cual se muestran los metadatos. De esta manera, podemos visualizar los metadatos de edificios, como se muestra en la figura \ref{fig:tooltip}.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/tooltip.jpg}
   \caption{Componente información contextual mostrando metadatos de la terminal.}
@@ -1635,7 +1644,7 @@ Como veremos más adelante, este componente tiene la capacidad de ser activado o
 En esta sección, exploraremos el componente que acompaña al usuario y permite habilitar o deshabilitar funcionalidades. La barra de herramientas es una entidad 3D que se despliega como un HUD (Head-Up Display) en forma de pantalla frontal de visualización. Proporciona al usuario una interfaz para interactuar con las diversas funcionalidades de la aplicación.
 
 Dado que nos encontramos en un entorno 3D, hemos implementado la barra de herramientas como un componente 3D dentro de la escena, anclado a la cámara principal. Sin embargo, nos hemos enfrentado al desafío de que esta barra puede resultar molesta al bloquear parte de la vista del usuario. Para solucionar este problema, hemos diseñado el componente de manera que pueda plegarse y arrastrarse, brindando al usuario la capacidad de colocarlo en una posición menos intrusiva y ocupando un espacio mínimo en la pantalla.
-\begin{figure}[H]
+\begin{figure}[h]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
     \includegraphics[width=7cm, keepaspectratio]{img/toolbarAbierta.jpg}
@@ -1654,7 +1663,7 @@ La solución técnica implementada consiste en la creación de un componente que
 Cada botón se crea mediante una función interna (ver Código \ref{codigo:crearBoton}) que recibe varios argumentos. Estos argumentos incluyen un identificador único utilizado para hacer referencia al botón en el contexto del DOM, las dimensiones de la entidad que determinan su ancho y alto, el texto a mostrar en el botón (en el caso de botones no conmutables), la posición dentro de la barra de herramientas que define su ubicación en el diseño, el modo de conmutación que indica si el botón es conmutable o no, la acción a ejecutar cuando el botón está activado y la acción a ejecutar cuando el botón está desactivado.
 
 Además, se pueden especificar propiedades visuales para el botón cuando está en estado activado y cuando está en estado desactivado, como el color y el texto correspondiente. Esta configuración flexible y modular hace que nuestra barra de herramientas sea altamente reutilizable para otros proyectos y fácilmente extensible para añadir más funcionalidades dentro de la aplicación.
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 createToolbarButton: function (id,width, height, text,texSize, position, toogle, enableFunction, disableFunction, enableColor, disableColor, enableText, disableText)
@@ -1663,7 +1672,7 @@ createToolbarButton: function (id,width, height, text,texSize, position, toogle,
 \label{codigo:crearBoton}
 }
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/toolbarElementos.jpg}
   \caption{Maquetación del componente barra de herramientas.}
@@ -1676,7 +1685,7 @@ En nuestra aplicación,haciendo uso del método anteriormente descrito nuestro c
 Para lograr la funcionalidad de plegado, se han implementado animaciones que actúan sobre la escala y opacidad de los componentes de la barra de herramientas. Cuando el usuario presiona el botón de plegado, la barra de herramientas oculta los botones mediante una animación que los desvanece gradualmente a través de la opacidad. Luego, la barra de herramientas se comprime horizontalmente, lo que también afecta al botón de plegado, haciendo que se comprima en tamaño.
 
 Para contrarrestar esta compresión, se realiza una animación inversa en el botón de plegado, expandiéndolo horizontalmente y restaurándolo a su tamaño original. Esto crea un efecto visual que contrarresta la compresión causada por el plegado de la barra de herramientas tal y como aclaramos en el diagrama \ref{fig:animationPlegado}.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/plegadoToolbar.drawio.png}
   \caption{Animaciónes para plegar la barra de herramientas.}
@@ -1685,7 +1694,7 @@ Para contrarrestar esta compresión, se realiza una animación inversa en el bot
 \subsection{Componente pantalla frontal de visualización (HUD)}
 \label{subsec:hud}
 El elemento HUD es esencial en nuestra aplicación, ya que proporciona al usuario la visualización de datos de los aviones, así como funcionalidades adicionales relacionadas con los aviones seleccionados.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/hud.jpg}
   \caption{Componente HUD con avión seleccionado.}
@@ -1699,14 +1708,14 @@ En resumen, al activar la funcionalidad del HUD en nuestra barra de herramientas
 En la figura \ref{fig:hud}, podemos observar que cuando seleccionamos un avión, se agrega una entidad en forma de aro que rodea al avión y siempre está orientada hacia la cámara. Esta entidad se desplaza junto con el avión y permite al usuario realizar un seguimiento visual del avión seleccionado. Además, proporcionamos al usuario dos acciones adicionales relacionadas con el avión seleccionado.
 
 La primera acción consiste en visualizar el recorrido del avión en el escenario. Como se muestra en la figura \ref{fig:showTrack}, cuando un avión está seleccionado, se muestra un botón que habilita una línea azul que representa el trayecto que ha seguido el avión desde que ingresó al escenario hasta el momento actual. Esta línea muestra todas las posiciones que la entidad del avión ha ocupado durante su presencia en el escenario.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/show_track.jpg}
   \caption{Trayecto del avión en el escenario.}
   \label{fig:showTrack}
 \end{figure}
 La segunda funcionalidad que ofrece el panel HUD es la capacidad de visualizar una cámara de a bordo a través del panel. Esto brinda al usuario la experiencia de visualizar lo mismo que pueden ver los pasajeros del vuelo. La cámara de a bordo se proyecta en una pantalla que se despliega con una animación justo frente al panel HUD, csomo se muestra en la figura \ref{fig:cameraOnBoard}.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/cameraOnBoard.jpg}
   \caption{Visualización de la cámara de a bordo sobre el HUD.}
@@ -1723,7 +1732,7 @@ Implementar esta funcionalidad requirió mucho tiempo y esfuerzo, probando diver
 El componente super-hands está diseñado para agarrar y mover componentes que se encuentran en una posición absoluta, pero no está preparado para componentes que se encuentran en una posición relativa dentro de la estructura del esqueleto del usuario principal. Esta es la principal razón por la que no fue posible reutilizar ningún componente de las bibliotecas probadas, y se tuvo que desarrollar un componente propio. En este proceso, se encontró una solución ingeniosa para calcular la posición de manera eficiente, de manera distinta a cómo lo hacen las bibliotecas mencionadas. 
 
 Además, se invirtieron muchas horas de investigación para garantizar que el componente fuera compatible tanto con gafas de realidad virtual como con un ratón convencional.
-\begin{figure}[H]
+\begin{figure}[h]
   \begin{minipage}[b]{0.58\linewidth}
     En el archivo custom-draggable.js, se ha creado un componente que permite arrastrar entidades que están contenidas dentro de la cámara principal. Es importante mencionar que en A-frame, cuando agregamos una entidad con geometría dentro de otra entidad, la posición de la entidad será relativa a su entidad padre. Nuestras entidades HUD se basan en este concepto, por lo tanto, tanto la barra de herramientas descrita en la sección \ref{subsec:toolbar3d} como nuestra pantalla frontal de visualización descrita en la sección \ref{subsec:hud}, son entidades secundarias del esqueleto principal que representa al usuario ('rig') tal y como podemos ver en la figura \ref{fig:jerarquiaEntidadesRig}.
   \end{minipage}%
@@ -1747,14 +1756,24 @@ Finalmente, cuando soltamos el botón del mando o el ratón, cambiamos al estado
 
 Es importante destacar que todas las entidades \emph{HUD} contienen el componente \emph{look-at}\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de \emph{A-Frame}, el cual garantiza que siempre estén orientadas hacia la cámara.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \includegraphics[width=10cm, keepaspectratio]{img/custom-draggable.png}
   \caption{Cálculo del vector desplazamiento de arrastre de entidades.}
   \label{fig:raycaster}
 \end{figure}
 
-\clearpage
+\subsection{Componente trayecto realizado por un vuelo}
+\label{subsec:track}
+El componente \emph{track}, contenido en el archivo \emph{track.js}, es un componente que se suscribe a los eventos del objeto \emph{DTO} \emph{FlightCacheData} descrito en el apartado \ref{subsec:datosCacheVuelo} y del panel \emph{HUD} descrito en el apartado \ref{subsec:hud}.
+Es responsable de dibujar una línea que muestra el trayecto del avión en el escenario en caso de que el botón conmutable del \emph{HUD} que activa la funcionalidad del vuelo seleccionado esté habilitado. Este componente solo escucha eventos de su vuelo, por lo tanto, solo usará el tag correspondiente al identificador de vuelo, escuchando eventos de los siguientes prefijos a través de eventos en el escenario:
+\begin{itemize}
+	\item \textbf{\emph{flightCacheData\_push\_}}: Evento recibido por el objeto \emph{FlightCacheData} para actualizar la lista de puntos que componen la línea.
+	\item \textbf{\emph{flightCacheData\_show\_}}: Evento recibido por el panel \emph{HUD} emitido por el botón que activa la funcionalidad.
+	\item \textbf{\emph{flightCacheData\_hide\_}}: Evento recibido al desactivarse el botón conmutable presente en el \emph{HUD}, que desactiva la funcionalidad.
+	\item \textbf{\emph{flightCacheData\_clear\_}}: Evento emitido cuando el vuelo desaparece del escenario para borrar el elemento de la escena.
+\end{itemize}
+El dibujado del trayecto se realizará mediante la creación de una línea de \textsc{THREE.js} mediante un \emph{buffer} de puntos.
 \chapter{Manual de usuario}
 Aquí presentaremos un resumen del procedimiento necesario para crear un escenario y configurar la plataforma proporcionada por el prototipo. Además, en la sección \ref{sec:componentesreutilizables}, describiremos los componentes que se pueden reutilizar en otros proyectos y cómo hacerlo.
 
