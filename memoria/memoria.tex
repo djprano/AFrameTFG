@@ -250,17 +250,19 @@ A continuación en la figura ~\ref{figura:mapaTecnologias}, mostramos el mapa de
 \section{Motivación}
 \label{sec:motivación}
 
-Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{GIS} llamado \textsc{IGEA} de la compañía \textsc{Indra}, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo del proyecto \textsc{IGEA} en una nueva aplicación de software para el proyecto \textsc{iTEC}, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento de conocimientos.
+Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{GIS} llamado \textsc{IGEA} de la compañía \textsc{Indra}, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo del proyecto software \textsc{IGEA}\footnote{\url{https://www.indracompany.com/sites/default/files/indra_in_grid_esp_baja.pdf}} en una nueva aplicación de software para el proyecto \textsc{iTEC}, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento de conocimientos sobre entornos de programación en 3D sobre la tecnología \textsc{JAVA}.
 
 El objetivo principal de esta integración fue reutilizar los componentes centrales de \textsc{IGEA} para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia del proyecto \textsc{IGEA} para gestionar de manera efectiva los datos. Este enfoque permitió crear una solución poderosa y eficiente en poco tiempo para el proyecto\textsc{iTEC}.
 
-Desde el momento en que comencé a buscar un proyecto para la fiscalización de mis estudios y comencé a analizar las posibilidades, me di cuenta de la interesante oportunidad de combinar mi experiencia laboral previa con las demandas de este proyecto. Específicamente, se me ocurrió la idea de visualizar información aeroespacial en un entorno de realidad virtual, ya que la representación bidimensional de datos aéreos resulta limitada y la dimensión de altura es fundamental para la gestión de espacios aereos. Además, la posibilidad de formar parte activa de la escena añade un valor significativo a las aplicaciones de consultas de datos. En este sentido, el futuro de estas aplicaciones parece prometedor.
+Desde el momento en que comencé a buscar un proyecto para la finalización de mis estudios y comencé a analizar las posibilidades que me proporcionaba un proyecto basado en una aplicación \textsc{3D}, me di cuenta de la interesante oportunidad de combinar mi experiencia laboral previa con las demandas de este proyecto. \\
+Explorando las posibilidades se me ocurrió la idea de visualizar información aeroespacial en un entorno de realidad virtual, ya que la representación bidimensional de datos aéreos que proporcionan la mayoría de las aplicaciones web actuales resulta limitada y la dimensión de altura es fundamental para la gestión de espacios aereos. Además, la posibilidad de formar parte activa de la escena añade un valor significativo a las aplicaciones de consultas de datos. En este sentido, el futuro de estas aplicaciones parece prometedor.
 
 \section{Contexto}
 \label{sec:contexto}
-Durante la última década, la recopilación y transmisión de datos en tiempo real se han vuelto más accesibles, lo que ha creado nuevas oportunidades para el desarrollo de aplicaciones y servicios web que permiten a los usuarios visualizar el tráfico aéreo y los datos de vuelo en tiempo real.
+Durante la última década, la recopilación y transmisión de datos en tiempo real se han vuelto más accesibles gracias a la fusión de las tecnologías web junto a las tecnologías de vigilancia aérea, lo que ha creado nuevas oportunidades para el desarrollo de aplicaciones y servicios web que permiten a los usuarios visualizar el tráfico aéreo y los datos de vuelo en tiempo real.
 
-Uno de los sistemas que ha experimentado un gran desarrollo y éxito en el ámbito aeronáutico es el sistema de vigilancia automática dependiente de difusión \textsc{ADS-B}~\ref{sec:adsb}. Este sistema permite que las aeronaves transmitan información precisa de sus sensores, como la posición, velocidad, altitud, orientación, entre otros datos relevantes. El crecimiento de esta tecnología ha llevado a empresas y plataformas como FlightRadar24 y OpenSky a expandir sus redes y ofrecer servicios, incluso gratuitos, que proporcionan estos metadatos a través de la web. Esto ha impulsado el aumento de aplicaciones de dos dimensiones que muestran información de vuelos en tiempo real mediante mapas interactivos.
+Uno de los sistemas que ha experimentado un gran desarrollo y éxito en el ámbito aeronáutico es el sistema de vigilancia automática dependiente de difusión \textsc{ADS-B}~\ref{sec:adsb}. Este sistema permite que las aeronaves transmitan información precisa de sus sensores, como la posición, velocidad, altitud, orientación, entre otros datos relevantes. \\
+El crecimiento de esta tecnología ha llevado a empresas y plataformas como FlightRadar24 y OpenSky a expandir sus redes y ofrecer servicios, incluso gratuitos, que proporcionan estos metadatos a través de la web. Esto ha impulsado el aumento de aplicaciones de dos dimensiones que muestran información de vuelos en tiempo real mediante mapas interactivos.
 
 FlightRadar24, una empresa destacada en este campo, ofrece servicios web que muestran información en tiempo real sobre vuelos en un mapa bidimensional. Además del seguimiento de vuelos, proporciona detalles como el origen y destino de los vuelos, números de vuelo, tipos de aviones, altitudes, rumbos y velocidades.
 
@@ -274,43 +276,42 @@ OpenSky\ref{sec:opensky}, por su parte, es otra plataforma relevante que recopil
 \newpage
 \section{Objetivo general}
 \label{sec:objetivoGeneral}
-El avance en la recopilación y transmisión de datos en tiempo real, junto con el crecimiento de los sistemas ADS-B, ha creado oportunidades emocionantes para el desarrollo de aplicaciones y servicios web que permiten la visualización de información aeronáutica en tiempo real. La migración hacia aplicaciones 3D inmersivas en realidad virtual podría llevar esta experiencia a un nivel superior, ofreciendo una representación más completa y envolvente de los datos aeroespaciales.
-Imaginar la inclusión de un controlador de espacios aéreos dentro de un entorno tridimensional, capaz de gestionar aviones en tiempo real, es sumamente emocionante. Con un desarrollo adecuado, esta idea tiene el potencial de revolucionar la forma en que se controlan y gestionan los espacios aéreos.
+El avance en la recopilación y transmisión de datos en tiempo real, junto con el crecimiento de los sistemas \textsc{ADS-B}, ha creado oportunidades emocionantes para el desarrollo de aplicaciones y servicios web que permiten la visualización de información aeronáutica en tiempo real. La migración hacia aplicaciones \textsc{3D} inmersivas en realidad virtual podría llevar esta experiencia a un nivel superior, ofreciendo una representación más completa y envolvente de los datos aeroespaciales.\\
+Imaginar la inclusión de un controlador de espacios aéreos dentro de un entorno tridimensional, proporcionando la capacidad de gestionar aviones en tiempo real, es sumamente emocionante. Con un desarrollo adecuado, esta idea tiene el potencial de revolucionar la forma en que se controlan y gestionan los espacios aéreos.
 La idea de poder estar en un aeropuerto, esperando a un familiar y tener la posibilidad de seguir el aterrizaje y visualizar lo que están viendo desde el avión a través de una experiencia en realidad virtual también resulta emocionante. Esta perspectiva nos permitiría tener una conexión más inmersiva con la experiencia de vuelo y compartir virtualmente el viaje con nuestros seres queridos. 
 \section{Objetivos específicos} % título de sección (se muestra)
 \label{sec:objetivosEspecificos} % identificador de sección (no se muestra, es para poder referenciarla)
 A continuación, se detallan los objetivos específicos del proyecto:
 \begin{enumerate}
-    \item Desarrollar un escenario 3D que represente un rectángulo geodésico y que incluya un terreno con las alturas precisas de la zona.
+    \item Desarrollar un escenario 3D que represente un rectángulo geodésico y que incluya un terreno con las alturas de la zona.
     \item Aplicar una textura al terreno para mejorar su realismo.
     \item Implementar la capacidad de referenciar cualquier posición geodésica dentro del escenario.
     \item Implementar la capacidad de calcular la altura del terreno en cualquier punto del escenario.
     \item Introducir aviones que representen vuelos reales utilizando posiciones geodésicas.
-    \item Animar los aviones mediante desplazamientos lineales basados en sus posiciones.
-    \item Obtener metadatos de las APIs ADS-B\ref{sec:adsb} y utilizarlos en tiempo real para animar los aviones.
-    \item Establecer un proceso de almacenamiento de datos de una API ADS-B para reproducir las animaciones de los aviones localmente a través de una caché.
-    \item Obtener metadatos de una API que contenga información sobre contornos y alturas de edificios.
-    \item Permitir la navegación por el escenario utilizando tanto el teclado y el ratón como dispositivos de realidad virtual, siguiendo el contorno del terreno.
-    \item Crear componentes HUD que formen parte de la escena y se muevan con el usuario dentro de su campo de visión para habilitar o deshabilitar funciones.
+    \item Animar los aviones mediante desplazamientos interpolados de forma lineal basados en sus posiciones.
+    \item Obtener metadatos de algún servicio web que ofrezca datos \textsc{ADS-B}~\ref{sec:adsb} y utilizarlos en tiempo real para animar los aviones.
+    \item Establecer un proceso de almacenamiento de datos de algún servicio web que ofrezca datos \textsc{ADS-B} para reproducir las animaciones de los aviones de manera local a través de una caché.
+    \item Obtener metadatos de un servicio web que contenga información sobre contornos y alturas de edificios.
+    \item Permitir la navegación por el escenario utilizando tanto el teclado y el ratón como dispositivos de realidad virtual, navegando sobre el contorno del terreno.
+    \item Crear componentes \textsc{HUD} que formen parte de la escena y se muevan con el usuario dentro de su campo de visión para habilitar o deshabilitar funciones.
     \item Permitir al usuario mover los componentes de visualización de datos dentro de su campo de visión.
     \item Posibilitar la selección de aviones para visualizar su información actualizada en tiempo real.
     \item Visualizar metadatos de los edificios mediante el posicionamiento del ratón encima.
     \item Mostrar el trayecto que realiza un avión desde que entra en el escenario.
-    \item Visualizar una cámara a bordo del avión.
+    \item Visualizar una cámara de a bordo del avión.
     \item Modularizar la aplicación creando componentes reutilizables.
-    \item Crear un sistema que proporcione una plataforma sencilla para la creación de escenarios que representen otras zonas del mundo.
+    \item Crear un sistema que proporcione una plataforma sencilla para la creación de escenarios que representen cualquier zonas del mundo a través de configuración.
 \end{enumerate}
 \section{Distribución del software}
 \label{sec:planificacion-temporal}
 Todo el código fuente, así como los componentes y las demos están alojados en el repositorio de GitHub en la siguiente dirección: \url{https://github.com/djprano/AFrameTFG}
 \section{Tecnologías Similares}
 \label{sec:tecnosimilares}
-En el mercado encontramos aplicaciones líderes en este campo como es el caso de "FlightRadar24"\footnote{\url{https://www.flightradar24.com/}}. Esta aplicación utiliza datos de fuentes como los transpondedores de las aeronaves, radares y sistemas de seguimiento de vuelo para mostrar la posición y la trayectoria de los aviones en tiempo real en un entorno de dos dimensiones.
+En el mercado encontramos aplicaciones líderes en este campo como es el caso de \emph{FlightRadar24}\footnote{\url{https://www.flightradar24.com/}}. Esta aplicación utiliza datos de fuentes como los transpondedores de las aeronaves, radares y sistemas de seguimiento de vuelo para mostrar la posición y la trayectoria de los aviones en tiempo real en un entorno de dos dimensiones.
 
-Otra aplicación ampliamente utilizada es "Plane Finder"\footnote{\url{https://planefinder.net/}}, que ofrece una interfaz interactiva para visualizar datos de aviones en tiempo real. Esta aplicación permite a los usuarios filtrar y clasificar los aviones por diferentes criterios, como aerolínea, tipo de aeronave o ubicación geográfica. Además, proporciona información detallada sobre cada avión, incluyendo su identificador de transpondedor, origen y destino, y velocidad actual.
+Otra aplicación ampliamente utilizada es \emph{Plane Finder}\footnote{\url{https://planefinder.net/}}, que ofrece una interfaz interactiva para visualizar datos de aviones en tiempo real. Esta aplicación permite a los usuarios filtrar y clasificar los aviones por diferentes criterios, como aerolínea, tipo de aeronave o ubicación geográfica. Además, proporciona información detallada sobre cada avión, incluyendo su identificador de transpondedor, origen y destino, y velocidad actual.
 
 Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuarios acceder a información valiosa sobre los aviones en tiempo real y mejorar la comprensión de la situación operativa.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RESULTADOS %
@@ -318,18 +319,20 @@ Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuar
 \chapter{Resultados}
 \label{chap:resultados}
 \section{Planificación temporal}
-Para explicar el proceso de planificación temporal que se ha realizado durante el desarrollo del proyecto, se ha utilizado una metodología de planificación Scrum.
-Scrum hace uso de un marco de trabajo ágil, introducido por primera vez en la década de los 90 por Ken Schwaber y Jeff Sutherland como una herramienta para abordar proyectos complejos.
-El enfoque principal de Scrum se fundamenta en la realización de iteraciones incrementales. Esto implica dividir el proyecto en tareas más pequeñas y de corta duración conocidas como "sprints". Cada sprint tiene una duración estimada en la cual se llevan a cabo actividades como la planificación, el desarrollo, las pruebas y la revisión.
+Para explicar el proceso de planificación temporal que se ha realizado durante el desarrollo del proyecto, se ha utilizado una metodología de planificación \textsc{Scrum}.\\
+Esta metodología hace uso de un marco de trabajo ágil, introducido por primera vez en la década de los 90 por \emph{Ken Schwaber} y \emph{Jeff Sutherland} como una herramienta para abordar proyectos complejos.
+El enfoque principal de \textsc{Scrum} se fundamenta en la realización de iteraciones incrementales. Esto implica dividir el proyecto en tareas más pequeñas y de corta duración conocidas como \emph{sprints}. 
 
-En el ámbito laboral, es muy común utilizar esta metodología en proyectos tecnológicos, y muchas empresas ofrecen productos para la planificación de proyectos. Uno de los más ampliamente utilizados es JIRA de Atlassian, que cuenta con una guía de la metodología muy bien documentada \cite{scrumGuide}.
+Cada \emph{sprint} tiene una duración estimada en la cual se llevan a cabo actividades como la planificación, el desarrollo, las pruebas y la revisión.
 
-Algunas de las características que utilizaremos de Scrum son las siguientes:
+En el ámbito laboral, es muy común utilizar esta metodología en proyectos tecnológicos, y muchas empresas ofrecen productos para la planificación de proyectos. Uno de los más ampliamente utilizados es \textsc{JIRA}\footnote{\url{https://www.atlassian.com/software/jira}} de \textsc{Atlassian}, que cuenta con una guía de la metodología muy bien documentada \cite{scrumGuide}.
+
+Algunas de las características que utilizaremos de \emph{Scrum} son las siguientes:
 \begin{itemize}
-\item Roles: Scrum define tres roles principales: Product Owner (Dueño del producto), el Scrum Master (responsable de que se cumpla la metodología) y el equipo de desarrollo (desarrolladores).
-\item Backlog: registro de tareas pendientes, que deberán estar estimadas y priorizadas.
-\item Artefactos: Scrum utiliza varios artefactos para gestionar el trabajo. El más importante es el Product Backlog, que es una lista priorizada de todas las funcionalidades, mejoras y tareas pendientes. Otros artefactos incluyen el Sprint Backlog, que contiene las tareas seleccionadas para el sprint actual, y el Incremento, que es la versión funcional del producto al finalizar cada sprint.
-\item Reuniones: Scrum incluye varias reuniones estructuradas para facilitar la colaboración y la toma de decisiones. Estas reuniones incluyen la Sprint Planning, donde se define el alcance del sprint, la Daily Scrum, una breve reunión diaria de seguimiento, y la Sprint Review, donde se revisa y se demuestra el trabajo realizado durante el sprint.
+\item \textbf{\emph{Roles}}: se define tres roles principales: \emph{Product Owner} (Dueño del producto), el \emph{Scrum Master} (responsable de que se cumpla la metodología) y el equipo de desarrollo (desarrolladores).
+\item \textbf{\emph{Backlog}}: registro de tareas pendientes, que deberán estar estimadas y priorizadas.
+\item \textbf{\emph{Artefactos}}: se utiliza varios artefactos para gestionar el trabajo. El más importante es el \emph{Product Backlog}, que es una lista priorizada de todas las funcionalidades, mejoras y tareas pendientes. Otros artefactos incluyen el \emph{Sprint} \emph{Backlog}, que contiene las tareas seleccionadas para el \emph{sprint} actual, y el Incremento, que es la versión funcional del producto al finalizar cada \emph{sprint}.
+\item \textbf{\emph{Reuniones}}: la metodología incluye varias reuniones estructuradas para facilitar la colaboración y la toma de decisiones. Estas reuniones incluyen la \emph{Sprint Planning}, donde se define el alcance del \textsc{sprint} actual, la \emph{Daily Scrum}, una breve reunión diaria de seguimiento, y la \emph{Sprint Review}, donde se revisa y se demuestra el trabajo realizado durante el \emph{sprint}.
 \end{itemize}
 
 \begin{figure}[h]
@@ -343,8 +346,8 @@ En la figura \ref{fig:scrum} podemos visualizar en el tiempo como se han distrib
 
 \begin{itemize}
     \item \textbf{Sprint 0}: En esta etapa, se lleva a cabo una investigación exhaustiva de las tecnologías disponibles para abordar los requisitos del proyecto. Puesta en marcha del entorno de desarrollo y realiza formación para familiarizarse con las librerías y el lenguaje de programación, se realizan experimentos y se busca componentes reutilizables.
-    \item \textbf{Sprint 1}: En esta etapa, se sientan las bases para el inicio del prototipo. Se comienza a crear los módulos y componentes que tendrán la funcionalidad principal de mover aviones utilizando datos de APIs.
-    \item \textbf{Sprint 2}: En esta etapa, se enfoca en el desarrollo de la gestión del terreno. Se crea el suelo del escenario con representación realista mediante alturas y texturas. Se desarrollan los módulos encargados del cálculo de alturas y la generación de edificios utilizando datos de OpenStreetMaps.
+    \item \textbf{Sprint 1}: En esta etapa, se sientan las bases para el inicio del prototipo. Se comienza a crear los módulos y componentes que tendrán la funcionalidad principal de mover aviones utilizando datos de \textsc{APIs}.
+    \item \textbf{Sprint 2}: En esta etapa, se enfoca en el desarrollo de la gestión del terreno. Se crea el suelo del escenario con representación realista mediante alturas y texturas. Se desarrollan los módulos encargados del cálculo de alturas y la generación de edificios utilizando datos de \textsc{OpenStreetMaps}.
     \item \textbf{Sprint 3}: En esta etapa, se pone énfasis en la interfaz gráfica. Se crea un ecosistema de componentes reutilizables que permiten al usuario visualizar información, activar y desactivar funcionalidades de la aplicación. Además, se desarrollan los componentes necesarios para la interacción con el escenario, ya sea mediante ratón y teclado o mediante gafas y mandos de realidad virtual.
 \end{itemize}
 
@@ -353,23 +356,24 @@ En la figura \ref{fig:scrum} podemos visualizar en el tiempo como se han distrib
 \begin{itemize}
     \item Montar un entorno de programación para aplicaciones web con un servidor liviano para poder arrancar aplicaciones web en local y poder depurar con inspección de variables y puntos de ruptura.
     \item Investigar tecnologías que vamos a necesitar para el desarrollo del prototipo.
-    \item Leer documentación de las tecnologías y realizar los ejemplos de la documentación para familiarizarse con la API que nos proporcionan.
-    \item Leer libro sobre JavaScript y Documentación para refrescar conocimientos sobre el lenguaje.
+    \item Leer documentación de las tecnologías y realizar los ejemplos de la documentación para familiarizarse con la \textsc{API} que nos proporcionan.
+    \item Leer libro sobre \textsc{JavaScript} y Documentación para refrescar conocimientos sobre el lenguaje.
 \end{itemize}
 \subsection{Desarrollo}
-Se tomó la decisión de utilizar el editor de código \textbf{VSCode} como entorno de desarrollo, debido a la familiaridad previa con esta herramienta en cursos de JavaScript. 
-Se instaló \textbf{VSCode} y el servidor de aplicaciones \textbf{Live Server} para ejecutar la aplicación en modo de depuración local.
+Se tomó la decisión de utilizar el editor de código \textsc{VSCode} como entorno de desarrollo, debido a la familiaridad previa con esta herramienta en cursos de \textsc{JavaScript}. 
+Se instaló \textsc{VSCode} y el servidor de aplicaciones \textsc{Live Server} para ejecutar la aplicación en modo de depuración local.
 
-El uso de la librería A-Frame fue un requisito del \emph{Product Owner}, por lo que se siguieron los ejemplos de la documentación y se realizó el proceso de inicio rápido (\emph{Getting started}).
-Se instaló \textbf{Git} y se creó un repositorio en \textbf{GitHub} para mantener un control de versiones y compartir el código fuente del prototipo. 
+El uso de la librería \textsc{A-Frame} fue un requisito del \emph{Product Owner}, por lo que se siguieron los ejemplos de la documentación y se realizó el proceso de inicio rápido (\emph{Getting started}).
+Se instaló \textsc{Git} y se creó un repositorio en \textsc{GitHub} para mantener un control de versiones y compartir el código fuente del prototipo. 
 Además, se configuró un \emph{GitHub Pages} para mostrar la evolución del desarrollo al \emph{Product Owner}.
 
-Se leyó la documentación de Three.js para conocer las herramientas disponibles para futuras implementaciones de componentes de A-Frame.
-Se realizó el curso interactivo de A-Frame disponible en \url{https://mozilla.pe/aframe-school/#/}, lo cual ayudó a resolver muchas dudas y obtener un mejor entendimiento de la tecnología.
-Se comenzó a crear animaciones y realizar pruebas con la gestión de eventos del ratón en A-Frame.
-Se consultó un workshop interesante sobre A-Frame y WebXR en \url{https://github.com/german-alvarez-dev/workshop-webvr-aframe}.
+Se leyó la documentación de \textsc{Three.js} para conocer las herramientas disponibles para futuras implementaciones de componentes de \textsc{A-Frame}.
+Se realizó el curso interactivo de \textsc{A-Frame} disponible en \url{https://mozilla.pe/aframe-school/}, lo cual ayudó a resolver muchas dudas y obtener un mejor entendimiento de la tecnología.
+Se comenzó a crear animaciones y realizar pruebas con la gestión de eventos del ratón en \textsc{A-Frame}.
+Se consultó un \emph{workshop} interesante sobre \textsc{A-Frame} y \textsc{WebXR} en \url{https://github.com/german-alvarez-dev/workshop-webvr-aframe}.
 
-Para abordar el requisito de la creación de un terreno se investigó y se encontraron varios ejemplos de creación de terrenos con A-Frame que podrían ser útiles para el prototipo. Algunos de ellos incluyen:
+Para abordar el requisito de la creación de un terreno se investigó y se encontraron varios ejemplos de creación de terrenos con \textsc{A-Frame} que podrían ser útiles para el prototipo. \\
+Algunos de ellos son:
 \begin{itemize}
     \item \url{https://github.com/DougReeder/aframe-atoll-terrain}
     \item \url{https://github.com/jesstelford/aframe-map}
@@ -378,28 +382,29 @@ Para abordar el requisito de la creación de un terreno se investigó y se encon
     \item \url{https://github.com/anselm/aterrain}
     \item \url{https://cesium.com/ion}
 \end{itemize}
-Después de realizar varias pruebas, se concluyó que el componente \emph{aframe-terrain-model-component} era el más adecuado debido a su facilidad de uso y capacidad para manejar archivos DEM en formato \emph{ENVI}.
+Después de realizar varias pruebas, se concluyó que el componente \emph{aframe-terrain-model-component} era el más adecuado debido a su facilidad de uso y capacidad para manejar archivos \textsc{DEM} en formato \textsc{ENVI}.
 
-Se abordó el requisito de obtener datos de los aviones de una API en línea, y se estudiaron las dos principales opciones de datos ADS-B: \textbf{FlightRadar24} y \textbf{OpenSky}. Tras evaluar las limitaciones y considerando que \textbf{OpenSky} era gratuita y tenía menos restricciones, se decidió utilizar esta API.
-Se instala \textbf{Node.js} y se desarrolla un programa simple para almacenar datos localmente y poder trabajar de forma independiente de las limitaciones impuestas por la API.
+Se abordó el requisito de obtener datos de los aviones de una \textsc{API} en línea, y se estudiaron las dos principales opciones de datos \textsc{ADS-B}: \emph{FlightRadar24} y \emph{OpenSky}. Tras evaluar las limitaciones y considerando que \emph{OpenSky} era gratuita y tenía menos restricciones, se decidió utilizar esta \textsc{API}.
+Se instala \textsc{Node.js} y se desarrolla un programa simple para probar el servicio web y para almacenar datos localmente y poder trabajar de forma independiente de las limitaciones impuestas por la \textsc{API}.
 \subsection{Resultado}
-Después de realizar todas estas actividades, se llevó a cabo una reunión con el \emph{Product Owner}, quien mostró satisfacción con el progreso y consideró que el equipo estaba listo para abordar el siguiente sprint, que implicaría el desarrollo del prototipo final y cerraría la etapa de investigación de tecnologías.
+Después de realizar todas estas actividades, se llevó a cabo una reunión con el \emph{Product Owner}, quien mostró satisfacción con el progreso y consideró que el equipo estaba listo para abordar el siguiente \emph{sprint}, que implicaría el comienzo del desarrollo del prototipo y cerraría la etapa de investigación de tecnologías.
 \section{Sprint 1}
 \subsection{Objetivos}
 \begin{itemize}
     \item Desarrollar un módulo que pueda leer los datos locales almacenados por el proceso batch. Además, este módulo debe ser configurable de manera que podamos acceder a datos locales o a datos en tiempo real del servidor.
-    \item Encontrar un modelo GLTF de un avión con una licencia que permita su uso y que sea ligero para no afectar el rendimiento. Este modelo debe ser incorporado en la escena y comenzar a posicionarlo en función de los datos ADS-B que se han leído.
+    \item Encontrar un modelo \textsc{GLTF} de un avión con una licencia que permita su uso y que sea ligero para no afectar el rendimiento. Este modelo debe ser incorporado en la escena y comenzar a posicionarlo en función de los datos \textsc{ADS-B} que se han leído.
     \item Crear animaciones que permitan interpolar linealmente la posición del modelo de avión, evitando cambios bruscos de posición.
     \item Desarrollar un módulo para gestionar la configuración de la escena de manera que se pueda crear aplicaciones para diferentes escenarios utilizando la misma plataforma, simplemente modificando la configuración.
     \item Implementar la capacidad de seleccionar aviones dentro de la escena.
 \end{itemize}
 \subsection{Desarrollo}
-Se buscó en la página de Sketchfab un modelo de avión y se encontró un modelo GLTF\footnote{\url{https://sketchfab.com/3d-models/low-poly-plane-151517395bae4d849b30ca53a5e3c5a8}} de uso libre compuesto por tan solo 416 triángulos, el cual se utilizará como icono para los vuelos.
+Se buscó en la página de \textsc{Sketchfab} un modelo de avión y se encontró un modelo \textsc{GLTF}\footnote{\url{https://sketchfab.com/3d-models/low-poly-plane-151517395bae4d849b30ca53a5e3c5a8}} de uso libre compuesto por tan solo 416 triángulos, el cual se utilizará como icono para los vuelos.\\
 Se creó el componente principal que sobrescribe el comportamiento de la escena principal y actúa como el gestor principal de la aplicación. Para obtener más detalles sobre el diseño de este componente, consulta la sección \ref{sec:mainScene}.
-Se realizaron las primeras animaciones de los aviones, pero se encontraron algunos problemas. El sistema de A-Frame está diseñado para trabajar en metros, sin embargo, al trabajar con coordenadas absolutas, surgieron dificultades debido a que en Madrid, las unidades de posición contienen vectores de dimensiones muy grantes, por ejempplo esta es la posición del aeropuerto en coordenadas cartesianas (-396861, altura, 4937984), los cuales no son convenientes de manejar. Además, uno de los ejes está invertido, como se explica en la sección \ref{subsec:mapConversion}.
-Después de una reunión con el \emph{Product Owner}, se decidió crear un módulo dedicado a gestionar las conversiones entre las coordenadas geodésicas y las coordenadas en el mundo 3D. En este módulo, se invirtió el eje problemático y se realizó una traslación para centrar el escenario en las coordenadas (0, 0, 0). Además, se aplicó un escalado para manejar distancias en escenarios de grandes dimensiones, como cientos de kilómetros. Todas estas transformaciones se realizaron de manera parametrizada a través de la configuración.
-Se comenzaron a crear las primeras animaciones de los aviones con éxito sobre un escenario que representa el aeropuerto de Barajas, en la comunidad de Madrid. También se generaron las primeras siluetas sin extruir en el suelo para comprobar que las posiciones de los aviones coincidían con las posiciones de los edificios, como se muestra en la figura \ref{fig:sprint1}.
-Además, se inició la captura de un raster para incorporar una referencia en forma de mapa de OpenStreetMap en el suelo, lo cual permitirá verificar si se están creando las geometrías en el lugar correcto.
+Se realizaron las primeras animaciones de los aviones, pero surgieron algunos problemas. El sistema \textsc{A-Frame} está diseñado para trabajar con unidades en metros. Sin embargo, al utilizar coordenadas absolutas, se encontraron dificultades al manejar posiciones con vectores de dimensiones muy grandes, como el caso del aeropuerto en Madrid, cuyas coordenadas cartesianas son \emph{(-396861, altura, 4937984)}. Estas dimensiones resultan difíciles de manejar. Además, se identificó que uno de los ejes está invertido por el sistema de referencia que posee \textsc{A-Frame}, como se explica detalladamente en la sección \ref{subsec:mapConversion}.\\
+Después de una reunión con el \emph{Product Owner}, se decidió crear un módulo dedicado a gestionar las conversiones entre las coordenadas geodésicas y las coordenadas en el mundo \textsc{3D}. En este módulo, se invirtió el eje problemático y se realizó una traslación para centrar el escenario en las coordenadas \emph{(0, 0, 0)}. Además, se aplicó un escalado para manejar distancias en escenarios de grandes dimensiones, como cientos de kilómetros. Todas estas transformaciones se realizaron de manera parametrizada a través de la configuración.
+Se comenzaron a crear las primeras animaciones de los aviones con éxito sobre un escenario que representa el aeropuerto de Barajas y sus alrededores. \\
+También se generaron las primeras siluetas sin extruir en el suelo para comprobar que las posiciones de los aviones coincidían con las posiciones de los edificios, como se muestra en la figura \ref{fig:sprint1}.
+Además, se inició la captura de un \emph{raster} para incorporar una referencia en forma de mapa de \textsc{OpenStreetMap} en el suelo, lo cual permitirá verificar si se están creando las geometrías en el lugar correcto.
 Se implementan en el gestor principal de la escena las primeras interacciones con eventos. Se ha creado una entidad en forma de cono que se posiciona encima del avión para indicar visualmente el avión sobre el cual tenemos el ratón. Esta funcionalidad permite al usuario identificar fácilmente qué avión está siendo seleccionado o resaltado.
 
 \subsection{Resultado}
@@ -409,23 +414,23 @@ Se implementan en el gestor principal de la escena las primeras interacciones co
   \caption{Versión inicial.}
   \label{fig:sprint1}
 \end{figure}
-Durante la reunión final del sprint con el \emph{Product Owner}, se ha llegado a la conclusión de que se han cumplido satisfactoriamente los objetivos establecidos. Se considera que se ha logrado una buena base para continuar el desarrollo, especialmente con la incorporación de las siluetas en el terreno de la escena que es parte del desarrollo para el próximo sprint donde abordaremos la generación de un módulo que gestiona el terreno.
+Durante la reunión final del \emph{sprint} con el \emph{Product Owner}, se ha llegado a la conclusión de que se han cumplido satisfactoriamente los objetivos establecidos. Se considera que se ha logrado una buena base para continuar el desarrollo, especialmente con la incorporación de las siluetas en el terreno de la escena que es parte del desarrollo para el próximo \emph{sprint} donde abordaremos la generación de un módulo que gestiona el terreno.
 \section{Sprint 2}
 \subsection{Objetivos}
 \begin{itemize}
-    \item Generar un archivo DEM y un raster para los escenarios de Madrid y Vatry.
+    \item Generar un archivo \textsc{DEM} y un \emph{raster} para los escenarios de Madrid y Vatry.
     \item Integrar en la plataforma el componente \emph{aframe-terrain-model}\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}}, el cual genera un mallado a partir de un archivo binario de alturas.
     \item Desarrollar un módulo para la gestión de terrenos.
-    \item Crear un segundo escenario adaptando el gestor de configuración de la aplicación para permitir la cargar toda la plataforma tan solo modificando un fichero en el HTML principal.
-    \item Utilizar Three.js para crear geometrías complejas y extruir los edificios en alturas específicas, teniendo en cuenta la altura del terreno.
+    \item Crear un segundo escenario adaptando el gestor de configuración de la aplicación para permitir la cargar toda la plataforma tan solo modificando un fichero en el \textsc{HTML} principal.
+    \item Utilizar \textsc{Three.js} para crear geometrías complejas y extruir los edificios en alturas específicas, teniendo en cuenta la altura del terreno.
     \item Adaptar el gestor principal para considerar la altura del terreno al posicionar los aviones.
 \end{itemize}
 \subsection{Desarrollo}
-Se generan los ficheros DEM y raster con éxito siguiendo el procedimiento descrito en las secciones \ref{sec:dem} y \ref{sec:raster}. Para integrar el componente de terrenos en la plataforma, hemos hecho que los parámetros del componente binario de alturas y raster del terreno sean configurables, como la anchura, altura y magnificación del eje de altura.
+Se generan los ficheros \textsc{DEM} y \emph{raster} con éxito siguiendo el procedimiento descrito en las secciones \ref{sec:dem} y \ref{sec:raster}. Para integrar el componente de terrenos en la plataforma, hemos hecho que los parámetros del componente binario de alturas y \emph{raster} del terreno sean configurables, como también la anchura, altura y la magnificación del eje de altura.
 
-Uno de los problemas actuales es que nuestro gestor de alturas debe conocer el valor de altura en cada punto generado por el componente de terreno. Hemos llevado a cabo una investigación consultando el código fuente del componente, y hemos encontrado un evento interno que podemos reutilizar para acceder a la variable de alturas guardada dentro del objeto DEM, como se muestra en la figura \ref{fig:terrain_evento}. Después de ver que los datos almacenados en la variable eran valores extraños e incomprensibles, logramos entender la lógica del array de datos. El problema residía en que el array era del tipo Uint16Array y las alturas aplicadas seguían una lógica de normalización del valor del archivo binario multiplicado por el factor de magnificación de alturas. Al insertar esta lógica dentro del nuevo gestor de alturas, realizamos una prueba generando esferas en cada punto del archivo y observamos que se posicionaron correctamente sobre el mallado.
-Hemos agrupado toda esta lógica en el archivo heightManager.js, que contendrá la instancia única encargada de gestionar la carga del terreno y la API de alturas.
-
+Uno de los problemas actuales es que nuestro gestor de alturas debe conocer el valor de altura en cada punto generado por el componente de terreno. Hemos llevado a cabo una investigación consultando el código fuente del componente, y hemos encontrado un evento interno que podemos reutilizar para acceder a la variable de alturas guardada dentro del objeto \textsc{DEM}, como se muestra en la figura \ref{fig:terrain_evento}. Después de ver que los datos almacenados en la variable eran valores extraños e incomprensibles, logramos entender la lógica del \emph{array} de datos. 
+El problema residía en que el \emph{array} era del tipo \emph{Uint16Array} y las alturas aplicadas seguían una lógica de normalización del valor del archivo binario multiplicado por el factor de magnificación de alturas. Al insertar esta lógica dentro del nuevo gestor de alturas, realizamos una prueba generando esferas en cada punto del archivo y observamos que se posicionaron correctamente sobre el mallado.\\
+Hemos agrupado toda esta lógica en el archivo \emph{heightManager.js}, que contendrá la instancia única encargada de gestionar la carga del terreno y la \textsc{API} de alturas.\\
 Descargamos los datos de edificios y los preprocesamos según se detalla en la sección.\ref{subsec:buildingData} para poder usarlos en el gestor de terreno.
 
 \begin{figure}[h]
@@ -443,56 +448,59 @@ Se realiza la reunión final con el \emph{Product Owner} concluyendo que se han 
 \section{Sprint 3}
 \subsection{Objetivos}
 \begin{itemize}
-    \item Insertar una geometría que envuelva el cuerpo del avión, indicando cuál avión está seleccionado y que siempre quede mirando hacia la cámara.
-    \item Realizar un panel HUD donde visualizar la información de los vuelos seleccionados, refrescándose cuando haya cambios mediante eventos.
+    \item Insertar una geometría que envuelva el cuerpo del avión, indicando cuál está seleccionado y que siempre quede mirando hacia la cámara.
+    \item Realizar un panel \textsc{HUD} donde visualizar la información de los vuelos seleccionados, refrescándose cuando haya cambios mediante eventos.
     \item Implementar una barra de herramientas para habilitar y deshabilitar funcionalidades.
     \item Encontrar una solución al problema de selección de aviones muy lejanos que son demasiado pequeños.
-    \item Almacenar el trayecto que siguen los aviones en una caché desde que entran al escenario y desarrollar una funcionalidad en el HUD para visualizar el trayecto.
+    \item Almacenar el trayecto que siguen los aviones en una caché desde que entran al escenario y desarrollar una funcionalidad en el \textsc{HUD} para visualizar el trayecto.
     \item Insertar una funcionalidad que permita visualizar la perspectiva de lo que se está viendo desde el vuelo.
-    \item Permitir al usuario mover el panel HUD para colocarlo en una posición donde no le moleste.
+    \item Permitir al usuario mover el panel \textsc{HUD} para colocarlo en una posición donde no le moleste.
     \item Hacer que la aplicación sea compatible con el modo VR y que sea funcional con unas gafas de realidad virtual.
     \item Realizar una implementación que permita al usuario visualizar los metadatos de los edificios.
 \end{itemize}
 \subsection{Desarrollo}
-Se crea el componente \texttt{HUD} dentro del fichero \texttt{hud.js}, el cual va a concentrar toda la lógica del panel de información contextual interactiva y gestión de eventos de selección de aviones, así como la transmisión de información y actualización de los metadatos del vuelo que se visualizan en el panel. Finalmente, se decide usar la primitiva \texttt{Ring} para rodear al avión seleccionado, tal y como se muestra en la figura \ref{fig:hud}. Para cumplir con el requisito de que siempre mire a cámara, encontramos el componente \texttt{look-at}\footnote{\url{https://www.npmjs.com/package/aframe-look-at-component}}, el cual ofrece los resultados esperados, por lo tanto, se decide no realizar ninguna implementación adicional al respecto.
+Se crea el componente \textsc{HUD} dentro del fichero \emph{hud.js}, el cual va a concentrar toda la lógica del panel de información contextual interactiva y gestión de eventos de selección de aviones, así como la transmisión de información y actualización de los metadatos del vuelo que se visualizan en el panel. 
 
-Para el panel contextual, vamos a implementar un panel de \texttt{A-Frame} donde se irán insertando componentes de texto delante, tal y como se detalla en la sección \ref{subsec:hud}. 
+Finalmente, se decide usar la primitiva \emph{Ring} para rodear al avión seleccionado, tal y como se muestra en la figura \ref{fig:hud}. Para cumplir con el requisito de que siempre mire a cámara, encontramos el componente \emph{look-at}\footnote{\url{https://www.npmjs.com/package/aframe-look-at-component}}, el cual ofrece los resultados esperados, por lo tanto, se decide no realizar ninguna implementación adicional al respecto.
 
-Aquí nos topamos con el primer problema, del cual nos damos cuenta afortunadamente debido a que cuando posicionamos el ratón sobre un elemento de la clase \texttt{clickable}, el cursor cambia a una mano. Esto nos hace darnos cuenta de que en ciertas zonas de la pantalla el cursor cambia a mano, pero no hay nada visible. Después de verificar que el panel estaba oculto en la misma zona, llegamos a la conclusión de que el culpable es el panel en modo invisible.
+Para el panel contextual, vamos a implementar un panel de \textsc{A-Frame} donde se irán insertando componentes de texto delante, tal y como se detalla en la sección \ref{subsec:hud}. 
 
-Hemos elegido una estrategia en la que el panel del \texttt{HUD} es un elemento \texttt{clickable} y, por tanto, intercepta los eventos del \texttt{raycaster}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no vemos que el panel está tapando, al estar invisible, el panel consume los eventos y no podemos seleccionar los aviones.
+Aquí nos topamos con el primer problema en este \emph{sprint}, del cual nos damos cuenta afortunadamente debido a que cuando posicionamos el ratón sobre un elemento de la clase \emph{clickable}, el cursor cambia a una mano. Esto nos hace darnos cuenta de que en ciertas zonas de la pantalla el cursor cambia a mano, pero no hay nada visible que obstaculice la interacción con el elemento. Después de verificar que el panel estaba oculto en la misma zona, llegamos a la conclusión de que el culpable es el panel en modo invisible.
+
+Hemos elegido una estrategia en la que el panel del \textsc{HUD} es un elemento \emph{clickable} y, por tanto, intercepta los eventos del \emph{raycaster}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no vemos que el panel está tapando, al estar invisible, el panel consume los eventos y no podemos seleccionar los aviones.
 
 Solucionamos este problema al posicionar el panel detrás del usuario en lugar de hacerlo invisible. En resumen, cuando el panel recibe el evento de cerrar, se coloca detrás del usuario en una posición donde nunca puede ser visible. De esta manera, deja de interferir en los eventos del controlador principal y podemos seleccionar los objetos sin problemas.
-Además, cuando el panel recibe un evento de elemento seleccionado y cambia su posición de oculto a visible, guarda la última posición en la que estaba posicionado antes de recibir el evento de ocultar. De esta manera, cada vez que se oculta el panel, la instancia almacena la última posición para su posterior uso.
+Además, cuando el panel recibe un evento de elemento seleccionado y cambia su posición de oculto a visible, guarda la última posición en la que estaba posicionado antes de recibir el evento de ocultar. De esta manera, cada vez que se oculta el panel, la instancia almacena la última posición para su posterior uso cuando reciba el evento de avión seleccionado.\\
 
-Desarrollamos una barra de herramientas de dos dimensiones para gestionar la activación y desactivación de funcionalidades. En un principio, esta barra se implementó como un elemento \texttt{div} en el HTML principal. Sin embargo, más adelante, cuando probé el prototipo en modo VR utilizando las gafas Oculus, me di cuenta de que los elementos \texttt{div} desaparecían en dicho modo.
+Desarrollamos una barra de herramientas de dos dimensiones para gestionar la activación y desactivación de funcionalidades. En un principio, esta barra se implementó como un elemento \emph{div} en el \textsc{HTML} principal. Sin embargo, más adelante, cuando probé el prototipo en modo \textsc{VR} utilizando las gafas \textsc{Oculus}, me di cuenta de que los elementos \emph{div} desaparecían en dicho modo.
 
-Por lo tanto, cambiamos nuestra estrategia y comenzamos a desarrollar una solución en la que integraremos una barra de herramientas 3D que estará presente como entidades geométricas dentro de la escena, siguiendo la misma filosofía que el HUD vease la sección \ref{subsec:toolbar3d}. Esta barra de herramientas contendrá dos botones para activar o desactivar opciones, es decir, serán conmutables, y tendrá un tercer botón cuya función será plegar el panel con una animación para ocupar menos espacio y no interferir en el campo visual del usuario.
+Por lo tanto, cambiamos nuestra estrategia y comenzamos a desarrollar una solución en la que integraremos una barra de herramientas \textsc{3D} que estará presente como entidades geométricas dentro de la escena, siguiendo la misma filosofía que el \textsc{HUD} vease la sección \ref{subsec:toolbar3d}. Esta barra de herramientas contendrá dos botones para activar o desactivar opciones, es decir, serán conmutables, y tendrá un tercer botón cuya función será plegar el panel con una animación para ocupar menos espacio y no interferir en el campo visual del usuario.
 
-En esta etapa del desarrollo, también abordamos otro problema de la aplicación, que es la limitación de seleccionar vuelos que se encuentran demasiado lejos en el escenario. Para resolver esto, desarrollamos un componente llamado \texttt{hover-scale.js}, del cual proporcionamos una descripción técnica en la sección \ref{subsec:hover-scale}. Configuraremos este componente en todas las entidades de aviones, y será responsable de ajustar el factor de escala del avión en función de la distancia con el usuario. De esta manera, cumplimos con el requisito establecido.
+En esta etapa del desarrollo, también abordamos otro problema de la aplicación, que es la limitación de seleccionar vuelos que se encuentran demasiado lejos en el escenario. Para resolver esto, desarrollamos un componente llamado \emph{hover-scale}, del cual proporcionamos una descripción técnica en la sección \ref{subsec:hover-scale}. Configuraremos este componente en todas las entidades de aviones, y será responsable de ajustar el factor de escala del avión en función de la distancia con el usuario. De esta manera, cumplimos con el requisito establecido de facilitar al usuario la selección de los vuelos.
 
-Para implementar el requisito de mostrar el trayecto que realiza un avión, creamos un nuevo componente que se agrega a la entidad avión. Este componente se suscribe a los eventos de cambios de posición, y haciendo uso de las ventajas de implementar un DTO (Data Transfert Object) para manejar el cacheo de los aviones, llamado FlightCacheData, insertamos la lógica en este DTO para que cuando se realiza un cambio de posición, envíe un evento. De esta manera, el componente recibe el evento y actualiza la geometría del trayecto. Tan solo tendremos que enviar otro evento desde el panel para visualizarlo, mediante un botón conmutable para mostrar u ocultar el trayecto.
+Para implementar el requisito de mostrar el trayecto que realiza un avión, creamos un nuevo componente que se agrega a la entidad avión. Este componente se suscribe a los eventos de cambios de posición, y haciendo uso de las ventajas de implementar un \textsc{DTO} \emph{(Data Transfert Object)} para manejar el cacheo de los aviones, llamado \emph{FlightCacheData}, insertamos la lógica en este \textsc{DTO} para que cuando se realiza un cambio de posición, envíe un evento. De esta manera, el componente recibe el evento y actualiza la geometría del trayecto. Tan solo tendremos que enviar otro evento desde el panel para visualizarlo, mediante un botón conmutable para mostrar u ocultar el trayecto.
 
-Para ver con más detalle la implementación de esta parte, puedes consultar la sección \ref{subsec:datosCacheVuelo} y la figura \ref{fig:showTrack}.
+Para ver con más detalle la implementación de esta parte, puedes consultar la sección \ref{subsec:datosCacheVuelo} y la sección \ref{subsec:track}.
 
-Para implementar el requisito de visualizar una perspectiva de cámara a bordo del avión seleccionado, decidimos hacer uso de un artículo y unos componentes disponibles en la guía de introducción de A-Frame de Jesús María González Barahona \cite{aframe_notes}. En esta guía, se explica cómo crear texturas con la visualización de cámaras secundarias.
+Para implementar el requisito de visualizar una perspectiva de cámara a bordo del avión seleccionado, decidimos hacer uso de un artículo y unos componentes disponibles en la guía de introducción de \textsc{A-Frame} de Jesús María González Barahona \cite{aframe_notes}. En esta guía, se explica cómo crear texturas con la visualización de cámaras secundarias.
 
-Haciendo uso del componente \texttt{camrender}, cuando el usuario pulsa en el botón conmutable que activa esta opción, creamos una cámara dentro del avión con dicho componente. Luego, utilizando animaciones, creamos un panel al que le asignamos el material de la cámara de a bordo y realizamos una ampliación para crear un efecto de despliegue. Finalmente, colocamos el panel en el HUD. De esta forma, implementamos el requisito de visualizar la cámara a bordo de una manera visualmente atractiva, como se muestra en la figura \ref{fig:cameraOnBoard}.
+Haciendo uso del componente \emph{camrender}, cuando el usuario pulsa en el botón conmutable que activa esta opción, creamos una cámara dentro del avión con dicho componente. Luego, utilizando animaciones, creamos un panel al que le asignamos el material de la cámara de a bordo y realizamos una ampliación para crear un efecto de despliegue. Finalmente, colocamos el panel en el \textsc{HUD}. De esta forma, implementamos el requisito de visualizar la cámara a bordo de una manera visualmente atractiva, como se muestra en la figura \ref{fig:cameraOnBoard}.
 
-Para el requisito de visualizar los datos de los edificios, se ha desarrollado un componente reutilizable llamado \texttt{tooltip-info}. Este componente recibe como argumento un objeto de tipo cadena (\texttt{String}) que se mostrará cuando se reciba un evento de posicionamiento del cursor encima de la entidad correspondiente. Además, el componente modifica el material para indicar cuál es la entidad que se está visualizando, puede consultarse la sección \ref{subsec:tooltip} para más detalle sobre la implementación.
+Para el requisito de visualizar los datos de los edificios, se ha desarrollado un componente reutilizable llamado \emph{tooltip-info}. Este componente recibe como argumento un objeto de tipo cadena \emph{String} que se mostrará cuando se reciba un evento de posicionamiento del cursor encima de la entidad correspondiente. Además, el componente modifica el material para indicar cuál es la entidad que se está visualizando, puede consultarse la sección \ref{subsec:tooltip} para más detalle sobre la implementación.
 
-En resumen esta funcionalidad, al crear los edificios, se procesan los metadatos provenientes de la información de OpenStreetMap. Se genera una cadena de texto que se pasa como parámetro al componente \texttt{tooltip-info}, asignándolo a la entidad correspondiente. El componente \texttt{tooltip-info} calcula la posición más alta de la geometría del edificio y crea un texto que se muestra de manera visible y siempre mirando hacia la cámara cuando el cursor se posiciona encima del edificio.
+En resumen esta funcionalidad, al crear los edificios, se procesan los metadatos provenientes de la información de \textsc{OpenStreetMap}. Se genera una cadena de texto que se pasa como parámetro al componente \emph{tooltip-info}, asignándolo a la entidad correspondiente. El componente \emph{tooltip-info} calcula la posición más alta de la geometría del edificio y crea un texto que se muestra de manera visible y siempre mirando hacia la cámara cuando el cursor se posiciona encima del edificio.
 
-El último desafío al que nos enfrentamos fue el de mover las entidades del \textbf{HUD} que existen dentro de la estructura del usuario, ya sea a través del ratón o de los controladores de realidad virtual de las gafas \emph{Oculus} que nos proporcionó el universidad. En un principio, consideramos utilizar el componente \emph{aframe-super-hands-component}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, ya que es ampliamente utilizado en la comunidad de desarrollo de A-Frame. Comenzamos a integrar este componente en nuestro prototipo, pero resultó ser un fracaso. Los movimientos solo funcionaban cuando la cámara miraba en una dirección, y a medida que se movía la cámara, los movimientos se volvían incoherentes.
+El último desafío al que nos enfrentamos fue el de mover las entidades \textsc{HUD} que existen dentro de la estructura del usuario, ya sea a través del ratón o de los controladores de realidad virtual de las gafas \textsc{Oculus} que nos proporcionó el universidad. En un principio, consideramos utilizar el componente \emph{aframe-super-hands-component}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, ya que es ampliamente utilizado en la comunidad de desarrollo de \textsc{A-Frame}. Comenzamos a integrar este componente en nuestro prototipo, pero resultó ser un fracaso. Los movimientos solo funcionaban cuando la cámara miraba en una dirección, y a medida que se movía la cámara, los movimientos se volvían incoherentes.
 
-Después de investigar el código fuente de la biblioteca, llegamos a la conclusión de que el componente no era adecuado para nuestro caso, ya que estábamos intentando mover una entidad que no tiene coordenadas absolutas, sino coordenadas relativas a la cámara. Además, los componentes \emph{movement-controls} establecidos en la entidad \emph{rig} en combinación con el componente \emph{look-controls} en la cámara hacían que las posiciones relativas de la cámara tampoco fueran absolutas. A parte , debíamos asegurarnos de que al arrastrar una entidad, no moviéramos la cámara, ya que el movimiento natural del ratón se utiliza para desplazar la cámara.
+Después de investigar el código fuente de la biblioteca, llegamos a la conclusión de que el componente no era adecuado para nuestro caso, ya que estábamos intentando mover una entidad que no tiene coordenadas absolutas, sino coordenadas relativas a la cámara. \\
+Además, los componentes \emph{movement-controls} establecidos en la entidad \emph{Rig} en combinación con el componente \emph{look-controls} en la cámara hacían que las posiciones relativas de la cámara tampoco fueran absolutas. También debíamos asegurarnos de que al arrastrar una entidad, no moviéramos la cámara, ya que el movimiento natural del ratón se utiliza para desplazar la orientación cámara.
 
-Para solucionar este requisito, implementamos un componente personalizado que tuviera en cuenta todas estas peculiaridades y nos permitiera arrastrar objetos ubicados jerárquicamente dentro de la entidad de la cámara. Además, para evitar la rotación de la cámara mientras se arrastra una entidad, deshabilitamos el componente \emph{look-controls} mientras se está realizando el arrastre.
+Para solucionar este requisito, implementamos un componente personalizado que tuviera en cuenta todas estas peculiaridades y nos permitiera arrastrar objetos ubicados jerárquicamente dentro de la entidad de la cámara. También, para evitar la rotación de la cámara mientras se arrastra una entidad, deshabilitamos el componente \emph{look-controls} mientras se está realizando el arrastre del elemento \textsc{HUD}.
 
-Para obtener más detalles sobre cómo se implementó este componente \emph{custom-draggable.js} , consulta la sección \ref{subsec:customDraggable}.
+Para obtener más detalles sobre cómo se implementó este componente \emph{custom-draggable} , consulta la sección \ref{subsec:customDraggable}.
 
 \subsection{Resultado}
-Se lleva a cabo una reunión final con el \emph{Product Owner} para mostrarle el prototipo y se finalizan todos los desarrollos, cumpliendo con los requisitos establecidos en este sprint. Posteriormente, se procede a cerrar las etapas de desarrollo con el objetivo de completar la documentación final. 
+Se lleva a cabo una reunión final con el \emph{Product Owner} para mostrarle el prototipo y se finalizan todos los desarrollos, cumpliendo con los requisitos establecidos en este \emph{sprint}. Posteriormente, se procede a cerrar las etapas de desarrollo con el objetivo de completar la documentación final. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
