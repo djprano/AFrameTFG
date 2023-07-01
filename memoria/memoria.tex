@@ -740,32 +740,32 @@ En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base u
 \section{WebGL}
 \label{sec:webgl}
 \subsection{Introducción a la tecnología}
-La tecnología de gráficos \Gls{3D} es una tecnología que permite la renderización de gráficos interactivos en tiempo real sobre un navegador web sin la necesidad de plugins adicionales. Está construida sobre una \Gls{API} basada en \Gls{OpenGL} para acceder a la funcionalidad de renderizado de la tarjeta gráfica del dispositivo.
+La tecnología de gráficos \textsc{\gls{3D}} es una tecnología que permite la renderización de gráficos interactivos en tiempo real sobre un navegador web sin la necesidad de plugins adicionales. Está construida sobre una \textsc{\gls{API}} basada en \textsc{\gls{OpenGL}} para acceder a la funcionalidad de renderizado de la tarjeta gráfica del dispositivo.
 
-WebGL\footnote{\url{https://www.khronos.org/webgl/}} está basada en \hyperref[sec:javascript]{JavaScript} y se relaciona con los elementos de una página web mediante el uso de \hyperref[sec:html5]{HTML5}. 
-Proporciona herramientas para crear gráficos \Gls{3D} en el navegador de forma optimizada y eficiente gracias al uso de la \Gls{GPU}. WebGL permite una renderización de objetos 3D, texturas, sombreado y efectos visuales avanzados.
+WebGL\footnote{\url{https://www.khronos.org/webgl/}} está basada en \textsc{JavaScript}~\ref{sec:javascript} y se relaciona con los elementos de una página web mediante el uso de \textsc{HTML5}~\ref{sec:html5}. 
+Proporciona herramientas para crear gráficos \textsc{3D} en el navegador de forma optimizada y eficiente gracias al uso de la \gls{GPU}. \textsc{WebGL} permite una renderización de objetos 3D, texturas, sombreado y efectos visuales avanzados.
 \subsection{Contexto y aplicación en el prototipo}
- Tanto A-Frame como Three.js utilizan WebGL como tecnología para la renderización de escenas y objetos en 3D en un navegador web. Ambas bibliotecas se basan en esta tecnología para realizar operaciones sobre la tarjeta gráfica en el renderizado de sus escenarios.
+ Tanto \textsc{A-Frame} como \textsc{Three.js} utilizan \textsc{WebGL} como tecnología para la renderización de escenas y objetos en \textsc{3D} en un navegador web. Ambas bibliotecas se basan en esta tecnología para realizar operaciones sobre la tarjeta gráfica en el renderizado de sus escenarios.
 \section{WebXR}
 La tecnología \textsc{WebXR} es una agrupación de estándares que se utilizan en conjunto para habilitar la representación de escenas en 3D en hardware diseñado para la visualización de mundos virtuales (VR) o para agregar gráficos al mundo real (realidad aumentada). \textsc{WebXR} proporciona una combinación perfecta entre realidad aumentada y realidad virtual.
 
-Una de las ventajas principales de WebXR es que permite crear experiencias inmersivas directamente en un navegador web gracias a que está construido sobre \textsc{WebGL} \ref{sec:webgl}, sin necesidad de descargar ninguna aplicación adicional. Esto facilita el acceso a estas experiencias a través de múltiples dispositivos, ya que solo se necesita un navegador compatible para disfrutar de ellas.
+Una de las ventajas principales de \textsc{WebXR} es que permite crear experiencias inmersivas directamente en un navegador web gracias a que está construido sobre \textsc{WebGL} \ref{sec:webgl}, sin necesidad de descargar ninguna aplicación adicional. Esto facilita el acceso a estas experiencias a través de múltiples dispositivos, ya que solo se necesita un navegador compatible para disfrutar de ellas.
 
-\textsc{WebXR} proporciona \emph{API} y funcionalidades que permiten interactuar con dispositivos de realidad virtual y realidad aumentada, como gafas \textsc{VR}, cascos \textsc{AR} o incluso dispositivos móviles con capacidades \textsc{AR}. Estas funcionalidades incluyen el seguimiento de la posición y la orientación del dispositivo, renderización de escenas \textsc{3D}, detección de gestos y eventos de interacción, entre otros.
+\textsc{WebXR} proporciona \textsc{API} y funcionalidades que permiten interactuar con dispositivos de realidad virtual y realidad aumentada, como gafas \textsc{VR}, cascos \textsc{AR} o incluso dispositivos móviles con capacidades \textsc{AR}. Estas funcionalidades incluyen el seguimiento de la posición y la orientación del dispositivo, renderización de escenas \textsc{3D}, detección de gestos y eventos de interacción, entre otros.
 
 \section{VR}
-La realidad virtual (VR) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de hardware y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
+La realidad virtual (\textsc{VR}) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de hardware y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
 \subsection{Contexto y aplicación en el prototipo}
 El prototipo de este proyecto está diseñado para funcionar con dispositivos que generan entornos virtuales, permitiendo una inmersión completa y realista en dicho entorno. Para lograr esto, se utilizan las herramientas proporcionadas por la plataforma A-Frame, como se describe en la sección \ref{sec:aframe}. 
 \section{Node JS}
 \subsection{Introducción a la tecnología}
-Node.js es un entorno de código abierto y multiplataforma que permite la ejecución de código JavaScript de forma asíncrona, con capacidades de entrada y salida de datos, y una arquitectura orientada a eventos. Está basado en el motor V8 de Google y fue creado con el objetivo de desarrollar programas de red que puedan ser ejecutados en el lado del servidor.
+\textsc{Node.js} es un entorno de código abierto y multiplataforma que permite la ejecución de código \textsc{JavaScript} de forma asíncrona, con capacidades de entrada y salida de datos, y una arquitectura orientada a eventos. Está basado en el \emph{motor V8} de \textsc{Google} y fue creado con el objetivo de desarrollar programas de red que puedan ser ejecutados en el lado del servidor.
 
-Con Node.js, los desarrolladores pueden construir aplicaciones del lado del servidor utilizando JavaScript, lo que proporciona coherencia en el lenguaje de programación tanto en el lado del cliente como en el servidor. Además, cuenta con una amplia gama de módulos y bibliotecas disponibles a través de su gestor de paquetes npm, lo que facilita el desarrollo rápido y eficiente de aplicaciones web y de red.
+Con \textsc{Node.js}, los desarrolladores pueden construir aplicaciones del lado del servidor utilizando \textsc{JavaScript}, lo que proporciona coherencia en el lenguaje de programación tanto en el lado del cliente como en el servidor. Además, cuenta con una amplia gama de módulos y bibliotecas disponibles a través de su gestor de paquetes \textsc{npm}, lo que facilita el desarrollo rápido y eficiente de aplicaciones web y de red.
 \subsection{Contexto y aplicación en el prototipo}
-Como mencionamos en la sección \ref{subsec:obtencionCache}, hemos utilizado Node.js para desarrollar un proceso batch que se encarga de almacenar los datos de la API de \hyperref[sec:opensky]{OpenSky} en una caché local. Esta técnica nos permite ejecutar la aplicación en modo diferido, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso.
+Como mencionamos en la sección \ref{subsec:obtencionCache}, hemos utilizado \textsc{Node.js} para desarrollar un \emph{proceso batch} que se encarga de almacenar los datos de la \textsc{API} de \textsc{OpenSky}~\ref{sec:opensky} en una caché local. Esta técnica nos permite ejecutar la aplicación en modo diferido, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso.
 \subsection{Ejemplos de uso}
-A continuación se muestra un ejemplo de código que puede ser ejecutado por Node.js para almacenar los datos obtenidos de la API en un archivo JSON para su posterior uso:
+A continuación se muestra un ejemplo de código que puede ser ejecutado por \textsc{Node.js} para almacenar los datos obtenidos de la \textsc{API} en un archivo \textsc{JSON} para su posterior uso:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 function main() {
     var endpoint = 'https://opensky-network.org/api/states/all?lamin=' + configuration.latMin + '&lomin=' + configuration.longMin + '&lamax=' + configuration.latMax + '&lomax=' + configuration.longMax;
@@ -786,26 +786,30 @@ function main() {
 \section{Threejs}
 \label{sec:threejs}
 \subsection{Introducción a la tecnología}
-Three.js es una biblioteca escrita en JavaScript que ofrece una API para interactuar con WebGL\ref{sec:webgl} y crear de manera sencilla animaciones y escenas 3D sobre entornos web. A-Frame\ref{sec:aframe} es una de las tecnologías usadas en el prototipo y se basa en Three.js creando una capa de abstracción que simplifica el desarrollo de entornos tridimensionales al permitir el uso directo de HTML5, entidades y componentes. A través de A-Frame, es posible crear escenarios de manera rápida y sencilla, aprovechando la potencia de Three.js en combinación con la facilidad y familiaridad de HTML5.
+\textsc{Three.js} es una biblioteca escrita en \textsc{JavaScript} que ofrece una \textsc{API} para interactuar con \textsc{WebGL}~\ref{sec:webgl} y crear de manera sencilla animaciones y escenas 3D sobre entornos web. 
+\textsc{A-Frame}~\ref{sec:aframe} es una de las tecnologías usadas en el prototipo y se basa en \textsc{Three.js} creando una capa de abstracción que simplifica el desarrollo de entornos tridimensionales al permitir el uso directo de \textsc{HTML5}, entidades y componentes. A través de \textsc{A-Frame}, es posible crear escenarios de manera rápida y sencilla, aprovechando la potencia de \textsc{Three.js} en combinación con la facilidad y familiaridad de \textsc{HTML5}.
 \subsection{Historia y evolución}
-El origen de Three.js se remonta a principios de la década de 2000, cuando el desarrollador Ricardo Cabello, también conocido como Mr.doob, comenzó a experimentar con gráficos y animaciones en tres dimensiones utilizando tecnologías web. En ese momento, WebGL\ref{sec:webgl} aún no era muy utilizado y los navegadores no ofrecían un método sencillo para crear contenido 3D interactivo.
-Cabello optó por utilizar la especificación WebGL recién lanzada en 2009, que permitía usar gráficos 3D acelerados por hardware en los navegadores web. Comenzó a trabajar en una biblioteca JavaScript para que los desarrolladores web pudieran crear contenido WebGL más fácilmente.
-El proyecto originalmente se llamaba "Canvas 3D" antes de cambiar su nombre a Three.js para reflejar el uso del lenguaje JavaScript como base de la librería.
-El objetivo de Three.js era simplificar la programación gráfica en tres dimensiones y facilitar la creación de gráficos interactivos en el navegador.
-A medida que más desarrolladores se dieron cuenta de su potencial y comenzaron a usar Three.js en sus proyectos, se hizo rápidamente popular. La creciente adopción de WebGL por parte de los navegadores benefició a la biblioteca, que se convirtió en una herramienta esencial para la creación de contenido 3D en la web.
+El origen de \textsc{Three.js} se remonta a principios de la década de 2000, cuando el desarrollador \emph{Ricardo Cabello}, también conocido como \emph{Mr.doob}, comenzó a experimentar con gráficos y animaciones en tres dimensiones utilizando tecnologías web. En ese momento, \textsc{WebGL}~\ref{sec:webgl} aún no era muy utilizado y los navegadores no ofrecían un método sencillo para crear contenido \textsc{3D} interactivo.
+\emph{Cabello} optó por utilizar la especificación \textsc{WebGL} recién lanzada en 2009, que permitía usar gráficos \textsc{3D} acelerados por \emph{hardware} en los navegadores web. Comenzó a trabajar en una biblioteca \textsc{JavaScript} para que los desarrolladores web pudieran crear contenido \textsc{WebGL} más fácilmente.
+El proyecto originalmente se llamaba \emph{Canvas 3D} antes de cambiar su nombre a \textsc{Three.js} para reflejar el uso del lenguaje \textsc{JavaScript} como base de la librería.
+El objetivo de \textsc{Three.js} era simplificar la programación gráfica en tres dimensiones y facilitar la creación de gráficos interactivos en el navegador.
+A medida que más desarrolladores se dieron cuenta de su potencial y comenzaron a usar \textsc{Three.js} en sus proyectos, se hizo rápidamente popular. La creciente adopción de \textsc{WebGL} por parte de los navegadores benefició a la biblioteca, que se convirtió en una herramienta esencial para la creación de contenido \textsc{3D} en la web.
 \subsection{Descripción técnica}
-Las principales características técnicas de Three.js son las siguientes:
+Las principales características técnicas de \textsc{Three.js} son las siguientes:
 \begin{itemize}
-\item Renderizado en tiempo real: aprovechando la aceleración de hardware proporcionada por WebGL, Three.js es capaz de renderizar gráficos en 3D de manera eficiente en los navegadores web modernos.
-\item Geometrías y mallas: la biblioteca ofrece una amplia variedad de geometrías predefinidas, como esferas, cilindros, cubos, entre otros. Estas geometrías pueden modificarse mediante atributos, e incluso es posible crear geometrías personalizadas utilizando técnicas de extrusión. Estas geometrías pueden combinarse con mallas para crear superficies y escenas complejas.
-\item Materiales y texturas: Three.js proporciona una amplia gama de materiales predefinidos, incluyendo materiales básicos, materiales refractivos, reflectantes y texturas. Estos materiales y texturas se utilizan para agregar detalles a las geometrías y mallas, logrando un mayor realismo en las escenas 3D.
-\item Iluminación y sombreado: la biblioteca admite diferentes técnicas de iluminación, como luces direccionales, luces puntuales y luces de área, lo que permite simular una iluminación realista en la escena. Además, se pueden aplicar técnicas de sombreado suave y sombreado de Phong para lograr efectos visuales más sofisticados.
-\item Cámaras y controles: Three.js proporciona cámaras que permiten definir la perspectiva y la vista de la escena. Además, incluye controles de cámara predefinidos, como los controles de órbita y los controles de vuelo, que facilitan la interacción del usuario para visualizar la escena 3D.
-\item Animaciones: Three.js ofrece un sistema de animación que permite crear animaciones de objetos mediante la transición de sus propiedades, como la posición o la escala.
-\item Interactividad: Three.js permite la interacción con los objetos de la escena a través de eventos de ratón, teclado y táctiles, lo que brinda una experiencia interactiva al usuario.
+\item \textbf{\emph{Renderizado en tiempo real}}: aprovechando la aceleración de \emph{hardware} proporcionada por \textsc{WebGL}, \textsc{Three.js} es capaz de renderizar gráficos en \textsc{3D} de manera eficiente en los navegadores web modernos.
+\item \textbf{\emph{Geometrías y mallas}}: la biblioteca ofrece una amplia variedad de geometrías predefinidas, como esferas, cilindros, cubos, entre otros. Estas geometrías pueden modificarse mediante atributos, e incluso es posible crear geometrías personalizadas utilizando técnicas de extrusión. Estas geometrías pueden combinarse con mallas para crear superficies y escenas complejas.
+\item \textbf{\emph{Materiales y texturas}}: \textsc{Three.js} proporciona una amplia gama de materiales predefinidos, incluyendo materiales básicos, materiales refractivos, reflectantes y texturas. Estos materiales y texturas se utilizan para agregar detalles a las geometrías y mallas, logrando un mayor realismo en las escenas \textsc{3D}.
+\item \textbf{\emph{Iluminación y sombreado}}: la biblioteca admite diferentes técnicas de iluminación, como luces direccionales, puntuales y de área, lo que permite simular una iluminación realista en la escena. \\
+Además, se pueden aplicar técnicas de sombreado suave y sombreado de \emph{Phong} para lograr efectos visuales más sofisticados.
+\item \textbf{\emph{Cámaras y controles}}: \textsc{Three.js} proporciona cámaras que permiten definir la perspectiva y la vista de la escena. Además, incluye controles de cámara predefinidos, como los controles de órbita y los controles de vuelo, que facilitan la interacción del usuario para visualizar la escena \textsc{3D}.
+\item \textbf{\emph{Animaciones}}: \textsc{Three.js} ofrece un sistema de animación que permite crear animaciones de objetos mediante la transición de sus propiedades, como la posición o la escala.
+\item \textbf{\emph{Interactividad}}: \textsc{Three.js} permite la interacción con los objetos de la escena a través de eventos de ratón, teclado y táctiles, lo que brinda una experiencia interactiva al usuario.
 \end{itemize}
 \subsection{Contexto y aplicación en el prototipo}
-Three.js es la librería utilizada por A-Frame como motor gráfico, lo que la convierte en la base para el desarrollo de componentes en el prototipo del proyecto. Además, Three.js se encarga del renderizado en 3D y nos brinda las capacidades necesarias para crear componentes que luego pueden ser utilizados con una sintaxis declarativa similar a HTML, a través del uso de A-Frame. Por lo tanto, se ha utilizado como tecnología heredada por A-Frame\ref{sec:aframe}, y los componentes desarrollados en el prototipo hacen uso de la API proporcionada por esta librería.
+\textsc{Three.js} es la librería utilizada por \textsc{A-Frame} como motor gráfico, lo que la convierte en la base para el desarrollo de componentes en el prototipo del proyecto. Además, \textsc{Three.js} se encarga del renderizado en \textsc{3D} y nos brinda las capacidades necesarias para crear componentes que luego pueden ser utilizados con una sintaxis declarativa similar a \textsc{HTML}, a través del uso de \textsc{A-Frame}. 
+
+Por lo tanto, se ha utilizado como tecnología heredada por \textsc{A-Frame}, y los componentes desarrollados en el prototipo hacen uso de la \textsc{API} proporcionada por esta librería.
 \subsection{Ejemplos de uso}
 En el siguiente ejemplo, podemos apreciar lo sencillo que resulta crear un material y una geometría de tipo línea. Estos serán utilizados para representar en el escenario el trayecto seguido por un vuelo:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
@@ -822,33 +826,34 @@ this.el.object3D.add(line);
 \section{A-Frame}
 \label{sec:aframe}
 \subsection{Introducción a la tecnología}
-A-Frame\cite{aframedocs} es un framework de código abierto construido sobre la tecnología Three.js de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros frameworks 3D, A-Frame ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de HTML5. Esto facilita a los desarrolladores web la creación rápida e intuitiva de aplicaciones de realidad virtual, sin necesidad de poseer un profundo conocimiento ni adentrarse en la complejidad de la programación en entornos tridimensionales.
-
-Una de las principales ventajas de A-Frame es que se basa en el modelo entidad componente, lo que permite el desarrollo de componentes reutilizables y su parametrización para configurar su comportamiento.
-
-Además, A-Frame ya proporciona una amplia gama de geometrías y componentes para la creación de materiales, iluminación, sombras y la gestión de eventos de controladores de realidad virtual, como las gafas Oculus. Esto permite que los proyectos puedan comenzar el desarrollo desde un punto avanzado.
+\textsc{A-Frame}\cite{aframedocs} es un \emph{framework} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{frameworks} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. \\
+Esto facilita a los desarrolladores web la creación rápida e intuitiva de aplicaciones de realidad virtual, sin necesidad de poseer un profundo conocimiento ni adentrarse en la complejidad de la programación en entornos tridimensionales.\\
+Una de las principales ventajas de \textsc{A-Frame} es que se basa en el \emph{modelo entidad componente}, lo que permite el desarrollo de componentes reutilizables y su parametrización para configurar su comportamiento.\\
+Además, \textsc{A-Frame} ya proporciona una amplia gama de geometrías y componentes para la creación de materiales, iluminación, sombras y la gestión de eventos de controladores de realidad virtual, como las gafas \textsc{Oculus}. Esto permite que los proyectos puedan comenzar el desarrollo desde un punto avanzado.
 
 \subsection{Historia y evolución}
-A-Frame fue desarrollado por el equipo de Mozilla VR a finales de 2015. Este equipo fue líder en el desarrollo de herramientas para la tecnología WebVR. Debido a la necesidad de crear contenido de manera más sencilla y rápida, se formó un equipo que incluía a los principales mantenedores de este framework, como Diego Marcos y Josh Carpenter. El objetivo de A-Frame era permitir a los desarrolladores web y diseñadores de experiencias 3D y realidad virtual crear contenido utilizando HTML, sin necesidad de tener conocimientos profundos de WebGL. El primer lanzamiento público de A-Frame tuvo lugar el 16 de diciembre de 2015. En la actualidad, hay más de 75 contribuyentes en total.
+\textsc{A-Frame} fue desarrollado por el equipo de \textsc{Mozilla VR} a finales de 2015. Este equipo fue líder en el desarrollo de herramientas para la tecnología \textsc{WebVR}. Debido a la necesidad de crear contenido de manera más sencilla y rápida, se formó un equipo que incluía a los principales mantenedores de este \emph{framework}, como \emph{Diego Marcos} y \emph{Josh Carpenter}. 
+
+El objetivo de \textsc{A-Frame} era permitir a los desarrolladores web y diseñadores de experiencias \textsc{3D} y realidad virtual crear contenido utilizando \textsc{HTML}, sin necesidad de tener conocimientos profundos de \textsc{WebGL}. El primer lanzamiento público de \textsc{A-Frame} tuvo lugar el 16 de diciembre de 2015. En la actualidad, hay más de 75 contribuyentes en total.
 \subsection{Descripción técnica}
-Las principales características técnicas de A-Frame son las siguientes:
+Las principales características técnicas de \textsc{A-Frame} son las siguientes:
 
 \begin{itemize}
-    \item Configuración de la escena mediante el uso de lenguaje de marcado que nos permite configurar las luces, los controles, las cámaras, los eventos y todo lo relacionado con la configuración WebXR.
-    \item Es compatible con la mayor parte de las bibliotecas de desarrollo web basadas en JavaScript como React, Angular o Vue.
+    \item Configuración de la escena mediante el uso de lenguaje de marcado que nos permite configurar las luces, los controles, las cámaras, los eventos y todo lo relacionado con la configuración \textsc{WebXR}.
+    \item Es compatible con la mayor parte de las bibliotecas de desarrollo web basadas en \textsc{JavaScript} como \textsc{React}, \textsc{Angular} o \textsc{Vue}.
     \item Arquitectura entidad-componente favoreciendo la reutilización de componentes complejos.
     \item Contiene una herramienta de inspector visual que se puede invocar desde el navegador mediante la combinación de teclas \texttt{control+alt+i}, ayudando a la depuración y la detección de errores, y permitiendo la visualización de la jerarquía de la escena, consultando sus componentes y permitiendo la modificación de sus atributos.
-    \item Proporciona utilidades para optimizar el rendimiento, como es el caso de la función \texttt{throttled}, que permite que un código no sea ejecutado en cada refresco de la escena y solo sea ejecutado cada cierto intervalo de tiempo configurado.
+    \item Proporciona utilidades para optimizar el rendimiento, como es el caso de la función \emph{throttled}, que permite que un código no sea ejecutado en cada refresco de la escena y solo sea ejecutado cada cierto intervalo de tiempo configurado.
     \item Proporciona un componente de animación que permite crear dinamismo de forma sencilla y configurable.
     \item Contiene componentes para los principales controladores de realidad virtual del mercado.
-    \item Proporciona primitivas HTML5 para las principales geometrías como son planos, cajas, círculos, conos, cilindros, esferas, texto, entre otros.
-    \item Gestión de eventos mediante \textit{raycaster} que proporciona facilidad de interactuar con las entidades presentes en la escena.
+    \item Proporciona primitivas \textsc{HTML5} para las principales geometrías como son planos, cajas, círculos, conos, cilindros, esferas, texto, entre otros.
+    \item Gestión de eventos mediante \emph{raycaster} que proporciona facilidad de interactuar con las entidades presentes en la escena.
     \item Capacidad de creación de componentes propios o extender alguno existente de manera sencilla e intuitiva.
 \end{itemize}
 
-En definitiva, las capacidades técnicas de A-Frame están en continuo crecimiento gracias al gran ecosistema que hay de desarrollo a su alrededor, permitiendo nutrirse también del crecimiento de la tecnología principal, Three.js.
+En definitiva, las capacidades técnicas de \textsc{A-Frame} están en continuo crecimiento gracias al gran ecosistema que hay de desarrollo a su alrededor, permitiendo nutrirse también del crecimiento de la tecnología principal, \textsc{Three.js}.
 \subsection{Contexto y aplicación en el prototipo}
-A-Frame es el motor principal de renderizado del prototipo, ya que toda la aplicación está construida haciendo uso de la API que proporciona esta librería. Al estar basada en JavaScript, el gestor principal sobrescribe el componente de la escena y define el comportamiento principal de nuestra aplicación mediante el uso de la API de JavaScript en conjunto con los componentes de A-Frame y Three.js.
+\textsc{A-Frame} es el motor principal de \emph{renderizado} del prototipo, ya que toda la aplicación está construida haciendo uso de la \textsc{API} que proporciona esta librería. Al estar basada en \textsc{JavaScript}, el gestor principal sobrescribe el componente de la escena y define el comportamiento principal de nuestra aplicación mediante el uso de la \textsc{API} de JavaScript en conjunto con los componentes de \textsc{A-Frame} y \textsc{Three.js}.
 \subsection{Ejemplos de uso}
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{html}
 <html>
@@ -869,20 +874,20 @@ A-Frame es el motor principal de renderizado del prototipo, ya que toda la aplic
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/gettingstarted_Aframe.jpg}
-  \caption{Escena principal del Getting Started de A-Frame.}
+  \caption{Escena principal del \emph{Getting Started} de \textsc{A-Frame}.}
   \label{fig:AFrameGettingStarted}
 \end{figure}
 \section{Leaflet}
 \label{sec:leaflet}
 \subsection{Introducción a la tecnología}
-Leaflet es una biblioteca creada por Volodymyr Agafonkin en JavaScript y de código abierto.
-Su principal funcinalidad está orientada a la creación de aplicaciones de mapas web. Fue lanzada por primera vez en 2011 y es compatible con la mayoría de las plataformas móviles y de escritorio.
-Está tan extendida y es tan liviana que empresas como FourSquare, Pinterest y Flickr hacen uso de ella.
-Leaflet permite a los desarrolladores mostrar de manera muy sencilla mapas web basados en teselas alojadas en un servidor público. Sobre estos mapas nos permite añadir capas que muestren información creando aplicaciones de manera sencilla y liviana.
+\textsc{Leaflet} es una biblioteca creada por \emph{Volodymyr Agafonkin} en \textsc{JavaScript} y de código abierto.
+Su principal funcionalidad está orientada a la creación de aplicaciones de mapas web. Fue lanzada por primera vez en 2011 y es compatible con la mayoría de las plataformas móviles y de escritorio.
+Está tan extendida y es tan liviana que empresas como \textsc{FourSquare}, \textsc{Pinterest} y \textsc{Flickr} la integran dentro de su arquitectura.\\
+\textsc{Leaflet} permite a los desarrolladores mostrar de manera muy sencilla mapas web basados en teselas alojadas en un servidor público. Sobre estos mapas nos permite añadir capas que muestren información creando aplicaciones de manera sencilla y liviana.
 \subsection{Contexto y aplicación en el prototipo}
-Se ha utilizado esta librería para implementar las conversiones entre coordenadas geodésicas y coordenadas cartesianas, como se describe en la sección \ref{subsec:mapConversion}. Al utilizar esta librería, nos beneficiamos del soporte técnico que proporciona, asegurándonos de contar con los ajustes necesarios para las fórmulas que desempeñan un papel importante en nuestra aplicación. Además, nos aseguramos de que las conversiones se realicen de la manera más eficiente posible para proporcionar un rendimiento óptimo en entornos móviles.
+Se ha utilizado esta librería para implementar las conversiones entre coordenadas geodésicas y cartesianas, como se describe en la sección \ref{subsec:mapConversion}. Al utilizar esta librería, nos beneficiamos del soporte técnico que proporciona, asegurándonos de contar con los ajustes necesarios para las fórmulas que desempeñan un papel importante en nuestra aplicación. Además, nos aseguramos de que las conversiones se realicen de la manera más eficiente posible para proporcionar un rendimiento óptimo en entornos móviles.
 \subsection{Ejemplos de uso}
-A continuación, se presenta un ejemplo de cómo realizamos la conversión de coordenadas geodésicas a coordenadas cartesianas utilizando la proyección Mercator a través del objeto global "L" que nos proporcina un punto de entrada a las funcionalidades de la librería.
+A continuación, se presenta un ejemplo de cómo realizamos la conversión de coordenadas geodésicas a cartesianas utilizando la proyección \textsc{Mercator} a través del objeto global \emph{L} que nos proporciona un punto de entrada a las funcionalidades de la librería.
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 degreeToMeter(lat, long) {
     let latlng = new L.latLng(lat, long);
@@ -891,38 +896,39 @@ degreeToMeter(lat, long) {
 \end{minted}
 \section{GDAL}
 \subsection{Introducción a la tecnología}
-GDAL\footnote{\url{https://gdal.org/}} es una biblioteca de código abierto que proporciona un conjunto de herramientas para la lectura, escritura y manipulación de datos geoespaciales en diversos formatos. Su desarrollo inicial se centró en facilitar el acceso y procesamiento de datos geoespaciales en diferentes formatos y proyecciones.
-
-Esta biblioteca es ampliamente utilizada en numerosos proyectos que requieren acceder a datos geográficos, como Mapserver\footnote{\url{https://mapserver.org/}}, QGIS\footnote{\url{https://www.qgis.org/es/site/}} y GRASS GIS\footnote{\url{https://grass.osgeo.org/}}. Estas aplicaciones hacen uso de la funcionalidad proporcionada por GDAL para gestionar y visualizar datos geoespaciales de manera efectiva y eficiente.
+\textsc{GDAL}\footnote{\url{https://gdal.org/}} es una biblioteca de código abierto que proporciona un conjunto de herramientas para la lectura, escritura y manipulación de datos geoespaciales en diversos formatos. Su desarrollo inicial se centró en facilitar el acceso y procesamiento de datos geoespaciales en diferentes formatos y proyecciones.\\
+Esta biblioteca es ampliamente utilizada en numerosos proyectos que requieren acceder a datos geográficos, como \textsc{Mapserver}\footnote{\url{https://mapserver.org/}}, \textsc{QGIS}\footnote{\url{https://www.qgis.org/es/site/}} y \textsc{GRASS GIS}\footnote{\url{https://grass.osgeo.org/}}. Estas aplicaciones hacen uso de la funcionalidad proporcionada por \textsc{GDAL} para gestionar y visualizar datos geoespaciales de manera efectiva y eficiente.
 \subsection{Contexto y aplicación en el prototipo}
-Como se explica en la sección \ref{sec:dem}, utilizaremos la tecnología GDAL para llevar a cabo las conversiones de los datos descargados del servidor de Copernicus\footnote{\url{https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1}}. Estos datos consisten en archivos binarios de alturas, y mediante el uso de esta biblioteca, realizaremos la unión y recorte de una zona específica que representará el terreno de nuestro escenario.
+Como se explica en la sección \ref{sec:dem}, utilizaremos esta tecnología para llevar a cabo las conversiones de los datos descargados del servidor de \textsc{Copernicus}\footnote{\url{https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1}}. Estos datos consisten en archivos binarios de alturas, y mediante el uso de esta biblioteca, realizaremos la unión y recorte de una zona específica que representará el terreno de nuestro escenario.
 
-El objetivo es exportar los datos resultantes en el formato binario de alturas requerido por el componente generador de terrenos\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}} de la biblioteca \hyperref[sec:aframe]{A-Frame}.
+El objetivo es exportar los datos resultantes en el formato binario de alturas requerido por el \emph{componente generador de terrenos}\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}} de la biblioteca \textsc{A-Frame}.
 \section{Google Earth Engine}
 \subsection{Introducción a la tecnología}
 Es una plataforma geográfica basada en la nube que brinda a los usuarios la capacidad de operar, visualizar, analizar y exportar imágenes raster de nuestro planeta. Esta plataforma es ampliamente utilizada por científicos y organizaciones sin ánimo de lucro para acceder a información geográfica en forma de datos raster y realizar preprocesamiento y exportación de los mismos.
 
-Los datos geográficos se almacenan en servidores en la nube y se puede acceder a ellos y analizarlos mediante una interfaz de programación de aplicaciones (API) y un entorno de desarrollo integrado (IDE) en la nube\footnote{\url{https://code.earthengine.google.com/}}. Esta plataforma ofrece a los usuarios una serie de herramientas y funcionalidades que les permiten trabajar con los datos de manera eficiente y precisa.
+Los datos geográficos se almacenan en servidores en la nube y se puede acceder a ellos y analizarlos mediante una interfaz de programación de aplicaciones \textsc{API} y un entorno de desarrollo integrado \textsc{IDE} en la nube\footnote{\url{https://code.earthengine.google.com/}}. \\
+Esta plataforma ofrece a los usuarios una serie de herramientas y funcionalidades que les permiten trabajar con los datos de manera eficiente y precisa.
 \subsection{Contexto y aplicación en el prototipo}
-Como se mencionará en detalle más adelante en la sección \ref{sec:raster}, esta tecnología se ha utilizado para llevar a cabo la exportación de la capa raster que se utilizará como material del terreno generado en nuestro escenario. Es importante destacar que esta capa raster estará georreferenciada, lo que permitirá a los usuarios identificar y comprender la ubicación específica en la que se están visualizando los datos dentro del escenario.
-La georreferenciación garantiza que los edificios y el usuario puedan tener una referencia espacial precisa dentro del escenario. Además, las alturas, como montañas o cañones, estarán correctamente posicionadas, lo que proporcionará una sensación realista al visualizar el terreno generado en 3D.
+Como se mencionará en detalle más adelante en la sección \ref{sec:raster}, esta tecnología se ha utilizado para llevar a cabo la exportación de la capa raster que se utilizará como textura del terreno generado en nuestro escenario. Es importante destacar que esta capa raster estará georreferenciada, lo que permitirá a los usuarios identificar y comprender la ubicación específica en la que se están visualizando los datos dentro del escenario.
+La georreferenciación garantiza que el usuario puedan tener una referencia espacial precisa dentro del escenario. Además, las alturas, como montañas o cañones, estarán correctamente posicionadas, lo que proporcionará una sensación realista al visualizar el terreno generado en \textsc{3D}.
 \section{Overpass-api}
 \subsection{Introducción a la tecnología}
-Es una API que permite acceder a través de consultas a los datos alojados en los servidores de OpenStreetMap. Utilizando un lenguaje similar al de las bases de datos, podemos filtrar la información y extraer los datos en formato XML. Posteriormente, podemos utilizar herramientas como osmtogeojson\footnote{\url{https://github.com/tyrasd/osmtogeojson}} para convertirlos en archivos GEOJSON, los cuales nuestra aplicación puede aprovechar para representar datos geoespaciales de manera efectiva.
+Es una \textsc{API} que permite acceder a través de consultas a los datos alojados en los servidores de \textsc{OpenStreetMap}. Utilizando un lenguaje similar al de las bases de datos, podemos filtrar la información y extraer los datos en formato \textsc{XML}. Posteriormente, podemos utilizar herramientas como \textsc{osmtogeojson}\footnote{\url{https://github.com/tyrasd/osmtogeojson}} para convertirlos en archivos \textsc{GEOJSON}, los cuales nuestra aplicación puede aprovechar para representar datos geoespaciales de manera efectiva.
 \subsection{Contexto y aplicación en el prototipo}
-Como se detalla en la sección \ref{subsec:buildingData}, utilizaremos la página de consultas que nos proporciona la plataforma\footnote{\url{https://overpass-turbo.eu/}} para descargar y procesar los datos de los edificios ubicados en la zona específica de nuestro escenario y alojados en los servidores de OpenStreetMap. Nuestro objetivo será realizar un preprocesamiento de estos datos y subirlos en nuestra aplicación. De esta manera, el prototipo podrá generar las geometrías de los edificios durante la precarga, garantizando así una representación visual precisa de los edificios en el entorno 3D.
+Como se detalla en la sección \ref{subsec:buildingData}, utilizaremos la página de consultas que nos proporciona la plataforma\footnote{\url{https://overpass-turbo.eu/}} para descargar y procesar los datos de los edificios ubicados en la zona específica de nuestro escenario y alojados en los servidores de \textsc{OpenStreetMap}. Nuestro objetivo será realizar un preprocesamiento de estos datos y subirlos en nuestra aplicación. De esta manera, el prototipo podrá generar las geometrías de los edificios durante la precarga, garantizando así una representación visual precisa de los edificios en el entorno \textsc{3D}.
 \section{GitHub}
 \label{sec:github}
 \subsection{Introducción a la tecnología}
-GitHub es una plataforma de desarrollo colaborativo basada en la tecnología de control de versiones Git\footnote{\url{https://git-scm.com/}}. Proporciona a los desarrolladores un entorno donde pueden compartir y colaborar en sus proyectos de software de manera eficiente.
-Una de las características clave de GitHub es su capacidad para trabajar con ramas. Las ramas permiten que varios desarrolladores trabajen en diferentes aspectos de un proyecto de forma colaborativa y paralela. Cada desarrollador puede crear su propia rama para trabajar en nuevas funcionalidades, correcciones de errores o mejoras, sin interferir con el trabajo de otros colaboradores. Una vez que los cambios en una rama se consideran estables y completos, pueden fusionarse con la rama principal del proyecto.
+\textsc{GitHub} es una plataforma de desarrollo colaborativo basada en la tecnología de control de versiones \textsc{Git}\footnote{\url{https://git-scm.com/}}. Proporciona a los desarrolladores un entorno donde pueden compartir y colaborar en sus proyectos de software de manera eficiente.
+Una de las características clave de \textsc{GitHub} es su capacidad para trabajar con ramas. Estas permiten que varios desarrolladores trabajen en diferentes aspectos de un proyecto de forma colaborativa y paralela. Cada desarrollador puede crear su propia rama para trabajar en nuevas funcionalidades, correcciones de errores o mejoras, sin interferir con el trabajo de otros colaboradores. Una vez que los cambios en una rama se consideran estables y completos, pueden fusionarse con la rama principal del proyecto.
 \subsection{Contexto y aplicación en el prototipo}
-Todo el desarrollo del prototipo de la aplicación 3D, incluyendo las demos y los componentes, se encuentra alojado en un repositorio de GitHub\footnote{\url{https://github.com/djprano/AFrameTFG}}. Esta elección se ha realizado con el propósito de mantener un control de versiones y compartir el código fuente del proyecto.
+Todo el desarrollo del prototipo de la aplicación \textsc{3D}, incluyendo las demos y los componentes, se encuentra alojado en un repositorio de \textsc{GitHub}\footnote{\url{https://github.com/djprano/AFrameTFG}}. Esta elección se ha realizado con el propósito de mantener un control de versiones y compartir el código fuente del proyecto.
 Además también cuenta con la opción de iniciar un servidor de aplicaciones, lo que facilita las demostraciones y la visualización de la aplicación en acción.
 
 \section{VSCode}
-VSCode es la herramienta principal que se utiliza como entorno de desarrollo para generar el código del proyecto. Proporciona una variedad de funcionalidades que facilitan el proceso de desarrollo. Además, nos permite arrancar un servidor local ligero para ejecutar nuestra aplicación en modo de depuración, lo que nos permite identificar y corregir errores de manera eficiente.
-Una de las ventajas de VSCode es su integración con herramientas de control de versiones como la que analizamos en la sección \ref{sec:github}. Además, VSCode ofrece características útiles como autocompletado de código y resaltado de sintaxis, lo que agiliza el desarrollo del prototipo y mejora la productividad.
+\textsc{VSCode} es la herramienta principal que se utiliza como entorno de desarrollo para generar el código del proyecto. Proporciona una variedad de funcionalidades gracias a sus plugins que facilitan el proceso de desarrollo. \\
+Además, nos permite arrancar un servidor local ligero para ejecutar nuestra aplicación en modo de depuración, lo que nos permite identificar y corregir errores de manera eficiente.
+Una de las ventajas de \textsc{VSCode} es su integración con herramientas de control de versiones como la que analizamos en la sección \ref{sec:github}. Además, \textsc{VSCode} ofrece características útiles como autocompletado de código y resaltado de sintaxis, lo que agiliza el desarrollo del prototipo y mejora la productividad.
 
 
 
@@ -953,11 +959,12 @@ Se ha diseñado una arquitectura modular tal y como podemos ver en la figura~\re
 	\end{center}
 \end{table}
 A continuación, se presenta un diagrama \ref{fig:javascriptFiles} que muestra la estructura de archivos en la cual hemos organizado la lógica de nuestra aplicación. 
-Esta lógica está estrechamente relacionada con la arquitectura general de la aplicación, la cual se muestra en la figura \ref{fig:arquitectura}. En este diagrama, se puede observar la distribución de las secciones y la relación entre los componentes creados. Además, se puede apreciar la comunicación de eventos entre las diferentes partes de la arquitectura.
+Esta lógica está estrechamente relacionada con la arquitectura general de la aplicación, la cual se muestra en la figura \ref{fig:arquitectura}. \\
+En este diagrama, se puede observar la distribución de las secciones y la relación entre los componentes creados. Además, se puede apreciar la comunicación de eventos entre las diferentes partes de la arquitectura.
 \begin{figure}[h]
   \centering
   \includegraphics[width=6cm, keepaspectratio]{img/ficheros.drawio.png}
-  \caption{Estructura de ficheros JavaScript.}
+  \caption{Estructura de ficheros \textsc{JavaScript}.}
   \label{fig:javascriptFiles}
 \end{figure}
 
@@ -965,41 +972,39 @@ Esta lógica está estrechamente relacionada con la arquitectura general de la a
 \begin{figure}[h]
   \centering
   \includegraphics[width=18cm, keepaspectratio]{img/Arquitectura.png}
-  \caption{Arquitectura general}
+  \caption{Arquitectura general de la aplicación.}
   \label{fig:arquitectura}
 \end{figure}
 \end{center}
 \section{Gestor de la escena principal}
 \label{sec:mainScene.js}
-El archivo \textbf{mainSence.js} desempeña un papel fundamental en la aplicación, podemos describirlo como el núcleo central de la aplicación. Si nos referimos a la figura ~\ref{fig:arquitectura}, podemos apreciar su importancia. Su principal responsabilidad es sobrescribir el método de inicialización de la escena para agregar una función adicional que se invoca periódicamente según el intervalo de tiempo configurado.
+El archivo \emph{mainSence.js} desempeña un papel fundamental en la aplicación, podemos describirlo como el núcleo central de la aplicación. Si nos referimos a la figura ~\ref{fig:arquitectura}, podemos apreciar su importancia. Su principal responsabilidad es sobrescribir el método de inicialización de la escena para agregar una función adicional que se invoca periódicamente según el intervalo de tiempo configurado.
 
-El propósito de esta función adicional es obtener datos aeronáuticos de una API. Para lograr esto, se utiliza el archivo `readLocalApiOpenSky.js`, que contiene la lógica para acceder a los datos en tiempo real o desde una caché local, dependiendo de la configuración establecida. Una vez que se obtienen los nuevos datos, se actualiza dinámicamente el escenario creando las entidades necesarias para representar la información aeronáutica en tiempo real.
-
-En resumen, este archivo desempeña un papel central al proporcionar la funcionalidad esencial para la obtención y representación de datos aeronáuticos en el entorno \emph{3D} de la aplicación.
+El propósito de esta función adicional es obtener datos aeronáuticos de una \textsc{API}. Para lograr esto, se utiliza el archivo \emph{readLocalApiOpenSky.js}, que contiene la lógica para acceder a los datos en tiempo real o desde una caché local, dependiendo de la configuración establecida. Una vez que se obtienen los nuevos datos, se actualiza dinámicamente el escenario creando las entidades necesarias para representar la información aeronáutica en tiempo real.\\
+En resumen, este archivo desempeña un papel central al proporcionar la funcionalidad esencial para la obtención y representación de datos aeronáuticos en el entorno \textsc{3D} de la aplicación.
 
 \subsection{Componente main-scene}
 \label{sec:mainScene}
-Como mencionamos en la introducción, este archivo tiene la responsabilidad de sobrescribir las funciones \emph{init} y \emph{tick} del componente principal \emph{main-scene} en la escena de \emph{A-Frame}. Esto permite agregar funcionalidades relacionadas con la obtención de datos de vuelo, la actualización de elementos en la escena y la interacción con las representaciones de aviones en el entorno \emph{3D}.
+Como mencionamos en la introducción, este archivo tiene la responsabilidad de sobrescribir las funciones \emph{init} y \emph{tick} del componente principal \emph{main-scene} en la escena de \textsc{A-Frame}. Esto permite agregar funcionalidades relacionadas con la obtención de datos de vuelo, la actualización de elementos en la escena y la interacción con las representaciones de aviones en el entorno \emph{3D}.
 
-En la función \emph{init}, utilizaremos la instancia única del convertidor de mapas de la clase \emph{MapConversion} que se encuentra en el archivo \emph{mapConversion.js}. Esto nos permitirá convertir la posición inicial de la cámara configurada a la posición que debe usar dentro del entorno \emph{3D}. Estableceremos las coordenadas \emph{X} y \emph{Z}, mientras que la altura se calculará posteriormente utilizando el componente \emph{heightManager} encargado de gestionar las alturas de la cámara.
+En la función \emph{init}, utilizaremos la instancia única del convertidor de mapas de la clase \emph{MapConversion} que se encuentra en el archivo \emph{mapConversion.js}. Esto nos permitirá convertir la posición inicial de la cámara configurada a la posición que debe usar dentro del entorno \emph{3D}. Estableceremos las coordenadas \emph{X} y \emph{Z}, mientras que la altura se calculará posteriormente utilizando el componente \emph{heightManager} responsable de gestionar las alturas de la cámara a medida que se desplaza por el terreno.
 
-Luego, llamaremos a la instancia única del gestor de alturas \emph{HeightManager} para generar el suelo de la escena y los edificios correspondientes.
-Finalmente, se establecerá una función que se invocará periódicamente según el intervalo de tiempo configurado para la actualización de los datos aeronáuticos. Es crucial que este intervalo de tiempo sea parametrizable, ya que representa el intervalo en el cual los datos pueden ser obtenidos. En el caso de utilizar una caché local, este intervalo de tiempo determinará la frecuencia con la que se han obtenido los datos, lo que permitirá que su representación se acerque lo más posible a la realidad.
+Después, llamaremos a la instancia única del gestor de alturas \emph{HeightManager} para generar el suelo de la escena y los edificios correspondientes.
+Finalmente, se establecerá una función que se invocará periódicamente según el intervalo de tiempo configurado para la actualización de los datos aeronáuticos. Es crucial que este intervalo de tiempo sea parametrizable, ya que representa el intervalo en el cual los datos pueden ser obtenidos cuando la consulta se realiza en modo \emph{online}. En el caso de utilizar una caché local, este intervalo de tiempo determinará la frecuencia con la que se han obtenido los datos, lo que permitirá que su representación se acerque lo más posible a la realidad. En caso de establecer un intervalo más corto al que se configuró al capturar los datos, estaremos representando la realidad de forma acelerada.
 
 Es crucial comprender el concepto de una función con límite de frecuencia, también conocida como \emph{throttledFunction}, ya que no solo se utilizará en la actualización de datos aeronáuticos, sino que generalmente se empleará al implementar la función \emph{tick} de un componente. Este método se ejecuta automáticamente en cada cuadro renderizado por el motor de \emph{A-Frame}. Esto significa que el código dentro de la función \emph{tick} se ejecutará continuamente en cada repintado.
-
-Es por eso que es importante tener en cuenta que el uso excesivo o ineficiente del método \emph{tick} puede afectar negativamente el rendimiento de la aplicación. Por lo tanto, la idea principal detrás de una \emph{throttledFunction} es limitar la cantidad de veces que una función puede ser llamada dentro de un período de tiempo determinado.
-
-Al utilizar una \emph{throttledFunction} en la actualización de datos aeronáuticos, nos aseguramos de que la obtención y procesamiento de los datos se realice de manera controlada y eficiente. Esto evita llamadas excesivas a la \emph{API} de datos y reduce la carga en el sistema, lo que mejora el rendimiento general de la aplicación en entornos \emph{3D}.
-
-Después de comprender el concepto de la \emph{throttledFunction}, la última tarea que realiza el método de inicialización es establecer una función que utilizará esta técnica. Esta función se ejecutará periódicamente cada intervalo de tiempo configurado y utilizará el servicio \emph{readLocalApiOpenSky} para obtener los datos aeronáuticos.
-
+Es por eso que es importante tener en cuenta que el uso excesivo o ineficiente del método \emph{tick} puede afectar negativamente el rendimiento de la aplicación. \\
+Por lo tanto, la idea principal detrás de una \emph{throttledFunction} es limitar la cantidad de veces que una función puede ser llamada dentro de un período de tiempo determinado.
+Al utilizar una \emph{throttledFunction} en la actualización de datos aeronáuticos, nos aseguramos de que la obtención y procesamiento de los datos se realice de manera controlada y eficiente. Esto evita llamadas excesivas a la \emph{API} de datos y reduce la carga en el sistema, lo que mejora el rendimiento general de la aplicación en entornos \emph{3D}.\\
+Después de comprender el concepto de la \emph{throttledFunction}, la última tarea que realiza el método de inicialización es establecer una función que utilizará esta técnica. Esta función se ejecutará periódicamente cada intervalo de tiempo configurado y utilizará el servicio \emph{readLocalApiOpenSky} para obtener los datos aeronáuticos.\\
 Una vez que se obtengan los nuevos datos, la función invocará a \emph{updateData}, que está definida dentro del archivo \emph{mainScene.js}. En este punto, se realizará el análisis y parseo del archivo \emph{JSON} que contiene los datos aeronáuticos. Si se encuentran nuevos componentes que deben ser creados en la escena, se generarán las entidades necesarias. Para los componentes existentes, se crearán animaciones que permitirán que los aviones se muevan de manera fluida dentro del entorno \emph{3D}.
 Esta estrategia garantiza que los datos aeronáuticos se actualicen regularmente y que la representación de los aviones en la escena sea realista y dinámica.
 
+Es importante remarcar que el componente \emph{main-scene} también será responsable de registrar los eventos necesarios para el envío de eventos sobre los elementos creados como aviones, para que el componente que explicaremos más adelante responsable de mostrar los datos reciba la información y el evento de mostrarse.
+
 \subsection{Movimiento fluido de aviones dentro de la escena}
 \label{subsec:movimientoFluido}
-Para lograr un movimiento fluido de los aviones dentro de la escena, vamos a crear una interpolación lineal utilizando las animaciones proporcionadas por \textsc{A-Frame}, tal como se muestra en el código de la Figura \ref{codigo:movimientoFluido}. En esta implementación, cada vez que se ejecute el método de actualización de la escena en intervalos de tiempo regulares, crearemos una animación que interpolará de forma lineal la posición anterior y la nueva del avión. Esta animación tendrá una duración igual al intervalo de actualización.
+Para lograr un movimiento fluido de los aviones dentro de la escena, vamos a crear una interpolación lineal utilizando las animaciones proporcionadas por \textsc{A-Frame}, tal como se muestra en el código de la Figura \ref{codigo:movimientoFluido}. En esta implementación, cada vez que se ejecute el método de actualización de la escena en intervalos de tiempo regulares, crearemos una animación que interpolará de forma lineal la posición anterior y la nueva del avión. Esta animación tendrá una duración igual al intervalo de actualización asegurando de tal manera que la animación termina cuando ser recupera un nuevo dato para generar la siguiente.
 \begin{figure}[h]
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
@@ -1021,7 +1026,7 @@ Para lograr un movimiento fluido de los aviones dentro de la escena, vamos a cre
 
 Para llevar a cabo esta tarea, es necesario mantener una caché de las entidades presentes en la escena y poder consultar rápidamente si existen y cuáles son sus datos antiguos. Además, esta caché nos será útil más adelante para implementar la funcionalidad que muestra el trayecto de un avión seleccionado en tiempo real, véase la sección \ref{subsec:track} para más información.
 
-Dentro del archivo \emph{mainScene.js}, encontraremos una variable llamada \emph{flightsCache}, la cual es un mapa que contiene una instancia de la clase FlightCacheData\ref{subsec:datosCacheVuelo} definida en el archivo \emph{FlightCacheData.js}. Este mapa de objetos en caché será responsable de mantener el estado de los aviones en el mapa y nos permitirá consultar si un avión existe en la escena y cuál fue su posición anterior para la creación de la animación.
+Dentro del archivo \emph{mainScene.js}, encontraremos una variable llamada \emph{flightsCache}, la cual es un mapa que contiene una instancia de la clase FlightCacheData~\ref{subsec:datosCacheVuelo} definida en el archivo \emph{FlightCacheData.js}, este mapa indexa el identificador del vuelo con su objeto caché para encontrar los datos de manera eficiente. Este mapa de objetos en caché será responsable de mantener el estado de los aviones en el mapa y nos permitirá consultar si un avión existe en la escena y cuál fue su posición anterior para la creación de la animación.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm, keepaspectratio]{img/movimientoFluido.drawio.png}
@@ -2117,6 +2122,8 @@ A nivel personal, ha sido una experiencia muy gratificante avanzar en cada itera
 % y verás que lo puedes hacer de manera sencilla.
 % Más información: 
 % http://texblog.org/2014/04/22/using-google-scholar-to-download-bibtex-citations/
+
+\printglossaries
 \newglossaryentry{3D}
 {
     name=3D,
@@ -2159,6 +2166,5 @@ A nivel personal, ha sido una experiencia muy gratificante avanzar en cada itera
     name=Backend,
     description={También conocido como el lado del servidor, se refiere a la parte de un sistema o aplicación que se encarga procesar la lógica, los datos y la funcionalidad que no es visible directamente para los usuarios finales en el la parte servidora. Es la responsable de gestionar el control y la gestión del modelo de negocio y enviarlos a la vista para que los muestre.}
 }
-\printglossaries
 
 \end{document}
