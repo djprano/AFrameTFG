@@ -1598,9 +1598,8 @@ El gestor principal de la escena utiliza los datos proporcionados por el \texttt
 
 \subsection{Consulta y almacenamiento de datos a la carpeta caché}
 \label{subsec:obtencionCache}
-Para asegurar el correcto funcionamiento del componente de acceso a los datos mencionado en la sección anterior \ref{subsec:dao}, es necesario contar con un componente encargado del almacenamiento de los datos en una carpeta de caché. Posteriormente, el DAO puede consultar esta carpeta en caso de que esté configurado en el modo local.
-
-Este componente está implementado en JavaScript y se ejecuta en el entorno de Node.js. Su función principal es cargar previamente la configuración de un escenario específico, que incluye parámetros como el rectángulo geodésico para la obtención de datos y el intervalo de tiempo en el que se debe establecer el temporizador para realizar una petición a la API en cada evento. Además, este componente se encarga de almacenar el resultado de cada petición en un archivo dentro de la carpeta de caché, como se muestra en la figura \ref{fig:saveApiData}.
+Para asegurar el correcto funcionamiento del componente de acceso a los datos mencionado en la sección anterior \ref{subsec:dao}, es necesario contar con la implementación de una pieza responsable del almacenamiento de los datos en una carpeta de caché local. Así posteriormente, el \texttt{DAO} puede consultar esta carpeta en caso de que esté configurado en el modo local.\\
+Este componente está implementado en \textsc{JavaScript} y se ejecuta en el entorno de \textsc{Node.js}. Su función principal es cargar previamente la configuración de un escenario específico, que incluye parámetros como el rectángulo geodésico para la obtención de datos y el intervalo de tiempo en el que se debe establecer el temporizador para realizar una petición a la \textsc{API} en cada evento. Además, este componente se encarga de almacenar el resultado de cada petición en un archivo dentro de la carpeta de caché, como se muestra en la figura \ref{fig:saveApiData}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/almacenamientoCache.drawio.png}
@@ -1613,49 +1612,50 @@ Este componente está implementado en JavaScript y se ejecuta en el entorno de N
   \caption{Ejecución con Node.js del almacenamiento de datos ADS-B en caché.}
   \label{fig:capturaDatosCache}
 \end{figure}
-
+\\Como podemos apreciar en la figura \ref{fig:capturaDatosCache} , en cada petición almacenamos en la carpeta local que usaremos de cache, un fichero \textsc{JSON} con los vectores de posición de los vuelos en ese instante temporal.\\
+Estos ficheros podrán ser leídos por el \texttt{DAO}, el componte anteriormente descrito en la sección \ref{subsec:dao}.
 \clearpage
 \section{Gestión de la interfaz de usuario}
 \label{sec:gui}
-En esta sección, vamos a examinar las soluciones y componentes implementados para la interacción del usuario con la aplicación, tanto en el modo de escritorio como en el modo de realidad virtual. En el modo de realidad virtual, se utiliza el uso de gafas y mandos para manipular las entidades en el entorno tridimensional.
+En esta sección, vamos a examinar las soluciones y componentes implementados para la interacción del usuario con la aplicación, tanto en el modo de escritorio como en el modo de realidad virtual. En el modo de realidad virtual, se hace uso de gafas y mandos como las gafas \textsc{Oculus VR} para manipular las entidades en el entorno tridimensional.
 
-El objetivo principal de todos los componentes desarrollados en esta aplicación es proporcionar al usuario la capacidad de consultar toda la información presente en la escena y visualizarla de una manera que sea equivalente a las posiciones reales de las entidades en el mundo real, pero al mismo tiempo, que sea manejable. Esto significa que, aunque en el mundo real no podemos ver con claridad una entidad que represente un avión situado a 60 km de distancia, la aplicación tiene como objetivo seguir permitiendo el acceso a todas las entidades del escenario, independientemente de su ubicación en relación al usuario.
+El objetivo principal de todos los componentes desarrollados en esta aplicación es proporcionar al usuario la capacidad de consultar toda la información presente en la escena y visualizarla de una manera que sea equivalente a las posiciones reales de las entidades en el mundo real, pero al mismo tiempo, que sea manejable por el usuario. Esto significa que, aunque en el mundo real no podemos ver con claridad una entidad que represente un avión situado a 60 km de distancia, la aplicación tiene como objetivo seguir permitiendo el acceso a todas las entidades del escenario, independientemente de su ubicación en relación al usuario.
 \subsection{Entidades en ampliación al alejarse}
 \label{subsec:hover-scale}
-Correcto, uno de los desafíos encontrados en la usabilidad de la aplicación se refiere a la selección de aviones. Dado que los aviones en la realidad se encuentran a distancias significativas en términos de altura y dimensiones del escenario, sin aplicar técnicas para visualizar objetos distantes, sería imposible seleccionarlos y visualizarlos correctamente.
+Uno de los desafíos encontrados en la usabilidad de la aplicación se refiere a la selección de aviones para visualizar sus datos. Dado que los aviones en la realidad se encuentran a distancias significativas en términos de altura y dimensiones del escenario, sin aplicar técnicas para visualizar objetos distantes, sería imposible seleccionarlos y visualizarlos correctamente.
 
-Para abordar este problema, se ha optado por una solución que sacrifica un poco de realismo dentro del escenario. Cuando un objeto supera cierto umbral de distancia, se aplica un proceso de ampliación que simula que el tamaño del símbolo del avión se mantiene más o menos constante. Con esta solución, facilitamos al usuario la capacidad de seleccionar aviones distantes. Puedes observar las capturas de pantalla que ilustran el componente de ampliación con y sin selección en las figuras \ref{fig:con-hover} y \ref{fig:sin-hover}.
+Para abordar este problema, se ha optado por una solución que sacrifica un poco de realismo dentro del escenario. Cuando un objeto supera cierto umbral de distancia, se aplica un proceso de ampliación que simula que el tamaño del símbolo del avión se mantiene más o menos constante. Con esta solución, facilitamos al usuario la capacidad de seleccionar aviones distantes. Puedes observar las capturas de pantalla que ilustran la escena con el componente de ampliación y sin el en las figuras \ref{fig:con-hover} y \ref{fig:sin-hover}.
+\begin{figure}[h]
+	\begin{align*}
+		\text{{Factor de Ampliacición}} = \left(\frac{{\text{{distancia}} - \text{{distancia umbral}}}}{{\text{{divisor ampliación}}}}\right) + 1\\
+	\end{align*}
+	\caption{Calculo del factor de ampliación en función de la distancia.}
+	\label{formula:ampliación}
+\end{figure}
 \begin{figure}[h]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[width=7cm, keepaspectratio]{img/sin_hover.jpg}
+    \includegraphics[width=7.5cm, keepaspectratio]{img/sin_hover.jpg}
     \caption{Aviones sin ampliación.}
     \label{fig:sin-hover}
   \end{minipage}%
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[width=7cm, keepaspectratio]{img/con_hover.jpg}
+    \includegraphics[width=7.5cm, keepaspectratio]{img/con_hover.jpg}
     \caption{Componente de ampliación.}
     \label{fig:con-hover}    
   \end{minipage}
 \end{figure}
-El componente se agrega a cada entidad que representa un vuelo y calcula la distancia entre la cámara principal y la entidad. Si la distancia supera un umbral configurado, se aplica un escalado a la entidad. La fórmula utilizada para el escalado se muestra en la figura \ref{formula:ampliación}. Esta fórmula calcula un factor de ampliación en función de la distancia, donde se asegura que el factor sea 1 en el umbral, lo que significa que no se realiza ningún escalado. A medida que la distancia aumenta, el factor se incrementa linealmente, y se puede ajustar el incremento mediante un factor divisor configurable. 
-
+El componente se agrega a cada entidad que representa un vuelo y calcula la distancia entre la cámara principal y la entidad. Si la distancia supera un umbral configurado, se aplica un escalado a la entidad en cada repintado. La fórmula utilizada para el escalado se muestra en la figura \ref{formula:ampliación}. Esta fórmula calcula un factor de ampliación en función de la distancia, donde se asegura que el factor sea 1 en el umbral, lo que significa que no se realiza ningún escalado. A medida que la distancia aumenta, el factor se incrementa linealmente, y se puede ajustar el incremento mediante un factor divisor configurable. \\
 Todos estos parámetros, como el divisor del factor de ampliación y la distancia a partir de la cual se comienza a aplicar el escalado, son configurables, lo que brinda al usuario la capacidad de ajustar la visualización de los tamaños en diferentes distancias según sus preferencias.
-
-\begin{figure}[h]
-\begin{align*}
-\text{{Factor de Ampliacición}} = \left(\frac{{\text{{distancia}} - \text{{distancia umbral}}}}{{\text{{divisor ampliación}}}}\right) + 1\\
-\end{align*}
-\caption{Calculo del factor de ampliación en función de la distancia.}
-  \label{formula:ampliación}
-\end{figure}
 
 \subsection{Componente de información contextual interactiva}
 \label{subsec:tooltip}
 En esta sección, describiremos el componente encargado de mostrar los metadatos de las entidades geoespaciales presentes en el escenario. Dado que el objetivo de la aplicación es visualizar información de entidades georeferenciadas, resulta interesante desarrollar un componente que inserte texto sobre las entidades del escenario que contengan metadatos.
 
-Como se explicó anteriormente en la sección \ref{subsec:buildingGeometry}, al procesar la información de la capa de edificios extraída de los datos de OpenStreetMap, tenemos la capacidad de extraer los metadatos asociados a cada edificio generado. Por lo tanto, se ha creado un componente al cual se le puede proporcionar un texto como argumento y tiene la responsabilidad de generar un texto que siempre mire hacia la cámara y se posicione sobre la entidad correspondiente. Este texto solo es visible cuando el ratón o el raycaster están posicionados sobre la entidad. Además, el componente genera un material de color rojizo para indicar el elemento seleccionado del cual se muestran los metadatos. De esta manera, podemos visualizar los metadatos de edificios, como se muestra en la figura \ref{fig:tooltip}.
+Como se explicó anteriormente en la sección \ref{subsec:buildingGeometry}, al procesar la información de la capa de edificios extraída de los datos de \textsc{OpenStreetMap}, tenemos la capacidad de extraer los metadatos asociados a cada edificio generado. \\
+Por lo tanto, se ha creado un componente al cual se le puede proporcionar un texto como argumento y tiene la responsabilidad de generar un texto que siempre mire hacia la cámara y se posicione sobre la entidad correspondiente. \\
+Este texto solo es visible cuando el ratón o el \emph{raycaster} están posicionados sobre la entidad. Además, el componente genera un material de color rojizo para indicar el elemento seleccionado del cual se muestra la información. De esta manera, podemos visualizar los metadatos de edificios, como se muestra en la figura \ref{fig:tooltip}.
 
 \begin{figure}[h]
   \centering
@@ -1663,13 +1663,14 @@ Como se explicó anteriormente en la sección \ref{subsec:buildingGeometry}, al 
   \caption{Componente información contextual mostrando metadatos de la terminal.}
   \label{fig:tooltip}
 \end{figure}
-Como veremos más adelante, este componente tiene la capacidad de ser activado o desactivado mediante eventos enviados a través de la barra de herramientas, la cual está presente como una interfaz de usuario en la cámara principal. Esto brinda al usuario la flexibilidad de controlar la visualización de los metadatos según sus necesidades y preferencias.
+Como veremos más adelante, este componente tiene la capacidad de ser activado o desactivado mediante eventos enviados a través de la barra de herramientas (vease la sección \ref{subsec:toolbar3d}), la cual está presente como una interfaz de usuario en la cámara principal. Esto brinda al usuario la flexibilidad de controlar la visualización de los metadatos según sus necesidades y preferencias.
 
 \subsection{Componente barra de herramientas de la interfaz de usuario}
 \label{subsec:toolbar3d}
-En esta sección, exploraremos el componente que acompaña al usuario y permite habilitar o deshabilitar funcionalidades. La barra de herramientas es una entidad 3D que se despliega como un HUD (Head-Up Display) en forma de pantalla frontal de visualización. Proporciona al usuario una interfaz para interactuar con las diversas funcionalidades de la aplicación.
+En esta sección, exploraremos el componente que acompaña al usuario y permite habilitar o deshabilitar funcionalidades. La barra de herramientas es una entidad 3D que se despliega como un \textsc{HUD} \emph{(Head-Up Display)} en forma de pantalla frontal de visualización. Proporciona al usuario una interfaz para interactuar con las diversas funcionalidades de la aplicación.
 
-Dado que nos encontramos en un entorno 3D, hemos implementado la barra de herramientas como un componente 3D dentro de la escena, anclado a la cámara principal. Sin embargo, nos hemos enfrentado al desafío de que esta barra puede resultar molesta al bloquear parte de la vista del usuario. Para solucionar este problema, hemos diseñado el componente de manera que pueda plegarse y arrastrarse, brindando al usuario la capacidad de colocarlo en una posición menos intrusiva y ocupando un espacio mínimo en la pantalla.
+Dado que nos encontramos en un entorno 3D, hemos implementado la barra de herramientas como un componente 3D dentro de la escena, anclado a la cámara principal. Sin embargo, nos hemos enfrentado al desafío de que esta barra puede resultar molesta al bloquear parte de la vista del usuario. Para solucionar este problema, hemos diseñado el componente de manera que pueda plegarse y arrastrarse, brindando al usuario la capacidad de colocarlo en una posición menos intrusiva y ocupando un espacio mínimo en la pantalla.\\
+En la figura~\ref{fig:toolbarDesplegada} podemos ver la barra de herramientas en su tamaño desplegado mientras que en la figura~\ref{fig:toolbarPlegada} se aprecia el poco espacio que ocupa una vez la plegamos.
 \begin{figure}[h]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
@@ -1684,83 +1685,78 @@ Dado que nos encontramos en un entorno 3D, hemos implementado la barra de herram
     \label{fig:toolbarPlegada}    
   \end{minipage}
 \end{figure}
-La solución técnica implementada consiste en la creación de un componente que se configura en la cámara principal. Durante la inicialización de este componente, se agregan geometrías cuadradas de A-Frame de tipo 'a-plane' a la cámara principal. Esto se puede observar en la figura que muestra la disposición de los componentes en la barra de herramientas (\ref{fig:toolbarComposition}). La barra de herramientas está representada por un plano principal con trasparencia, mientras que los botones se representan mediante tres planos adicionales con texto superpuesto. Estas geometrías planas tienen añadidos controladores de eventos para permitir la interacción con el usuario.
-
-Cada botón se crea mediante una función interna (ver Código \ref{codigo:crearBoton}) que recibe varios argumentos. Estos argumentos incluyen un identificador único utilizado para hacer referencia al botón en el contexto del DOM, las dimensiones de la entidad que determinan su ancho y alto, el texto a mostrar en el botón (en el caso de botones no conmutables), la posición dentro de la barra de herramientas que define su ubicación en el diseño, el modo de conmutación que indica si el botón es conmutable o no, la acción a ejecutar cuando el botón está activado y la acción a ejecutar cuando el botón está desactivado.
-
-Además, se pueden especificar propiedades visuales para el botón cuando está en estado activado y cuando está en estado desactivado, como el color y el texto correspondiente. Esta configuración flexible y modular hace que nuestra barra de herramientas sea altamente reutilizable para otros proyectos y fácilmente extensible para añadir más funcionalidades dentro de la aplicación.
+\\La solución técnica implementada consiste en la creación de un componente que se configura dentro de la jerarquía de la cámara principal. Durante la inicialización de este componente, se agregan geometrías cuadradas de \textsc{A-Frame} de tipo \emph{a-plane} a la cámara principal para formar tanto el panel como los botones conmutables. \\
+Esto se puede observar en la figura que muestra la disposición de los componentes en la barra de herramientas (\ref{fig:toolbarComposition}).
 \begin{figure}[h]
-\centering
-\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
-createToolbarButton: function (id,width, height, text,texSize, position, toogle, enableFunction, disableFunction, enableColor, disableColor, enableText, disableText)
-\end{minted}
-\caption{función que genera los botón dentro de la barra de herramientas.
-\label{codigo:crearBoton}
-}
+	\centering
+	\includegraphics[width=8cm, keepaspectratio]{img/toolbarElementos.jpg}
+	\caption{Maquetación del componente barra de herramientas.}
+	\label{fig:toolbarComposition}
 \end{figure}
+La barra de herramientas está representada por un plano principal con transparencia, mientras que los botones se representan mediante tres planos adicionales con texto superpuesto. Estas geometrías planas tienen añadidos controladores de eventos para permitir la interacción con el usuario.\\
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=8cm, keepaspectratio]{img/toolbarElementos.jpg}
-  \caption{Maquetación del componente barra de herramientas.}
-  \label{fig:toolbarComposition}
+	\centering
+	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
+		createToolbarButton: function (id,width, height, text,texSize, position, toogle, enableFunction, disableFunction, enableColor, disableColor, enableText, disableText)
+	\end{minted}
+	\caption{función que genera los botón dentro de la barra de herramientas.
+		\label{codigo:crearBoton}
+	}
 \end{figure}
-
-En nuestra aplicación,haciendo uso del método anteriormente descrito nuestro componente barra de herramientas crea dos botones conmutables que permiten habilitar la funcionalidad de selección de aviones y visualizar su información a través de un panel HUD que contiene acciones adicionales. Además, hemos incluido un botón que activa y desactiva la funcionalidad de texto contextual, como se describe en la sección anterior \ref{subsec:tooltip}.
+Cada botón se crea mediante una función interna (ver Código \ref{codigo:crearBoton}) que recibe varios argumentos. Estos argumentos incluyen un identificador único utilizado para hacer referencia al botón en el contexto del \textsc{DOM}, las dimensiones de la entidad que determinan su ancho y alto, el texto, la posición dentro de la barra de herramientas, si el botón es conmutable o no, la acción a ejecutar cuando el botón está activado y la acción a ejecutar cuando el botón está desactivado.\\
+Además, se pueden especificar propiedades visuales para el botón cuando está en estado activado y cuando está en estado desactivado, como el color y el texto correspondiente. Esta configuración flexible y modular hace que nuestra barra de herramientas sea altamente reutilizable para otros proyectos y fácilmente extensible para añadir más funcionalidades dentro de la aplicación.\\
+En la sección \ref{subsec:guiaBarra3d} mostramos un ejemplo de como reutilizar la barra de herramientas con mas detalles sobre la función que acabaos de describir.\\
+Nuestra aplicación, haciendo uso del método anteriormente descrito nuestro componente barra de herramientas crea dos botones conmutables que permiten habilitar la funcionalidad de selección de aviones y visualizar su información a través de un panel \textsc{HUD} que contiene acciones adicionales. Además, hemos incluido un botón que activa y desactiva la funcionalidad de texto contextual, como se describe en la sección anterior \ref{subsec:tooltip}.
 \subsubsection{Animación de la barra de herramientas}
 \label{subsec:animationToolbar}
-Para lograr la funcionalidad de plegado, se han implementado animaciones que actúan sobre la escala y opacidad de los componentes de la barra de herramientas. Cuando el usuario presiona el botón de plegado, la barra de herramientas oculta los botones mediante una animación que los desvanece gradualmente a través de la opacidad. Luego, la barra de herramientas se comprime horizontalmente, lo que también afecta al botón de plegado, haciendo que se comprima en tamaño.
-
+Para lograr la funcionalidad de plegado, se han implementado animaciones que actúan sobre la escala y opacidad de los componentes de la barra de herramientas. Cuando el usuario presiona el botón de plegado, la barra de herramientas oculta los botones mediante una animación que los desvanece gradualmente a través de la opacidad. Luego, la barra de herramientas se comprime horizontalmente, lo que también afecta al botón de plegado, haciendo que se comprima en tamaño.\\
 Para contrarrestar esta compresión, se realiza una animación inversa en el botón de plegado, expandiéndolo horizontalmente y restaurándolo a su tamaño original. Esto crea un efecto visual que contrarresta la compresión causada por el plegado de la barra de herramientas tal y como aclaramos en el diagrama \ref{fig:animationPlegado}.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=8cm, keepaspectratio]{img/plegadoToolbar.drawio.png}
+  \includegraphics[width=7cm, keepaspectratio]{img/plegadoToolbar.drawio.png}
   \caption{Animaciónes para plegar la barra de herramientas.}
   \label{fig:animationPlegado}
 \end{figure}
 \subsection{Componente pantalla frontal de visualización (HUD)}
 \label{subsec:hud}
-El elemento HUD es esencial en nuestra aplicación, ya que proporciona al usuario la visualización de datos de los aviones, así como funcionalidades adicionales relacionadas con los aviones seleccionados.
+El elemento \textsc{HUD} es esencial en nuestra aplicación, ya que proporciona al usuario la visualización de datos de los aviones, así como funcionalidades adicionales relacionadas con los aviones seleccionados.
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/hud.jpg}
-  \caption{Componente HUD con avión seleccionado.}
+  \caption{Componente \textsc{HUD} con avión seleccionado.}
   \label{fig:hud}
 \end{figure}
 
-Uno de los principales objetivos de nuestra aplicación es permitir al usuario ver la información de los aviones en tiempo real o en diferido. Cuando habilitamos la funcionalidad del HUD en la barra de herramientas, le brindamos al usuario la capacidad de seleccionar un avión y desplegar un panel informativo. Este panel contiene una serie de datos obtenidos a través de metadatos ADS-B, y se actualiza mediante eventos en cada consulta a la API.  
-
-En resumen, al activar la funcionalidad del HUD en nuestra barra de herramientas, permitimos al usuario seleccionar aviones y ver información actualizada de los mismos, como la altura y velocidad, basada en metadatos ADS-B obtenidos a través de consultas a la API.
-
-En la figura \ref{fig:hud}, podemos observar que cuando seleccionamos un avión, se agrega una entidad en forma de aro que rodea al avión y siempre está orientada hacia la cámara. Esta entidad se desplaza junto con el avión y permite al usuario realizar un seguimiento visual del avión seleccionado. Además, proporcionamos al usuario dos acciones adicionales relacionadas con el avión seleccionado.
+Uno de los principales objetivos de nuestra aplicación es permitir al usuario ver la información de los aviones en tiempo real o en diferido. Cuando habilitamos la funcionalidad del \textsc{HUD} en la barra de herramientas, le brindamos al usuario la capacidad de seleccionar un avión y desplegar un panel informativo. Este panel contiene una serie de datos obtenidos a través de metadatos \textsc{ADS-B}, y se actualiza mediante eventos en cada consulta a la \textsc{API}.\\
+En resumen, al activar la funcionalidad del \textsc{HUD} en nuestra barra de herramientas, permitimos al usuario seleccionar aviones y ver información actualizada de los mismos, como la altura y velocidad, basada en metadatos \textsc{ADS-B} obtenidos a través de consultas a la \textsc{API}.\\
+En la figura \ref{fig:hud}, podemos observar que cuando seleccionamos un avión, se agrega una entidad en forma de anillo que rodea al avión y siempre está orientada hacia la cámara. Esta entidad se desplaza junto con el avión y permite al usuario realizar un seguimiento visual del avión seleccionado. Además, proporcionamos al usuario dos acciones adicionales relacionadas con el avión seleccionado.
 
 La primera acción consiste en visualizar el recorrido del avión en el escenario. Como se muestra en la figura \ref{fig:showTrack}, cuando un avión está seleccionado, se muestra un botón que habilita una línea azul que representa el trayecto que ha seguido el avión desde que ingresó al escenario hasta el momento actual. Esta línea muestra todas las posiciones que la entidad del avión ha ocupado durante su presencia en el escenario.
+
+La segunda funcionalidad que ofrece el panel \textsc{HUD} es la capacidad de visualizar una cámara de a bordo a través del panel. Esto brinda al usuario la experiencia de visualizar lo mismo que pueden ver los pasajeros del vuelo. La cámara de a bordo se proyecta en una pantalla que se despliega con una animación justo frente al panel \textsc{HUD}, como se muestra en la figura \ref{fig:cameraOnBoard}.\\
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=8cm, keepaspectratio]{img/show_track.jpg}
-  \caption{Trayecto del avión en el escenario.}
-  \label{fig:showTrack}
+	\centering
+	\includegraphics[width=8cm, keepaspectratio]{img/show_track.jpg}
+	\caption{Trayecto del avión en el escenario.}
+	\label{fig:showTrack}
 \end{figure}
-La segunda funcionalidad que ofrece el panel HUD es la capacidad de visualizar una cámara de a bordo a través del panel. Esto brinda al usuario la experiencia de visualizar lo mismo que pueden ver los pasajeros del vuelo. La cámara de a bordo se proyecta en una pantalla que se despliega con una animación justo frente al panel HUD, csomo se muestra en la figura \ref{fig:cameraOnBoard}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/cameraOnBoard.jpg}
   \caption{Visualización de la cámara de a bordo sobre el HUD.}
   \label{fig:cameraOnBoard}
 \end{figure}
-
 \subsection{Desplazamiento de la barra de herramientas y pantalla frontal de visualización (HUD)}
 \label{subsec:customDraggable}
-Como mencionamos anteriormente, es de vital importancia brindar al usuario principal la capacidad de desplazar los componentes HUD de nuestra aplicación. Por lo tanto, en esta sección abordaremos el componente que nos permite arrastrar y mover nuestros componentes HUD a cualquier parte de nuestra área visual.
-Tanto el componente pantalla frontal de visualización \emph{HUD} \ref{subsec:hud} como el componente barra de herramientas \ref{subsec:toolbar3d} configuran en su entidad principal el componente detallado en esta sección "custom-draggable" para que el usuario principal tenga la capacidad de desplazar las entidades donde no le moleste.
+Como mencionamos anteriormente, es de vital importancia brindar al usuario principal la capacidad de desplazar los componentes \textsc{HUD} de nuestra aplicación. Por lo tanto, en esta sección abordaremos el componente que nos permite arrastrar y mover nuestros componentes \textsc{HUD} a cualquier parte de nuestra área visual.\\
+Tanto el componente pantalla frontal de visualización \ref{subsec:hud} como el componente barra de herramientas \ref{subsec:toolbar3d} configuran en su entidad principal el componente detallado en esta sección llamado \emph{custom-draggable} que será responsable de proporcionar al usuario usuario principal la capacidad de desplazar las entidades \textsc{HUD} donde no le moleste.
 
-Implementar esta funcionalidad requirió mucho tiempo y esfuerzo, probando diversas estrategias e incluso explorando bibliotecas como \emph{A-frame-super-hands}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, aunque sin éxito. Esto se debe a que nuestro caso difiere significativamente de las aplicaciones convencionales.
-
-El componente super-hands está diseñado para agarrar y mover componentes que se encuentran en una posición absoluta, pero no está preparado para componentes que se encuentran en una posición relativa dentro de la estructura del esqueleto del usuario principal. Esta es la principal razón por la que no fue posible reutilizar ningún componente de las bibliotecas probadas, y se tuvo que desarrollar un componente propio. En este proceso, se encontró una solución ingeniosa para calcular la posición de manera eficiente, de manera distinta a cómo lo hacen las bibliotecas mencionadas. 
-
-Además, se invirtieron muchas horas de investigación para garantizar que el componente fuera compatible tanto con gafas de realidad virtual como con un ratón convencional.
-\begin{figure}[h]
+Implementar esta funcionalidad requirió mucho tiempo y esfuerzo, probando diversas estrategias e incluso explorando bibliotecas como \emph{A-frame-super-hands}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, aunque sin éxito. Esto se debe a que nuestro caso difiere significativamente de las aplicaciones convencionales.\\
+El componente \emph{super-hands} está diseñado para agarrar y mover componentes que se encuentran en una posición absoluta, pero no está preparado para componentes que se encuentran en una posición relativa dentro de la estructura del esqueleto del usuario principal. Esta es la principal razón por la que no fue posible reutilizar ningún componente de las bibliotecas probadas, y se tuvo que desarrollar un componente propio. En este proceso, se encontró una solución ingeniosa para calcular la posición de manera eficiente, adoptando una estrategia diferente a cómo lo hacen las bibliotecas mencionadas. \\
+Además, se invirtieron muchas horas de investigación para garantizar que el componente fuera compatible tanto con gafas de realidad virtual como con un ratón convencional.\\
+\begin{figure}[H]
   \begin{minipage}[b]{0.58\linewidth}
-    En el archivo custom-draggable.js, se ha creado un componente que permite arrastrar entidades que están contenidas dentro de la cámara principal. Es importante mencionar que en A-frame, cuando agregamos una entidad con geometría dentro de otra entidad, la posición de la entidad será relativa a su entidad padre. Nuestras entidades HUD se basan en este concepto, por lo tanto, tanto la barra de herramientas descrita en la sección \ref{subsec:toolbar3d} como nuestra pantalla frontal de visualización descrita en la sección \ref{subsec:hud}, son entidades secundarias del esqueleto principal que representa al usuario ('rig') tal y como podemos ver en la figura \ref{fig:jerarquiaEntidadesRig}.
+    En el archivo \emph{custom-draggable.js}, se ha creado un componente que permite arrastrar entidades que están contenidas dentro de la cámara principal. Es importante mencionar que en \textsc{A-frame}, cuando agregamos una entidad con geometría dentro de otra entidad, la posición de la entidad será relativa a su entidad padre. Nuestras entidades \textsc{HUD} se basan en este concepto, por lo tanto, tanto la barra de herramientas descrita en la sección \ref{subsec:toolbar3d} como nuestra pantalla frontal de visualización descrita en la sección \ref{subsec:hud}, son entidades secundarias del esqueleto principal que representa al usuario (\emph{rig}) tal y como podemos ver en la figura \ref{fig:jerarquiaEntidadesRig}.
   \end{minipage}%
   \hfill
   \begin{minipage}[b]{0.4\linewidth}
@@ -1770,29 +1766,24 @@ Además, se invirtieron muchas horas de investigación para garantizar que el co
     \label{fig:jerarquiaEntidadesRig}    
   \end{minipage}
 \end{figure}
-
-Para permitir que los componentes que viajan con la cámara principal puedan ser arrastrados, vamos a aclarar el proceso. En primer lugar, es importante tener en cuenta que la complejidad radica en garantizar que el elemento se mueva siempre en el mismo plano, sin cambios en la profundidad, sino solo en las coordenadas horizontales y verticales.
-
-Además, cuando arrastramos el componente con el ratón o el mando de las gafas de realidad virtual, es fundamental que siga el movimiento realizado para dar la sensación de arrastre.
-
-Después de explorar diversas estrategias, llegamos a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{raycaster}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \emph{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse. Cuando recibimos el evento de presionar el botón para arrastrar en la entidad, guardamos el componente \emph{raycaster} que generó dicho evento en la instancia. 
-También registramos la posición de intersección entre el \emph{raycaster} y el elemento \emph{HUD} y hacemos transparente la entidad para dar la sensación de que tenemos agarrada la entidad. Luego, cambiamos al estado de "presionado" y creamos una entidad plana ficticia e invisible que colocamos justo frente a la cámara principal, a la misma distancia que el elemento \emph{HUD} tal y como vemos en la figura\ref{fig:raycaster}. A partir de este punto, mientras estemos en el estado de "presionado" (es decir, arrastrando), en cada evento de la función \emph{tick}, calculamos la intersección entre el plano ficticio y el \emph{raycaster} que generó el evento de agarre. A partir de esta intersección, determinamos el desplazamiento realizado, que es un vector que contiene los incrementos de las coordenadas horizontales y verticales. Luego, convertimos este vector en uno relativo a la cámara y lo sumamos al vector de posición del elemento agarrado. De esta manera, logramos arrastrar y mover cualquier entidad que esté dentro de la jerarquía de la cámara en el plano deseado.
-
-Finalmente, cuando soltamos el botón del mando o el ratón, cambiamos al estado de "no presionado" para fijar la posición de la entidad y evitar que siga siendo desplazada en cada evento de la función tick.
-
-Es importante destacar que todas las entidades \emph{HUD} contienen el componente \emph{look-at}\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de \emph{A-Frame}, el cual garantiza que siempre estén orientadas hacia la cámara.
-
+Para permitir que los componentes que viajan con la cámara principal puedan ser arrastrados, vamos a aclarar el proceso. En primer lugar, es importante tener en cuenta que la complejidad radica en garantizar que el elemento se mueva siempre en el mismo plano, sin cambios en la profundidad, solo en las coordenadas horizontales y verticales.\\
+Además, cuando arrastramos el componente con el ratón o el mando de las gafas de realidad virtual, es fundamental que siga el movimiento realizado para dar la sensación de arrastre.\\
+Después de explorar diversas estrategias, llegamos a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{raycaster}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \textsc{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse.\\
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=10cm, keepaspectratio]{img/custom-draggable.png}
-  \caption{Cálculo del vector desplazamiento de arrastre de entidades.}
-  \label{fig:raycaster}
+	\centering
+	\includegraphics[width=10cm, keepaspectratio]{img/custom-draggable.png}
+	\caption{Cálculo del vector desplazamiento de arrastre de entidades.}
+	\label{fig:raycaster}
 \end{figure}
+Cuando recibimos el evento de presionar el botón para arrastrar en la entidad, guardamos el componente \emph{raycaster} que generó dicho evento, dentro de la instancia para recuperarlo en los eventos posteriores. 
+También registramos la posición de intersección entre el \emph{raycaster} y el elemento \textsc{HUD} y hacemos transparente la entidad para dar la sensación de que la tenemos agarrada. Después, cambiamos al estado de \texttt{presionado} y creamos una entidad plana ficticia e invisible que colocamos justo frente a la cámara principal, a la misma distancia que el elemento \textsc{HUD} tal y como vemos en la figura\ref{fig:raycaster}. A partir de este punto, mientras estemos en el estado de "presionado" (es decir, arrastrando), en cada evento de la función \texttt{tick}, calculamos la intersección entre el plano ficticio y el \emph{raycaster} que generó el evento de agarre. A partir de esta intersección, determinamos el desplazamiento realizado por el controlador, que es un vector que contiene los incrementos de las coordenadas horizontales y verticales. Luego, convertimos este vector en uno relativo a la cámara y lo sumamos al vector de posición del elemento agarrado. De esta manera, logramos arrastrar y mover cualquier entidad que esté dentro de la jerarquía de la cámara en el plano deseado.\\
+Finalmente, cuando soltamos el botón del mando o el ratón, cambiamos al estado de  \texttt{no presionado} para fijar la posición de la entidad y evitar que siga siendo desplazada en cada evento de la función \texttt{tick}.
 
+Es importante destacar que todas las entidades \emph{HUD} contienen el componente \emph{look-at}\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de \textsc{A-Frame}, el cual garantiza que siempre estén orientadas hacia la cámara.
 \subsection{Componente trayecto realizado por un vuelo}
 \label{subsec:track}
-El componente \emph{track}, contenido en el archivo \emph{track.js}, es un componente que se suscribe a los eventos del objeto \emph{DTO} \emph{FlightCacheData} descrito en el apartado \ref{subsec:datosCacheVuelo} y del panel \emph{HUD} descrito en el apartado \ref{subsec:hud}.
-Es responsable de dibujar una línea que muestra el trayecto del avión en el escenario en caso de que el botón conmutable del \emph{HUD} que activa la funcionalidad del vuelo seleccionado esté habilitado. Este componente solo escucha eventos de su vuelo, por lo tanto, solo usará el tag correspondiente al identificador de vuelo, escuchando eventos de los siguientes prefijos a través de eventos en el escenario:
+El componente \emph{track}, contenido en el archivo \emph{track.js}, es un componente que se suscribe a los eventos del objeto \texttt{DTO} \emph{FlightCacheData} descrito en el apartado \ref{subsec:datosCacheVuelo} y del panel \textsc{HUD} descrito en el apartado \ref{subsec:hud}.
+Es responsable de dibujar una línea que muestra el trayecto del avión en el escenario en caso de que el botón conmutable del \textsc{HUD} que activa la funcionalidad del vuelo seleccionado esté habilitado. Este componente solo escucha eventos de su vuelo, por lo tanto, solo usará el \emph{tag} correspondiente al identificador de vuelo, escuchando eventos de los siguientes prefijos a través de eventos en el escenario:
 \begin{itemize}
 	\item \textbf{\emph{flightCacheData\_push\_}}: Evento recibido por el objeto \emph{FlightCacheData} para actualizar la lista de puntos que componen la línea.
 	\item \textbf{\emph{flightCacheData\_show\_}}: Evento recibido por el panel \emph{HUD} emitido por el botón que activa la funcionalidad.
@@ -1804,18 +1795,18 @@ El dibujado del trayecto se realizará mediante la creación de una línea de \t
 Aquí presentaremos un resumen del procedimiento necesario para crear un escenario y configurar la plataforma proporcionada por el prototipo. Además, en la sección \ref{sec:componentesreutilizables}, describiremos los componentes que se pueden reutilizar en otros proyectos y cómo hacerlo.
 
 \section{Generación de datos para el terreno}
-El primer paso consiste en determinar las coordenadas geodésicas para nuestro escenario. Es importante intentar definir un rectángulo con coordenadas que formen un plano lo más cuadrado posible. Esto se debe a que, aunque el cálculo se basa en ambas dimensiones, la cúpula del cielo se construye utilizando la coordenada más corta para asegurarse de que no haya áreas sin cubrir en el horizonte. Un escenario con proporciones cuadradas evitará tener un exceso de terreno fuera de la cúpula, lo cual podría afectar al rendimiento. En resumen, se recomienda generar coordenadas cuadradas en la medida de lo posible.
-
-Una vez que tengamos las coordenadas geodésicas de nuestro escenario, procederemos a extraer el archivo DEM (Modelo de Elevación Digital) y el archivo raster para configurar correctamente los archivos necesarios para crear el terreno. A continuación, seguiremos los pasos enumerados en el manual \ref{manual:generacionDem} para generar un archivo binario de alturas basado en las coordenadas seleccionadas. Para la generación del archivo raster, utilizaremos el script proporcionado en la figura \ref{manual:generacionRaster}, el cual se basa en el servicio de Google \cite{googleearthengine}. Asegúrate de reemplazar las coordenadas establecidas en el script con las correspondientes a tu escenario.
+El primer paso consiste en determinar las coordenadas geodésicas para nuestro escenario. Es importante intentar definir un rectángulo con coordenadas que formen un plano lo más cuadrado posible. Esto se debe a que, aunque el cálculo se basa en ambas dimensiones, la cúpula del cielo se construye utilizando la coordenada más corta para asegurarse de que no tengamos una parte del área sin cubrir en el horizonte. \\
+Un escenario con proporciones cuadradas evitará tener un exceso de terreno fuera de la cúpula, lo cual podría afectar al rendimiento. En resumen, se recomienda generar coordenadas cuadradas en la medida de lo posible.\\
+Una vez que tengamos las coordenadas geodésicas de nuestro escenario, procederemos a extraer el archivo \textsc{DEM} (Modelo de Elevación Digital) y el archivo raster para configurar correctamente los archivos necesarios para crear el terreno. A continuación, seguiremos los pasos enumerados en el manual \ref{manual:generacionDem} para generar un archivo binario de alturas basado en las coordenadas seleccionadas. Para la generación del archivo raster, utilizaremos el script proporcionado en la figura \ref{manual:generacionRaster}, el cual se basa en el servicio de \textsc{Google} \cite{googleearthengine}. Asegúrate de reemplazar las coordenadas establecidas en el script con las correspondientes a tu escenario.
 
 \section{Generación de edificios para el terreno}
 El siguiente paso consiste en generar los edificios que queremos que aparezcan dentro de nuestro escenario. Para ello, seguiremos estos pasos:
 
 \begin{enumerate}
-    \item Utilizando el \emph{endpoint} \ref{manual:consultaEdificios} y sustituyendo las coordenadas por las del escenario, descargaremos los metadatos del servidor de \emph{OpenStreetMaps} en formato \emph{XML}. Esta consulta se puede realizar desde el Navegador o utilizando un software para hacer peticiones, como \emph{POSTMAN}, que nos permita guardar el resultado de la consulta. Es importante tener en cuenta que el tamaño del archivo dependerá del escenario, y si se trata de una zona con muchos edificios, podría llegar a pesar cientos de \emph{Megabytes}. 
+    \item Utilizando el \emph{endpoint} \ref{manual:consultaEdificios} y sustituyendo las coordenadas por las del escenario, descargaremos los metadatos del servidor de \textsc{OpenStreetMaps} en formato \emph{OSM}. Esta consulta se puede realizar desde el Navegador o utilizando un software para hacer peticiones, como \textsc{POSTMAN}, que nos permita guardar el resultado de la consulta. Es importante tener en cuenta que el tamaño del archivo dependerá del escenario, y si se trata de una zona con muchos edificios, podría llegar a pesar cientos de \emph{Megabytes}. 
     
     Para evitar problemas de rendimiento en la aplicación, se recomienda aplicar algún tipo de filtrado adicional para obtener una lista reducida de edificios.
-    \item El siguiente paso consiste en procesar el archivo para generar un formato de archivo \emph{GeoJSON} compatible con nuestra plataforma. Para ello, podemos instalar la librería \emph{osmtogeojson} utilizando \emph{npm} y ejecutar el comando en la consola, tal como se indica en el script \ref{manual:osmtogeojson}.
+    \item El siguiente paso consiste en procesar el archivo para generar un formato de archivo \textsc{GeoJSON} compatible con nuestra plataforma. Para ello, podemos instalar la librería \textsc{osmtogeojson} utilizando \textsc{npm} y ejecutar el comando en la consola, tal como se indica en el script \ref{manual:osmtogeojson}.
 \end{enumerate}
 \section{Almacenar metadatos de vuelos dentro del escenario (Opcional)}
 El siguiente paso es necesario solo en caso de que deseemos ejecutar el escenario en modo offline. Siempre que queramos utilizar la aplicación en modo online, este paso puede omitirse.
@@ -2009,6 +2000,7 @@ En esta sección vamos a detallar como reutilizar el componente de barra de herr
 	\url{https://github.com/djprano/AFrameTFG/blob/main/js/gui/toolbar3d.js}
 }
 \subsubsection{Guía del programador}
+\label{subsec:guiaBarra3d}
 Para reutilizar este componente, es necesario agregarlo a la entidad de la cámara. Se trata de un componente diseñado para viajar con la cámara y añadir una superficie desplazable que proporciona botones con funcionalidades para la aplicación.
 
 Para ello, puedes crear un componente que herede del código existente y sobrescribir el método \emph{init}. También es posible copiar el código y simplemente definir tu propio método \emph{init}.
