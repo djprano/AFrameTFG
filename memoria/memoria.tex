@@ -1040,7 +1040,8 @@ Dentro del archivo \emph{mainScene.js}, encontraremos una variable llamada \emph
 \label{sec:configuration}
 Debido a la naturaleza altamente reutilizable y configurable de nuestra aplicación, hemos dedicado especial atención a la parametrización de todos los componentes. Nuestro objetivo es que la creación de cualquier tipo de escenario se centre en un único archivo de configuración, simplificando así el proceso de establecer los parámetros necesarios para su correcto funcionamiento.
 
-Para lograr esto, hemos desarrollado una pieza clave llamada `configurationModel.js`, que contiene un módulo utilizado por todos los componentes de la aplicación. Este módulo almacena todos los parámetros específicos de un escenario en particular. Para establecer los valores internos de `configurationModel.js`, creamos un archivo JavaScript que invoca los métodos `set` del módulo, configurando así todas las propiedades necesarias para el escenario tal y como podemos ver en la figura \ref{codigo:madridConf}. Como resultado, el archivo HTML principal de nuestro escenario carga el módulo de configuración y el archivo JavaScript que establece las propiedades requeridas para su correcto funcionamiento como se puede apreciar en la figura \ref{codigo:cargaConfiguracion}.
+Para lograr esto, hemos desarrollado una pieza clave llamada \emph{configurationModel.js}, que contiene un módulo utilizado por todos los componentes de la aplicación. Este módulo almacena todos los parámetros específicos de un escenario en particular. Para establecer los valores internos de \emph{configurationModel.js}, creamos un archivo \textsc{JavaScript} que invoca los métodos \texttt{set} del módulo de configuración, estableciendo así todas las propiedades necesarias para el escenario tal y como podemos ver en la figura \ref{codigo:madridConf}.\\ 
+Como resultado, el archivo \textsc{HTML} principal de nuestro escenario carga el módulo de configuración y el archivo \textsc{JavaScript} que establece las propiedades requeridas para su correcto funcionamiento como se puede apreciar en la figura \ref{codigo:cargaConfiguracion}.
 \begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
@@ -1077,34 +1078,32 @@ Para lograr esto, hemos desarrollado una pieza clave llamada `configurationModel
 En esta sección, se describirá en detalle la implementación de toda la lógica de conversiones utilizada para georreferenciar las entidades dentro del escenario. También se abordarán los problemas que han surgido durante el proceso y las soluciones aplicadas, así como las librerías utilizadas.
 \subsection{Gestor de conversiones del mapa}
 \label{subsec:mapConversion}
-En este fichero, se han implementado todas las funciones necesarias dentro de la aplicación para transformar coordenadas geoespaciales, en particular las coordenadas latitud y longitud en grados, a coordenadas del escenario 3D (x, y, z).
+En este fichero, se han implementado todas las funciones necesarias dentro de la aplicación para transformar coordenadas geoespaciales, en particular el objetivo principal de este gestor es la conversión de coordenadas expresadas en latitud y longitud en grados, a un vector válido para el escenario 3D (x, y, z).\\
 Antes de adentrarnos en la descripción técnica, es importante hacer una breve introducción sobre los sistemas de referencia que vamos a utilizar y por qué es necesario realizar estas transformaciones.
-En el mundo de los Sistemas de Información Geográfica (GIS), es común utilizar sistemas de referencia geoespaciales representados por coordenadas geográficas y sistemas de proyección cartográfica.
-Una coordenada geográfica es un par de valores numéricos que representan la ubicación de un punto en la superficie de la Tierra. Consiste en una latitud y una longitud, que indican la posición en relación con los meridianos y paralelos terrestres.
+En el mundo de los Sistemas de Información Geográfica (\textsc{GIS}), es común utilizar sistemas de referencia geoespaciales representados por coordenadas geográficas y sistemas de proyección cartográfica.
+Una coordenada geográfica es un par de valores numéricos que representan la ubicación de un punto en la superficie de la Tierra. Como podemos observar en la figura \ref{fig:latlong} la \emph{latitud} y una \emph{longitud}, indican la posición definiendo la relación con los meridianos y paralelos terrestres.
 
-En los sistemas de referencia geoespaciales, es común utilizar un datum que es un modelo matemático que describe la forma y la orientación de la Tierra, así como un punto de referencia. Muchos servicios y aplicaciones que proporcionan datos espaciales a nivel mundial, como Google Maps y OpenSky, utilizan el Datum WGS84 como su sistema de referencia estándar.
-
-El Datum WGS84 (Sistema Mundial Geodésico de 1984) es ampliamente aceptado y utilizado en todo el mundo. Fue desarrollado por el Departamento de Defensa de los Estados Unidos y la Agencia Nacional de Inteligencia Geoespacial (NGA) como un sistema de referencia global para el intercambio de datos geoespaciales. El WGS84 se basa en un modelo matemático que representa la forma de la Tierra como un elipsoide de revolución y establece un conjunto de parámetros para la conversión precisa entre coordenadas geográficas y sistemas de coordenadas proyectadas.
-
-Dado que muchos servicios y datos geoespaciales se basan en el Datum WGS84, es importante trabajar con este datum en nuestra aplicación para garantizar la interoperabilidad y la correcta interpretación de los datos. Esto nos permite realizar conversiones precisas entre coordenadas geográficas en formato de latitud y longitud, y las coordenadas del escenario 3D en el que estamos trabajando.
-
-Por otro lado, un sistema de proyección cartográfica es una metodología que permite representar la forma curva de la Tierra en un plano, como un mapa. Dado que la Tierra es un objeto tridimensional, es necesario utilizar proyecciones cartográficas para convertir la superficie esférica en un plano bidimensional. Estas proyecciones utilizan fórmulas matemáticas y parámetros específicos para lograr una representación precisa y adecuada de la Tierra en un mapa plano.
-En nuestra aplicación, para convertir las coordenadas geoespaciales en un plano bidimensional, utilizaremos una proyección Mercator. La proyección Mercator es una de las proyecciones cartográficas más comunes y ampliamente utilizadas. Fue desarrollada por Gerardus Mercator en el siglo XVI y se caracteriza por preservar los ángulos rectos y las formas de las áreas pequeñas, lo que la hace adecuada para representar regiones con menor extensión latitudinal.
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/Latitud_y_Longitud_en_la_Tierra.svg.png}
-  \caption{Coordenadas geográficas latitud y longitud.}
-  \label{fig:latlong}
+	\centering
+	\includegraphics[width=12cm, keepaspectratio]{img/Latitud_y_Longitud_en_la_Tierra.svg.png}
+	\caption{Coordenadas geográficas latitud y longitud.}
+	\label{fig:latlong}
 \end{figure}
 
+En los sistemas de referencia geoespaciales, es común utilizar un datum que es un modelo matemático que describe la forma y la orientación de la Tierra, así como un punto de referencia. Muchos servicios y aplicaciones que proporcionan datos espaciales a nivel mundial, como \textsc{Google Maps} y \textsc{OpenSky}, utilizan el datum \textsc{WGS84} como su sistema de referencia estándar.\\
+El datum \textsc{WGS84} (Sistema Mundial Geodésico de 1984) es ampliamente aceptado y utilizado en todo el mundo. Fue desarrollado por el Departamento de Defensa de los Estados Unidos y la Agencia Nacional de Inteligencia Geoespacial (\textsc{NGA}) como un sistema de referencia global para el intercambio de datos geoespaciales.\\
+\textsc{WGS84} se basa en un modelo matemático que representa la forma de la Tierra como un elipsoide de revolución y establece un conjunto de parámetros para la conversión precisa entre coordenadas geográficas y sistemas de coordenadas proyectadas.\\
+Dado que muchos servicios y datos geoespaciales se basan en \textsc{WGS84}, es importante que nuestra aplicación sea capaz de trabajar en este datum para garantizar la interoperabilidad y la correcta interpretación de los datos. Esto nos permite realizar conversiones precisas entre coordenadas geográficas en formato de \emph{latitud} y \emph{longitud}, y las coordenadas del escenario \textsc{3D} en el que estamos trabajando.
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/simple-cylindrical-projection-earth-map-globe-mercator.jpg}
-  \caption{Proyección cilíndrica Mercator.}
-  \label{fig:mercator}
+	\centering
+	\includegraphics[width=12cm, keepaspectratio]{img/simple-cylindrical-projection-earth-map-globe-mercator.jpg}
+	\caption{Proyección cilíndrica Mercator.}
+	\label{fig:mercator}
 \end{figure}
-
-\begin{figure}[h]
+\\Por otro lado, un sistema de proyección cartográfica es una metodología que permite representar la forma curva de la Tierra en un plano. Debido a que nuestro planeta es un objeto tridimensional, es necesario utilizar proyecciones cartográficas para convertir la superficie esférica de la Tierra en un plano bidimensional. Estas proyecciones utilizan fórmulas matemáticas y parámetros específicos para lograr una representación precisa y adecuada de la Tierra en un mapa plano.\\
+En nuestra aplicación, para convertir las coordenadas geoespaciales en un plano bidimensional, utilizaremos la proyección Mercator. Esta proyección es una de las proyecciones cartográficas más comunes y ampliamente utilizadas en internet. Fue desarrollada por Gerardus Mercator en el siglo XVI y se caracteriza por preservar los ángulos rectos y las formas de las áreas pequeñas, lo que la hace adecuada para representar regiones con menor extensión latitudinal.\\ 
+Se basa en envolver con un cilindro la superficie de la tierra y trazar una linea desde el centro terrestre hasta el plano del cilindro creando una relación entre el punto de intersección de la tierra con el del plano del cilindro tal y como podemos ver en la figura \ref{fig:mercator}.
+\begin{figure}[H]
 \begin{minipage}{0.7\textwidth}
 Hablemos ahora del sistema de coordenadas de A-Frame, en el contexto del sistema de referencia 3D utilizado en A-Frame, se sigue la regla de la mano derecha. Esta regla establece la orientación de los ejes X, Y y Z en el espacio tridimensional.
 Según la regla de la mano derecha, si extendemos el pulgar, el índice y el dedo medio de nuestra mano derecha de manera que sean perpendiculares entre sí, podemos asignar los ejes de la siguiente manera:
@@ -1122,148 +1121,132 @@ Según la regla de la mano derecha, si extendemos el pulgar, el índice y el ded
 \label{fig:rightHand}
 \end{minipage}
 \end{figure}
-
-
-Esta convención es ampliamente utilizada en gráficos 3D y programación, incluido el entorno de desarrollo A-Frame. Al seguir la regla de la mano derecha, podemos establecer una consistencia en la orientación de los ejes y facilitar la comprensión y manipulación de los objetos en el espacio tridimensional.
-En este punto, nos enfrentamos al primer problema que debemos abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un datum WGS84 y proyectado con Mercator, notaremos una diferencia en las coordenadas.
-La coordenada Y, que representa la latitud en el sistema geoespacial, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje Z y aumenta en dirección opuesta. Por lo tanto, esto es algo que debemos tener en cuenta al diseñar nuestras fórmulas de conversión.
-
-Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo la posición con coordenada (x=8, y=-7) en el sistema geoespacial se representa de manera diferente en ambos sistemas de referencia.
-\begin{figure}[h]
+Esta convención es ampliamente utilizada en gráficos \textsc{3D} y programación, incluido el entorno de desarrollo \textsc{A-Frame}. Al seguir la regla de la mano derecha, podemos establecer una consistencia en la orientación de los ejes y facilitar la comprensión y manipulación de los objetos en el espacio tridimensional.\\
+En este punto, nos enfrentamos al primer problema que debemos abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un datum \textsc{WGS84} y proyectado con \textsc{Mercator}, notaremos una diferencia en las coordenadas.
+La coordenada \textsc{Y}, que representa la latitud en el sistema geoespacial, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debemos tener en cuenta al diseñar nuestras fórmulas de conversión.\\
+Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema geoespacial se representa de manera diferente en ambos sistemas de referencia.
+\begin{figure}[H]
   \centering
   \includegraphics[width=13cm, keepaspectratio]{img/sistemasDeReferencia.drawio.png}
   \caption{Vista aerea de los sistemas de referencia.}
   \label{fig:sistemasDeReferencia}
 \end{figure}
 
-El siguiente problema al que nos enfrentamos está relacionado con las dimensiones de nuestra aplicación. Si consideramos cuidadosamente los escenarios que vamos a representar, el radio de alcance del escenario en kilómetros es considerablemente grande. A-Frame trabaja con unidades de metros, lo cual es adecuado para aplicaciones de realidad aumentada donde se busca que las dimensiones en el mundo 3D sean equivalentes a la realidad. Sin embargo, en el caso de nuestra aplicación, nuestro objetivo es asegurar que los aviones se puedan visualizar correctamente incluso a distancias de varios kilómetros. Manejar dimensiones tan grandes plantea problemas en el renderizado de objetos lejanos y en la interacción con entidades distantes, además de dificultades en el manejo de coordenadas 3D con unidades tan grandes.
-
-Para ilustrar este concepto, consideremos el escenario de la demo de Vatry, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan [xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094). Utilizando un pequeño script en Google Earth Engine, podemos calcular las distancias de altura y anchura para este rectángulo:
-\begin{figure}[h]
-\centering
-\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
-// Cargar el rectángulo de coordenadas geodésicas
-var rectangle = ee.Geometry.Rectangle(
-[3.7545776367187, 48.491151723988,4.6238708496094, 49.027963936994]);
-// Agregamos el rectángulo al mapa
-Map.addLayer(rectangle, {}, 'Rectángulo');
-// Centrar el mapa en el rectángulo
-Map.centerObject(rectangle, 10);
-// Obtener los límites del rectángulo
-var bounds = rectangle.bounds();
-var coordinates = bounds.coordinates().get(0);
-var firstCoordinate = ee.List(coordinates).get(0);
-var secondCoordinate = ee.List(coordinates).get(1);
-var thirdCoordinate = ee.List(coordinates).get(3);
-print('Primera coordenada:', firstCoordinate);
-print('Segunda coordenada:', secondCoordinate);
-print('Tercera coordenada:', thirdCoordinate);
-// creamos geometrías de tipo punto para calcular las distancias
-var punto1 = ee.Geometry.Point(firstCoordinate);
-var punto2 = ee.Geometry.Point(secondCoordinate);
-var punto3 = ee.Geometry.Point(thirdCoordinate);
-// Calcular la distancia
-var altura = punto1.distance(punto2).divide(1000);
-var anchura = punto1.distance(punto3).divide(1000);
-// Imprimir la altura y la anchura en la consola
-print('Altura del rectángulo:', altura);
-print('Anchura del rectángulo:', anchura);
-\end{minted}
-\caption{Cálculo de dimensiones para el escenario Vatry.
-\label{codigo:dimensionesVatry}
-}
+El siguiente problema al que nos enfrentamos está relacionado con las dimensiones de nuestra aplicación. Si consideramos cuidadosamente los escenarios que vamos a representar, el radio de alcance del escenario en kilómetros es considerablemente grande. \textsc{A-Frame} trabaja con unidades de metros, lo cual es adecuado para aplicaciones de realidad aumentada donde se busca que las dimensiones en el mundo 3D sean equivalentes a la realidad. Sin embargo, en el caso de nuestra aplicación, nuestro objetivo es asegurar que los aviones se puedan visualizar correctamente incluso a distancias de varios kilómetros. Manejar dimensiones tan grandes plantea problemas en el renderizado de objetos lejanos y en la interacción con entidades distantes, además de dificultades en el manejo de coordenadas 3D con unidades tan grandes.\\
+Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry}, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan \texttt{[xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094)}. Utilizando un pequeño \emph{script} en \textsc{Google Earth Engine}, podemos calcular las distancias de altura y anchura para este rectángulo:
+\begin{figure}[H]
+	\centering
+	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
+		// Cargar el rectángulo de coordenadas geodésicas
+		var rectangle = ee.Geometry.Rectangle(
+		[3.7545776367187, 48.491151723988,4.6238708496094, 49.027963936994]);
+		// Agregamos el rectángulo al mapa
+		Map.addLayer(rectangle, {}, 'Rectángulo');
+		// Centrar el mapa en el rectángulo
+		Map.centerObject(rectangle, 10);
+		// Obtener los límites del rectángulo
+		var bounds = rectangle.bounds();
+		var coordinates = bounds.coordinates().get(0);
+		var firstCoordinate = ee.List(coordinates).get(0);
+		var secondCoordinate = ee.List(coordinates).get(1);
+		var thirdCoordinate = ee.List(coordinates).get(3);
+		// creamos geometrías de tipo punto para calcular las distancias
+		var punto1 = ee.Geometry.Point(firstCoordinate);
+		var punto2 = ee.Geometry.Point(secondCoordinate);
+		var punto3 = ee.Geometry.Point(thirdCoordinate);
+		// Calcular la distancia
+		var altura = punto1.distance(punto2).divide(1000);
+		var anchura = punto1.distance(punto3).divide(1000);
+		// Imprimir la altura y la anchura en la consola
+		print('Altura del rectángulo:', altura);
+		print('Anchura del rectángulo:', anchura);
+	\end{minted}
+	\caption{Cálculo de dimensiones para el escenario Vatry.
+		\label{codigo:dimensionesVatry}
+	}
 \end{figure}
 \begin{figure}[h]
-\centering
-\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
-Primera coordenada:
-[3.7545776367187003,48.49115172398797]
-Segunda coordenada:
-[4.623870849609401,48.49115172398797]
-Tercera coordenada:
-[3.7545776367187003,49.02878011753806]
-Altura del rectángulo:
-64.25269118063613
-Anchura del rectángulo:
-59.78757908704291
-\end{minted}
-\caption{Resultado del script.
-\label{codigo:resultadoDimensiones}
-}
+	\centering
+	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
+	Altura del rectángulo:
+	64.25269118063613
+	Anchura del rectángulo:
+	59.78757908704291
+	\end{minted}
+	\caption{Resultado del script.
+	\label{codigo:resultadoDimensiones}
+	}
 \end{figure}
-Como se puede observar en la figura \ref{codigo:resultadoDimensiones}, estamos manejando distancias de aproximadamente 60 km. Por lo tanto, debemos tener en cuenta que cuando los aviones se alejan, se verán muy pequeños si representamos las unidades con una anchura de 60.000 unidades en el mundo 3D de A-Frame. Además, las operaciones como la intersección del rayo utilizado para seleccionar los aviones pueden presentar problemas y afectar el rendimiento de nuestra aplicación.
-
+Como se puede observar en la figura \ref{codigo:resultadoDimensiones}, este \emph{script} nos arroja que estamos manejando distancias de aproximadamente 60 km. \\
+Por lo tanto, debemos tener en cuenta que cuando los aviones se alejan, se verán muy pequeños si representamos las unidades con una anchura de 60.000 unidades en el mundo 3D de A-Frame. Además, las operaciones como la intersección del rayo utilizado para seleccionar los aviones pueden presentar problemas y afectar el rendimiento de nuestra aplicación.\\
 Para abordar esta situación, vamos a realizar una operación de escalado en nuestras ecuaciones. Esto nos permitirá dimensionar nuestro escenario de una manera más óptima, ajustando las unidades a una escala adecuada para asegurar una representación visual adecuada y un rendimiento eficiente.
 
-El tercer problema al que nos enfrentamos es la asimetría en el escenario de representación. A menos que estemos representando una zona cercana al meridiano de Greenwich y al ecuador, al trabajar con coordenadas en metros es común que estemos manejando unidades excesivamente grandes. Por ejemplo, en la ciudad de Vatry, las coordenadas se centran en aproximadamente x = 472476 e y = 6245020. A medida que nos alejamos, podemos encontrarnos con zonas de Rusia donde las coordenadas se expresan en millones de metros, lo cual hace que las operaciones resulten poco prácticas.
-
-Para abordar este problema, se ha tomado la decisión de desplazar el centro del mapa al centro del escenario. Esto implica que, además del escalado mencionado anteriormente, realizaremos un desplazamiento de tal manera que el centro del escenario coincida con el centro del mapa.
-
-Esta solución nos permite trabajar con dimensiones más manejables y evita la asimetría en la representación. Al centrar el mapa en el escenario, las operaciones y cálculos se realizan de manera más eficiente y se logra una representación equilibrada de los elementos geoespaciales en el entorno 3D.
-
+El tercer problema al que nos enfrentamos es la asimetría en el escenario de representación. A menos que estemos representando una zona cercana al meridiano de \textsc{Greenwich} y al ecuador, al trabajar con coordenadas en metros es común que estemos manejando unidades excesivamente grandes. Por ejemplo, en la ciudad de \emph{Vatry}, las coordenadas se centran en aproximadamente x = 472476 e y = 6245020. A medida que nos alejamos, podemos encontrarnos con zonas de Rusia donde las coordenadas se expresan en millones de metros, lo cual hace que las operaciones resulten poco prácticas.\\
+Para abordar este problema, se ha tomado la decisión de desplazar el centro del mapa al centro del escenario. Esto implica que, además del escalado mencionado anteriormente, realizaremos un desplazamiento de tal manera que el centro del escenario coincida con el centro del mapa.\\
+Esta solución nos permite trabajar con dimensiones más manejables y evita la asimetría en la representación. Al centrar el mapa en el escenario, las operaciones y cálculos se realizan de manera más eficiente y se logra una representación equilibrada de los elementos geoespaciales en el entorno 3D.\\
 Recapitulando, podemos resumir los siguientes puntos:
 \begin{itemize}
-    \item Nuestras transformaciones se centrarán en establecer las equivalencias de ejes entre los sistemas de referencia. En este caso, el eje X geoespacial se mapeará al eje X en el mundo 3D, el eje Y geoespacial se mapeará al eje Z en el mundo 3D, y la altura se representará en el eje Y en el vector 3D.
-    \item Habrá una inversión en el eje que representa la latitud. Esto significa que la coordenada Y geoespacial se mapeará al eje -Z en el mundo 3D debido a la inversión.
-    \item Se realizará un desplazamiento para centrar el escenario en la coordenada (0,0,0) en el mundo 3D. Esto asegurará que el centro del escenario coincida con el origen de coordenadas en el mundo 3D.
-    \item Además, se aplicará un escalado para facilitar el dimensionado del escenario en el mundo 3D. Esto permitirá trabajar con dimensiones más manejables y evitar problemas de representación y rendimiento.
+    \item Nuestras transformaciones se centrarán en establecer las equivalencias de ejes entre los sistemas de referencia. En este caso, el eje \textsc{X} geoespacial se mapeará al eje X en el mundo \textsc{3D}, el eje Y geoespacial se mapeará al eje \textsc{Z} en el mundo \textsc{3D}, y la altura se representará en el eje Y en el vector 3D.
+    \item Habrá una inversión en el eje que representa la latitud. Esto significa que la coordenada Y geoespacial se mapeará al eje \textsc{-Z} en el mundo \textsc{3D} debido a la inversión.
+    \item Se realizará un desplazamiento para centrar el escenario en la coordenada \texttt{(0,0,0)} en el mundo \textsc{3D}. Esto asegurará que el centro del escenario coincida con el origen de coordenadas en el mundo \textsc{3D}.
+    \item Además, se aplicará un escalado para facilitar el dimensionado del escenario en el mundo \textsc{3D}. Esto permitirá trabajar con dimensiones más manejables y evitar problemas de representación y rendimiento.
 \end{itemize}
 En resumen, estas transformaciones nos permitirán establecer una correspondencia adecuada entre los sistemas de referencia geoespacial y el entorno 3D, asegurando una representación coherente y optimizada de los elementos geoespaciales en nuestro escenario.
 
-Para la conversión de coordenadas de WGS84 en grados a metros, hemos optado por utilizar la librería Leaflet en lugar de las fórmulas clásicas de la proyección Mercator. Las razones principales que respaldan esta elección son las siguientes:
+Para la conversión de coordenadas de \textsc{WGS84} en grados a metros, hemos optado por utilizar la librería \textsc{Leaflet}~\ref{sec:leaflet} en lugar de las fórmulas clásicas de la proyección \textsc{Mercator}. Las razones principales que respaldan esta elección son las siguientes:
 \begin{itemize}
-    \item Facilidad de uso: Leaflet proporciona una interfaz intuitiva y sencilla para trabajar con diversos sistemas de coordenadas y proyecciones. La librería admite múltiples sistemas de proyección, incluyendo la proyección Mercator ampliamente utilizada. Además, ofrece funciones integradas para realizar conversiones de coordenadas y proyecciones, lo cual simplifica la transformación de datos geoespaciales en el contexto del mapa.
-    \item Optimización de rendimiento: Leaflet está diseñado para ofrecer un rendimiento óptimo en entornos web en tiempo real. Su conversiones están optimizados para asegurar un alto rendimiento.
-    \item Mantenibilidad y actualizaciones regulares: Leaflet cuenta con una comunidad activa de desarrolladores que constantemente trabajan en mejorar la biblioteca, solucionar problemas, agregar nuevas características y garantizar la compatibilidad con las últimas tecnologías y estándares. Esto brinda confianza en la estabilidad y continuidad del proyecto, al tiempo que reduce la carga de mantenimiento del prototipo.
+    \item \textbf{\emph{Facilidad de uso}}: \textsc{Leaflet} proporciona una interfaz intuitiva y sencilla para trabajar con diversos sistemas de coordenadas y proyecciones. La librería admite múltiples sistemas de proyección, incluyendo la proyección \textsc{Mercator} ampliamente utilizada.\\ 
+    Además, ofrece funciones integradas para realizar conversiones de coordenadas y proyecciones, lo cual simplifica la transformación de datos geoespaciales en el contexto del mapa.
+    \item \textbf{\emph{Optimización de rendimiento}}: \textsc{Leaflet} está diseñado para ofrecer un rendimiento óptimo en entornos web en tiempo real. Sus conversiones están optimizadas para asegurar un alto rendimiento.
+    \item \textbf{\emph{Mantenibilidad y actualizaciones regulares}}: \textsc{Leaflet} cuenta con una comunidad activa de desarrolladores que constantemente trabajan en mejorar la biblioteca, solucionar problemas, agregar nuevas características y garantizar la compatibilidad con las últimas tecnologías y estándares. Esto brinda confianza en la estabilidad y continuidad del proyecto, al tiempo que reduce la carga de mantenimiento para nuestro prototipo.
 \end{itemize}
-A continuación, en la Figura \ref{formula:desplazamiento}, se presenta el cálculo del desplazamiento. Se puede observar que primero se calculan las coordenadas geodésicas del centro del escenario. Para ello, se toma el punto medio de la latitud y la longitud. Dado que deseamos desplazar el centro del escenario al punto (0,0,0) en el mundo 3D, es necesario tener previamente calculado el desplazamiento en metros que se aplicará a cada coordenada.
+A continuación, en la Figura \ref{formula:desplazamiento}, se presenta el cálculo del desplazamiento. Se puede observar que primero se calculan las coordenadas geodésicas del centro del escenario. Para ello, se toma el punto medio de la latitud y la longitud. Dado que deseamos desplazar el centro del escenario al punto \emph{(0,0,0)} en el mundo \textsc{3D}, es necesario tener previamente calculado el desplazamiento en metros que se aplicará a cada coordenada.
 
-Posteriormente, se utiliza una función que realiza la conversión a metros mediante la proyección de Mercator \ref{funcion:deegreeToMeter}. Esto da como resultado las coordenadas geodésicas del centro del escenario expresadas en metros. Estas coordenadas representan el desplazamiento que se aplicará a cada coordenada para lograr que el mapa esté centrado en el punto (0,0,0).
+Posteriormente, se utiliza una función que realiza la conversión a metros mediante la proyección de \textsc{Mercator} \ref{funcion:deegreeToMeter}. Esto da como resultado las coordenadas cartesianas del centro del escenario expresadas en metros. Estas coordenadas representan el desplazamiento que se aplicará a cada coordenada para lograr que el mapa esté centrado en el punto \emph{(0,0,0)}.
 \begin{figure}[h]
 \begin{align*}
-\text{long} &= \frac{{\text{LONG\_MIN} + \text{LONG\_MAX}}}{2} \\
-\text{lat} &= \frac{{\text{LAT\_MIN} + \text{LAT\_MAX}}}{2} \\
-\text{displacement} &= \text{degreeToMeter}(\text{lat}, \text{long})
+\text{\emph{long}} &= \frac{{\text{LONG\_MIN} + \text{LONG\_MAX}}}{2} \\
+\text{\emph{lat}} &= \frac{{\text{LAT\_MIN} + \text{LAT\_MAX}}}{2} \\
+\text{\emph{displacement}} &= \texttt{\text{degreeToMeter}(\text{lat}, \text{long})}
 \end{align*}
 \caption{Calculo del desplazamiento del escenario.}
   \label{formula:desplazamiento}
 \end{figure}
 
-Por lo tanto, el constructor de nuestra clase MapConversion realizará estos cálculos y almacenará el resultado en una instancia única para que pueda ser utilizado en todas las funciones de conversión. De esta manera, evitamos repetir los cálculos y garantizamos que todas las transformaciones se realicen utilizando el mismo desplazamiento y escala.
+Por lo tanto, el constructor de nuestra clase \emph{MapConversion} realizará estos cálculos y almacenará el resultado en una \emph{instancia única} para que pueda ser utilizado en todas las funciones de conversión. De esta manera, evitamos repetir los cálculos y garantizamos que todas las transformaciones se realicen utilizando el mismo desplazamiento y escala.
 \subsubsection{De WGS84 a Mercator}
 \label{funcion:deegreeToMeter}
-Esta función utiliza la librería Leaflet para crear una coordenada geodésica en el sistema de referencia WGS84 a partir de una latitud y longitud dadas. Luego, realiza la proyección en Mercator para convertir la coordenada geodésica en una coordenada cartesiana en metros.
+Esta función utiliza la librería \textsc{Leaflet} para crear una coordenada geodésicas en el sistema de referencia \textsc{WGS84} a partir de una \emph{latitud} y \emph{longitud} dadas. Luego, realiza la proyección en \textsc{Mercator} para convertir la coordenada geodésica en una coordenada cartesiana expresada en metros.
 \subsubsection{De Mercator a WGS84}
 \label{funcion:meterToDegree}
-Esta función realiza la operación inversa a la función descrita en \ref{funcion:deegreeToMeter}. Convierte una coordenada cartesiana en el sistema de proyección Mercator a una coordenada geodésica en el sistema de referencia WGS84 haciendo uso de la librería Leaflet. Esta función aprovecha sus capacidades integradas para realizar la desproyección de coordenadas.
-\subsubsection{De mercator a mundo 3D}
-\label{funcion:mercatorToWorld}
-Esta función se encargará de realizar la conversión de una coordenada cartesiana en proyección Mercator a una coordenada en el mundo 3D. Su objetivo principal es aplicar las transformaciones mencionadas anteriormente para abordar los problemas de representación, que incluyen la inversión del eje Z, el desplazamiento y el escalado. Para lograr esto, la función hará uso del desplazamiento calculado en el constructor de la clase. A continuación, se presentan las fórmulas que serán aplicadas:
+Esta función realiza la operación inversa a la función descrita en \ref{funcion:deegreeToMeter}. Convierte una coordenada cartesiana en el sistema de proyección \textsc{Mercator} a una coordenada geodésica en el sistema de referencia \textsc{WGS84} haciendo uso de la librería \textsc{Leaflet}. Esta función aprovecha sus capacidades integradas para realizar la desproyección de coordenadas.
+\subsubsection{De MatorToWorld}
+Esta función se encargará de realizar la conversión de una coordenada cartesiana en proyección \textsc{Mercator} a una coordenada en el mundo 3D. Su objetivo principal es aplicar las transformaciones mencionadas anteriormente para abordar los problemas de representación, que incluyen la inversión del eje \textsc{Z}, el desplazamiento y el escalado. Para lograr esto, la función hará uso del desplazamiento calculado en el constructor de la clase. A continuación, se presentan las fórmulas que serán aplicadas:
 
 \begin{figure}[h]
     \begin{align*}
-    x_{\text{World}} &= \frac{\mathbf{\mathrm{mercatorVector}}_{\text{x}} - \mathbf{\mathrm{displacement}}_{\text{x}}}{\mathbf{\mathrm{FACTOR}}} \\
-    y_{\text{World}} &= \frac{\mathbf{\mathrm{mercatorVector}}_{\text{z}} - \mathbf{\mathrm{displacement}}_{\text{y}}}{\mathbf{\mathrm{FACTOR}}} \\\\
+    X_{\text{3DWorld}} &= \frac{\mathbf{\mathrm{mercatorVector}}_{\text{x}} - \mathbf{\mathrm{displacement}}_{\text{x}}}{\mathbf{\mathrm{FACTOR}}} \\
+    Y_{\text{3DWorld}} &= \frac{\mathbf{\mathrm{mercatorVector}}_{\text{z}} - \mathbf{\mathrm{displacement}}_{\text{y}}}{\mathbf{\mathrm{FACTOR}}} \\\\
     \mathbf{\mathrm{3DWorld}} &= 
     \begin{bmatrix}
-    x_{\text{World}}, \frac{\text{mercatorVector.y}}{\mathbf{\mathrm{FACTOR}}}, -y_{\text{World}}
+    X_{\text{3DWorld}}, \frac{\mathrm{height}}{\mathbf{\mathrm{FACTOR}}}, -Y_{\text{3DWorld}}
     \end{bmatrix}
     \end{align*}
-\caption{Calculo de la conversión de coordenadas cartesianas en Mercator a mundo 3D.}
+\caption{Calculo de la conversión de coordenadas cartesianas en \textsc{Mercator} a mundo \textsc{3D}.}
   \label{formula:mercatorToWorld}
 \end{figure}
 
 \subsubsection{De mundo 3D a Mercator}
 \label{funcion:worldtoMercator}
-Esta función tiene la responsabilidad de realizar la operación inversa a la función mencionada en \ref{funcion:mercatorToWorld}. Su objetivo es convertir un vector del escenario 3D en una coordenada cartesiana en proyección Mercator, aplicando todas las operaciones inversas al escalado, la inversión de ejes y el desplazamiento realizados por la función mercatorToWorld \ref{funcion:mercatorToWorld}. A continuación, se presentan las fórmulas que serán aplicadas:
+Esta función tiene la responsabilidad de realizar la operación inversa a la función mencionada en \ref{funcion:mercatorToWorld}. Su objetivo es convertir un vector del escenario 3D en una coordenada cartesiana en proyección \textsc{Mercator}, aplicando todas las operaciones inversas al escalado, la inversión de ejes y el desplazamiento realizados por la función \emph{Mercator a mundo 3D}~\ref{funcion:mercatorToWorld}. A continuación, se presentan las fórmulas que serán aplicadas:
 
 \begin{figure}[h]
 \begin{align*}
-x_{\text{Mercator}} &= (\mathbf{\mathrm{worldVector}}_{\text{x}} \times \mathbf{\mathrm{FACTOR}}) + \mathbf{\mathrm{displacement}}_{\text{x}} \\
-y_{\text{Mercator}} &= (\mathbf{\mathrm{worldVector}}_{\text{z}} \times \mathbf{\mathrm{FACTOR}}) + \mathbf{\mathrm{displacement}}_{\text{y}} \\
+X_{\text{Mercator}} &= (\mathbf{\mathrm{world3DVector}}_{\text{x}} \times \mathbf{\mathrm{FACTOR}}) + \mathbf{\mathrm{displacement}}_{\text{x}} \\
+Y_{\text{Mercator}} &= (\mathbf{\mathrm{world3DVector}}_{\text{z}} \times \mathbf{\mathrm{FACTOR}}) + \mathbf{\mathrm{displacement}}_{\text{y}} \\
 \mathbf{\mathrm{Mercator}} &= 
 \begin{bmatrix}
-x_{\text{Mercator}}, \mathbf{\mathrm{worldVector}}_{\text{y}} \times \mathbf{\mathrm{FACTOR}}, -y_{\text{Mercator}}
+X_{\text{Mercator}}, \mathbf{\mathrm{world3DVector}}_{\text{y}} \times \mathbf{\mathrm{FACTOR}}, -Y_{\text{Mercator}}
 \end{bmatrix}
 \end{align*}
 \caption{Calculo de la conversión vector 3D a coordenadas cartesianas Mercator.}
@@ -1272,28 +1255,28 @@ x_{\text{Mercator}}, \mathbf{\mathrm{worldVector}}_{\text{y}} \times \mathbf{\ma
 
 \subsubsection{De WGS84 a mundo 3D}
 \label{funcion:degreeToWorld}
-Esta función se basará en la función deegreeToMeter \ref{funcion:deegreeToMeter} para convertir las coordenadas de latitud y longitud en formato WGS84 a una proyección Mercator. A continuación, utilizará la función mercatorToWorld  \ref{funcion:mercatorToWorld} para transformar la coordenada Mercator resultante en una coordenada tridimensional en el mundo 3D. En resumen, esta función permitirá convertir una coordenada geodésica en una coordenada 3D sin altura, lo que facilitará la ubicación de las entidades del mundo real dentro del escenario.
+Esta función se basará en la función \emph{de WGS84 a Mercator} \ref{funcion:deegreeToMeter} para convertir las coordenadas de \emph{latitud} y \emph{longitud} en formato \textsc{WGS84} a una proyección \textsc{Mercator}. A continuación, utilizará la función \emph{Mercator a mundo 3D}~\ref{funcion:mercatorToWorld} para transformar la coordenada \textsc{Mercator} resultante en una coordenada tridimensional en el mundo \textsc{3D}. En resumen, esta función permitirá convertir una coordenada geodésica en una coordenada \textsc{3D} sin altura, lo que facilitará la ubicación de las entidades del mundo real dentro del escenario.
 
-Esta función será útil para posicionar entidades geoespaciales, como edificios o aviones, dentro del escenario. Además, en un futuro, podría utilizarse para crear cualquier tipo de entidad que se base en datos geodésicos.
+Esta función será útil para posicionar entidades geoespaciales, como edificios o aviones, dentro del escenario. Además, en un futuro, podría utilizarse para crear cualquier tipo de entidad que se base en datos geodésicos, ya que la amplia mayoría de servicios utiliza el sistema \textsc{WGS84} y está función nos devuelve el vector de posición para el escenario \textsc{A-Frame}.
 
 \subsubsection{De mundo 3D a WGS84}
 \label{funcion:worldToDegree}
-Esta función se encargará de realizar la operación inversa a la función \textbf{degreeToWorld} descrita en la sección \ref{funcion:degreeToWorld}. Su objetivo es obtener la coordenada geodésica a partir de un vector tridimensional del mundo 3D. Para lograr esto, primero se realizará la conversión de la coordenada 3D a una coordenada Mercator utilizando la función \textbf{worldToMercator} mencionada en la sección \ref{funcion:worldtoMercator}. Luego, se aplicará la conversión de la coordenada cartesiana a WGS84 utilizando la función \textbf{meterToDegree} descrita en la sección \ref{funcion:meterToDegree}.
+Esta función se encargará de realizar la operación inversa a la función \emph{WGS84 a mundo 3D} descrita en la sección \ref{funcion:degreeToWorld}. Su objetivo es obtener la coordenada geodésica a partir de un vector tridimensional del mundo 3D. Para lograr esto, primero se realizará la conversión de la coordenada \textsc{3D} a una coordenada \textsc{Mercator} utilizando la función \emph{mundo 3D a Mercator} mencionada en la sección \ref{funcion:worldtoMercator}. Luego, se aplicará la conversión de la coordenada cartesiana a \textsc{WGS84} utilizando la función \emph{de Mercator a WGS84} descrita en la sección \ref{funcion:meterToDegree}.
 
-Aunque esta función no se utiliza actualmente en la aplicación, resulta útil para futuras funcionalidades. Por ejemplo, podría emplearse para mostrar la ubicación de la cámara principal en el HUD, proporcionando las coordenadas geodésicas correspondientes a la posición de la entidad de la cámara. Su implementación sería sencilla gracias al uso de esta función para convertir la coordenada 3D en una coordenada geodésica en formato WGS84.
+Aunque esta función no se utiliza actualmente en la aplicación, resulta útil para futuras funcionalidades. Por ejemplo, podría emplearse para mostrar la ubicación de la cámara principal en el \textsc{HUD}, proporcionando las coordenadas geodésicas correspondientes a la posición de la entidad de la cámara. Su implementación sería sencilla gracias al uso de esta función para convertir el vector de posición en el mundo 3D en una coordenada geodésica en formato \textsc{WGS84}.
 
 \subsubsection{Devuelve el tamaño del terreno}
 \label{funcion:getGroundSize}
-La función proporcionará las dimensiones del escenario en el entorno 3D al utilizar las constantes que definen la latitud y longitud máxima del rectángulo del escenario geodésico. Mediante la transformación de estas coordenadas al sistema de coordenadas del mundo 3D y considerando que el escenario está centrado, podremos calcular con precisión las dimensiones de anchura y altura en el entorno tridimensional. Esta función será de gran utilidad en etapas posteriores para el gestor del terreno del escenario, ya que se requieren estas dimensiones para el correcto funcionamiento del componente de terreno.
+La función proporcionará las dimensiones del escenario en el entorno \textsc{3D} al utilizar las constantes que definen la \emph{latitud} y \emph{longitud} máxima del rectángulo del escenario geodésico. Mediante la transformación de estas coordenadas al sistema de coordenadas del mundo \textsc{3D} y considerando que el escenario está centrado, podremos calcular con precisión las dimensiones de anchura y altura en el entorno tridimensional (Mundo 3D). Esta función será de gran utilidad en etapas posteriores para el gestor del terreno del escenario, ya que se requieren estas dimensiones para el correcto funcionamiento del componente de terreno descrito en la sección \ref{subsec:heightManager}.
 
 \subsubsection{Crear entidades en los corner del terreno}
 \label{funcion:createCorner}
-Esta función no tiene ninguna aplicación en el prototipo final, su único propósito es facilitar la depuración y verificar el correcto funcionamiento de las transformaciones de esta clase. Crea entidades en las esquinas del escenario y proporciona una referencia visual del terreno en el escenario para comprobar si está correctamente centrado en el entorno tridimensional.
+Esta función no tiene ninguna aplicación en el prototipo final, su único propósito es facilitar la depuración y verificar el correcto funcionamiento de las transformaciones de esta clase. Crea entidades en las esquinas del escenario y proporciona una referencia visual del terreno en el escenario para comprobar si está correctamente centrado en el entorno tridimensional, son funciones necesarias que se han creado para una depuración visual en el inspector del escenario.
 \clearpage
 \section{Terreno en el mapa}
 \label{sec:mapGround}
-En esta carpeta se encuentran todos los archivos responsables de gestionar la lógica relacionada con el suelo y las entidades asociadas. El objetivo de estos archivos es gestionar todas las operaciones relacionadas con el suelo, desde la generación del mallado hasta el posicionamiento y desplazamiento de las entidades sobre la superficie del suelo. Para lograr esto, se utilizan diversas tecnologías y librerías que permiten realizar las operaciones necesarias de forma eficiente y precisa.
-También podremos encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos raster. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.
+En esta carpeta se encuentran todos los archivos responsables de gestionar la lógica relacionada con el suelo y las entidades asociadas. El objetivo de estos archivos es gestionar todas las operaciones relacionadas con el suelo, desde la generación del mallado hasta el posicionamiento y desplazamiento de las entidades sobre la superficie del suelo. Para lograr esto, se utilizan diversas tecnologías y librerías que permiten realizar las operaciones necesarias de forma eficiente y precisa.\\
+También podremos encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos raster. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.\\
 Cada celda en la matriz representa una unidad de área cuadrada y contiene un valor numérico que representa una altura tal y como podemos apreciar en la figura \ref{fig:dem}.
 
 Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un datum de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
@@ -1305,25 +1288,29 @@ Un archivo DEM es un tipo de archivo raster con celdas que representan un valor 
   \label{fig:dem}
 \end{figure}
 
-Para crear la entidad del terreno, este componente requiere varios parámetros. En primer lugar, se necesita un archivo DEM que contenga la información de elevación del terreno. Además, se deben proporcionar las dimensiones de la entidad en el escenario, la textura que se utilizará para pintar el terreno, la resolución del terreno y un parámetro de magnificación de alturas que controla la escala de las elevaciones del terreno en relación con la entidad visual resultante.
-
-Con estos parámetros, el componente aframe-terrain-model-component genera y renderiza el terreno en el escenario, permitiendo así la representación realista de la superficie terrestre.
+Para crear la entidad del terreno, este componente requiere varios parámetros. En primer lugar, se necesita un archivo DEM que contenga la información de elevación del terreno. Además, se deben proporcionar los siguientes argumentos:
+\begin{itemize}
+	\item las dimensiones de la entidad en el escenario para lo cual se creó la función descrita en la sección \ref{funcion:getGroundSize}.
+	\item la textura que se utilizará para pintar el terreno.
+	\item la resolución del terreno (dimensiones de la matriz de alturas).
+	\item un parámetro de magnificación de alturas que controla la escala de las elevaciones del terreno en relación con la entidad visual resultante, de esto hablaremos más adelante pero este parámetro define el valor máximo en el mundo 3D para la altura más alta del fichero de alturas, esto es debido a que se normalizan los valores.
+\end{itemize}
+Con estos parámetros, el componente \emph{aframe-terrain-model-component} genera y renderiza el terreno en el escenario, permitiendo así la representación realista de la superficie terrestre.
 \subsection{Generación del fichero DEM}
 \label{sec:dem}
-En primer lugar, vamos a detallar el proceso utilizado para generar el archivo de alturas DEM en formato ENVI, que luego se inyectará en el componente "aframe-terrain-model-component".
-
-Basándonos en la experiencia del tutor del proyecto, el Dr. Jesús M. González Barahona, quien ha investigado y experimentado con la carga de terrenos del programa Copernicus de la Unión Europea a través de la librería GDAL, una biblioteca de código abierto ampliamente utilizada en el campo de los sistemas de información geográfica que permite la manipulación de datos geoespaciales.
-Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
+En primer lugar, vamos a detallar el proceso utilizado para generar el archivo de alturas \textsc{DEM} en formato \textsc{ENVI}, que luego se inyectará en el componente \emph{aframe-terrain-model-component}.\\
+Basándonos en la experiencia del tutor del proyecto, el \emph{Dr. Jesús M. González Barahona}, quien ha investigado y experimentado con la carga de terrenos del programa \textsc{Copernicus} de la Unión Europea a través transformaciones con las herramientas proporcionadas por \textsc{GDAL}, una biblioteca de código abierto ampliamente utilizada en el campo de los sistemas de información geográfica que permite la manipulación de datos geoespaciales.
+Vamos a describir los pasos para generar el fichero \textsc{DEM} de Madrid como ejemplo:
 \label{manual:generacionDem}
 \begin{enumerate}
-    \item Primero, procedemos a descargar la zona de interés de los servidores de Copernicus, que contiene el área correspondiente a las coordenadas donde generaremos el archivo DEM. Para realizar esto, visitamos la página \url{https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1} y observamos en la Figura \ref{fig:copernicus} los cuadrantes relevantes para extraer el archivo DEM de Madrid, que son E30N10 (30º Este 10º Norte) y E30N20 (30º Este 20º Norte). Por lo tanto, procedemos a descargar los binarios correspondientes a estas áreas.
+    \item Primero, procedemos a descargar la zona de interés de los servidores de \textsc{Copernicus}, que contiene el área correspondiente a las coordenadas donde generaremos el archivo \textsc{DEM}. Para realizar esto, visitamos la página \url{https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1} y observamos en la Figura \ref{fig:copernicus} los cuadrantes relevantes para extraer el archivo \textsc{DEM} de Madrid, que son \textsc{E30N10} (30º Este 10º Norte) y \textsc{E30N20} (30º Este 20º Norte). Por lo tanto, procedemos a descargar los binarios correspondientes a estas áreas.
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/copernicus.jpg}
   \caption{Visor online de ficheros DEM Copernicus.}
   \label{fig:copernicus}
 \end{figure}
-    \item Utilizamos el comando "gdalbuildvrt" para crear un archivo VRT llamado "map.vrt" que contiene un mosaico virtual de los archivos raster \url{eu_dem_v11_E30N10.TIF} y \url{eu_dem_v11_E30N20.TIF}. Esto permite acceder y trabajar con los datos de elevación contenidos en estos archivos como si fueran un solo conjunto de datos, sin necesidad de fusionar físicamente los archivos originales. El archivo VRT proporciona una vista virtual de los datos raster y permite un acceso eficiente y flexible a los mismos.
+    \item Utilizamos el comando \texttt{gdalbuildvrt} para crear un archivo \textsc{VRT} llamado \emph{map.vrt} que contiene un mosaico virtual de los archivos raster \url{eu_dem_v11_E30N10.TIF} y \url{eu_dem_v11_E30N20.TIF}. Esto permite acceder y trabajar con los datos de elevación contenidos en ambos archivos como si fueran un solo conjunto de datos, sin necesidad de fusionar físicamente los archivos originales. El archivo \textsc{VRT} proporciona una vista virtual de los datos raster y permite un acceso eficiente y flexible a los mismos.
 
     {\scriptsize
     \begin{verbatim}
@@ -1331,7 +1318,7 @@ Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
     \end{verbatim}
     }
     
-    \item Los ficheros que hemos descargado están proyectados en el sistema de referencia EPSG:3035\footnote{\url{https://epsg.io/3035}}, que utiliza la proyección UTM (Universal Transverse Mercator). Para realizar la transformación, utilizamos el comando "gdalwarp" que toma un archivo VRT llamado "map.vrt" y lo convierte en un nuevo archivo TIFF llamado "smallMap.tif". Durante este proceso, los datos se reproyectan al sistema de referencia espacial EPSG:4326\footnote{\url{https://epsg.io/4326}}, que utiliza el DATUM WGS84 y es el sistema de referencia que utilizamos para los datos de las API. Luego, los datos se recortan para abarcar la extensión definida por los límites de latitud y longitud proporcionados al comando.
+    \item Los ficheros que hemos descargado están proyectados en el sistema de referencia EPSG:3035\footnote{\url{https://epsg.io/3035}}, que utiliza la proyección \textsc{UTM} (Universal Transverse \textsc{Mercator}). Para realizar la transformación, utilizamos el comando \texttt{gdalwarp} que toma un archivo \textsc{VRT} llamado \emph{map.vrt} y lo convierte en un nuevo archivo \textsc{TIFF} llamado \emph{smallMap.tif}. Durante este proceso, los datos se reproyectan al sistema de referencia espacial \textsc{EPSG:4326}\footnote{\url{https://epsg.io/4326}}, que utiliza el \textsc{DATUM WGS84} y es el sistema de referencia que utilizamos para los datos de las API. Luego, los datos se recortan para abarcar la extensión definida por los límites de \emph{latitud} y \emph{longitud} proporcionados al comando.
 
     {\scriptsize
     \begin{verbatim}
@@ -1357,7 +1344,7 @@ Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
       NoData Value=-3.4028234663852886e+38
     \end{verbatim}
     }
-    \item Podemos utilizar el comando "gdal translate" para generar un archivo PNG que nos permita visualizar los datos generados a partir del archivo de alturas. Esto nos brindará una representación en blanco y negro de la superficie.
+    \item Podemos utilizar el comando \texttt{gdal translate} para generar un archivo \textsc{PNG} que nos permita visualizar los datos generados a partir del archivo de alturas. Esto nos brindará una representación en blanco y negro de la superficie como se puede observar en la figura \ref{fig:demImage}.
     {\scriptsize
     \begin{verbatim}
     gdal_translate -scale 0 2522 0 255 -outsize 200 200 -of PNG smallMap.tif smallMap.png
@@ -1371,7 +1358,7 @@ Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
       \label{fig:demImage}
     \end{figure}
 
-    \item A continuación, haremos uso de nuevo del comando "gdal translate" para realizar un escalado de valores. Transformaremos el rango original de (0,2522) a un nuevo rango de (0,65535), que corresponde al rango de UInt16. El resultado será guardado en un archivo binario ENVI llamado "Madrid.bin".
+    \item A continuación, haremos uso de nuevo del comando \texttt{gdal translate} para realizar un escalado de valores. Transformaremos el rango original de \emph{(0,2522)} a un nuevo rango de \emph{(0,65535)}, que corresponde al rango del tipo de datos \texttt{UInt16} que usa el componente para almacenar los datos. El resultado será guardado en un archivo binario \textsc{ENVI} llamado \emph{Madrid.bin}.
 
     {\scriptsize
     \begin{verbatim}
@@ -1382,19 +1369,19 @@ Vamos a describir los pasos para generar el fichero DEM de Madrid como ejemplo:
 
 \subsection{Generación de la capa de textura raster}
 \label{sec:raster}
-Vamos a describir cómo utilizando la tecnología que nos brinda Google Earth Engine podemos extraer la capa raster correspondiente a las coordenadas del rectángulo para el cual hemos generado el archivo bin en formato ENVI. Esto nos permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que nos dará una representación más realista del terreno.
-En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estamos usando el API que ofrece el framework de Google Earth Engine, el objeto "ee" (Earth Engine) nos ofrece la capacidad de crear geometrias añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que seguimos para realizar la extracción del raster:
+Vamos a describir cómo utilizando la tecnología que nos brinda \textsc{Google Earth Engine} podemos extraer la capa raster correspondiente a las coordenadas del rectángulo para el cual hemos generado el archivo bin en formato \textsc{ENVI}. Esto nos permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que nos dará una representación más realista del terreno.\\
+En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estamos usando el \textsc{API} que ofrece el framework de \textsc{Google Earth Engine}, el objeto \texttt{ee} (Earth Engine) nos ofrece la capacidad de crear geometrias añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que seguimos para realizar la extracción del raster:
 \begin{enumerate}
-    \item Creamos una geometría cuadrada con coordenadas WGS84 que nos permitirá realizar una posterior intersección con el raster.
+    \item Creamos una geometría rectangular con coordenadas \textsc{WGS84} que nos permitirá realizar una operación de intersección con el raster para la obtención de una porción.
     \item Añadimos el rectángulo como capa para visualizar la zona que vamos a exportar y realizar una comprobación visual de los datos.
     \item Cargamos una colección de imágenes satelitales Sentinel-2, filtrando por las capturadas entre el 1 de enero de 2019 y el 28 de febrero de 2019.
     \item Creamos un mosaico de las imágenes de la colección. Esto combina todas las imágenes en una sola imagen, seleccionando los píxeles en función de su importancia o calidad. Añadimos este mosaico como capa para visualizar el resultado.
-    \item Creamos una imagen RGB utilizando las bandas B4, B3 y B2.
-    \item Exportamos la imagen RGB en formato GeoTIFF, utilizando una escala de 20 metros por píxel y el sistema de coordenadas EPSG:3857. Utilizamos EPSG:3857 porque utiliza el Datum WGS84 y proyecta en Mercator, que es el sistema de coordenadas comúnmente utilizado por Google Maps y OpenStreetMaps. De esta manera, obtenemos el raster proyectado en Mercator directamente, que es lo que necesitamos.
+    \item Creamos una imagen \textsc{RGB} utilizando las bandas B4, B3 y B2.
+    \item Exportamos la imagen \textsc{RGB} en formato \textsc{GeoTIFF}, utilizando una escala de 20 metros por píxel y el sistema de coordenadas \textsc{EPSG:3857}. Utilizamos \textsc{EPSG:3857} porque utiliza el \textsc{Datum WGS84} y proyecta en \textsc{Mercator}, que es el sistema de coordenadas comúnmente utilizado por \textsc{Google Maps} y \textsc{OpenStreetMaps}. De esta manera, obtenemos el raster proyectado en \textsc{Mercator} directamente, que es lo que necesitamos.
     En la figura \ref{fig:dem}, se muestra el resultado de la exportación. Mientras que en la figura \ref{fig:demAframe}, se presenta una escena simple en A-Frame donde visualizamos el raster exportado sobre una malla con las alturas obtenidas del fichero DEM de Madrid. En esta representación, se pueden apreciar claramente las montañas y las alturas alrededor del aeropuerto de Madrid.
 \end{enumerate}
 \label{manual:generacionRaster}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 var geometry = ee.Geometry.Rectangle(-4.204133836988655,40.023417003380956, -3.253816454176155,40.744144594569384);
@@ -1434,20 +1421,16 @@ Export.image.toDrive({image: RGB,description: 'Sentinel2_RGB',scale: 20,crs:epsg
 
 \subsection{Gestor de alturas}
 \label{subsec:heightManager}
-El gestor de alturas es una clase en JavaScript encargada de administrar el terreno en el escenario. En nuestra aplicación, utilizaremos una única instancia de este gestor para aprovechar el almacenamiento de los datos de las alturas durante la carga del terreno. Además, el gestor proporcionará funcionalidades para obtener las alturas de puntos específicos en el escenario 3D. En la inicialización del escenario principal descrita en la sección \ref{sec:mainScene.js}, el gestor de la escena invocará los métodos para cargar el terreno y los edificios.
-
-Un problema común al reutilizar componentes de A-Frame creados por otros desarrolladores, como en este caso el componente utilizado para generar el mallado del terreno con Three.js, es la dificultad para acceder a los datos leídos del archivo binario que contiene las alturas. Esta falta de documentación y de una API específica para acceder a los datos puede ser un obstáculo.
-
-Sin embargo, al analizar la implementación del componente\textbf{ aframe-terrain-model-component}, descubrimos que después de leer el archivo se emite un evento que contiene el objeto con los datos de alturas.
-
+El gestor de alturas es una clase en \textsc{JavaScript} encargada de administrar el terreno en el escenario. En nuestra aplicación, utilizaremos una única instancia de este gestor para aprovechar el almacenamiento de los datos de las alturas durante la carga del terreno. Además, el gestor proporcionará funcionalidades para obtener las alturas de puntos específicos en el escenario \textsc{3D}. En la inicialización del escenario principal descrita en la sección \ref{sec:mainScene.js}, el gestor de la escena invocará los métodos para cargar el terreno y los edificios.\\
+Un problema común al reutilizar componentes de \textsc{A-Frame} creados por otros desarrolladores, como en este caso el componente utilizado para generar el mallado del terreno con \textsc{Three.js}, es la dificultad para acceder a los datos leídos del archivo binario que contiene las alturas. Esta falta de documentación y de una API específica para acceder a los datos puede ser un obstáculo.\\
+Sin embargo, al analizar la implementación del componente \emph{aframe-terrain-model-component}, descubrimos que después de leer el archivo se emite un evento que contiene el objeto con los datos de alturas.\\
 Aprovechando esta información, nos suscribimos al evento una vez que creamos el componente del terreno. De esta manera, podemos recibir y almacenar la matriz de alturas preparando nuestra instancia única para atender peticiones que requieran la altura para un punto del mundo 3D.
 
-Es importante tener en cuenta que otros componentes, como el gestor de altura de la cámara o las geometrías de los edificios, necesitarán acceder a la altura en puntos específicos del escenario y podrán hacerlo utilizando la instancia única de esta clase.
+Es importante tener en cuenta que otros componentes, como el gestor de altura de la cámara o las geometrías de los edificios, necesitarán acceder a la altura en puntos específicos del escenario y podrán hacerlo a través de la \textsc{API} proporcionada por la instancia única de esta clase.
 \subsubsection{Calculo de altura para una coordenada 3D}
 \label{subsubsec:calculoAltura3D}
-En esta subsección, se describirán las operaciones aritméticas que se realizan para calcular y obtener la altura correspondiente a un punto o vector en el escenario 3D. El gestor de alturas tiene una referencia a la matriz de alturas utilizada para generar el mallado del terreno, lo cual nos proporciona la información necesaria sobre las alturas del archivo DEM que se está representando. No obstante, la transformación de un vector 3D a su posición correspondiente en la matriz de alturas no es trivial.
-
-En el gestor de alturas, se han implementado dos métodos para calcular la altura de un punto en el terreno. Uno de ellos es un método eficiente que utiliza fórmulas matemáticas para establecer la relación entre el vector 3D y un índice en la matriz de alturas. El segundo método es más preciso y emplea operaciones comunes en entornos 3D, como intersecciones de geometrías.
+En esta subsección, se describirán las operaciones aritméticas que se realizan para calcular y obtener la altura correspondiente a un punto o vector en el escenario 3D. El gestor de alturas tiene una referencia a la matriz de alturas utilizada para generar el mallado del terreno, lo cual nos proporciona la información necesaria sobre las alturas del archivo \textsc{DEM} que se está representando. No obstante, la transformación de un vector 3D a su posición correspondiente en la matriz de alturas no es trivial.\\
+En el gestor de alturas, se han implementado dos métodos para calcular la altura de un punto en el terreno. Uno de ellos es un método eficiente que utiliza fórmulas matemáticas para establecer la relación entre el vector \textsc{3D} y un índice en la matriz de alturas. El segundo método es más preciso y emplea operaciones comunes en entornos \textsc{3D}, como intersecciones de geometrías. Esto se ha hecho así para solucionar los problemas de resolución, debido a que si establecemos pocos puntos de resolución entre una muestra de altura y otra existirá mucho espacio y debemos usar alguna técnica para detectar la altura interpolada.\\
 A continuación, se explicarán ambos métodos y las fórmulas que se han deducido y aplicado:
 \begin{enumerate}
     \item En el método de alto rendimiento, se está haciendo:
@@ -1465,7 +1448,7 @@ A continuación, se explicarán ambos métodos y las fórmulas que se han deduci
     La precisión del terreno depende del número de celdas que se establezcan al extraer las alturas utilizando el método descrito en la sección \ref{sec:dem}.
     Es posible que al desplazarnos por el terreno, experimentemos cambios bruscos de altura en ciertas posiciones. Para mitigar esto, se añade un paso adicional al método de alto rendimiento.
     Este paso consiste en establecer la altura del terreno de alto rendimiento más un factor constante de altura que asegure que el personaje siempre esté por encima del plano del mallado. Luego, se crea un rayo perpendicular al suelo y se calcula la intersección con la superficie real que cubre el mallado. 
-    La el punto de intersección representará la altura del terreno, de esta manera no se tienen alturas discretas, sino que se calcula la posición de la superficie real que interpola los puntos discretos de las alturas.
+    El punto de intersección representará la altura del terreno, de esta manera no se tienen alturas discretas, sino que se calcula la posición de la superficie real que interpola los puntos discretos de las alturas.
 \end{enumerate}
 
 \begin{figure}[h]
@@ -1474,21 +1457,33 @@ A continuación, se explicarán ambos métodos y las fórmulas que se han deduci
   \caption{Diagrama de matriz de alturas.}
   \label{fig:terrainDrawio}
 \end{figure}
-Dado que el terreno está centrado en el vector (0,0,0), es importante tener en cuenta que el cálculo de la posición x en el mundo 3D parte del centro de la matriz. Para tener en cuenta este desplazamiento, calculamos el centro de la matriz dividiendo la anchura total del terreno por la mitad y sumando el resultado al eje x del vector 3D. Para determinar la columna correspondiente en la matriz, dividimos la posición x entre el ancho de cada celda y redondeamos el resultado para obtener un índice exacto. Esto nos dará la columna correspondiente en la matriz. 
+Dado que el terreno está centrado en el vector \emph{(0,0,0)}, es importante tener en cuenta que el cálculo de la posición en el mundo \textsc{3D} estará centrado en torno al indice de la matriz que representa centro del escenario.\\ 
+Dado que la matriz empieza a contar los índices desde la esquina superior izquierda existe un desplazamiento con respecto al escenario que está centrado en el eje \emph{(0,0,0)}.
+Para tener en cuenta este desplazamiento, calculamos el centro de la matriz dividiendo la anchura total del terreno por la mitad y sumando el resultado al eje x del vector 3D. \\
+Para determinar la columna correspondiente en la matriz, dividimos la posición \texttt{x} entre el ancho de cada celda y redondeamos el resultado para obtener un índice exacto. Esto nos dará la columna correspondiente en la matriz. 
 De manera similar, calculamos la fila correspondiente en la matriz utilizando el eje Z. Estos cálculos nos proporcionarán la fila y columna adecuadas en la matriz de alturas.
+En la figura \ref{formula:calculoIndiceAlturas} podemos ver las fórmulas de calculo de indices en columna y fila que acabos de describir.
 
-Finalmente, es importante mencionar que estamos utilizando una representación de la matriz de alturas en formato de array unidimensional. Aunque conceptualmente es una matriz bidimensional, se almacena en un array de una sola dimensión. Para determinar el índice en el array al que corresponde una determinada fila y columna en la matriz, realizamos una operación básica para convertir el índice bidimensional en un índice unidimensional.
+Finalmente, es importante mencionar que estamos utilizando una representación de la matriz de alturas en formato de array unidimensional. Aunque conceptualmente es una matriz bidimensional, se almacena en una variable de tipo array de una sola dimensión. \\
+Para determinar el índice en el array al que corresponde una determinada fila y columna en la matriz, realizamos una operación básica para convertir el índice bidimensional en un índice unidimensional.\\
+La fórmula utilizada para este cálculo se muestra en la Figura \ref{formula:calculoIndiceAlturas}. Esta fórmula nos permite acceder correctamente al valor de altura correspondiente en el array, teniendo en cuenta la relación entre la posición bidimensional y la representación unidimensional de la matriz de alturas.\\
 
-La fórmula utilizada para este cálculo se muestra en la Figura \ref{formula:calculoIndiceAlturas}. Esta fórmula nos permite acceder correctamente al valor de altura correspondiente en el array, teniendo en cuenta la relación entre la posición bidimensional y la representación unidimensional de la matriz de alturas.
+Una vez obtenido el índice de la matriz, es necesario normalizar el valor correspondiente en el array de alturas. Dado que el array utiliza el tipo de dato \texttt{Uint16}, cuyo valor máximo es 65535, al dividir el valor obtenido se normaliza el rango de alturas entre \texttt{[0,1]}. Si se utiliza un factor de magnificación configurado en el componente, se puede obtener la altura real utilizada en el entorno 3D. Esta relación se explica en el contexto de la última fórmula en la Figura \ref{formula:calculoIndiceAlturas}.
 
-Una vez obtenido el índice de la matriz, es necesario normalizar el valor correspondiente en el array de alturas. Dado que el array utiliza el tipo de dato Uint16, cuyo valor máximo es 65535, al dividir el valor obtenido se normaliza el rango de alturas entre [0,1]. Si se utiliza un factor de magnificación configurado en el componente, se puede obtener la altura real utilizada en el entorno 3D. Esta relación se explica en el contexto de la última fórmula en la Figura \ref{formula:calculoIndiceAlturas}.
+En resumen para obtener la altura correspondiente a un vector de posición en el mundo 3D se realizan las siguientes operaciones:
+\begin{enumerate}
+	\item Se calcula la fila y la columna relacionada con el vector de posición 3D a través de las fórmulas descritas en la figura \ref{formula:calculoIndiceAlturas}.
+	\item Se transforma la fila y la columna a un índice del array unidimensional de alturas.
+	\item Se transforma el valor del array al valor normalizado usado por el componente, dando como resultado la altura pintada en el escenario.
+\end{enumerate}
 
 \subsection{Generación de datos geoespaciales de los edificios}
 \label{subsec:buildingData}
-Para extraer la información geoespacial de los edificios, nos hemos basado en el servicio proporcionado por Overpass\footnote{\url{https://overpass-api.de/}}, el cual ofrece acceso a datos geoespaciales almacenados en la base de datos de OpenStreetMaps\footnote{\url{https://www.openstreetmap.org/}}. Overpass nos brinda una API que nos permite realizar consultas a la base de datos y también proporciona una herramienta en línea llamada Overpass Turbo\footnote{\url{https://overpass-turbo.eu/}}, que nos permite visualizar consultas a la API, así como visualizar y exportar los resultados de manera interactiva.
+Para extraer la información geoespacial de los edificios, nos hemos basado en el servicio proporcionado por \textsc{Overpass}\footnote{\url{https://overpass-api.de/}}, el cual ofrece acceso a datos geoespaciales almacenados en la base de datos de \textsc{OpenStreetMaps}\footnote{\url{https://www.openstreetmap.org/}}. \\
+Overpass nos brinda una \textsc{API} que nos permite realizar consultas a la base de datos y también proporciona una herramienta en línea llamada \textsc{Overpass Turbo}\footnote{\url{https://overpass-turbo.eu/}}, que nos permite visualizar consultas a la \textsc{API}, así como visualizar y exportar los resultados de manera interactiva.\\
+Inicialmente, consideramos cargar los datos en línea en tiempo real. Sin embargo, debido a que el formato del resultado de la consulta requería un preprocesamiento adicional y a la gran cantidad de entidades que se recuperaban en cada consulta, llegamos a la conclusión de que, para el prototipo, sería mejor trabajar con una cantidad reducida de entidades preprocesadas previamente y almacenadas localmente dando así prioridad al rendimiento de la aplicación.\\
+Para descargarnos los datos haremos uso de \textsc{Postman}\footnote{\url{https://www.postman.com/}} y generaremos la siguiente petición para la \textsc{API}:
 
-Inicialmente, consideramos cargar los datos en línea en tiempo real. Sin embargo, debido a que el formato del resultado de la consulta requería un preprocesamiento adicional y a la gran cantidad de entidades que se recuperaban en cada consulta, llegamos a la conclusión de que, para el prototipo, sería mejor trabajar con una cantidad reducida de entidades preprocesadas previamente y almacenadas localmente.
-Para descargarnos los datos haremos uso de Postman y generaremos la siguiente query para la API:
  \label{manual:consultaEdificios}
 {\scriptsize
     \begin{verbatim}
@@ -1500,9 +1495,11 @@ Para descargarnos los datos haremos uso de Postman y generaremos la siguiente qu
     );out;>;out skel qt;
     \end{verbatim}
 }
-Esto nos proporciona un archivo XML con todos los metadatos de los edificios en la zona del escenario de Madrid. El siguiente paso consistirá en convertir este archivo XML en un archivo GEOJSON que podamos utilizar para trabajar con él. Esto se debe a que la búsqueda de información en el formato de OpenStreetMaps es complicada debido a que los metadatos están distribuidos a través de identificadores y no se encuentran todos juntos en una única entidad, como sucede en el caso de GEOJSON.
+Esto nos proporciona un archivo \textsc{XML} con todos los metadatos de los edificios en la zona del escenario de Madrid. El siguiente paso consistirá en convertir este archivo \textsc{XML} en un archivo \textsc{GEOJSON} que podamos utilizar para trabajar con él. Esto se debe a que la búsqueda de información en el formato de \textsc{OpenStreetMaps} es complicada debido a que los metadatos están distribuidos a través de identificadores y no se encuentran todos juntos en una única entidad, como sucede en el caso de \textsc{GEOJSON}.
 
-Para llevar a cabo esta conversión, utilizaremos el proyecto osmtogeojson\footnote{\url{https://github.com/tyrasd/osmtogeojson}}, una biblioteca de código abierto disponible en GitHub que nos permitirá convertir los datos de formato OpenStreetMap xml (OSM) al formato GEOJSON. Para realizar este proceso, simplemente debemos instalar la biblioteca utilizando Node.js y ejecutar su script correspondiente.
+Para llevar a cabo esta conversión, utilizaremos el proyecto \textsc{osmtogeojson}\footnote{\url{https://github.com/tyrasd/osmtogeojson}}, una biblioteca de código abierto disponible en \textsc{GitHub} que nos permitirá convertir los datos de formato \textsc{OpenStreetMap} (\textsc{OSM}) al formato \textsc{GEOJSON}. \\
+Para realizar este proceso, simplemente debemos instalar la biblioteca utilizando \textsc{Node.js} y ejecutar su \emph{script} correspondiente.
+
 \label{manual:osmtogeojson}
 {\scriptsize
     \begin{verbatim}
@@ -1513,14 +1510,15 @@ Para llevar a cabo esta conversión, utilizaremos el proyecto osmtogeojson\footn
 
 \subsection{Geometria edificio}
 \label{subsec:buildingGeometry}
-En esta sección, vamos a describir brevemente la implementación de la generación de edificios utilizando la información proporcionada por la API de Overpass.
+En esta sección, vamos a describir brevemente la implementación de la generación de edificios utilizando la información proporcionada por la \textsc{API} de \textsc{Overpass}.
 
-El gestor de alturas utiliza un archivo geoespacial en formato GEOJSON para representar los edificios. Cada edificio se define usando una lista de coordenadas geoespaciales en el sistema de referencia WGS84, que describe su contorno. En ocasiones también se incluye un metadato que indica el número de pisos del edificio dependiendo la zona que consultemos, sobre todo encontraremos más metadatos de alturas en ciudades grandes. 
-Para la generación de la geometría del edificio, necesitaremos la lista de coordenadas ya convertida al espacio 3D utilizando nuestro conversor descrito en la sección \ref{subsec:mapConversion}, la altura del terreno y la altura del edificio calculada a partir del número de pisos.
+El gestor de alturas utiliza un archivo geoespacial en formato \textsc{GEOJSON} para representar los edificios. Cada edificio se define usando una lista de coordenadas geoespaciales en el sistema de referencia \textsc{WGS84}, que describe su contorno. En ocasiones también se incluye un metadato que indica el número de pisos del edificio dependiendo la zona que consultemos, sobre todo encontraremos más metadatos de alturas en ciudades grandes. \\
+Para la generación de la geometría del edificio, necesitaremos la lista de coordenadas ya convertida al espacio \textsc{3D} utilizando nuestro conversor descrito en la sección \ref{subsec:mapConversion}, la altura del terreno y la altura del edificio calculada a partir del número de pisos.
 
 Para calcular la altura del terreno, obtenemos el centroide de la lista de puntos que definen el contorno del edificio. Luego, aplicamos las fórmulas descritas en \ref{formula:calculoIndiceAlturas} para determinar la altura del terreno en el punto del centroide.
 
-En nuestra implementación, comenzamos creando una geometría bidimensional en Three.js a partir de la lista de coordenadas del edificio. Sin embargo, surge un problema al realizar la extrusión, ya que las coordenadas utilizadas para crear la forma son (x, y, 0), cuando en realidad deberían ser (x, 0, y) para que la forma se sitúe sobre el terreno en lugar del plano que representa la altura. Por lo tanto, después de crear la forma, aplicamos una rotación de 90 grados alrededor del eje X para colocar el edificio en su posición original. Luego, ajustamos la altura del edificio aplicando una traslación en el eje Y que incluye la altura del terreno y la altura del edificio. De esta manera, el edificio queda correctamente posicionado y anclado al terreno.
+En nuestra implementación, comenzamos creando una geometría bidimensional en \textsc{Three.js} a partir de la lista de coordenadas del edificio. Sin embargo, surge un problema al realizar la extrusión, ya que las coordenadas que utiliza la API de \textsc{Three.js} para extruir una forma son en 2D y al devolver la geometría 3D tendrá la siguiente forma \texttt{(x, y, 0)}, cuando en realidad deberían ser \texttt{(x, 0, y)}.\\ 
+Por lo tanto, después de crear la forma, aplicamos una rotación de 90 grados alrededor del \emph{eje X} para colocar el edificio en su posición original. Luego, ajustamos la altura del edificio aplicando una traslación en el \emph{eje Y} que incluye la altura del terreno y la altura del edificio. De esta manera, el edificio queda correctamente posicionado y anclado al terreno.
 
 \begin{figure}[h]
   \centering
@@ -1530,14 +1528,14 @@ En nuestra implementación, comenzamos creando una geometría bidimensional en T
 \end{figure}
 \subsection{Componente gestor de altura de cámara}
 \label{subsec:cameraHeight}
-Este componente se configura en la entidad agrupadora que contiene la cámara principal y es responsable de ajustar la altura a medida que se desplaza por el escenario. Es un componente que simula el desplazamiento sobre la superficie del terreno para crear una experiencia inmersiva al caminar sobre un terreno con relieve.
+Este componente se configura en la entidad agrupadora que contiene la cámara principal y es responsable de ajustar la altura a medida que el usuario se desplaza por el escenario. Es un componente que simula el desplazamiento sobre la superficie del terreno para crear una experiencia inmersiva al caminar sobre un terreno con relieve.
 
 La altura del personaje se mantiene constante de manera relativa con respecto a la altura del terreno. En otras palabras, la posición vertical del personaje se ajusta para mantener una altura constante con respecto al terreno.
 Es importante tener en cuenta que el tamaño del personaje no sigue la misma escala que el escenario. Esto se debe a que el objetivo de la aplicación es visualizar datos a gran escala, y si el personaje principal se estableciera en la misma escala, sería difícil que se desplace rápidamente en un escenario que representa cientos de kilómetros. Estas diferencias de escala y velocidad del personaje son configurables.
 
-El componente inicialmente se suscribe al cargador del terreno para establecer la altura correspondiente a la posición inical del personaje una vez que el terreno se haya inicializado. También crea una función de throttledFunction, como se explica en \ref{sec:mainScene}, para aumentar el rendimiento. Esta función actualiza la posición de la cámara cada 200 ms, lo que implica que la altura de la cámara se actualiza 5 veces por segundo. Esto proporciona una experiencia satisfactoria con una pequeña penalización en el rendimiento.
+El componente inicialmente se suscribe al cargador del terreno para establecer la altura correspondiente a la posición inicial del personaje una vez que el terreno se haya inicializado. También crea una función de \emph{throttledFunction}, como se explica en \ref{sec:mainScene}, para no penalizar el rendimiento por introducir lógica en la función \texttt{tick}. Por lo tanto se ha configurado la función para que actualice la posición de la cámara cada 200 ms, lo que implica que la altura de la cámara se actualiza 5 veces por segundo. Esto proporciona una experiencia satisfactoria con una pequeña penalización en el rendimiento.
 
-Para calcular la altura, se obtiene el vector actual del objeto 3D de la cámara y del objeto que agrupa al personaje y que contiene la cámara. Para obtener la posición real de la cámara en el mapa, se realiza un cálculo teniendo en cuenta la configuración establecida en el proyecto para el personaje principal, como se muestra en la figura \ref{codigo:rig}:
+Para calcular la altura, se obtiene el vector actual del objeto 3D de la cámara y del objeto que agrupa al personaje y que contiene la cámara. Para obtener la posición real de la cámara en el mapa, se realiza un cálculo teniendo en cuenta la configuración establecida en el proyecto para el personaje principal, como se muestra en la figura \ref{codigo:rig}.\\
 \begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{html}
@@ -1558,42 +1556,43 @@ Para calcular la altura, se obtiene el vector actual del objeto 3D de la cámara
 \label{codigo:rig}
 }
 \end{figure}
-En la configuración, podemos observar que el esqueleto del personaje principal contiene un componente \textbf{movement-controls} del proyecto A-Frame extras\footnote{\url{https://github.com/c-frame/aframe-extras/tree/master}}, que permite un movimiento del personaje compatible con el teclado y los joysticks de varios dispositivos de realidad aumentada, como las gafas de realidad aumentada Oculus.
+En la configuración, podemos observar que el esqueleto del personaje principal contiene un componente \emph{movement-controls} del proyecto \textsc{A-Frame extras}\footnote{\url{https://github.com/c-frame/aframe-extras/tree/master}}, que permite un movimiento del personaje compatible con el teclado y los joysticks de varios dispositivos de realidad aumentada, como las gafas de realidad aumentada \textsc{Oculus}.
 
-Por otro lado, la cámara principal, que representa la cabeza del personaje, contiene el componente \textbf{look-controls} de A-Frame, que nos permite mover la cabeza tanto con el ratón como con los sensores de posición de las gafas de realidad aumentada.
-
+Por otro lado, la cámara principal, que representa la cabeza del personaje, contiene el componente \emph{look-controls} de \textsc{A-Frame}, que nos permite mover la cabeza tanto con el ratón como con los sensores de posición de las gafas de realidad aumentada.\\
 Debido a esto, la posición real de la cámara es relativa al componente del personaje principal. Es por eso que, en nuestro cálculo, extraemos ambos vectores y los sumamos para obtener la posición absoluta de la cámara en el escenario.
 
-Una vez calculada la posición de la cámara principal en el escenario, utilizamos la instancia del gestor de alturas descrito en la sección\ref{subsec:heightManager} para llamar a la función que nos devuelve la altura a través de un vector 3D del escenario. Con esa altura, sumada a la altura del personaje, establecemos la coordenada \textbf{Y} del vector del objeto 3D de la cámara como posición.
+Una vez calculada la posición de la cámara principal en el escenario, utilizamos la instancia del gestor de alturas descrito en la sección~\ref{subsec:heightManager} para llamar a la función que nos devuelve la altura a través de un vector 3D del escenario. Con esa altura, sumada a la altura del personaje, establecemos la coordenada \texttt{Y} del vector del objeto \textsc{3D} de la cámara, ajustando la altura en función de la posición en el escenario un total de 5 veces por segundo.
 
 \section{Gestión de acceso a los datos}
 \label{sec:data}
 En esta sección, vamos a analizar los componentes clave de la arquitectura principal encargados del acceso a los datos. En el prototipo desarrollado, se pueden configurar dos tipos de comportamientos.
 
-El primero se refiere a la escena principal funcionado como una representación de datos en caché. En este caso, se muestra un histórico de datos obtenidos a través de una pieza responsable de guardar datos de la API dentro del prototipo o de otra fuente de datos históricos. El único requisito es que estos datos mantengan el mismo formato JSON proporcionado por la API de OpenSky. Sin embargo, en el futuro, se podrían desarrollar fácilmente componentes adicionales que puedan leer otros formatos de datos, ya que toda la información está referenciada a la misma clase, la cual es precargada por el módulo de configuración. Por lo tanto, si cambian las posiciones de la información proveniente de otro servidor, solo se requeriría reconfigurar las posiciones en el archivo de configuración que precarga la escena.
+El primero se refiere a la escena principal funcionado como una representación de datos en caché. En este caso, se muestra un histórico de datos obtenidos a través de la pieza responsable de guardar datos de la \textsc{API} dentro del prototipo o de otra fuente de datos históricos. \\
+El único requisito es que estos datos mantengan el mismo formato \textsc{JSON} proporcionado por la \textsc{API} de \textsc{OpenSky}. Sin embargo, en el futuro, se podrían desarrollar fácilmente componentes adicionales que puedan leer otros formatos de datos, ya que toda la información está referenciada a la misma clase, la cual es precargada por el módulo de configuración. Por lo tanto, si cambian las posiciones de la información proveniente de otro servidor, solo se requeriría reconfigurar las posiciones en el archivo de configuración que precarga la escena.\\
 
-El segundo comportamiento se refiere a la representación en tiempo real del tráfico aéreo. En este caso, los datos provienen directamente del servicio OpenSky REST API, que nos proporciona datos ADS-B en tiempo real. Estos datos se representarán en el escenario, lo que permitirá mostrar el espacio aéreo en un entorno 3D en tiempo real. Esta funcionalidad resulta especialmente útil como punto de partida para aplicaciones de control de espacios aéreos.
+El segundo comportamiento se refiere a la representación en tiempo real del tráfico aéreo. En este caso, los datos provienen directamente del servicio\textsc{ OpenSky REST API}, que nos proporciona datos \textsc{ADS-B} en tiempo real. Estos datos se representarán en el escenario, lo que permitirá mostrar el espacio aéreo en un entorno \textsc{3D} en tiempo real. Esta funcionalidad resulta especialmente útil como punto de partida para aplicaciones de control de espacios aéreos.
 \subsection{Datos caché de vuelo}
 \label{subsec:datosCacheVuelo}
-En esta sección, vamos a describir cómo se gestiona la caché a través de la clase \textbf{FlightCacheData}, que se encuentra en el archivo FlightCacheData.js dentro del módulo de gestión de datos.
-
-Estos objetos se instancian cuando un vuelo aparece en el escenario y se mantienen siempre y cuando el vuelo esté presente en cada lectura de datos de la API. Actúan como objetos DTO (Data Transfer Object) para mantener el estado del avión.
-
-Estos objetos son necesarios para el cacheo de la posición antigua dentro del escenario, lo cual es crucial para generar animaciones que proporcionen un movimiento fluido de los aviones. Además, cada vez que se actualiza la posición de un avión, se emite un evento al componente encargado de pintar el trayecto del vuelo. De esta manera, el componente puede actualizar su geometría y mostrar el trayecto de los aviones desde su entrada en el escenario hasta su posición actual.
+En esta sección, vamos a describir cómo se gestiona la caché a través de la clase \emph{FlightCacheData}, que se encuentra en el archivo \emph{FlightCacheData.js} dentro del módulo de gestión de datos.\\
+Estos objetos se instancian cuando un vuelo aparece en el escenario y se mantienen siempre y cuando el vuelo esté presente en cada lectura de datos de la \textsc{API}. Actúan como objetos \texttt{DTO} (\emph{Data Transfer Object}) para mantener el estado del avión.\\
+Estos objetos son necesarios para el cacheo de la posición antigua dentro del escenario, lo cual es crucial para generar animaciones que proporcionen un movimiento fluido de los aviones. \\
+Además, cada vez que se actualiza la posición de un avión, se emite un evento al componente responsable de pintar el trayecto del vuelo (descrito en la sección \ref{subsec:track}). De esta manera, el componente puede actualizar su geometría y mostrar el trayecto de los aviones desde su entrada en el escenario hasta su posición actual.
 \\
 Como ya se describió en la sección \ref{subsec:movimientoFluido}, estos objetos se almacenan en un mapa indexado a través de su identificador para que su recuperación sea eficiente, servirán para mantener el estado de un vuelo específico en el escenario. Esto permite que el gestor del escenario genere una animación utilizando el vector de la caché y el nuevo vector leído de la API para lograr un movimiento fluido, y también actualiza la geometría responsable de representar el trayecto del avión en el escenario mediante un evento emitido sobre el escenario.
 \subsection{Objeto de acceso a datos ADS-B (DAO)}
 \label{subsec:dao}
-El objeto de acceso a datos, comúnmente conocido como DAO (Data Access Object), es el objeto responasable de la obtención de los datos ADS-B. Como se muestra en la figura \ref{fig:dao}, el DAO accede al gestor de configuración para verificar si está configurado para acceder en tiempo real o utilizar datos en caché. En el caso de que esté configurado para usar datos en caché, el DAO consulta al gestor de configuración la carpeta y el índice desde donde debe comenzar a leer. En cada evento de actualización, el DAO lee un archivo JSON de la carpeta especificada y lo proporciona al gestor principal de la escena.
+El objeto de acceso a datos, comúnmente conocido como \texttt{DAO} (\emph{Data Access Object}), es el objeto responasable de la obtención de los datos ADS-B. Como se muestra en la figura \ref{fig:dao}, el \texttt{DAO} accede al gestor de configuración para verificar si está configurado para acceder en tiempo real o utilizar datos en caché. \\
+En el caso de estar configurado para usar datos en caché, el \texttt{DAO} consulta al gestor de configuración la carpeta y el índice desde donde debe comenzar a leer. En cada evento de actualización, el \texttt{DAO} lee un archivo \textsc{JSON} de la carpeta especificada y lo proporciona al gestor principal de la escena.
 
-Si la configuración del DAO está establecida en tiempo real, se realizará una petición a una API REST para obtener los datos en formato JSON. El DAO consultará al módulo de configuración para obtener el usuario y la contraseña necesarios para autenticarse en la API. Es importante destacar que la API nos permite realizar consultas dentro de una zona delimitada por coordenadas geodésicas. Por lo tanto, la petición se realizará dentro de los límites geodésicos establecidos en la configuración del escenario. La respuesta JSON de la API contendrá los vuelos que se encuentren dentro de la escena especificada.
+Si la configuración del \texttt{DAO} está establecida en tiempo real, se realizará una petición a una \textsc{API REST} para obtener los datos en formato \textsc{JSON}. El \texttt{DAO} consultará al módulo de configuración para obtener el usuario y la contraseña necesarios para autenticarse en la \textsc{API}. Es importante destacar que la API nos permite realizar consultas dentro de una zona delimitada por coordenadas geodésicas. \\
+Por lo tanto, la petición se realizará dentro de los límites geodésicos establecidos en la configuración del escenario. La respuesta \textsc{JSON} de la \textsc{API} contendrá los vuelos que se encuentren dentro de la escena especificada.
 
-El gestor principal de la escena utiliza los datos proporcionados por el DAO para crear las instancias en caché de cada vuelo. Como se muestra en la figura \ref{fig:dao}, el gestor principal mantiene un mapa que almacena la caché de los vuelos, indexados por su identificador único de vuelo (ICAO24). En cada evento temporal, el gestor principal se encarga de mantener la tabla de caché. Si un vuelo no ha sido actualizado, se elimina de la tabla. Si ha sido actualizado, se actualiza la instancia de datos en caché correspondiente. Si el vuelo no existe en la tabla, se inserta en ella. De esta manera, la tabla de caché representa de manera precisa los vuelos presentes en la escena en ese momento específico.
+El gestor principal de la escena utiliza los datos proporcionados por el \texttt{DAO} para crear las instancias en caché de cada vuelo. Como se muestra en la figura \ref{fig:dao}, el gestor principal mantiene un mapa que almacena la caché de los vuelos, indexados por su identificador único de vuelo (\textsc{ICAO24}). En cada evento temporal, el gestor principal se encarga de mantener la tabla de caché. Si un vuelo no ha sido actualizado, se elimina de la tabla. Si ha sido actualizado, se actualiza la instancia de datos en caché correspondiente. Si el vuelo no existe en la tabla, se inserta en ella. De esta manera, la tabla de caché representa de manera precisa los vuelos presentes en la escena en ese momento específico.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=10cm, keepaspectratio]{img/adsbDao.png}
-  \caption{Diagrama del objeto de acceso a datos ADS-B (DAO).}
+  \caption{Diagrama del objeto de acceso a datos \textsc{ADS-B} (\texttt{DAO}).}
   \label{fig:dao}
 \end{figure}
 
