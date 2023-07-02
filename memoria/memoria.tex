@@ -223,7 +223,7 @@ By utilizing virtual reality technologies and leveraging aeronautical and geospa
 \chapter{Introducción}
 \label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~\ref{sec:intro}
 \pagenumbering{arabic} % para empezar la numeración de página con números
-El proyecto se centra en la creación de una aplicación para visualización de espacios \textsc{3D} que ofrezca la posibilidad de una experiencia inmersiva en realidad virtual.
+El proyecto se centra en la creación de una aplicación para visualización de espacios \textsc{\gls{3D}} que ofrezca la posibilidad de una experiencia inmersiva en realidad virtual.
 Irá dirigida a un entorno web, con el objetivo de poder ser compatible tanto en un entorno \emph{desktop} como en un dispositivo de realidad virtual generando experiencia inmersiva en realidad virtual para la visualización de datos aeronáuticos y geoespaciales. 
 Los datos con los que vamos a trabajar pueden ser obtenidos en tiempo real o desde una caché local, y se representarán como entidades dentro de una escena tridimensional.
 Para lograr este propósito, hemos optado por utilizar un \Gls{framework} de desarrollo llamado \textsc{A-Frame}\footnote{\url{https://aframe.io/}}. Este \emph{framework} proporciona una capa de abstracción fácil de usar y comprender, lo cual facilita una implementación más sencilla de conceptos como la creación de escenas en realidad virtual y la manipulación e interacción de objetos \textsc{3D}. 
@@ -231,7 +231,7 @@ Para lograr este propósito, hemos optado por utilizar un \Gls{framework} de des
 Estos aspectos se analizarán con mayor detalle en secciones posteriores. 
 La razón principal de usar la tecnología \textsc{A-Frame} es centrar nuestro esfuerzo en la codificación del modelo negocio acelerando el proceso de desarrollo en la gestión y generación de modelos \textsc{3D}, que es un proceso complejo y laborioso.
 
-Es importante destacar que la tecnología \textsc{A-Frame} se basa en la librería \textsc{Three.js}, que proporciona las funcionalidades esenciales para el desarrollo de gráficos \textsc{3D} en entornos web. A su vez, \textsc{Three.js} se construye sobre \textsc{WebGL}\footnote{\url{https://www.khronos.org/webgl/}}, una \Gls{API} de gráficos en \textsc{3D} basada en \textsc{OpenGL}. Esto permite a los desarrolladores web acceder directamente a la capacidad de procesamiento de gráficos de la tarjeta gráfica del dispositivo mediante el uso de \emph{JavaScript} para controlar la renderización y la manipulación de los objetos \textsc{3D}.
+Es importante destacar que la tecnología \textsc{A-Frame} se basa en la librería \textsc{Three.js}, que proporciona las funcionalidades esenciales para el desarrollo de gráficos \textsc{3D} en entornos web. A su vez, \textsc{Three.js} se construye sobre \textsc{\gls{WebGL}}\footnote{\url{https://www.khronos.org/webgl/}}, una \Gls{API} de gráficos en \textsc{3D} basada en \textsc{OpenGL}. Esto permite a los desarrolladores web acceder directamente a la capacidad de procesamiento de gráficos de la tarjeta gráfica del dispositivo mediante el uso de \emph{JavaScript} para controlar la \gls{renderización} y la manipulación de los objetos \textsc{3D}.
 
 Esta arquitectura nos ofrece la ventaja de poder trabajar en un nivel de abstracción inferior cuando necesitamos abordar tareas más complejas relacionadas con objetos \textsc{3D}. Además, podemos crear componentes reutilizables que serán útiles tanto en el proyecto actual como en proyectos futuros.
 
@@ -250,7 +250,7 @@ A continuación en la figura ~\ref{figura:mapaTecnologias}, mostramos el mapa de
 \section{Motivación}
 \label{sec:motivación}
 
-Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{GIS} llamado \textsc{IGEA} de la compañía \textsc{Indra}, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo del proyecto software \textsc{IGEA}\footnote{\url{https://www.indracompany.com/sites/default/files/indra_in_grid_esp_baja.pdf}} en una nueva aplicación de software para el proyecto \textsc{iTEC}, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento de conocimientos sobre entornos de programación en 3D sobre la tecnología \textsc{JAVA}.
+Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{\gls{gis}} llamado \textsc{IGEA} de la compañía \textsc{Indra}, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo del proyecto software \textsc{IGEA}\footnote{\url{https://www.indracompany.com/sites/default/files/indra_in_grid_esp_baja.pdf}} en una nueva aplicación de software para el proyecto \textsc{iTEC}, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento de conocimientos sobre entornos de programación en 3D sobre la tecnología \textsc{JAVA}.
 
 El objetivo principal de esta integración fue reutilizar los componentes centrales de \textsc{IGEA} para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia del proyecto \textsc{IGEA} para gestionar de manera efectiva los datos. Este enfoque permitió crear una solución poderosa y eficiente en poco tiempo para el proyecto\textsc{iTEC}.
 
@@ -293,7 +293,7 @@ A continuación, se detallan los objetivos específicos del proyecto:
     \item Establecer un proceso de almacenamiento de datos de algún servicio web que ofrezca datos \textsc{ADS-B} para reproducir las animaciones de los aviones de manera local a través de una caché.
     \item Obtener metadatos de un servicio web que contenga información sobre contornos y alturas de edificios.
     \item Permitir la navegación por el escenario utilizando tanto el teclado y el ratón como dispositivos de realidad virtual, navegando sobre el contorno del terreno.
-    \item Crear componentes \textsc{HUD} que formen parte de la escena y se muevan con el usuario dentro de su campo de visión para habilitar o deshabilitar funciones.
+    \item Crear componentes \textsc{\gls{HUD}} que formen parte de la escena y se muevan con el usuario dentro de su campo de visión para habilitar o deshabilitar funciones.
     \item Permitir al usuario mover los componentes de visualización de datos dentro de su campo de visión.
     \item Posibilitar la selección de aviones para visualizar su información actualizada en tiempo real.
     \item Visualizar metadatos de los edificios mediante el posicionamiento del ratón encima.
@@ -346,7 +346,7 @@ En la figura \ref{fig:scrum} podemos visualizar en el tiempo como se han distrib
 
 \begin{itemize}
     \item \textbf{Sprint 0}: En esta etapa, se lleva a cabo una investigación exhaustiva de las tecnologías disponibles para abordar los requisitos del proyecto. Puesta en marcha del entorno de desarrollo y realiza formación para familiarizarse con las librerías y el lenguaje de programación, se realizan experimentos y se busca componentes reutilizables.
-    \item \textbf{Sprint 1}: En esta etapa, se sientan las bases para el inicio del prototipo. Se comienza a crear los módulos y componentes que tendrán la funcionalidad principal de mover aviones utilizando datos de \textsc{APIs}.
+    \item \textbf{Sprint 1}: En esta etapa, se sientan las bases para el inicio del prototipo. Se comienza a crear los módulos y componentes que tendrán la funcionalidad principal de mover aviones utilizando datos de \textsc{\gls{API}s}.
     \item \textbf{Sprint 2}: En esta etapa, se enfoca en el desarrollo de la gestión del terreno. Se crea el suelo del escenario con representación realista mediante alturas y texturas. Se desarrollan los módulos encargados del cálculo de alturas y la generación de edificios utilizando datos de \textsc{OpenStreetMaps}.
     \item \textbf{Sprint 3}: En esta etapa, se pone énfasis en la interfaz gráfica. Se crea un ecosistema de componentes reutilizables que permiten al usuario visualizar información, activar y desactivar funcionalidades de la aplicación. Además, se desarrollan los componentes necesarios para la interacción con el escenario, ya sea mediante ratón y teclado o mediante gafas y mandos de realidad virtual.
 \end{itemize}
@@ -401,10 +401,10 @@ Después de realizar todas estas actividades, se llevó a cabo una reunión con 
 Se buscó en la página de \textsc{Sketchfab} un modelo de avión y se encontró un modelo \textsc{GLTF}\footnote{\url{https://sketchfab.com/3d-models/low-poly-plane-151517395bae4d849b30ca53a5e3c5a8}} de uso libre compuesto por tan solo 416 triángulos, el cual se utilizará como icono para los vuelos.\\
 Se creó el componente principal que sobrescribe el comportamiento de la escena principal y actúa como el gestor principal de la aplicación. Para obtener más detalles sobre el diseño de este componente, consulta la sección \ref{sec:mainScene}.
 Se realizaron las primeras animaciones de los aviones, pero surgieron algunos problemas. El sistema \textsc{A-Frame} está diseñado para trabajar con unidades en metros. Sin embargo, al utilizar coordenadas absolutas, se encontraron dificultades al manejar posiciones con vectores de dimensiones muy grandes, como el caso del aeropuerto en Madrid, cuyas coordenadas cartesianas son \emph{(-396861, altura, 4937984)}. Estas dimensiones resultan difíciles de manejar. Además, se identificó que uno de los ejes está invertido por el sistema de referencia que posee \textsc{A-Frame}, como se explica detalladamente en la sección \ref{subsec:mapConversion}.\\
-Después de una reunión con el \emph{Product Owner}, se decidió crear un módulo dedicado a gestionar las conversiones entre las coordenadas geodésicas y las coordenadas en el mundo \textsc{3D}. En este módulo, se invirtió el eje problemático y se realizó una traslación para centrar el escenario en las coordenadas \emph{(0, 0, 0)}. Además, se aplicó un escalado para manejar distancias en escenarios de grandes dimensiones, como cientos de kilómetros. Todas estas transformaciones se realizaron de manera parametrizada a través de la configuración.
+Después de una reunión con el \emph{Product Owner}, se decidió crear un módulo dedicado a gestionar las conversiones entre las coordenadas geodésicas y las coordenadas en el mundo \textsc{\gls{3D}}. En este módulo, se invirtió el eje problemático y se realizó una traslación para centrar el escenario en las coordenadas \emph{(0, 0, 0)}. Además, se aplicó un escalado para manejar distancias en escenarios de grandes dimensiones, como cientos de kilómetros. Todas estas transformaciones se realizaron de manera parametrizada a través de la configuración.
 Se comenzaron a crear las primeras animaciones de los aviones con éxito sobre un escenario que representa el aeropuerto de Barajas y sus alrededores. \\
 También se generaron las primeras siluetas sin extruir en el suelo para comprobar que las posiciones de los aviones coincidían con las posiciones de los edificios, como se muestra en la figura \ref{fig:sprint1}.
-Además, se inició la captura de un \emph{raster} para incorporar una referencia en forma de mapa de \textsc{OpenStreetMap} en el suelo, lo cual permitirá verificar si se están creando las geometrías en el lugar correcto.
+Además, se inició la captura de un \emph{\gls{raster}} para incorporar una referencia en forma de mapa de \textsc{OpenStreetMap} en el suelo, lo cual permitirá verificar si se están creando las geometrías en el lugar correcto.
 Se implementan en el gestor principal de la escena las primeras interacciones con eventos. Se ha creado una entidad en forma de cono que se posiciona encima del avión para indicar visualmente el avión sobre el cual tenemos el ratón. Esta funcionalidad permite al usuario identificar fácilmente qué avión está siendo seleccionado o resaltado.
 
 \subsection{Resultado}
@@ -418,7 +418,7 @@ Durante la reunión final del \emph{sprint} con el \emph{Product Owner}, se ha l
 \section{Sprint 2}
 \subsection{Objetivos}
 \begin{itemize}
-    \item Generar un archivo \textsc{DEM} y un \emph{raster} para los escenarios de Madrid y Vatry.
+    \item Generar un archivo \textsc{DEM} y un \emph{\gls{raster}} para los escenarios de Madrid y Vatry.
     \item Integrar en la plataforma el componente \emph{aframe-terrain-model}\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}}, el cual genera un mallado a partir de un archivo binario de alturas.
     \item Desarrollar un módulo para la gestión de terrenos.
     \item Crear un segundo escenario adaptando el gestor de configuración de la aplicación para permitir la cargar toda la plataforma tan solo modificando un fichero en el \textsc{HTML} principal.
@@ -426,11 +426,11 @@ Durante la reunión final del \emph{sprint} con el \emph{Product Owner}, se ha l
     \item Adaptar el gestor principal para considerar la altura del terreno al posicionar los aviones.
 \end{itemize}
 \subsection{Desarrollo}
-Se generan los ficheros \textsc{DEM} y \emph{raster} con éxito siguiendo el procedimiento descrito en las secciones \ref{sec:dem} y \ref{sec:raster}. Para integrar el componente de terrenos en la plataforma, hemos hecho que los parámetros del componente binario de alturas y \emph{raster} del terreno sean configurables, como también la anchura, altura y la magnificación del eje de altura.
+Se generan los ficheros \textsc{DEM} y \emph{\gls{raster}} con éxito siguiendo el procedimiento descrito en las secciones \ref{sec:dem} y \ref{sec:raster}. Para integrar el componente de terrenos en la plataforma, hemos hecho que los parámetros del componente binario de alturas y \emph{raster} del terreno sean configurables, como también la anchura, altura y la magnificación del eje de altura.
 
 Uno de los problemas actuales es que nuestro gestor de alturas debe conocer el valor de altura en cada punto generado por el componente de terreno. Hemos llevado a cabo una investigación consultando el código fuente del componente, y hemos encontrado un evento interno que podemos reutilizar para acceder a la variable de alturas guardada dentro del objeto \textsc{DEM}, como se muestra en la figura \ref{fig:terrain_evento}. Después de ver que los datos almacenados en la variable eran valores extraños e incomprensibles, logramos entender la lógica del \emph{array} de datos. 
 El problema residía en que el \emph{array} era del tipo \emph{Uint16Array} y las alturas aplicadas seguían una lógica de normalización del valor del archivo binario multiplicado por el factor de magnificación de alturas. Al insertar esta lógica dentro del nuevo gestor de alturas, realizamos una prueba generando esferas en cada punto del archivo y observamos que se posicionaron correctamente sobre el mallado.\\
-Hemos agrupado toda esta lógica en el archivo \emph{heightManager.js}, que contendrá la instancia única encargada de gestionar la carga del terreno y la \textsc{API} de alturas.\\
+Hemos agrupado toda esta lógica en el archivo \emph{heightManager.js}, que contendrá la instancia única encargada de gestionar la carga del terreno y la \textsc{\gls{API}} de alturas.\\
 Descargamos los datos de edificios y los preprocesamos según se detalla en la sección.\ref{subsec:buildingData} para poder usarlos en el gestor de terreno.
 
 \begin{figure}[h]
@@ -441,7 +441,7 @@ Descargamos los datos de edificios y los preprocesamos según se detalla en la s
 \end{figure}
 Se realizan todos las modificaciones finales en el modulo de configuración para poder parametrizar la plataforma para otro escenario, y se descargan vuelos, rater y fichero de alturas y edificios tal y como se detalla finalmente en el manual de usuario para generar el escenario de Vatry (Francia) y poner a prueba la versatilidad de la plataforma.
 \subsection{Resultado}
-Podemos observar en la figura \ref{fig:demAframe} como cargamos una demo simple con los ficheros generados del binario de alturas con su respectivo raster. 
+Podemos observar en la figura \ref{fig:demAframe} como cargamos una demo simple con los ficheros generados del binario de alturas con su respectivo \gls{raster}. 
 
 Se puede visualizar la demo en el siguiente enlace \url{https://djprano.github.io/AFrameTFG/demos/madrid_terrain.html}.
 Se realiza la reunión final con el \emph{Product Owner} concluyendo que se han cumplido todos los objetivos cerrando el desarrollo y definiendo los próximos objetivos para el siguiente sprint.
@@ -449,17 +449,17 @@ Se realiza la reunión final con el \emph{Product Owner} concluyendo que se han 
 \subsection{Objetivos}
 \begin{itemize}
     \item Insertar una geometría que envuelva el cuerpo del avión, indicando cuál está seleccionado y que siempre quede mirando hacia la cámara.
-    \item Realizar un panel \textsc{HUD} donde visualizar la información de los vuelos seleccionados, refrescándose cuando haya cambios mediante eventos.
+    \item Realizar un panel \textsc{\gls{HUD}} donde visualizar la información de los vuelos seleccionados, refrescándose cuando haya cambios mediante eventos.
     \item Implementar una barra de herramientas para habilitar y deshabilitar funcionalidades.
     \item Encontrar una solución al problema de selección de aviones muy lejanos que son demasiado pequeños.
-    \item Almacenar el trayecto que siguen los aviones en una caché desde que entran al escenario y desarrollar una funcionalidad en el \textsc{HUD} para visualizar el trayecto.
+    \item Almacenar el trayecto que siguen los aviones en una caché desde que entran al escenario y desarrollar una funcionalidad en el \textsc{\gls{HUD}} para visualizar el trayecto.
     \item Insertar una funcionalidad que permita visualizar la perspectiva de lo que se está viendo desde el vuelo.
-    \item Permitir al usuario mover el panel \textsc{HUD} para colocarlo en una posición donde no le moleste.
+    \item Permitir al usuario mover el panel \textsc{\gls{HUD}} para colocarlo en una posición donde no le moleste.
     \item Hacer que la aplicación sea compatible con el modo VR y que sea funcional con unas gafas de realidad virtual.
     \item Realizar una implementación que permita al usuario visualizar los metadatos de los edificios.
 \end{itemize}
 \subsection{Desarrollo}
-Se crea el componente \textsc{HUD} dentro del fichero \emph{hud.js}, el cual va a concentrar toda la lógica del panel de información contextual interactiva y gestión de eventos de selección de aviones, así como la transmisión de información y actualización de los metadatos del vuelo que se visualizan en el panel. 
+Se crea el componente \textsc{\gls{HUD}} dentro del fichero \emph{hud.js}, el cual va a concentrar toda la lógica del panel de información contextual interactiva y gestión de eventos de selección de aviones, así como la transmisión de información y actualización de los metadatos del vuelo que se visualizan en el panel. 
 
 Finalmente, se decide usar la primitiva \emph{Ring} para rodear al avión seleccionado, tal y como se muestra en la figura \ref{fig:hud}. Para cumplir con el requisito de que siempre mire a cámara, encontramos el componente \emph{look-at}\footnote{\url{https://www.npmjs.com/package/aframe-look-at-component}}, el cual ofrece los resultados esperados, por lo tanto, se decide no realizar ninguna implementación adicional al respecto.
 
@@ -467,35 +467,35 @@ Para el panel contextual, vamos a implementar un panel de \textsc{A-Frame} donde
 
 Aquí nos topamos con el primer problema en este \emph{sprint}, del cual nos damos cuenta afortunadamente debido a que cuando posicionamos el ratón sobre un elemento de la clase \emph{clickable}, el cursor cambia a una mano. Esto nos hace darnos cuenta de que en ciertas zonas de la pantalla el cursor cambia a mano, pero no hay nada visible que obstaculice la interacción con el elemento. Después de verificar que el panel estaba oculto en la misma zona, llegamos a la conclusión de que el culpable es el panel en modo invisible.
 
-Hemos elegido una estrategia en la que el panel del \textsc{HUD} es un elemento \emph{clickable} y, por tanto, intercepta los eventos del \emph{raycaster}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no vemos que el panel está tapando, al estar invisible, el panel consume los eventos y no podemos seleccionar los aviones.
+Hemos elegido una estrategia en la que el panel del \textsc{\gls{HUD}} es un elemento \emph{clickable} y, por tanto, intercepta los eventos del \emph{\gls{raycaster}}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no vemos que el panel está tapando, al estar invisible, el panel consume los eventos y no podemos seleccionar los aviones.
 
 Solucionamos este problema al posicionar el panel detrás del usuario en lugar de hacerlo invisible. En resumen, cuando el panel recibe el evento de cerrar, se coloca detrás del usuario en una posición donde nunca puede ser visible. De esta manera, deja de interferir en los eventos del controlador principal y podemos seleccionar los objetos sin problemas.
 Además, cuando el panel recibe un evento de elemento seleccionado y cambia su posición de oculto a visible, guarda la última posición en la que estaba posicionado antes de recibir el evento de ocultar. De esta manera, cada vez que se oculta el panel, la instancia almacena la última posición para su posterior uso cuando reciba el evento de avión seleccionado.\\
 
 Desarrollamos una barra de herramientas de dos dimensiones para gestionar la activación y desactivación de funcionalidades. En un principio, esta barra se implementó como un elemento \emph{div} en el \textsc{HTML} principal. Sin embargo, más adelante, cuando probé el prototipo en modo \textsc{VR} utilizando las gafas \textsc{Oculus}, me di cuenta de que los elementos \emph{div} desaparecían en dicho modo.
 
-Por lo tanto, cambiamos nuestra estrategia y comenzamos a desarrollar una solución en la que integraremos una barra de herramientas \textsc{3D} que estará presente como entidades geométricas dentro de la escena, siguiendo la misma filosofía que el \textsc{HUD} vease la sección \ref{subsec:toolbar3d}. Esta barra de herramientas contendrá dos botones para activar o desactivar opciones, es decir, serán conmutables, y tendrá un tercer botón cuya función será plegar el panel con una animación para ocupar menos espacio y no interferir en el campo visual del usuario.
+Por lo tanto, cambiamos nuestra estrategia y comenzamos a desarrollar una solución en la que integraremos una barra de herramientas \textsc{3D} que estará presente como entidades geométricas dentro de la escena, siguiendo la misma filosofía que el \textsc{\gls{HUD}} vease la sección \ref{subsec:toolbar3d}. Esta barra de herramientas contendrá dos botones para activar o desactivar opciones, es decir, serán conmutables, y tendrá un tercer botón cuya función será plegar el panel con una animación para ocupar menos espacio y no interferir en el campo visual del usuario.
 
 En esta etapa del desarrollo, también abordamos otro problema de la aplicación, que es la limitación de seleccionar vuelos que se encuentran demasiado lejos en el escenario. Para resolver esto, desarrollamos un componente llamado \emph{hover-scale}, del cual proporcionamos una descripción técnica en la sección \ref{subsec:hover-scale}. Configuraremos este componente en todas las entidades de aviones, y será responsable de ajustar el factor de escala del avión en función de la distancia con el usuario. De esta manera, cumplimos con el requisito establecido de facilitar al usuario la selección de los vuelos.
 
-Para implementar el requisito de mostrar el trayecto que realiza un avión, creamos un nuevo componente que se agrega a la entidad avión. Este componente se suscribe a los eventos de cambios de posición, y haciendo uso de las ventajas de implementar un \textsc{DTO} \emph{(Data Transfert Object)} para manejar el cacheo de los aviones, llamado \emph{FlightCacheData}, insertamos la lógica en este \textsc{DTO} para que cuando se realiza un cambio de posición, envíe un evento. De esta manera, el componente recibe el evento y actualiza la geometría del trayecto. Tan solo tendremos que enviar otro evento desde el panel para visualizarlo, mediante un botón conmutable para mostrar u ocultar el trayecto.
+Para implementar el requisito de mostrar el trayecto que realiza un avión, creamos un nuevo componente que se agrega a la entidad avión. Este componente se suscribe a los eventos de cambios de posición, y haciendo uso de las ventajas de implementar un \textsc{\gls{DTO}} \emph{(Data Transfert Object)} para manejar el cacheo de los aviones, llamado \emph{FlightCacheData}, insertamos la lógica en este \textsc{DTO} para que cuando se realiza un cambio de posición, envíe un evento. De esta manera, el componente recibe el evento y actualiza la geometría del trayecto. Tan solo tendremos que enviar otro evento desde el panel para visualizarlo, mediante un botón conmutable para mostrar u ocultar el trayecto.
 
 Para ver con más detalle la implementación de esta parte, puedes consultar la sección \ref{subsec:datosCacheVuelo} y la sección \ref{subsec:track}.
 
 Para implementar el requisito de visualizar una perspectiva de cámara a bordo del avión seleccionado, decidimos hacer uso de un artículo y unos componentes disponibles en la guía de introducción de \textsc{A-Frame} de Jesús María González Barahona \cite{aframe_notes}. En esta guía, se explica cómo crear texturas con la visualización de cámaras secundarias.
 
-Haciendo uso del componente \emph{camrender}, cuando el usuario pulsa en el botón conmutable que activa esta opción, creamos una cámara dentro del avión con dicho componente. Luego, utilizando animaciones, creamos un panel al que le asignamos el material de la cámara de a bordo y realizamos una ampliación para crear un efecto de despliegue. Finalmente, colocamos el panel en el \textsc{HUD}. De esta forma, implementamos el requisito de visualizar la cámara a bordo de una manera visualmente atractiva, como se muestra en la figura \ref{fig:cameraOnBoard}.
+Haciendo uso del componente \emph{camrender}, cuando el usuario pulsa en el botón conmutable que activa esta opción, creamos una cámara dentro del avión con dicho componente. Luego, utilizando animaciones, creamos un panel al que le asignamos el material de la cámara de a bordo y realizamos una ampliación para crear un efecto de despliegue. Finalmente, colocamos el panel en el \textsc{\gls{HUD}}. De esta forma, implementamos el requisito de visualizar la cámara a bordo de una manera visualmente atractiva, como se muestra en la figura \ref{fig:cameraOnBoard}.
 
 Para el requisito de visualizar los datos de los edificios, se ha desarrollado un componente reutilizable llamado \emph{tooltip-info}. Este componente recibe como argumento un objeto de tipo cadena \emph{String} que se mostrará cuando se reciba un evento de posicionamiento del cursor encima de la entidad correspondiente. Además, el componente modifica el material para indicar cuál es la entidad que se está visualizando, puede consultarse la sección \ref{subsec:tooltip} para más detalle sobre la implementación.
 
 En resumen esta funcionalidad, al crear los edificios, se procesan los metadatos provenientes de la información de \textsc{OpenStreetMap}. Se genera una cadena de texto que se pasa como parámetro al componente \emph{tooltip-info}, asignándolo a la entidad correspondiente. El componente \emph{tooltip-info} calcula la posición más alta de la geometría del edificio y crea un texto que se muestra de manera visible y siempre mirando hacia la cámara cuando el cursor se posiciona encima del edificio.
 
-El último desafío al que nos enfrentamos fue el de mover las entidades \textsc{HUD} que existen dentro de la estructura del usuario, ya sea a través del ratón o de los controladores de realidad virtual de las gafas \textsc{Oculus} que nos proporcionó el universidad. En un principio, consideramos utilizar el componente \emph{aframe-super-hands-component}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, ya que es ampliamente utilizado en la comunidad de desarrollo de \textsc{A-Frame}. Comenzamos a integrar este componente en nuestro prototipo, pero resultó ser un fracaso. Los movimientos solo funcionaban cuando la cámara miraba en una dirección, y a medida que se movía la cámara, los movimientos se volvían incoherentes.
+El último desafío al que nos enfrentamos fue el de mover las entidades \textsc{\gls{HUD}} que existen dentro de la estructura del usuario, ya sea a través del ratón o de los controladores de realidad virtual de las gafas \textsc{Oculus} que nos proporcionó el universidad. En un principio, consideramos utilizar el componente \emph{aframe-super-hands-component}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, ya que es ampliamente utilizado en la comunidad de desarrollo de \textsc{A-Frame}. Comenzamos a integrar este componente en nuestro prototipo, pero resultó ser un fracaso. Los movimientos solo funcionaban cuando la cámara miraba en una dirección, y a medida que se movía la cámara, los movimientos se volvían incoherentes.
 
 Después de investigar el código fuente de la biblioteca, llegamos a la conclusión de que el componente no era adecuado para nuestro caso, ya que estábamos intentando mover una entidad que no tiene coordenadas absolutas, sino coordenadas relativas a la cámara. \\
 Además, los componentes \emph{movement-controls} establecidos en la entidad \emph{Rig} en combinación con el componente \emph{look-controls} en la cámara hacían que las posiciones relativas de la cámara tampoco fueran absolutas. También debíamos asegurarnos de que al arrastrar una entidad, no moviéramos la cámara, ya que el movimiento natural del ratón se utiliza para desplazar la orientación cámara.
 
-Para solucionar este requisito, implementamos un componente personalizado que tuviera en cuenta todas estas peculiaridades y nos permitiera arrastrar objetos ubicados jerárquicamente dentro de la entidad de la cámara. También, para evitar la rotación de la cámara mientras se arrastra una entidad, deshabilitamos el componente \emph{look-controls} mientras se está realizando el arrastre del elemento \textsc{HUD}.
+Para solucionar este requisito, implementamos un componente personalizado que tuviera en cuenta todas estas peculiaridades y nos permitiera arrastrar objetos ubicados jerárquicamente dentro de la entidad de la cámara. También, para evitar la rotación de la cámara mientras se arrastra una entidad, deshabilitamos el componente \emph{look-controls} mientras se está realizando el arrastre del elemento \textsc{\gls{HUD}}.
 
 Para obtener más detalles sobre cómo se implementó este componente \emph{custom-draggable} , consulta la sección \ref{subsec:customDraggable}.
 
@@ -528,22 +528,22 @@ La palabra \emph{Surveillance} (vigilancia) alude al hecho de que el \textsc{ADS
 
 Por último, el término \emph{Broadcast} (transmisión) indica que la información es enviada por la aeronave a través de señales de radio en modo unidireccional, posibilitando que cualquier receptor en su área de cobertura pueda capturar la señal.
 \subsection{Historia y evolución}
-En \textsc{2019}, la \emph{Organización de Aviación Civil Internacional} (\textsc{OACI}) estableció un grupo de trabajo para desarrollar estándares y recomendaciones para la implementación del \textsc{ADS-B} tal y como podemos ver en sus sumarios de reuniones en la página oficial.\footnote{\url{https://www.icao.int/NACC/Pages/meetings-2018-adsbout.aspx}}
-Anteriormente, los sistemas de vigilancia aeronáutica se basaban en radares terrestres para detectar aeronaves en el espacio aéreo. Sin embargo, la \textsc{OACI} tenía como objetivo permitir que las propias aeronaves transmitieran su información de posición y otros datos relevantes a través de señales de radio, en lugar de depender únicamente de los radares terrestres.
+En \textsc{2019}, la \emph{Organización de Aviación Civil Internacional} (\textsc{\gls{oaci}}) estableció un grupo de trabajo para desarrollar estándares y recomendaciones para la implementación del \textsc{ADS-B} tal y como podemos ver en sus sumarios de reuniones en la página oficial.\footnote{\url{https://www.icao.int/NACC/Pages/meetings-2018-adsbout.aspx}}
+Anteriormente, los sistemas de vigilancia aeronáutica se basaban en radares terrestres para detectar aeronaves en el espacio aéreo. Sin embargo, la \textsc{\gls{oaci}} tenía como objetivo permitir que las propias aeronaves transmitieran su información de posición y otros datos relevantes a través de señales de radio, en lugar de depender únicamente de los radares terrestres.
 
 En la primera década de los años 2000, se llevaron a cabo varios proyectos piloto para probar los primeros prototipos de sistemas \textsc{ADS-B}. Un ejemplo de ello es el proyecto \emph{Capstone}\footnote{\url{https://www.aopa.org/news-and-media/all-news/2017/august/pilot/ads-b-in-alaska}} en Estados Unidos, que se llevó a cabo en Alaska entre 1999 y 2004. El objetivo de este proyecto piloto a gran escala era evaluar si la tecnología \textsc{ADS-B} mostraba mejoras significativas en la seguridad de la aviación en Alaska.
 
 Conforme avanzaba la década de los años 2000, varios países comenzaron a adoptar la tecnología y los estándares de \textsc{ADS-B}. Además, se establecieron requisitos regulatorios más estrictos para equipar a más aeronaves con transpondedores \textsc{ADS-B}. Esto implicó un esfuerzo en la modernización de los sistemas de gestión del tráfico aéreo existentes, con el fin de aprovechar plenamente los beneficios de los sistemas \textsc{ADS-B}.\\
 Hacia finales de la primera década del 2000, surgieron empresas como \textsc{FlightRadar24} y proyectos de código abierto como \textsc{OpenSky}, los cuales empezaron a desarrollar una red de receptores \textsc{ADS-B}. Estas organizaciones llegaron a acuerdos con instituciones académicas y proveedores de servicios de tráfico aéreo, lo que permitió que la red se expandiera con el tiempo. \\
-Además, se implementaron estrategias de \emph{crowdsourcing}, donde personas de todo el mundo instalaban receptores \textsc{ADS-B} en sus ubicaciones y enviaban los datos de las señales de las aeronaves a los servidores de estas plataformas. Esto permitió a dichas plataformas recopilar información y proporcionar servicios a través de sus servidores.
+Además, se implementaron estrategias de \emph{\gls{crowdsourcing}}, donde personas de todo el mundo instalaban receptores \textsc{ADS-B} en sus ubicaciones y enviaban los datos de las señales de las aeronaves a los servidores de estas plataformas. Esto permitió a dichas plataformas recopilar información y proporcionar servicios a través de sus servidores.
 \subsection{Descripción técnica}
-Para utilizar la tecnología \textsc{ADS-B}, una aeronave debe estar equipada con un dispositivo que admita el enlace \textsc{1090ES}, el cual permite un enlace de datos a través de \textsc{VHF} en la banda de \emph{1090 MHz}, una frecuencia asignada para las comunicaciones aeronáuticas. Este dispositivo es el encargado de transmitir periódicamente la información.
+Para utilizar la tecnología \textsc{ADS-B}, una aeronave debe estar equipada con un dispositivo que admita el enlace \textsc{\gls{1090ES}}, el cual permite un enlace de datos a través de \textsc{VHF} en la banda de \emph{1090 MHz}, una frecuencia asignada para las comunicaciones aeronáuticas. Este dispositivo es el encargado de transmitir periódicamente la información.
 
-Sin embargo, en Estados Unidos se permite el uso del estándar \textsc{UAT} \emph{(Universal Access Transceiver)} en la banda de \emph{978 MHz} para propósitos de \textsc{ADS-B} por debajo de los \emph{18,000} pies. Por encima de esta altitud, se debe utilizar el enlace \textsc{1090ES}. Esta diferencia se estableció con el objetivo de evitar la congestión debido al uso excesivo de la banda \textsc{1090ES}.
+Sin embargo, en Estados Unidos se permite el uso del estándar \textsc{\gls{UAT}} \emph{(Universal Access Transceiver)} en la banda de \emph{978 MHz} para propósitos de \textsc{ADS-B} por debajo de los \emph{18,000} pies. Por encima de esta altitud, se debe utilizar el enlace \textsc{1090ES}. Esta diferencia se estableció con el objetivo de evitar la congestión debido al uso excesivo de la banda \textsc{1090ES}.
 
-Los transpondedores de sistemas \textsc{SSR} \emph{(Secondary Surveillance Radar)} son utilizados en la aviación para complementar la vigilancia del tráfico aéreo proporcionada por el radar primario. Estos transpondedores ya están preparados para emitir en la banda \textsc{1090ES} en \emph{modo S}. Sin embargo, dado que el sistema \textsc{ADS-B} requiere una transmisión más frecuente de información, se introdujo el \emph{modo ES} \emph{(Extended Squitter)}. El modo es una modificación del transpondedor \emph{modo S} que permite una radiodifusión más frecuente de información.
+Los transpondedores de sistemas \textsc{\gls{SSR}} \emph{(Secondary Surveillance Radar)} son utilizados en la aviación para complementar la vigilancia del tráfico aéreo proporcionada por el radar primario. Estos transpondedores ya están preparados para emitir en la banda \textsc{1090ES} en \emph{\gls{modo S}}. Sin embargo, dado que el sistema \textsc{ADS-B} requiere una transmisión más frecuente de información, se introdujo el \emph{modo ES} \emph{(Extended Squitter)}. El modo es una modificación del transpondedor \emph{\gls{modo S}} que permite una radiodifusión más frecuente de información.
 
-Con esto, al tener un equipo de aviónica instalado que cumple los requisitos para operar con el sistema \textsc{SSR} y \textsc{ADS-B} al mismo tiempo, se presenta una gran ventaja operativa al utilizar un solo equipo para ambos propósitos.
+Con esto, al tener un equipo de aviónica instalado que cumple los requisitos para operar con el sistema \textsc{\gls{SSR}} y \textsc{ADS-B} al mismo tiempo, se presenta una gran ventaja operativa al utilizar un solo equipo para ambos propósitos.
 
 Existen tres tipos de transpondedores en función de su capacidad:
 \begin{itemize}
@@ -558,7 +558,7 @@ Existen tres tipos de transpondedores en función de su capacidad:
   \label{fig:adsbtypes}
 \end{figure}
 \subsection{Contexto y aplicación en el prototipo}
-La tecnología \textsc{ADS-B} juega un papel fundamental en el contexto de este proyecto, el objetivo principal del prototipo es la visualización de datos aeronáuticos en un entorno \textsc{3D}. Por to tanto esta tecnología nos aporta la capacidad de obtener la información que necesita nuestra aplicación para acceder a los datos que proporcionan dinamismo, ya que las entidades que utilizan esta tecnología estarán constantemente cambiando de posición en el escenario gracias a la variación de los datos de posición.\\
+La tecnología \textsc{ADS-B} juega un papel fundamental en el contexto de este proyecto, el objetivo principal del prototipo es la visualización de datos aeronáuticos en un entorno \textsc{\gls{3D}}. Por to tanto esta tecnología nos aporta la capacidad de obtener la información que necesita nuestra aplicación para acceder a los datos que proporcionan dinamismo, ya que las entidades que utilizan esta tecnología estarán constantemente cambiando de posición en el escenario gracias a la variación de los datos de posición.\\
 La tecnología estándar \textsc{ADS-B} nos ofrece una resolución temporal de un segundo entre muestras, aunque los servidores gratuitos normalmente ofrecerán solo la capacidad de acceder a los vectores de información cada cinco segundos como es el caso de \textsc{OpenSky}, resolución suficiente para crear una interpolación entre posiciones y recrear el vuelo de los aviones.\\
 \section{Opensky-network API}
 \label{sec:opensky}
@@ -570,12 +570,12 @@ A medida que el proyecto fue creciendo crearon la plataforma online sin ánimo d
 \subsection{Descripción técnica}
 En la red de \textsc{OpenSky} tan pronto como llega un mensaje \textsc{ADS-B} se crea un registro para el avión llamado \emph{vector de estado}.
 El vector de estado del servicio contiene la información descrita en la tabla \ref{tab:vectorEstado}.\\
-En la sección \ref{subsec:dao} hablaremos como el prototipo utilizará la \textsc{API} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
+En la sección \ref{subsec:dao} hablaremos como el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
 
 \subsection{Contexto y aplicación en el prototipo}
 En nuestro caso, utilizaremos la API gratuita que nos brindan los servidores de OpenSky con una resolución temporal de 5 segundos. Por lo tanto, aunque podríamos tener una mayor resolución temporal utilizando la tecnología ADS-B como vimos en la sección \ref{sec:adsb}, nuestra aplicación se adaptará a la opción gratuita que nos ofrece el servicio REST de OpenSky.
 \subsection{Ejemplos de uso}
-En la figura \ref{fig:getOpensky}, se muestra un ejemplo de una petición GET para las coordenadas de Madrid utilizando la API de OpenSky.
+En la figura \ref{fig:getOpensky}, se muestra un ejemplo de una petición GET para las coordenadas de Madrid utilizando la \gls{API} de OpenSky.
 En este ejemplo, se realiza una petición \emph{GET} al \emph{endpoint} \emph{https://opensky-network.org/api/states/all} con los parámetros de consulta \emph{lamin}, \emph{lomin}, \emph{lamax} y \emph{lomax} especificados. Además, se incluye un encabezado de autorización con el valor (\emph{Basic user:password}) para autenticar la solicitud donde la parte (\emph{user:password}) puede codificarse en \textsc{Base64} para no ir los datos en claro.
 \begin{figure}[h]
 	\centering
@@ -660,7 +660,7 @@ El \textsc{DOM} se compone de varios conceptos:
 \subsection{Contexto y aplicación en el prototipo}
 Esta tecnología dentro del contexto de la implementación es usada como base para generar entidades y componentes en tiempo real dando el dinamismo a la escena de \textsc{A-Frame}. Es la tecnología usada para que las entidades contenidas en la escena sean manipuladas a través de la modificación de sus propiedades y el envío de eventos.
 \subsection{Ejemplos de uso}
-Desde cualquier parte del código de nuestra aplicación podemos manipular el \textsc{DOM} a través de los métodos que nos proporciona la \textsc{API} de \textsc{Javascript}. Por ejemplo vamos a mostrar como podemos crear un elemento del DOM en nuestra aplicación que representa un avión y agregarlo dentro del elemento que representa la escena:
+Desde cualquier parte del código de nuestra aplicación podemos manipular el \textsc{DOM} a través de los métodos que nos proporciona la \textsc{\gls{API}} de \textsc{Javascript}. Por ejemplo vamos a mostrar como podemos crear un elemento del DOM en nuestra aplicación que representa un avión y agregarlo dentro del elemento que representa la escena:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 function createFlightElement(id) {
     //Vuelo nuevo
@@ -696,23 +696,23 @@ Desde entonces, \textsc{HTML5} se ha convertido en el estándar predominantes pa
 \textsc{HTML5} se basa en la combinación de las tecnologías \textsc{HTML}, \textsc{CSS} y \textsc{JavaScript} para proporcionar una plataforma de desarrollo web versátil y adaptada a las necesidades modernas. 
 
 \textsc{HTML5} ofrece a los desarrolladores una amplia gama de \textsc{APIs} que les permiten acceder y manipular diversas características del navegador. \\
-Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la API de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.\\
+Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la \gls{API} de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.\\
 La \textsc{API} de almacenamiento local permite a las aplicaciones web almacenar datos en el dispositivo del usuario, lo que acelera la experiencia del usuario debido al cacheo de muchos metadatos para mantener estados he incluso poder operar con aplicaciones de manera offline.\\
 Además, \textsc{HTML5} ha introducido nuevas etiquetas semánticas y atributos que permiten una mejor estructuración del contenido y una mayor accesibilidad. Esto facilita a los motores de búsqueda y a los usuarios comprender la información presente en las páginas web de manera más precisa.
 \subsection{Contexto y aplicación en el prototipo}
 Esta tecnología es la base sobre la cual \textsc{A-Frame} crea la estructura del contenido de realidad virtual en el entorno web. 
-Como veremos en la sección \ref{sec:aframe} \textsc{A-Frame} utiliza una combinación de elementos \textsc{HTML5} como \emph{\textless a-scene\textgreater}, \emph{\textless a-entity\textgreater} y \emph{\textless a-camera\textgreater}, junto con componentes propios de \textsc{A-Frame}, para construir y definir objetos \textsc{3D}, cámaras, luces y la escena principal.
+Como veremos en la sección \ref{sec:aframe} \textsc{A-Frame} utiliza una combinación de elementos \textsc{HTML5} como \emph{\textless a-scene\textgreater}, \emph{\textless a-entity\textgreater} y \emph{\textless a-camera\textgreater}, junto con componentes propios de \textsc{A-Frame}, para construir y definir objetos \textsc{\gls{3D}}, cámaras, luces y la escena principal.
 
-En resumen, \textsc{A-Frame} utiliza tecnologías como \textsc{HTML5} y componentes propios para definir la jerarquía del escenario y la renderización de toda la escena.
+En resumen, \textsc{A-Frame} utiliza tecnologías como \textsc{HTML5} y componentes propios para definir la jerarquía del escenario y la \gls{renderización} de toda la escena.
 \section{JavaScript}
 \label{sec:javascript}
 \subsection{Introducción a la tecnología}
-\textsc{JavaScript} es un lenguaje de programación ampliamente utilizado en el desarrollo web que permite agregar interactividad y dinamismo a las páginas y aplicaciones. Es el único leguaje que permite ser ejecutado en el navegador web de forma nativa, sin necesidad de compilación. Su versatilidad, compatibilidad con \emph{frameworks} y capacidad para ejecutarse tanto en el lado del cliente como en el lado del servidor lo convierten en una herramienta fundamental para crear experiencias web modernas y funcionales.
+\textsc{JavaScript} es un lenguaje de programación ampliamente utilizado en el desarrollo web que permite agregar interactividad y dinamismo a las páginas y aplicaciones. Es el único leguaje que permite ser ejecutado en el navegador web de forma nativa, sin necesidad de compilación. Su versatilidad, compatibilidad con \emph{\gls{framework}s} y capacidad para ejecutarse tanto en el lado del cliente como en el lado del servidor lo convierten en una herramienta fundamental para crear experiencias web modernas y funcionales.
 \subsection{Historia y evolución}
 La historia de \textsc{JavaScript} se remonta a 1995, cuando \emph{Brendan Eich} un programador estadounidense diseñó el lenguaje para \textsc{Netscape Navigator} en un tiempo récord de dos semanas. Inicialmente se llamó \textsc{Mocha} y \textsc{LiveScript}, pero debido  a una colaboración con \textsc{Netscape} y \textsc{Sun} (la empresa propietaria por al quel entonces del lenguaje \textsc{Java}), por cuestiones de marketing ya que \textsc{Java} en aquel entonces era un lenguaje de programación muy popular se decidió establecer como nombre \textsc{JavaScript}.
 Sin embargo a pesar de la similitud entre el nombre de \textsc{Java} y el nuevo lenguaje \textsc{JavaScript}, las similitudes entre ambos lenguajes son pocas y no tienen mucho en común.
 Al poco tiempo del lanzamiento de \textsc{JavaScript}, \textsc{Microsoft} presentó un lenguaje más o menos compatible llamado \textsc{JScript} para \textsc{Internet Explorer 3.0} .
-Para conciliar ambos lenguajes, \textsc{Netscape} presentó \textsc{JavaScript} a la \emph{European Computer Manufacturers Association} (\textsc{ECMA}), con el objetivo de crear un estándar que unificase el lenguaje. Fué entonces cuando nació el estándar que se ha denominado \textsc{ECMAScript}, que se adoptó en la versión 6 en 2015 (\textsc{ES6} o \textsc{ES2015} abreviado). Desde entonces se han ido agregando nuevas características año tras año por lo que se acordó no utilizar un número consecutivo de versión, sino simplemente enumerar el año respectivo en el número de versión.
+Para conciliar ambos lenguajes, \textsc{Netscape} presentó \textsc{JavaScript} a la \emph{European Computer Manufacturers Association} (\textsc{\gls{ECMA}}), con el objetivo de crear un estándar que unificase el lenguaje. Fué entonces cuando nació el estándar que se ha denominado \textsc{ECMAScript}, que se adoptó en la versión 6 en 2015 (\textsc{ES6} o \textsc{ES2015} abreviado). Desde entonces se han ido agregando nuevas características año tras año por lo que se acordó no utilizar un número consecutivo de versión, sino simplemente enumerar el año respectivo en el número de versión.
 \begin{center}
   \begin{tabular}{|c|c|}
     \hline
@@ -734,38 +734,38 @@ Para conciliar ambos lenguajes, \textsc{Netscape} presentó \textsc{JavaScript} 
   \end{tabular}
 \end{center}
 \subsection{Contexto y aplicación en el prototipo}
-En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base utilizado para la implementación de toda la lógica de negocio desarrollada para el prototipo. Es por lo tanto la herramienta principal para el diseño y desarrollo de componentes que compondrán la escena final . A parte de esto como veremos más adelante es la tecnología sobre la que está construida los \emph{frameworks} y librerías usados en este proyecto tales como \textsc{A-Frame}~\ref{sec:aframe} y \textsc{Leaflet}~\ref{sec:leaflet}
+En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base utilizado para la implementación de toda la lógica de negocio desarrollada para el prototipo. Es por lo tanto la herramienta principal para el diseño y desarrollo de componentes que compondrán la escena final . A parte de esto como veremos más adelante es la tecnología sobre la que está construida los \emph{\gls{framework}s} y librerías usados en este proyecto tales como \textsc{A-Frame}~\ref{sec:aframe} y \textsc{Leaflet}~\ref{sec:leaflet}
 \subsection{Ejemplos de uso}
 
 \section{WebGL}
 \label{sec:webgl}
 \subsection{Introducción a la tecnología}
-La tecnología de gráficos \textsc{\gls{3D}} es una tecnología que permite la renderización de gráficos interactivos en tiempo real sobre un navegador web sin la necesidad de plugins adicionales. Está construida sobre una \textsc{\gls{API}} basada en \textsc{\gls{OpenGL}} para acceder a la funcionalidad de renderizado de la tarjeta gráfica del dispositivo.
+La tecnología de gráficos \textsc{\gls{3D}} es una tecnología que permite la \gls{renderización} de gráficos interactivos en tiempo real sobre un navegador web sin la necesidad de plugins adicionales. Está construida sobre una \textsc{\gls{API}} basada en \textsc{\gls{OpenGL}} para acceder a la funcionalidad de renderizado de la tarjeta gráfica del dispositivo.
 
 WebGL\footnote{\url{https://www.khronos.org/webgl/}} está basada en \textsc{JavaScript}~\ref{sec:javascript} y se relaciona con los elementos de una página web mediante el uso de \textsc{HTML5}~\ref{sec:html5}. 
 Proporciona herramientas para crear gráficos \textsc{3D} en el navegador de forma optimizada y eficiente gracias al uso de la \gls{GPU}. \textsc{WebGL} permite una renderización de objetos 3D, texturas, sombreado y efectos visuales avanzados.
 \subsection{Contexto y aplicación en el prototipo}
  Tanto \textsc{A-Frame} como \textsc{Three.js} utilizan \textsc{WebGL} como tecnología para la renderización de escenas y objetos en \textsc{3D} en un navegador web. Ambas bibliotecas se basan en esta tecnología para realizar operaciones sobre la tarjeta gráfica en el renderizado de sus escenarios.
 \section{WebXR}
-La tecnología \textsc{WebXR} es una agrupación de estándares que se utilizan en conjunto para habilitar la representación de escenas en 3D en hardware diseñado para la visualización de mundos virtuales (VR) o para agregar gráficos al mundo real (realidad aumentada). \textsc{WebXR} proporciona una combinación perfecta entre realidad aumentada y realidad virtual.
+La tecnología \textsc{WebXR} es una agrupación de estándares que se utilizan en conjunto para habilitar la representación de escenas en 3D en \gls{hardware} diseñado para la visualización de mundos virtuales (VR) o para agregar gráficos al mundo real (realidad aumentada). \textsc{WebXR} proporciona una combinación perfecta entre realidad aumentada y realidad virtual.
 
 Una de las ventajas principales de \textsc{WebXR} es que permite crear experiencias inmersivas directamente en un navegador web gracias a que está construido sobre \textsc{WebGL} \ref{sec:webgl}, sin necesidad de descargar ninguna aplicación adicional. Esto facilita el acceso a estas experiencias a través de múltiples dispositivos, ya que solo se necesita un navegador compatible para disfrutar de ellas.
 
-\textsc{WebXR} proporciona \textsc{API} y funcionalidades que permiten interactuar con dispositivos de realidad virtual y realidad aumentada, como gafas \textsc{VR}, cascos \textsc{AR} o incluso dispositivos móviles con capacidades \textsc{AR}. Estas funcionalidades incluyen el seguimiento de la posición y la orientación del dispositivo, renderización de escenas \textsc{3D}, detección de gestos y eventos de interacción, entre otros.
+\textsc{WebXR} proporciona \textsc{\gls{API}} y funcionalidades que permiten interactuar con dispositivos de realidad virtual y realidad aumentada, como gafas \textsc{VR}, cascos \textsc{AR} o incluso dispositivos móviles con capacidades \textsc{AR}. Estas funcionalidades incluyen el seguimiento de la posición y la orientación del dispositivo, renderización de escenas \textsc{3D}, detección de gestos y eventos de interacción, entre otros.
 
 \section{VR}
-La realidad virtual (\textsc{VR}) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de hardware y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
+La realidad virtual (\textsc{VR}) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de \gls{hardware} y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
 \subsection{Contexto y aplicación en el prototipo}
 El prototipo de este proyecto está diseñado para funcionar con dispositivos que generan entornos virtuales, permitiendo una inmersión completa y realista en dicho entorno. Para lograr esto, se utilizan las herramientas proporcionadas por la plataforma A-Frame, como se describe en la sección \ref{sec:aframe}. 
 \section{Node JS}
 \subsection{Introducción a la tecnología}
 \textsc{Node.js} es un entorno de código abierto y multiplataforma que permite la ejecución de código \textsc{JavaScript} de forma asíncrona, con capacidades de entrada y salida de datos, y una arquitectura orientada a eventos. Está basado en el \emph{motor V8} de \textsc{Google} y fue creado con el objetivo de desarrollar programas de red que puedan ser ejecutados en el lado del servidor.
 
-Con \textsc{Node.js}, los desarrolladores pueden construir aplicaciones del lado del servidor utilizando \textsc{JavaScript}, lo que proporciona coherencia en el lenguaje de programación tanto en el lado del cliente como en el servidor. Además, cuenta con una amplia gama de módulos y bibliotecas disponibles a través de su gestor de paquetes \textsc{npm}, lo que facilita el desarrollo rápido y eficiente de aplicaciones web y de red.
+Con \textsc{Node.js}, los desarrolladores pueden construir aplicaciones del lado del servidor utilizando \textsc{JavaScript}, lo que proporciona coherencia en el lenguaje de programación tanto en el lado del cliente como en el servidor. Además, cuenta con una amplia gama de módulos y bibliotecas disponibles a través de su gestor de paquetes \textsc{\gls{npm}}, lo que facilita el desarrollo rápido y eficiente de aplicaciones web y de red.
 \subsection{Contexto y aplicación en el prototipo}
 Como mencionamos en la sección \ref{subsec:obtencionCache}, hemos utilizado \textsc{Node.js} para desarrollar un \emph{proceso batch} que se encarga de almacenar los datos de la \textsc{API} de \textsc{OpenSky}~\ref{sec:opensky} en una caché local. Esta técnica nos permite ejecutar la aplicación en modo diferido, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso.
 \subsection{Ejemplos de uso}
-A continuación se muestra un ejemplo de código que puede ser ejecutado por \textsc{Node.js} para almacenar los datos obtenidos de la \textsc{API} en un archivo \textsc{JSON} para su posterior uso:
+A continuación se muestra un ejemplo de código que puede ser ejecutado por \textsc{Node.js} para almacenar los datos obtenidos de la \textsc{API} en un archivo \textsc{\gls{JSON}} para su posterior uso:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 function main() {
     var endpoint = 'https://opensky-network.org/api/states/all?lamin=' + configuration.latMin + '&lomin=' + configuration.longMin + '&lamax=' + configuration.latMax + '&lomax=' + configuration.longMax;
@@ -786,18 +786,18 @@ function main() {
 \section{Threejs}
 \label{sec:threejs}
 \subsection{Introducción a la tecnología}
-\textsc{Three.js} es una biblioteca escrita en \textsc{JavaScript} que ofrece una \textsc{API} para interactuar con \textsc{WebGL}~\ref{sec:webgl} y crear de manera sencilla animaciones y escenas 3D sobre entornos web. 
+\textsc{Three.js} es una biblioteca escrita en \textsc{JavaScript} que ofrece una \textsc{API} para interactuar con \textsc{WebGL}~\ref{sec:webgl} y crear de manera sencilla animaciones y escenas \gls{3D} sobre entornos web. 
 \textsc{A-Frame}~\ref{sec:aframe} es una de las tecnologías usadas en el prototipo y se basa en \textsc{Three.js} creando una capa de abstracción que simplifica el desarrollo de entornos tridimensionales al permitir el uso directo de \textsc{HTML5}, entidades y componentes. A través de \textsc{A-Frame}, es posible crear escenarios de manera rápida y sencilla, aprovechando la potencia de \textsc{Three.js} en combinación con la facilidad y familiaridad de \textsc{HTML5}.
 \subsection{Historia y evolución}
 El origen de \textsc{Three.js} se remonta a principios de la década de 2000, cuando el desarrollador \emph{Ricardo Cabello}, también conocido como \emph{Mr.doob}, comenzó a experimentar con gráficos y animaciones en tres dimensiones utilizando tecnologías web. En ese momento, \textsc{WebGL}~\ref{sec:webgl} aún no era muy utilizado y los navegadores no ofrecían un método sencillo para crear contenido \textsc{3D} interactivo.
-\emph{Cabello} optó por utilizar la especificación \textsc{WebGL} recién lanzada en 2009, que permitía usar gráficos \textsc{3D} acelerados por \emph{hardware} en los navegadores web. Comenzó a trabajar en una biblioteca \textsc{JavaScript} para que los desarrolladores web pudieran crear contenido \textsc{WebGL} más fácilmente.
+\emph{Cabello} optó por utilizar la especificación \textsc{WebGL} recién lanzada en 2009, que permitía usar gráficos \textsc{3D} acelerados por \emph{\gls{hardware}} en los navegadores web. Comenzó a trabajar en una biblioteca \textsc{JavaScript} para que los desarrolladores web pudieran crear contenido \textsc{WebGL} más fácilmente.
 El proyecto originalmente se llamaba \emph{Canvas 3D} antes de cambiar su nombre a \textsc{Three.js} para reflejar el uso del lenguaje \textsc{JavaScript} como base de la librería.
 El objetivo de \textsc{Three.js} era simplificar la programación gráfica en tres dimensiones y facilitar la creación de gráficos interactivos en el navegador.
 A medida que más desarrolladores se dieron cuenta de su potencial y comenzaron a usar \textsc{Three.js} en sus proyectos, se hizo rápidamente popular. La creciente adopción de \textsc{WebGL} por parte de los navegadores benefició a la biblioteca, que se convirtió en una herramienta esencial para la creación de contenido \textsc{3D} en la web.
 \subsection{Descripción técnica}
 Las principales características técnicas de \textsc{Three.js} son las siguientes:
 \begin{itemize}
-\item \textbf{\emph{Renderizado en tiempo real}}: aprovechando la aceleración de \emph{hardware} proporcionada por \textsc{WebGL}, \textsc{Three.js} es capaz de renderizar gráficos en \textsc{3D} de manera eficiente en los navegadores web modernos.
+\item \textbf{\emph{Renderizado en tiempo real}}: aprovechando la aceleración de \emph{\gls{hardware}} proporcionada por \textsc{WebGL}, \textsc{Three.js} es capaz de renderizar gráficos en \textsc{3D} de manera eficiente en los navegadores web modernos.
 \item \textbf{\emph{Geometrías y mallas}}: la biblioteca ofrece una amplia variedad de geometrías predefinidas, como esferas, cilindros, cubos, entre otros. Estas geometrías pueden modificarse mediante atributos, e incluso es posible crear geometrías personalizadas utilizando técnicas de extrusión. Estas geometrías pueden combinarse con mallas para crear superficies y escenas complejas.
 \item \textbf{\emph{Materiales y texturas}}: \textsc{Three.js} proporciona una amplia gama de materiales predefinidos, incluyendo materiales básicos, materiales refractivos, reflectantes y texturas. Estos materiales y texturas se utilizan para agregar detalles a las geometrías y mallas, logrando un mayor realismo en las escenas \textsc{3D}.
 \item \textbf{\emph{Iluminación y sombreado}}: la biblioteca admite diferentes técnicas de iluminación, como luces direccionales, puntuales y de área, lo que permite simular una iluminación realista en la escena. \\
@@ -826,15 +826,15 @@ this.el.object3D.add(line);
 \section{A-Frame}
 \label{sec:aframe}
 \subsection{Introducción a la tecnología}
-\textsc{A-Frame}\cite{aframedocs} es un \emph{framework} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{frameworks} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. \\
+\textsc{A-Frame}\cite{aframedocs} es un \emph{\gls{framework}} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{\gls{framework}s} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. \\
 Esto facilita a los desarrolladores web la creación rápida e intuitiva de aplicaciones de realidad virtual, sin necesidad de poseer un profundo conocimiento ni adentrarse en la complejidad de la programación en entornos tridimensionales.\\
 Una de las principales ventajas de \textsc{A-Frame} es que se basa en el \emph{modelo entidad componente}, lo que permite el desarrollo de componentes reutilizables y su parametrización para configurar su comportamiento.\\
 Además, \textsc{A-Frame} ya proporciona una amplia gama de geometrías y componentes para la creación de materiales, iluminación, sombras y la gestión de eventos de controladores de realidad virtual, como las gafas \textsc{Oculus}. Esto permite que los proyectos puedan comenzar el desarrollo desde un punto avanzado.
 
 \subsection{Historia y evolución}
-\textsc{A-Frame} fue desarrollado por el equipo de \textsc{Mozilla VR} a finales de 2015. Este equipo fue líder en el desarrollo de herramientas para la tecnología \textsc{WebVR}. Debido a la necesidad de crear contenido de manera más sencilla y rápida, se formó un equipo que incluía a los principales mantenedores de este \emph{framework}, como \emph{Diego Marcos} y \emph{Josh Carpenter}. 
+\textsc{A-Frame} fue desarrollado por el equipo de \textsc{Mozilla VR} a finales de 2015. Este equipo fue líder en el desarrollo de herramientas para la tecnología \textsc{WebVR}. Debido a la necesidad de crear contenido de manera más sencilla y rápida, se formó un equipo que incluía a los principales mantenedores de este \emph{\gls{framework}}, como \emph{Diego Marcos} y \emph{Josh Carpenter}. 
 
-El objetivo de \textsc{A-Frame} era permitir a los desarrolladores web y diseñadores de experiencias \textsc{3D} y realidad virtual crear contenido utilizando \textsc{HTML}, sin necesidad de tener conocimientos profundos de \textsc{WebGL}. El primer lanzamiento público de \textsc{A-Frame} tuvo lugar el 16 de diciembre de 2015. En la actualidad, hay más de 75 contribuyentes en total.
+El objetivo de \textsc{A-Frame} era permitir a los desarrolladores web y diseñadores de experiencias \textsc{3D} y realidad virtual crear contenido utilizando \textsc{HTML}, sin necesidad de tener conocimientos profundos de \textsc{\gls{WebGL}}. El primer lanzamiento público de \textsc{A-Frame} tuvo lugar el 16 de diciembre de 2015. En la actualidad, hay más de 75 contribuyentes en total.
 \subsection{Descripción técnica}
 Las principales características técnicas de \textsc{A-Frame} son las siguientes:
 
@@ -847,13 +847,13 @@ Las principales características técnicas de \textsc{A-Frame} son las siguiente
     \item Proporciona un componente de animación que permite crear dinamismo de forma sencilla y configurable.
     \item Contiene componentes para los principales controladores de realidad virtual del mercado.
     \item Proporciona primitivas \textsc{HTML5} para las principales geometrías como son planos, cajas, círculos, conos, cilindros, esferas, texto, entre otros.
-    \item Gestión de eventos mediante \emph{raycaster} que proporciona facilidad de interactuar con las entidades presentes en la escena.
+    \item Gestión de eventos mediante \emph{\gls{raycaster}} que proporciona facilidad de interactuar con las entidades presentes en la escena.
     \item Capacidad de creación de componentes propios o extender alguno existente de manera sencilla e intuitiva.
 \end{itemize}
 
 En definitiva, las capacidades técnicas de \textsc{A-Frame} están en continuo crecimiento gracias al gran ecosistema que hay de desarrollo a su alrededor, permitiendo nutrirse también del crecimiento de la tecnología principal, \textsc{Three.js}.
 \subsection{Contexto y aplicación en el prototipo}
-\textsc{A-Frame} es el motor principal de \emph{renderizado} del prototipo, ya que toda la aplicación está construida haciendo uso de la \textsc{API} que proporciona esta librería. Al estar basada en \textsc{JavaScript}, el gestor principal sobrescribe el componente de la escena y define el comportamiento principal de nuestra aplicación mediante el uso de la \textsc{API} de JavaScript en conjunto con los componentes de \textsc{A-Frame} y \textsc{Three.js}.
+\textsc{A-Frame} es el motor principal de \emph{renderizado} del prototipo, ya que toda la aplicación está construida haciendo uso de la \textsc{\gls{API}} que proporciona esta librería. Al estar basada en \textsc{JavaScript}, el gestor principal sobrescribe el componente de la escena y define el comportamiento principal de nuestra aplicación mediante el uso de la \textsc{API} de JavaScript en conjunto con los componentes de \textsc{A-Frame} y \textsc{Three.js}.
 \subsection{Ejemplos de uso}
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{html}
 <html>
@@ -904,7 +904,7 @@ Como se explica en la sección \ref{sec:dem}, utilizaremos esta tecnología para
 El objetivo es exportar los datos resultantes en el formato binario de alturas requerido por el \emph{componente generador de terrenos}\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}} de la biblioteca \textsc{A-Frame}.
 \section{Google Earth Engine}
 \subsection{Introducción a la tecnología}
-Es una plataforma geográfica basada en la nube que brinda a los usuarios la capacidad de operar, visualizar, analizar y exportar imágenes raster de nuestro planeta. Esta plataforma es ampliamente utilizada por científicos y organizaciones sin ánimo de lucro para acceder a información geográfica en forma de datos raster y realizar preprocesamiento y exportación de los mismos.
+Es una plataforma geográfica basada en la nube que brinda a los usuarios la capacidad de operar, visualizar, analizar y exportar imágenes \gls{raster} de nuestro planeta. Esta plataforma es ampliamente utilizada por científicos y organizaciones sin ánimo de lucro para acceder a información geográfica en forma de datos raster y realizar preprocesamiento y exportación de los mismos.
 
 Los datos geográficos se almacenan en servidores en la nube y se puede acceder a ellos y analizarlos mediante una interfaz de programación de aplicaciones \textsc{API} y un entorno de desarrollo integrado \textsc{IDE} en la nube\footnote{\url{https://code.earthengine.google.com/}}. \\
 Esta plataforma ofrece a los usuarios una serie de herramientas y funcionalidades que les permiten trabajar con los datos de manera eficiente y precisa.
@@ -913,9 +913,9 @@ Como se mencionará en detalle más adelante en la sección \ref{sec:raster}, es
 La georreferenciación garantiza que el usuario puedan tener una referencia espacial precisa dentro del escenario. Además, las alturas, como montañas o cañones, estarán correctamente posicionadas, lo que proporcionará una sensación realista al visualizar el terreno generado en \textsc{3D}.
 \section{Overpass-api}
 \subsection{Introducción a la tecnología}
-Es una \textsc{API} que permite acceder a través de consultas a los datos alojados en los servidores de \textsc{OpenStreetMap}. Utilizando un lenguaje similar al de las bases de datos, podemos filtrar la información y extraer los datos en formato \textsc{XML}. Posteriormente, podemos utilizar herramientas como \textsc{osmtogeojson}\footnote{\url{https://github.com/tyrasd/osmtogeojson}} para convertirlos en archivos \textsc{GEOJSON}, los cuales nuestra aplicación puede aprovechar para representar datos geoespaciales de manera efectiva.
+Es una \textsc{\gls{API}} que permite acceder a través de consultas a los datos alojados en los servidores de \textsc{OpenStreetMap}. Utilizando un lenguaje similar al de las bases de datos, podemos filtrar la información y extraer los datos en formato \textsc{XML}. Posteriormente, podemos utilizar herramientas como \textsc{osmtogeojson}\footnote{\url{https://github.com/tyrasd/osmtogeojson}} para convertirlos en archivos \textsc{GEOJSON}, los cuales nuestra aplicación puede aprovechar para representar datos geoespaciales de manera efectiva.
 \subsection{Contexto y aplicación en el prototipo}
-Como se detalla en la sección \ref{subsec:buildingData}, utilizaremos la página de consultas que nos proporciona la plataforma\footnote{\url{https://overpass-turbo.eu/}} para descargar y procesar los datos de los edificios ubicados en la zona específica de nuestro escenario y alojados en los servidores de \textsc{OpenStreetMap}. Nuestro objetivo será realizar un preprocesamiento de estos datos y subirlos en nuestra aplicación. De esta manera, el prototipo podrá generar las geometrías de los edificios durante la precarga, garantizando así una representación visual precisa de los edificios en el entorno \textsc{3D}.
+Como se detalla en la sección \ref{subsec:buildingData}, utilizaremos la página de consultas que nos proporciona la plataforma\footnote{\url{https://overpass-turbo.eu/}} para descargar y procesar los datos de los edificios ubicados en la zona específica de nuestro escenario y alojados en los servidores de \textsc{OpenStreetMap}. Nuestro objetivo será realizar un preprocesamiento de estos datos y subirlos en nuestra aplicación. De esta manera, el prototipo podrá generar las geometrías de los edificios durante la precarga, garantizando así una representación visual precisa de los edificios en el entorno \textsc{\gls{3D}}.
 \section{GitHub}
 \label{sec:github}
 \subsection{Introducción a la tecnología}
@@ -985,7 +985,7 @@ En resumen, este archivo desempeña un papel central al proporcionar la funciona
 
 \subsection{Componente main-scene}
 \label{sec:mainScene}
-Como mencionamos en la introducción, este archivo tiene la responsabilidad de sobrescribir las funciones \emph{init} y \emph{tick} del componente principal \emph{main-scene} en la escena de \textsc{A-Frame}. Esto permite agregar funcionalidades relacionadas con la obtención de datos de vuelo, la actualización de elementos en la escena y la interacción con las representaciones de aviones en el entorno \emph{3D}.
+Como mencionamos en la introducción, este archivo tiene la responsabilidad de sobrescribir las funciones \emph{init} y \emph{tick} del componente principal \emph{main-scene} en la escena de \textsc{A-Frame}. Esto permite agregar funcionalidades relacionadas con la obtención de datos de vuelo, la actualización de elementos en la escena y la interacción con las representaciones de aviones en el entorno \emph{\gls{3D}}.
 
 En la función \emph{init}, utilizaremos la instancia única del convertidor de mapas de la clase \emph{MapConversion} que se encuentra en el archivo \emph{mapConversion.js}. Esto nos permitirá convertir la posición inicial de la cámara configurada a la posición que debe usar dentro del entorno \emph{3D}. Estableceremos las coordenadas \emph{X} y \emph{Z}, mientras que la altura se calculará posteriormente utilizando el componente \emph{heightManager} responsable de gestionar las alturas de la cámara a medida que se desplaza por el terreno.
 
@@ -995,9 +995,9 @@ Finalmente, se establecerá una función que se invocará periódicamente según
 Es crucial comprender el concepto de una función con límite de frecuencia, también conocida como \emph{throttledFunction}, ya que no solo se utilizará en la actualización de datos aeronáuticos, sino que generalmente se empleará al implementar la función \emph{tick} de un componente. Este método se ejecuta automáticamente en cada cuadro renderizado por el motor de \emph{A-Frame}. Esto significa que el código dentro de la función \emph{tick} se ejecutará continuamente en cada repintado.
 Es por eso que es importante tener en cuenta que el uso excesivo o ineficiente del método \emph{tick} puede afectar negativamente el rendimiento de la aplicación. \\
 Por lo tanto, la idea principal detrás de una \emph{throttledFunction} es limitar la cantidad de veces que una función puede ser llamada dentro de un período de tiempo determinado.
-Al utilizar una \emph{throttledFunction} en la actualización de datos aeronáuticos, nos aseguramos de que la obtención y procesamiento de los datos se realice de manera controlada y eficiente. Esto evita llamadas excesivas a la \emph{API} de datos y reduce la carga en el sistema, lo que mejora el rendimiento general de la aplicación en entornos \emph{3D}.\\
+Al utilizar una \emph{throttledFunction} en la actualización de datos aeronáuticos, nos aseguramos de que la obtención y procesamiento de los datos se realice de manera controlada y eficiente. Esto evita llamadas excesivas a la \emph{\gls{API}} de datos y reduce la carga en el sistema, lo que mejora el rendimiento general de la aplicación en entornos \emph{3D}.\\
 Después de comprender el concepto de la \emph{throttledFunction}, la última tarea que realiza el método de inicialización es establecer una función que utilizará esta técnica. Esta función se ejecutará periódicamente cada intervalo de tiempo configurado y utilizará el servicio \emph{readLocalApiOpenSky} para obtener los datos aeronáuticos.\\
-Una vez que se obtengan los nuevos datos, la función invocará a \emph{updateData}, que está definida dentro del archivo \emph{mainScene.js}. En este punto, se realizará el análisis y parseo del archivo \emph{JSON} que contiene los datos aeronáuticos. Si se encuentran nuevos componentes que deben ser creados en la escena, se generarán las entidades necesarias. Para los componentes existentes, se crearán animaciones que permitirán que los aviones se muevan de manera fluida dentro del entorno \emph{3D}.
+Una vez que se obtengan los nuevos datos, la función invocará a \emph{updateData}, que está definida dentro del archivo \emph{mainScene.js}. En este punto, se realizará el análisis y parseo del archivo \emph{\gls{JSON}} que contiene los datos aeronáuticos. Si se encuentran nuevos componentes que deben ser creados en la escena, se generarán las entidades necesarias. Para los componentes existentes, se crearán animaciones que permitirán que los aviones se muevan de manera fluida dentro del entorno \emph{3D}.
 Esta estrategia garantiza que los datos aeronáuticos se actualicen regularmente y que la representación de los aviones en la escena sea realista y dinámica.
 
 Es importante remarcar que el componente \emph{main-scene} también será responsable de registrar los eventos necesarios para el envío de eventos sobre los elementos creados como aviones, para que el componente que explicaremos más adelante responsable de mostrar los datos reciba la información y el evento de mostrarse.
@@ -1078,9 +1078,9 @@ Como resultado, el archivo \textsc{HTML} principal de nuestro escenario carga el
 En esta sección, se describirá en detalle la implementación de toda la lógica de conversiones utilizada para georreferenciar las entidades dentro del escenario. También se abordarán los problemas que han surgido durante el proceso y las soluciones aplicadas, así como las librerías utilizadas.
 \subsection{Gestor de conversiones del mapa}
 \label{subsec:mapConversion}
-En este fichero, se han implementado todas las funciones necesarias dentro de la aplicación para transformar coordenadas geoespaciales, en particular el objetivo principal de este gestor es la conversión de coordenadas expresadas en latitud y longitud en grados, a un vector válido para el escenario 3D (x, y, z).\\
+En este fichero, se han implementado todas las funciones necesarias dentro de la aplicación para transformar coordenadas geoespaciales, en particular el objetivo principal de este gestor es la conversión de coordenadas expresadas en latitud y longitud en grados, a un vector válido para el escenario \gls{3D} (x, y, z).\\
 Antes de adentrarnos en la descripción técnica, es importante hacer una breve introducción sobre los sistemas de referencia que vamos a utilizar y por qué es necesario realizar estas transformaciones.
-En el mundo de los Sistemas de Información Geográfica (\textsc{GIS}), es común utilizar sistemas de referencia geoespaciales representados por coordenadas geográficas y sistemas de proyección cartográfica.
+En el mundo de los Sistemas de Información Geográfica (\textsc{\gls{gis}}), es común utilizar sistemas de referencia geoespaciales representados por coordenadas geográficas y sistemas de proyección cartográfica.
 Una coordenada geográfica es un par de valores numéricos que representan la ubicación de un punto en la superficie de la Tierra. Como podemos observar en la figura \ref{fig:latlong} la \emph{latitud} y una \emph{longitud}, indican la posición definiendo la relación con los meridianos y paralelos terrestres.
 
 \begin{figure}[h]
@@ -1091,7 +1091,7 @@ Una coordenada geográfica es un par de valores numéricos que representan la ub
 \end{figure}
 
 En los sistemas de referencia geoespaciales, es común utilizar un datum que es un modelo matemático que describe la forma y la orientación de la Tierra, así como un punto de referencia. Muchos servicios y aplicaciones que proporcionan datos espaciales a nivel mundial, como \textsc{Google Maps} y \textsc{OpenSky}, utilizan el datum \textsc{WGS84} como su sistema de referencia estándar.\\
-El datum \textsc{WGS84} (Sistema Mundial Geodésico de 1984) es ampliamente aceptado y utilizado en todo el mundo. Fue desarrollado por el Departamento de Defensa de los Estados Unidos y la Agencia Nacional de Inteligencia Geoespacial (\textsc{NGA}) como un sistema de referencia global para el intercambio de datos geoespaciales.\\
+El datum \textsc{WGS84} (Sistema Mundial Geodésico de 1984) es ampliamente aceptado y utilizado en todo el mundo. Fue desarrollado por el Departamento de Defensa de los Estados Unidos y la Agencia Nacional de Inteligencia \gls{geoespacial} (\textsc{NGA}) como un sistema de referencia global para el intercambio de datos geoespaciales.\\
 \textsc{WGS84} se basa en un modelo matemático que representa la forma de la Tierra como un elipsoide de revolución y establece un conjunto de parámetros para la conversión precisa entre coordenadas geográficas y sistemas de coordenadas proyectadas.\\
 Dado que muchos servicios y datos geoespaciales se basan en \textsc{WGS84}, es importante que nuestra aplicación sea capaz de trabajar en este datum para garantizar la interoperabilidad y la correcta interpretación de los datos. Esto nos permite realizar conversiones precisas entre coordenadas geográficas en formato de \emph{latitud} y \emph{longitud}, y las coordenadas del escenario \textsc{3D} en el que estamos trabajando.
 \begin{figure}[h]
@@ -1123,8 +1123,8 @@ Según la regla de la mano derecha, si extendemos el pulgar, el índice y el ded
 \end{figure}
 Esta convención es ampliamente utilizada en gráficos \textsc{3D} y programación, incluido el entorno de desarrollo \textsc{A-Frame}. Al seguir la regla de la mano derecha, podemos establecer una consistencia en la orientación de los ejes y facilitar la comprensión y manipulación de los objetos en el espacio tridimensional.\\
 En este punto, nos enfrentamos al primer problema que debemos abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un datum \textsc{WGS84} y proyectado con \textsc{Mercator}, notaremos una diferencia en las coordenadas.
-La coordenada \textsc{Y}, que representa la latitud en el sistema geoespacial, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debemos tener en cuenta al diseñar nuestras fórmulas de conversión.\\
-Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema geoespacial se representa de manera diferente en ambos sistemas de referencia.
+La coordenada \textsc{Y}, que representa la latitud en el sistema \gls{geoespacial}, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debemos tener en cuenta al diseñar nuestras fórmulas de conversión.\\
+Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema \gls{geoespacial} se representa de manera diferente en ambos sistemas de referencia.
 \begin{figure}[H]
   \centering
   \includegraphics[width=13cm, keepaspectratio]{img/sistemasDeReferencia.drawio.png}
@@ -1186,7 +1186,7 @@ Para abordar este problema, se ha tomado la decisión de desplazar el centro del
 Esta solución nos permite trabajar con dimensiones más manejables y evita la asimetría en la representación. Al centrar el mapa en el escenario, las operaciones y cálculos se realizan de manera más eficiente y se logra una representación equilibrada de los elementos geoespaciales en el entorno 3D.\\
 Recapitulando, podemos resumir los siguientes puntos:
 \begin{itemize}
-    \item Nuestras transformaciones se centrarán en establecer las equivalencias de ejes entre los sistemas de referencia. En este caso, el eje \textsc{X} geoespacial se mapeará al eje X en el mundo \textsc{3D}, el eje Y geoespacial se mapeará al eje \textsc{Z} en el mundo \textsc{3D}, y la altura se representará en el eje Y en el vector 3D.
+    \item Nuestras transformaciones se centrarán en establecer las equivalencias de ejes entre los sistemas de referencia. En este caso, el eje \textsc{X} \gls{geoespacial} se mapeará al eje X en el mundo \textsc{3D}, el eje Y geoespacial se mapeará al eje \textsc{Z} en el mundo \textsc{3D}, y la altura se representará en el eje Y en el vector 3D.
     \item Habrá una inversión en el eje que representa la latitud. Esto significa que la coordenada Y geoespacial se mapeará al eje \textsc{-Z} en el mundo \textsc{3D} debido a la inversión.
     \item Se realizará un desplazamiento para centrar el escenario en la coordenada \texttt{(0,0,0)} en el mundo \textsc{3D}. Esto asegurará que el centro del escenario coincida con el origen de coordenadas en el mundo \textsc{3D}.
     \item Además, se aplicará un escalado para facilitar el dimensionado del escenario en el mundo \textsc{3D}. Esto permitirá trabajar con dimensiones más manejables y evitar problemas de representación y rendimiento.
@@ -1263,7 +1263,7 @@ Esta función será útil para posicionar entidades geoespaciales, como edificio
 \label{funcion:worldToDegree}
 Esta función se encargará de realizar la operación inversa a la función \emph{WGS84 a mundo 3D} descrita en la sección \ref{funcion:degreeToWorld}. Su objetivo es obtener la coordenada geodésica a partir de un vector tridimensional del mundo 3D. Para lograr esto, primero se realizará la conversión de la coordenada \textsc{3D} a una coordenada \textsc{Mercator} utilizando la función \emph{mundo 3D a Mercator} mencionada en la sección \ref{funcion:worldtoMercator}. Luego, se aplicará la conversión de la coordenada cartesiana a \textsc{WGS84} utilizando la función \emph{de Mercator a WGS84} descrita en la sección \ref{funcion:meterToDegree}.
 
-Aunque esta función no se utiliza actualmente en la aplicación, resulta útil para futuras funcionalidades. Por ejemplo, podría emplearse para mostrar la ubicación de la cámara principal en el \textsc{HUD}, proporcionando las coordenadas geodésicas correspondientes a la posición de la entidad de la cámara. Su implementación sería sencilla gracias al uso de esta función para convertir el vector de posición en el mundo 3D en una coordenada geodésica en formato \textsc{WGS84}.
+Aunque esta función no se utiliza actualmente en la aplicación, resulta útil para futuras funcionalidades. Por ejemplo, podría emplearse para mostrar la ubicación de la cámara principal en el \textsc{\gls{HUD}}, proporcionando las coordenadas geodésicas correspondientes a la posición de la entidad de la cámara. Su implementación sería sencilla gracias al uso de esta función para convertir el vector de posición en el mundo 3D en una coordenada geodésica en formato \textsc{WGS84}.
 
 \subsubsection{Devuelve el tamaño del terreno}
 \label{funcion:getGroundSize}
@@ -1276,7 +1276,7 @@ Esta función no tiene ninguna aplicación en el prototipo final, su único prop
 \section{Terreno en el mapa}
 \label{sec:mapGround}
 En esta carpeta se encuentran todos los archivos responsables de gestionar la lógica relacionada con el suelo y las entidades asociadas. El objetivo de estos archivos es gestionar todas las operaciones relacionadas con el suelo, desde la generación del mallado hasta el posicionamiento y desplazamiento de las entidades sobre la superficie del suelo. Para lograr esto, se utilizan diversas tecnologías y librerías que permiten realizar las operaciones necesarias de forma eficiente y precisa.\\
-También podremos encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos raster. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.\\
+También podremos encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos \gls{raster}. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.\\
 Cada celda en la matriz representa una unidad de área cuadrada y contiene un valor numérico que representa una altura tal y como podemos apreciar en la figura \ref{fig:dem}.
 
 Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un datum de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
@@ -1310,7 +1310,7 @@ Vamos a describir los pasos para generar el fichero \textsc{DEM} de Madrid como 
   \caption{Visor online de ficheros DEM Copernicus.}
   \label{fig:copernicus}
 \end{figure}
-    \item Utilizamos el comando \texttt{gdalbuildvrt} para crear un archivo \textsc{VRT} llamado \emph{map.vrt} que contiene un mosaico virtual de los archivos raster \url{eu_dem_v11_E30N10.TIF} y \url{eu_dem_v11_E30N20.TIF}. Esto permite acceder y trabajar con los datos de elevación contenidos en ambos archivos como si fueran un solo conjunto de datos, sin necesidad de fusionar físicamente los archivos originales. El archivo \textsc{VRT} proporciona una vista virtual de los datos raster y permite un acceso eficiente y flexible a los mismos.
+    \item Utilizamos el comando \texttt{gdalbuildvrt} para crear un archivo \textsc{VRT} llamado \emph{map.vrt} que contiene un mosaico virtual de los archivos \gls{raster} \url{eu_dem_v11_E30N10.TIF} y \url{eu_dem_v11_E30N20.TIF}. Esto permite acceder y trabajar con los datos de elevación contenidos en ambos archivos como si fueran un solo conjunto de datos, sin necesidad de fusionar físicamente los archivos originales. El archivo \textsc{VRT} proporciona una vista virtual de los datos raster y permite un acceso eficiente y flexible a los mismos.
 
     {\scriptsize
     \begin{verbatim}
@@ -1318,7 +1318,7 @@ Vamos a describir los pasos para generar el fichero \textsc{DEM} de Madrid como 
     \end{verbatim}
     }
     
-    \item Los ficheros que hemos descargado están proyectados en el sistema de referencia EPSG:3035\footnote{\url{https://epsg.io/3035}}, que utiliza la proyección \textsc{UTM} (Universal Transverse \textsc{Mercator}). Para realizar la transformación, utilizamos el comando \texttt{gdalwarp} que toma un archivo \textsc{VRT} llamado \emph{map.vrt} y lo convierte en un nuevo archivo \textsc{TIFF} llamado \emph{smallMap.tif}. Durante este proceso, los datos se reproyectan al sistema de referencia espacial \textsc{EPSG:4326}\footnote{\url{https://epsg.io/4326}}, que utiliza el \textsc{DATUM WGS84} y es el sistema de referencia que utilizamos para los datos de las API. Luego, los datos se recortan para abarcar la extensión definida por los límites de \emph{latitud} y \emph{longitud} proporcionados al comando.
+    \item Los ficheros que hemos descargado están proyectados en el sistema de referencia EPSG:3035\footnote{\url{https://epsg.io/3035}}, que utiliza la proyección \textsc{UTM} (Universal Transverse \textsc{Mercator}). Para realizar la transformación, utilizamos el comando \texttt{gdalwarp} que toma un archivo \textsc{VRT} llamado \emph{map.vrt} y lo convierte en un nuevo archivo \textsc{TIFF} llamado \emph{smallMap.tif}. Durante este proceso, los datos se reproyectan al sistema de referencia espacial \textsc{EPSG:4326}\footnote{\url{https://epsg.io/4326}}, que utiliza el \textsc{DATUM WGS84} y es el sistema de referencia que utilizamos para los datos de las \gls{API}. Luego, los datos se recortan para abarcar la extensión definida por los límites de \emph{latitud} y \emph{longitud} proporcionados al comando.
 
     {\scriptsize
     \begin{verbatim}
@@ -1369,8 +1369,8 @@ Vamos a describir los pasos para generar el fichero \textsc{DEM} de Madrid como 
 
 \subsection{Generación de la capa de textura raster}
 \label{sec:raster}
-Vamos a describir cómo utilizando la tecnología que nos brinda \textsc{Google Earth Engine} podemos extraer la capa raster correspondiente a las coordenadas del rectángulo para el cual hemos generado el archivo bin en formato \textsc{ENVI}. Esto nos permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que nos dará una representación más realista del terreno.\\
-En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estamos usando el \textsc{API} que ofrece el framework de \textsc{Google Earth Engine}, el objeto \texttt{ee} (Earth Engine) nos ofrece la capacidad de crear geometrias añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que seguimos para realizar la extracción del raster:
+Vamos a describir cómo utilizando la tecnología que nos brinda \textsc{Google Earth Engine} podemos extraer la capa \gls{raster} correspondiente a las coordenadas del rectángulo para el cual hemos generado el archivo bin en formato \textsc{ENVI}. Esto nos permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que nos dará una representación más realista del terreno.\\
+En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estamos usando el \textsc{API} que ofrece el \gls{framework} de \textsc{Google Earth Engine}, el objeto \texttt{ee} (Earth Engine) nos ofrece la capacidad de crear geometrias añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que seguimos para realizar la extracción del raster:
 \begin{enumerate}
     \item Creamos una geometría rectangular con coordenadas \textsc{WGS84} que nos permitirá realizar una operación de intersección con el raster para la obtención de una porción.
     \item Añadimos el rectángulo como capa para visualizar la zona que vamos a exportar y realizar una comprobación visual de los datos.
@@ -1422,7 +1422,7 @@ Export.image.toDrive({image: RGB,description: 'Sentinel2_RGB',scale: 20,crs:epsg
 \subsection{Gestor de alturas}
 \label{subsec:heightManager}
 El gestor de alturas es una clase en \textsc{JavaScript} encargada de administrar el terreno en el escenario. En nuestra aplicación, utilizaremos una única instancia de este gestor para aprovechar el almacenamiento de los datos de las alturas durante la carga del terreno. Además, el gestor proporcionará funcionalidades para obtener las alturas de puntos específicos en el escenario \textsc{3D}. En la inicialización del escenario principal descrita en la sección \ref{sec:mainScene.js}, el gestor de la escena invocará los métodos para cargar el terreno y los edificios.\\
-Un problema común al reutilizar componentes de \textsc{A-Frame} creados por otros desarrolladores, como en este caso el componente utilizado para generar el mallado del terreno con \textsc{Three.js}, es la dificultad para acceder a los datos leídos del archivo binario que contiene las alturas. Esta falta de documentación y de una API específica para acceder a los datos puede ser un obstáculo.\\
+Un problema común al reutilizar componentes de \textsc{A-Frame} creados por otros desarrolladores, como en este caso el componente utilizado para generar el mallado del terreno con \textsc{Three.js}, es la dificultad para acceder a los datos leídos del archivo binario que contiene las alturas. Esta falta de documentación y de una \gls{API} específica para acceder a los datos puede ser un obstáculo.\\
 Sin embargo, al analizar la implementación del componente \emph{aframe-terrain-model-component}, descubrimos que después de leer el archivo se emite un evento que contiene el objeto con los datos de alturas.\\
 Aprovechando esta información, nos suscribimos al evento una vez que creamos el componente del terreno. De esta manera, podemos recibir y almacenar la matriz de alturas preparando nuestra instancia única para atender peticiones que requieran la altura para un punto del mundo 3D.
 
@@ -1479,7 +1479,7 @@ En resumen para obtener la altura correspondiente a un vector de posición en el
 
 \subsection{Generación de datos geoespaciales de los edificios}
 \label{subsec:buildingData}
-Para extraer la información geoespacial de los edificios, nos hemos basado en el servicio proporcionado por \textsc{Overpass}\footnote{\url{https://overpass-api.de/}}, el cual ofrece acceso a datos geoespaciales almacenados en la base de datos de \textsc{OpenStreetMaps}\footnote{\url{https://www.openstreetmap.org/}}. \\
+Para extraer la información \gls{geoespacial} de los edificios, nos hemos basado en el servicio proporcionado por \textsc{Overpass}\footnote{\url{https://overpass-api.de/}}, el cual ofrece acceso a datos geoespaciales almacenados en la base de datos de \textsc{OpenStreetMaps}\footnote{\url{https://www.openstreetmap.org/}}. \\
 Overpass nos brinda una \textsc{API} que nos permite realizar consultas a la base de datos y también proporciona una herramienta en línea llamada \textsc{Overpass Turbo}\footnote{\url{https://overpass-turbo.eu/}}, que nos permite visualizar consultas a la \textsc{API}, así como visualizar y exportar los resultados de manera interactiva.\\
 Inicialmente, consideramos cargar los datos en línea en tiempo real. Sin embargo, debido a que el formato del resultado de la consulta requería un preprocesamiento adicional y a la gran cantidad de entidades que se recuperaban en cada consulta, llegamos a la conclusión de que, para el prototipo, sería mejor trabajar con una cantidad reducida de entidades preprocesadas previamente y almacenadas localmente dando así prioridad al rendimiento de la aplicación.\\
 Para descargarnos los datos haremos uso de \textsc{Postman}\footnote{\url{https://www.postman.com/}} y generaremos la siguiente petición para la \textsc{API}:
@@ -1510,12 +1510,12 @@ Para realizar este proceso, simplemente debemos instalar la biblioteca utilizand
 
 \subsection{Geometria edificio}
 \label{subsec:buildingGeometry}
-En esta sección, vamos a describir brevemente la implementación de la generación de edificios utilizando la información proporcionada por la \textsc{API} de \textsc{Overpass}.
+En esta sección, vamos a describir brevemente la implementación de la generación de edificios utilizando la información proporcionada por la \textsc{\gls{API}} de \textsc{Overpass}.
 
 El gestor de alturas utiliza un archivo geoespacial en formato \textsc{GEOJSON} para representar los edificios. Cada edificio se define usando una lista de coordenadas geoespaciales en el sistema de referencia \textsc{WGS84}, que describe su contorno. En ocasiones también se incluye un metadato que indica el número de pisos del edificio dependiendo la zona que consultemos, sobre todo encontraremos más metadatos de alturas en ciudades grandes. \\
 Para la generación de la geometría del edificio, necesitaremos la lista de coordenadas ya convertida al espacio \textsc{3D} utilizando nuestro conversor descrito en la sección \ref{subsec:mapConversion}, la altura del terreno y la altura del edificio calculada a partir del número de pisos.
 
-Para calcular la altura del terreno, obtenemos el centroide de la lista de puntos que definen el contorno del edificio. Luego, aplicamos las fórmulas descritas en \ref{formula:calculoIndiceAlturas} para determinar la altura del terreno en el punto del centroide.
+Para calcular la altura del terreno, obtenemos el \gls{centroide} de la lista de puntos que definen el contorno del edificio. Luego, aplicamos las fórmulas descritas en \ref{formula:calculoIndiceAlturas} para determinar la altura del terreno en el punto del centroide.
 
 En nuestra implementación, comenzamos creando una geometría bidimensional en \textsc{Three.js} a partir de la lista de coordenadas del edificio. Sin embargo, surge un problema al realizar la extrusión, ya que las coordenadas que utiliza la API de \textsc{Three.js} para extruir una forma son en 2D y al devolver la geometría 3D tendrá la siguiente forma \texttt{(x, y, 0)}, cuando en realidad deberían ser \texttt{(x, 0, y)}.\\ 
 Por lo tanto, después de crear la forma, aplicamos una rotación de 90 grados alrededor del \emph{eje X} para colocar el edificio en su posición original. Luego, ajustamos la altura del edificio aplicando una traslación en el \emph{eje Y} que incluye la altura del terreno y la altura del edificio. De esta manera, el edificio queda correctamente posicionado y anclado al terreno.
@@ -1568,21 +1568,21 @@ Una vez calculada la posición de la cámara principal en el escenario, utilizam
 En esta sección, vamos a analizar los componentes clave de la arquitectura principal encargados del acceso a los datos. En el prototipo desarrollado, se pueden configurar dos tipos de comportamientos.
 
 El primero se refiere a la escena principal funcionado como una representación de datos en caché. En este caso, se muestra un histórico de datos obtenidos a través de la pieza responsable de guardar datos de la \textsc{API} dentro del prototipo o de otra fuente de datos históricos. \\
-El único requisito es que estos datos mantengan el mismo formato \textsc{JSON} proporcionado por la \textsc{API} de \textsc{OpenSky}. Sin embargo, en el futuro, se podrían desarrollar fácilmente componentes adicionales que puedan leer otros formatos de datos, ya que toda la información está referenciada a la misma clase, la cual es precargada por el módulo de configuración. Por lo tanto, si cambian las posiciones de la información proveniente de otro servidor, solo se requeriría reconfigurar las posiciones en el archivo de configuración que precarga la escena.\\
+El único requisito es que estos datos mantengan el mismo formato \textsc{\gls{JSON}} proporcionado por la \textsc{API} de \textsc{OpenSky}. Sin embargo, en el futuro, se podrían desarrollar fácilmente componentes adicionales que puedan leer otros formatos de datos, ya que toda la información está referenciada a la misma clase, la cual es precargada por el módulo de configuración. Por lo tanto, si cambian las posiciones de la información proveniente de otro servidor, solo se requeriría reconfigurar las posiciones en el archivo de configuración que precarga la escena.\\
 
 El segundo comportamiento se refiere a la representación en tiempo real del tráfico aéreo. En este caso, los datos provienen directamente del servicio\textsc{ OpenSky REST API}, que nos proporciona datos \textsc{ADS-B} en tiempo real. Estos datos se representarán en el escenario, lo que permitirá mostrar el espacio aéreo en un entorno \textsc{3D} en tiempo real. Esta funcionalidad resulta especialmente útil como punto de partida para aplicaciones de control de espacios aéreos.
 \subsection{Datos caché de vuelo}
 \label{subsec:datosCacheVuelo}
 En esta sección, vamos a describir cómo se gestiona la caché a través de la clase \emph{FlightCacheData}, que se encuentra en el archivo \emph{FlightCacheData.js} dentro del módulo de gestión de datos.\\
-Estos objetos se instancian cuando un vuelo aparece en el escenario y se mantienen siempre y cuando el vuelo esté presente en cada lectura de datos de la \textsc{API}. Actúan como objetos \texttt{DTO} (\emph{Data Transfer Object}) para mantener el estado del avión.\\
+Estos objetos se instancian cuando un vuelo aparece en el escenario y se mantienen siempre y cuando el vuelo esté presente en cada lectura de datos de la \textsc{API}. Actúan como objetos \texttt{\gls{DTO}} (\emph{Data Transfer Object}) para mantener el estado del avión.\\
 Estos objetos son necesarios para el cacheo de la posición antigua dentro del escenario, lo cual es crucial para generar animaciones que proporcionen un movimiento fluido de los aviones. \\
 Además, cada vez que se actualiza la posición de un avión, se emite un evento al componente responsable de pintar el trayecto del vuelo (descrito en la sección \ref{subsec:track}). De esta manera, el componente puede actualizar su geometría y mostrar el trayecto de los aviones desde su entrada en el escenario hasta su posición actual.
 \\
 Como ya se describió en la sección \ref{subsec:movimientoFluido}, estos objetos se almacenan en un mapa indexado a través de su identificador para que su recuperación sea eficiente, servirán para mantener el estado de un vuelo específico en el escenario. Esto permite que el gestor del escenario genere una animación utilizando el vector de la caché y el nuevo vector leído de la API para lograr un movimiento fluido, y también actualiza la geometría responsable de representar el trayecto del avión en el escenario mediante un evento emitido sobre el escenario.
-\subsection{Objeto de acceso a datos ADS-B (DAO)}
+\subsection{Objeto de acceso a datos ADS-B (\gls{DAO})}
 \label{subsec:dao}
-El objeto de acceso a datos, comúnmente conocido como \texttt{DAO} (\emph{Data Access Object}), es el objeto responasable de la obtención de los datos ADS-B. Como se muestra en la figura \ref{fig:dao}, el \texttt{DAO} accede al gestor de configuración para verificar si está configurado para acceder en tiempo real o utilizar datos en caché. \\
-En el caso de estar configurado para usar datos en caché, el \texttt{DAO} consulta al gestor de configuración la carpeta y el índice desde donde debe comenzar a leer. En cada evento de actualización, el \texttt{DAO} lee un archivo \textsc{JSON} de la carpeta especificada y lo proporciona al gestor principal de la escena.
+El objeto de acceso a datos, comúnmente conocido como \texttt{\gls{DAO}} (\emph{Data Access Object}), es el objeto responasable de la obtención de los datos ADS-B. Como se muestra en la figura \ref{fig:dao}, el \texttt{DAO} accede al gestor de configuración para verificar si está configurado para acceder en tiempo real o utilizar datos en caché. \\
+En el caso de estar configurado para usar datos en caché, el \texttt{DAO} consulta al gestor de configuración la carpeta y el índice desde donde debe comenzar a leer. En cada evento de actualización, el \texttt{DAO} lee un archivo \textsc{\gls{JSON}} de la carpeta especificada y lo proporciona al gestor principal de la escena.
 
 Si la configuración del \texttt{DAO} está establecida en tiempo real, se realizará una petición a una \textsc{API REST} para obtener los datos en formato \textsc{JSON}. El \texttt{DAO} consultará al módulo de configuración para obtener el usuario y la contraseña necesarios para autenticarse en la \textsc{API}. Es importante destacar que la API nos permite realizar consultas dentro de una zona delimitada por coordenadas geodésicas. \\
 Por lo tanto, la petición se realizará dentro de los límites geodésicos establecidos en la configuración del escenario. La respuesta \textsc{JSON} de la \textsc{API} contendrá los vuelos que se encuentren dentro de la escena especificada.
@@ -1598,7 +1598,7 @@ El gestor principal de la escena utiliza los datos proporcionados por el \texttt
 
 \subsection{Consulta y almacenamiento de datos a la carpeta caché}
 \label{subsec:obtencionCache}
-Para asegurar el correcto funcionamiento del componente de acceso a los datos mencionado en la sección anterior \ref{subsec:dao}, es necesario contar con la implementación de una pieza responsable del almacenamiento de los datos en una carpeta de caché local. Así posteriormente, el \texttt{DAO} puede consultar esta carpeta en caso de que esté configurado en el modo local.\\
+Para asegurar el correcto funcionamiento del componente de acceso a los datos mencionado en la sección anterior \ref{subsec:dao}, es necesario contar con la implementación de una pieza responsable del almacenamiento de los datos en una carpeta de caché local. Así posteriormente, el \texttt{\gls{DAO}} puede consultar esta carpeta en caso de que esté configurado en el modo local.\\
 Este componente está implementado en \textsc{JavaScript} y se ejecuta en el entorno de \textsc{Node.js}. Su función principal es cargar previamente la configuración de un escenario específico, que incluye parámetros como el rectángulo geodésico para la obtención de datos y el intervalo de tiempo en el que se debe establecer el temporizador para realizar una petición a la \textsc{API} en cada evento. Además, este componente se encarga de almacenar el resultado de cada petición en un archivo dentro de la carpeta de caché, como se muestra en la figura \ref{fig:saveApiData}.
 \begin{figure}[h]
   \centering
@@ -1612,7 +1612,7 @@ Este componente está implementado en \textsc{JavaScript} y se ejecuta en el ent
   \caption{Ejecución con Node.js del almacenamiento de datos ADS-B en caché.}
   \label{fig:capturaDatosCache}
 \end{figure}
-\\Como podemos apreciar en la figura \ref{fig:capturaDatosCache} , en cada petición almacenamos en la carpeta local que usaremos de cache, un fichero \textsc{JSON} con los vectores de posición de los vuelos en ese instante temporal.\\
+\\Como podemos apreciar en la figura \ref{fig:capturaDatosCache} , en cada petición almacenamos en la carpeta local que usaremos de cache, un fichero \textsc{\gls{JSON}} con los vectores de posición de los vuelos en ese instante temporal.\\
 Estos ficheros podrán ser leídos por el \texttt{DAO}, el componte anteriormente descrito en la sección \ref{subsec:dao}.
 \clearpage
 \section{Gestión de la interfaz de usuario}
@@ -1667,7 +1667,7 @@ Como veremos más adelante, este componente tiene la capacidad de ser activado o
 
 \subsection{Componente barra de herramientas de la interfaz de usuario}
 \label{subsec:toolbar3d}
-En esta sección, exploraremos el componente que acompaña al usuario y permite habilitar o deshabilitar funcionalidades. La barra de herramientas es una entidad 3D que se despliega como un \textsc{HUD} \emph{(Head-Up Display)} en forma de pantalla frontal de visualización. Proporciona al usuario una interfaz para interactuar con las diversas funcionalidades de la aplicación.
+En esta sección, exploraremos el componente que acompaña al usuario y permite habilitar o deshabilitar funcionalidades. La barra de herramientas es una entidad 3D que se despliega como un \textsc{\gls{HUD}} \emph{(Head-Up Display)} en forma de pantalla frontal de visualización. Proporciona al usuario una interfaz para interactuar con las diversas funcionalidades de la aplicación.
 
 Dado que nos encontramos en un entorno 3D, hemos implementado la barra de herramientas como un componente 3D dentro de la escena, anclado a la cámara principal. Sin embargo, nos hemos enfrentado al desafío de que esta barra puede resultar molesta al bloquear parte de la vista del usuario. Para solucionar este problema, hemos diseñado el componente de manera que pueda plegarse y arrastrarse, brindando al usuario la capacidad de colocarlo en una posición menos intrusiva y ocupando un espacio mínimo en la pantalla.\\
 En la figura~\ref{fig:toolbarDesplegada} podemos ver la barra de herramientas en su tamaño desplegado mientras que en la figura~\ref{fig:toolbarPlegada} se aprecia el poco espacio que ocupa una vez la plegamos.
@@ -1703,10 +1703,10 @@ La barra de herramientas está representada por un plano principal con transpare
 		\label{codigo:crearBoton}
 	}
 \end{figure}
-Cada botón se crea mediante una función interna (ver Código \ref{codigo:crearBoton}) que recibe varios argumentos. Estos argumentos incluyen un identificador único utilizado para hacer referencia al botón en el contexto del \textsc{DOM}, las dimensiones de la entidad que determinan su ancho y alto, el texto, la posición dentro de la barra de herramientas, si el botón es conmutable o no, la acción a ejecutar cuando el botón está activado y la acción a ejecutar cuando el botón está desactivado.\\
+Cada botón se crea mediante una función interna (ver Código \ref{codigo:crearBoton}) que recibe varios argumentos. Estos argumentos incluyen un identificador único utilizado para hacer referencia al botón en el contexto del \textsc{\gls{DOM}}, las dimensiones de la entidad que determinan su ancho y alto, el texto, la posición dentro de la barra de herramientas, si el botón es conmutable o no, la acción a ejecutar cuando el botón está activado y la acción a ejecutar cuando el botón está desactivado.\\
 Además, se pueden especificar propiedades visuales para el botón cuando está en estado activado y cuando está en estado desactivado, como el color y el texto correspondiente. Esta configuración flexible y modular hace que nuestra barra de herramientas sea altamente reutilizable para otros proyectos y fácilmente extensible para añadir más funcionalidades dentro de la aplicación.\\
 En la sección \ref{subsec:guiaBarra3d} mostramos un ejemplo de como reutilizar la barra de herramientas con mas detalles sobre la función que acabaos de describir.\\
-Nuestra aplicación, haciendo uso del método anteriormente descrito nuestro componente barra de herramientas crea dos botones conmutables que permiten habilitar la funcionalidad de selección de aviones y visualizar su información a través de un panel \textsc{HUD} que contiene acciones adicionales. Además, hemos incluido un botón que activa y desactiva la funcionalidad de texto contextual, como se describe en la sección anterior \ref{subsec:tooltip}.
+Nuestra aplicación, haciendo uso del método anteriormente descrito nuestro componente barra de herramientas crea dos botones conmutables que permiten habilitar la funcionalidad de selección de aviones y visualizar su información a través de un panel \textsc{\gls{HUD}} que contiene acciones adicionales. Además, hemos incluido un botón que activa y desactiva la funcionalidad de texto contextual, como se describe en la sección anterior \ref{subsec:tooltip}.
 \subsubsection{Animación de la barra de herramientas}
 \label{subsec:animationToolbar}
 Para lograr la funcionalidad de plegado, se han implementado animaciones que actúan sobre la escala y opacidad de los componentes de la barra de herramientas. Cuando el usuario presiona el botón de plegado, la barra de herramientas oculta los botones mediante una animación que los desvanece gradualmente a través de la opacidad. Luego, la barra de herramientas se comprime horizontalmente, lo que también afecta al botón de plegado, haciendo que se comprima en tamaño.\\
@@ -1719,7 +1719,7 @@ Para contrarrestar esta compresión, se realiza una animación inversa en el bot
 \end{figure}
 \subsection{Componente pantalla frontal de visualización (HUD)}
 \label{subsec:hud}
-El elemento \textsc{HUD} es esencial en nuestra aplicación, ya que proporciona al usuario la visualización de datos de los aviones, así como funcionalidades adicionales relacionadas con los aviones seleccionados.
+El elemento \textsc{\gls{HUD}} es esencial en nuestra aplicación, ya que proporciona al usuario la visualización de datos de los aviones, así como funcionalidades adicionales relacionadas con los aviones seleccionados.
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/hud.jpg}
@@ -1727,13 +1727,13 @@ El elemento \textsc{HUD} es esencial en nuestra aplicación, ya que proporciona 
   \label{fig:hud}
 \end{figure}
 
-Uno de los principales objetivos de nuestra aplicación es permitir al usuario ver la información de los aviones en tiempo real o en diferido. Cuando habilitamos la funcionalidad del \textsc{HUD} en la barra de herramientas, le brindamos al usuario la capacidad de seleccionar un avión y desplegar un panel informativo. Este panel contiene una serie de datos obtenidos a través de metadatos \textsc{ADS-B}, y se actualiza mediante eventos en cada consulta a la \textsc{API}.\\
-En resumen, al activar la funcionalidad del \textsc{HUD} en nuestra barra de herramientas, permitimos al usuario seleccionar aviones y ver información actualizada de los mismos, como la altura y velocidad, basada en metadatos \textsc{ADS-B} obtenidos a través de consultas a la \textsc{API}.\\
+Uno de los principales objetivos de nuestra aplicación es permitir al usuario ver la información de los aviones en tiempo real o en diferido. Cuando habilitamos la funcionalidad del \textsc{\gls{HUD}} en la barra de herramientas, le brindamos al usuario la capacidad de seleccionar un avión y desplegar un panel informativo. Este panel contiene una serie de datos obtenidos a través de metadatos \textsc{ADS-B}, y se actualiza mediante eventos en cada consulta a la \textsc{API}.\\
+En resumen, al activar la funcionalidad del \textsc{\gls{HUD}} en nuestra barra de herramientas, permitimos al usuario seleccionar aviones y ver información actualizada de los mismos, como la altura y velocidad, basada en metadatos \textsc{ADS-B} obtenidos a través de consultas a la \textsc{API}.\\
 En la figura \ref{fig:hud}, podemos observar que cuando seleccionamos un avión, se agrega una entidad en forma de anillo que rodea al avión y siempre está orientada hacia la cámara. Esta entidad se desplaza junto con el avión y permite al usuario realizar un seguimiento visual del avión seleccionado. Además, proporcionamos al usuario dos acciones adicionales relacionadas con el avión seleccionado.
 
 La primera acción consiste en visualizar el recorrido del avión en el escenario. Como se muestra en la figura \ref{fig:showTrack}, cuando un avión está seleccionado, se muestra un botón que habilita una línea azul que representa el trayecto que ha seguido el avión desde que ingresó al escenario hasta el momento actual. Esta línea muestra todas las posiciones que la entidad del avión ha ocupado durante su presencia en el escenario.
 
-La segunda funcionalidad que ofrece el panel \textsc{HUD} es la capacidad de visualizar una cámara de a bordo a través del panel. Esto brinda al usuario la experiencia de visualizar lo mismo que pueden ver los pasajeros del vuelo. La cámara de a bordo se proyecta en una pantalla que se despliega con una animación justo frente al panel \textsc{HUD}, como se muestra en la figura \ref{fig:cameraOnBoard}.\\
+La segunda funcionalidad que ofrece el panel \textsc{\gls{HUD}} es la capacidad de visualizar una cámara de a bordo a través del panel. Esto brinda al usuario la experiencia de visualizar lo mismo que pueden ver los pasajeros del vuelo. La cámara de a bordo se proyecta en una pantalla que se despliega con una animación justo frente al panel \textsc{\gls{HUD}}, como se muestra en la figura \ref{fig:cameraOnBoard}.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=8cm, keepaspectratio]{img/show_track.jpg}
@@ -1748,7 +1748,7 @@ La segunda funcionalidad que ofrece el panel \textsc{HUD} es la capacidad de vis
 \end{figure}
 \subsection{Desplazamiento de la barra de herramientas y pantalla frontal de visualización (HUD)}
 \label{subsec:customDraggable}
-Como mencionamos anteriormente, es de vital importancia brindar al usuario principal la capacidad de desplazar los componentes \textsc{HUD} de nuestra aplicación. Por lo tanto, en esta sección abordaremos el componente que nos permite arrastrar y mover nuestros componentes \textsc{HUD} a cualquier parte de nuestra área visual.\\
+Como mencionamos anteriormente, es de vital importancia brindar al usuario principal la capacidad de desplazar los componentes \textsc{\gls{HUD}} de nuestra aplicación. Por lo tanto, en esta sección abordaremos el componente que nos permite arrastrar y mover nuestros componentes \textsc{\gls{HUD}} a cualquier parte de nuestra área visual.\\
 Tanto el componente pantalla frontal de visualización \ref{subsec:hud} como el componente barra de herramientas \ref{subsec:toolbar3d} configuran en su entidad principal el componente detallado en esta sección llamado \emph{custom-draggable} que será responsable de proporcionar al usuario usuario principal la capacidad de desplazar las entidades \textsc{HUD} donde no le moleste.
 
 Implementar esta funcionalidad requirió mucho tiempo y esfuerzo, probando diversas estrategias e incluso explorando bibliotecas como \emph{A-frame-super-hands}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, aunque sin éxito. Esto se debe a que nuestro caso difiere significativamente de las aplicaciones convencionales.\\
@@ -1756,7 +1756,7 @@ El componente \emph{super-hands} está diseñado para agarrar y mover componente
 Además, se invirtieron muchas horas de investigación para garantizar que el componente fuera compatible tanto con gafas de realidad virtual como con un ratón convencional.\\
 \begin{figure}[H]
   \begin{minipage}[b]{0.58\linewidth}
-    En el archivo \emph{custom-draggable.js}, se ha creado un componente que permite arrastrar entidades que están contenidas dentro de la cámara principal. Es importante mencionar que en \textsc{A-frame}, cuando agregamos una entidad con geometría dentro de otra entidad, la posición de la entidad será relativa a su entidad padre. Nuestras entidades \textsc{HUD} se basan en este concepto, por lo tanto, tanto la barra de herramientas descrita en la sección \ref{subsec:toolbar3d} como nuestra pantalla frontal de visualización descrita en la sección \ref{subsec:hud}, son entidades secundarias del esqueleto principal que representa al usuario (\emph{rig}) tal y como podemos ver en la figura \ref{fig:jerarquiaEntidadesRig}.
+    En el archivo \emph{custom-draggable.js}, se ha creado un componente que permite arrastrar entidades que están contenidas dentro de la cámara principal. Es importante mencionar que en \textsc{A-frame}, cuando agregamos una entidad con geometría dentro de otra entidad, la posición de la entidad será relativa a su entidad padre. Nuestras entidades \textsc{\gls{HUD}} se basan en este concepto, por lo tanto, tanto la barra de herramientas descrita en la sección \ref{subsec:toolbar3d} como nuestra pantalla frontal de visualización descrita en la sección \ref{subsec:hud}, son entidades secundarias del esqueleto principal que representa al usuario (\emph{rig}) tal y como podemos ver en la figura \ref{fig:jerarquiaEntidadesRig}.
   \end{minipage}%
   \hfill
   \begin{minipage}[b]{0.4\linewidth}
@@ -1768,7 +1768,7 @@ Además, se invirtieron muchas horas de investigación para garantizar que el co
 \end{figure}
 Para permitir que los componentes que viajan con la cámara principal puedan ser arrastrados, vamos a aclarar el proceso. En primer lugar, es importante tener en cuenta que la complejidad radica en garantizar que el elemento se mueva siempre en el mismo plano, sin cambios en la profundidad, solo en las coordenadas horizontales y verticales.\\
 Además, cuando arrastramos el componente con el ratón o el mando de las gafas de realidad virtual, es fundamental que siga el movimiento realizado para dar la sensación de arrastre.\\
-Después de explorar diversas estrategias, llegamos a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{raycaster}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \textsc{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse.\\
+Después de explorar diversas estrategias, llegamos a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{\gls{raycaster}}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \textsc{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=10cm, keepaspectratio]{img/custom-draggable.png}
@@ -1776,14 +1776,14 @@ Después de explorar diversas estrategias, llegamos a la conclusión de que la t
 	\label{fig:raycaster}
 \end{figure}
 Cuando recibimos el evento de presionar el botón para arrastrar en la entidad, guardamos el componente \emph{raycaster} que generó dicho evento, dentro de la instancia para recuperarlo en los eventos posteriores. 
-También registramos la posición de intersección entre el \emph{raycaster} y el elemento \textsc{HUD} y hacemos transparente la entidad para dar la sensación de que la tenemos agarrada. Después, cambiamos al estado de \texttt{presionado} y creamos una entidad plana ficticia e invisible que colocamos justo frente a la cámara principal, a la misma distancia que el elemento \textsc{HUD} tal y como vemos en la figura\ref{fig:raycaster}. A partir de este punto, mientras estemos en el estado de "presionado" (es decir, arrastrando), en cada evento de la función \texttt{tick}, calculamos la intersección entre el plano ficticio y el \emph{raycaster} que generó el evento de agarre. A partir de esta intersección, determinamos el desplazamiento realizado por el controlador, que es un vector que contiene los incrementos de las coordenadas horizontales y verticales. Luego, convertimos este vector en uno relativo a la cámara y lo sumamos al vector de posición del elemento agarrado. De esta manera, logramos arrastrar y mover cualquier entidad que esté dentro de la jerarquía de la cámara en el plano deseado.\\
+También registramos la posición de intersección entre el \emph{raycaster} y el elemento \textsc{\gls{HUD}} y hacemos transparente la entidad para dar la sensación de que la tenemos agarrada. Después, cambiamos al estado de \texttt{presionado} y creamos una entidad plana ficticia e invisible que colocamos justo frente a la cámara principal, a la misma distancia que el elemento \textsc{\gls{HUD}} tal y como vemos en la figura\ref{fig:raycaster}. A partir de este punto, mientras estemos en el estado de "presionado" (es decir, arrastrando), en cada evento de la función \texttt{tick}, calculamos la intersección entre el plano ficticio y el \emph{raycaster} que generó el evento de agarre. A partir de esta intersección, determinamos el desplazamiento realizado por el controlador, que es un vector que contiene los incrementos de las coordenadas horizontales y verticales. Luego, convertimos este vector en uno relativo a la cámara y lo sumamos al vector de posición del elemento agarrado. De esta manera, logramos arrastrar y mover cualquier entidad que esté dentro de la jerarquía de la cámara en el plano deseado.\\
 Finalmente, cuando soltamos el botón del mando o el ratón, cambiamos al estado de  \texttt{no presionado} para fijar la posición de la entidad y evitar que siga siendo desplazada en cada evento de la función \texttt{tick}.
 
-Es importante destacar que todas las entidades \emph{HUD} contienen el componente \emph{look-at}\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de \textsc{A-Frame}, el cual garantiza que siempre estén orientadas hacia la cámara.
+Es importante destacar que todas las entidades \textsc{\gls{HUD}} contienen el componente \emph{look-at}\footnote{\url{https://github.com/supermedium/superframe/tree/master/components/look-at/}} de \textsc{A-Frame}, el cual garantiza que siempre estén orientadas hacia la cámara.
 \subsection{Componente trayecto realizado por un vuelo}
 \label{subsec:track}
-El componente \emph{track}, contenido en el archivo \emph{track.js}, es un componente que se suscribe a los eventos del objeto \texttt{DTO} \emph{FlightCacheData} descrito en el apartado \ref{subsec:datosCacheVuelo} y del panel \textsc{HUD} descrito en el apartado \ref{subsec:hud}.
-Es responsable de dibujar una línea que muestra el trayecto del avión en el escenario en caso de que el botón conmutable del \textsc{HUD} que activa la funcionalidad del vuelo seleccionado esté habilitado. Este componente solo escucha eventos de su vuelo, por lo tanto, solo usará el \emph{tag} correspondiente al identificador de vuelo, escuchando eventos de los siguientes prefijos a través de eventos en el escenario:
+El componente \emph{track}, contenido en el archivo \emph{track.js}, es un componente que se suscribe a los eventos del objeto \texttt{\gls{DTO}} \emph{FlightCacheData} descrito en el apartado \ref{subsec:datosCacheVuelo} y del panel \textsc{\gls{HUD}} descrito en el apartado \ref{subsec:hud}.
+Es responsable de dibujar una línea que muestra el trayecto del avión en el escenario en caso de que el botón conmutable del \textsc{\gls{HUD}} que activa la funcionalidad del vuelo seleccionado esté habilitado. Este componente solo escucha eventos de su vuelo, por lo tanto, solo usará el \emph{tag} correspondiente al identificador de vuelo, escuchando eventos de los siguientes prefijos a través de eventos en el escenario:
 \begin{itemize}
 	\item \textbf{\emph{flightCacheData\_push\_}}: Evento recibido por el objeto \emph{FlightCacheData} para actualizar la lista de puntos que componen la línea.
 	\item \textbf{\emph{flightCacheData\_show\_}}: Evento recibido por el panel \emph{HUD} emitido por el botón que activa la funcionalidad.
@@ -1797,7 +1797,7 @@ Aquí presentaremos un resumen del procedimiento necesario para crear un escenar
 \section{Generación de datos para el terreno}
 El primer paso consiste en determinar las coordenadas geodésicas para nuestro escenario. Es importante intentar definir un rectángulo con coordenadas que formen un plano lo más cuadrado posible. Esto se debe a que, aunque el cálculo se basa en ambas dimensiones, la cúpula del cielo se construye utilizando la coordenada más corta para asegurarse de que no tengamos una parte del área sin cubrir en el horizonte. \\
 Un escenario con proporciones cuadradas evitará tener un exceso de terreno fuera de la cúpula, lo cual podría afectar al rendimiento. En resumen, se recomienda generar coordenadas cuadradas en la medida de lo posible.\\
-Una vez que tengamos las coordenadas geodésicas de nuestro escenario, procederemos a extraer el archivo \textsc{DEM} (Modelo de Elevación Digital) y el archivo raster para configurar correctamente los archivos necesarios para crear el terreno. A continuación, seguiremos los pasos enumerados en el manual \ref{manual:generacionDem} para generar un archivo binario de alturas basado en las coordenadas seleccionadas. Para la generación del archivo raster, utilizaremos el script proporcionado en la figura \ref{manual:generacionRaster}, el cual se basa en el servicio de \textsc{Google} \cite{googleearthengine}. Asegúrate de reemplazar las coordenadas establecidas en el script con las correspondientes a tu escenario.
+Una vez que tengamos las coordenadas geodésicas de nuestro escenario, procederemos a extraer el archivo \textsc{DEM} (Modelo de Elevación Digital) y el archivo \gls{raster} para configurar correctamente los archivos necesarios para crear el terreno. A continuación, seguiremos los pasos enumerados en el manual \ref{manual:generacionDem} para generar un archivo binario de alturas basado en las coordenadas seleccionadas. Para la generación del archivo raster, utilizaremos el script proporcionado en la figura \ref{manual:generacionRaster}, el cual se basa en el servicio de \textsc{Google} \cite{googleearthengine}. Asegúrate de reemplazar las coordenadas establecidas en el script con las correspondientes a tu escenario.
 
 \section{Generación de edificios para el terreno}
 El siguiente paso consiste en generar los edificios que queremos que aparezcan dentro de nuestro escenario. Para ello, seguiremos estos pasos:
@@ -1806,13 +1806,13 @@ El siguiente paso consiste en generar los edificios que queremos que aparezcan d
     \item Utilizando el \emph{endpoint} \ref{manual:consultaEdificios} y sustituyendo las coordenadas por las del escenario, descargaremos los metadatos del servidor de \textsc{OpenStreetMaps} en formato \emph{OSM}. Esta consulta se puede realizar desde el Navegador o utilizando un software para hacer peticiones, como \textsc{POSTMAN}, que nos permita guardar el resultado de la consulta. Es importante tener en cuenta que el tamaño del archivo dependerá del escenario, y si se trata de una zona con muchos edificios, podría llegar a pesar cientos de \emph{Megabytes}. 
     
     Para evitar problemas de rendimiento en la aplicación, se recomienda aplicar algún tipo de filtrado adicional para obtener una lista reducida de edificios.
-    \item El siguiente paso consiste en procesar el archivo para generar un formato de archivo \textsc{GeoJSON} compatible con nuestra plataforma. Para ello, podemos instalar la librería \textsc{osmtogeojson} utilizando \textsc{npm} y ejecutar el comando en la consola, tal como se indica en el script \ref{manual:osmtogeojson}.
+    \item El siguiente paso consiste en procesar el archivo para generar un formato de archivo \textsc{GeoJSON} compatible con nuestra plataforma. Para ello, podemos instalar la librería \textsc{osmtogeojson} utilizando \emph{\gls{npm}} y ejecutar el comando en la consola, tal como se indica en el script \ref{manual:osmtogeojson}.
 \end{enumerate}
 \section{Almacenar metadatos de vuelos dentro del escenario (Opcional)}
-El siguiente paso es necesario solo en caso de que deseemos ejecutar el escenario en modo offline. Siempre que queramos utilizar la aplicación en modo online, este paso puede omitirse.
-Si deseamos levantar la aplicación en modo offline, es necesario contar con un archivo de vectores de posición de vuelos guardados en una carpeta configurada. Para guardar los datos de vuelos para las coordenadas del escenario, ejecutaremos el proceso por lotes \emph{openSkyDataSaver.js}. En la sección \ref{subsec:obtencionCache}, se describe el proceso realizado, pero veamos más detalles a continuación.
+El siguiente paso es necesario solo en caso de que deseemos ejecutar el escenario en modo \emph{offline} (sin conexión). Siempre que queramos utilizar la aplicación en modo tiempo real, este paso puede omitirse.
+Si deseamos levantar la aplicación en modo \emph{offline}, es necesario contar con un archivo de vectores de posición de vuelos guardados en una carpeta configurada. Para guardar los datos de vuelos para las coordenadas del escenario, ejecutaremos el proceso por lotes \emph{openSkyDataSaver.js}. En la sección \ref{subsec:obtencionCache}, se describe el proceso realizado, pero veamos más detalles a continuación.
 
-Debemos crear un archivo principal que cargue la configuración necesaria para ejecutar el proceso por batch y llame al método principal de la clase para inicializar el proceso. En la siguiente figura se muestra un ejemplo explicado con comentarios en las lineas principales.
+Debemos crear un archivo principal que cargue la configuración necesaria para ejecutar el proceso por lotes y que llame al método principal de la clase para inicializar el proceso. En la siguiente figura se muestra un ejemplo explicado con comentarios en las lineas principales.
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 import * as configuration from "./configuration/configurationModel.js";
 import * as openSkyDataSaver from "./openSkyDataSaver.js";
@@ -1832,7 +1832,7 @@ openSkyDataSaver.main();
 }
 \end{minted}
 
-Después para lanzar el proces simplemente ejecutar el siguiente comando en consola contra el fichero anteriormente explicado:
+Después para lanzar el proceso por lotes simplemente ejecutar el siguiente comando en consola contra el fichero anteriormente explicado:
 {\scriptsize
     \begin{verbatim}
    node ficheroPrincipal.js
@@ -1840,6 +1840,7 @@ Después para lanzar el proces simplemente ejecutar el siguiente comando en cons
 }
 
 \section{Generación de fichero de configuración}
+\label{conf:ficheroConfig}
 Ahora vamos a crear un archivo de configuración en formato \emph{JavaScript} donde estableceremos todos los parámetros de nuestra plataforma. 
 A continuación, se muestra un ejemplo detallado con cada uno de los parámetros:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
@@ -1872,11 +1873,12 @@ configuration.setApiUsuer('xxxx');
 //Contraseña de la web OpenSky.
 configuration.setApiPassword('xxxxx');
 \end{minted}
-Es fundamental tener identificado este archivo, ya que será el que especificaremos en el cuerpo de nuestro archivo \emph{index.html} para ejecutar nuestra aplicación.
+Es fundamental tener identificado este archivo, ya que será el que especificaremos en el cuerpo de nuestro archivo \emph{index.html} para ejecutar la configuración de nuestra aplicación.
 \section{Creación de la página principal de nuestra aplicación}
-En esta sección, crearemos la página principal que iniciará nuestra aplicación. Esta página solo varía en función del escenario seleccionado y del archivo de configuración que se cargue. Por lo tanto, solo necesitamos copiar la estructura principal del archivo \emph{index.html}, como se muestra a continuación. 
-
-En la línea 20 donde se encuentra `\emph{configuraciónEscenario.js}`, debemos establecer la ruta al archivo de configuración que creamos en la sección anterior. A continuación, se muestra la estructura genérica de la página principal de nuestra aplicación:
+En esta sección, crearemos la página principal que iniciará nuestra aplicación. Esta página solo varía en función del escenario seleccionado y del archivo de configuración que se cargue. Por lo tanto, solo necesitamos copiar la estructura principal del archivo \emph{index.html}, como se muestra a continuación. \\
+En la línea 20 donde se encuentra \emph{configuraciónEscenario.js}, debemos establecer la ruta al archivo de configuración que creamos en la sección anterior \ref{conf:ficheroConfig}. \\
+A continuación, se muestra la estructura genérica de la página principal de nuestra aplicación:
+\label{conf:index}
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, linenos=true, breaklines]{html}
 <!DOCTYPE html>
 <html lang="es">
@@ -1948,7 +1950,7 @@ En la línea 20 donde se encuentra `\emph{configuraciónEscenario.js}`, debemos 
 \end{minted}
 \section{Componentes reutilizables}
 \label{sec:componentesreutilizables}
-En esta sección, se presentarán en detalle los componentes de la aplicación que pueden ser reutilizados en otros proyectos a través de la configuración. Además, se presentarán aquellos componentes que pueden servir como base para su uso con pequeñas modificaciones. También se incluirán instrucciones detalladas sobre cómo llevar a cabo la reutilización de estos componentes.
+En esta sección, se presentarán en detalle los componentes de la aplicación que pueden ser reutilizados en otros proyectos a través de la configuración. Además, se presentarán aquellos componentes que pueden integrarse en otros proyectos a través de pequeñas modificaciones. También se incluirán instrucciones detalladas sobre cómo llevar a cabo la reutilización de estos componentes.
 \subsection{Componente de Información Contextual Interactiva}
 Este componente tiene la función de mostrar información contextual sobre una entidad específica. Permite al usuario obtener detalles adicionales o aclaraciones sobre el elemento seleccionado. Si deseas obtener más información sobre cómo implementarlo y utilizarlo, te recomiendo consultar la sección \ref{subsec:tooltip} donde se brindarán más detalles al respecto.
 \subsubsection{ruta}
@@ -1981,7 +1983,7 @@ En esta sección hablaremos del componente que permite al usuario cambiar de pos
 \subsubsection{Guía del programador}
 Para asegurarnos de poder interactuar con todos los componentes mediante eventos del ratón o del controlador de las gafas de realidad virtual, es necesario que la entidad en la que vamos a configurar este componente sea de la clase \emph{clickable} (vease  \ref{subsub:clickable} para obtener más detalles al respecto).
 Además, otro requisito importante que mencionamos previamente en la descripción, pero es necesario resaltarlo, es que este componente está diseñado específicamente para mover o arrastrar entidades en altura o anchura, pero no en profundidad. Además, estas entidades deben estar ubicadas dentro de la jerarquía de la cámara.
-Por último, es recomendable configurar el componente \emph{look-at}\footnote{\url{https://www.npmjs.com/package/aframe-look-at-component}} en la entidad que vamos a mover. Esto permitirá que la entidad siempre se oriente hacia la dirección en la que se está mirando.
+Por último, es recomendable configurar el componente \emph{look-at}\footnote{\url{https://www.npmjs.com/package/aframe-look-at-component}} en la entidad que vamos a mover. Esto permitirá que la entidad siempre se oriente hacia la cámara.
 \subsubsection{Ejemplo de uso}
 {\scriptsize
 	\begin{verbatim}
@@ -2001,27 +2003,26 @@ En esta sección vamos a detallar como reutilizar el componente de barra de herr
 }
 \subsubsection{Guía del programador}
 \label{subsec:guiaBarra3d}
-Para reutilizar este componente, es necesario agregarlo a la entidad de la cámara. Se trata de un componente diseñado para viajar con la cámara y añadir una superficie desplazable que proporciona botones con funcionalidades para la aplicación.
+Para reutilizar este componente, es necesario agregarlo a la entidad de la cámara. Se trata de un componente diseñado para viajar con la cámara y añadir una superficie desplazable que proporciona botones con funcionalidades para la aplicación.\\
+Para ello, puedes crear un componente que herede del código existente y sobrescribir el método \texttt{init}. También es posible copiar el código y simplemente definir tu propio método \texttt{init}.
 
-Para ello, puedes crear un componente que herede del código existente y sobrescribir el método \emph{init}. También es posible copiar el código y simplemente definir tu propio método \emph{init}.
-
-Dentro de este método, debes añadir los botones y establecer su funcionalidad. Para crear un botón, utiliza la función interna llamada \emph{createToolbarButton}, la cual recibe los siguientes parámetros:
+Dentro de este método, debes añadir los botones y establecer su funcionalidad. Para crear un botón, utiliza la función interna llamada \texttt{createToolbarButton}, la cual recibe los siguientes parámetros:
 
 \begin{itemize}
-	\item \textbf{id}: Identificador del elemento que se va a crear.
-	\item \textbf{widht}: Ancho del botón.
-	\item \textbf{hight}: Alto del botón.
-	\item \textbf{deep}: Grosor del botón.
-	\item \textbf{text}: Texto del botón en caso de ser pulsable.
-	\item \textbf{texSize}: Tamaño de la letra del botón.
-	\item \textbf{position}: Vector de posición relativa al panel de la barra de herramientas.
-	\item \textbf{tooble}: Booleano que indica si es un botón conmutable.
-	\item \textbf{enableFucntion}: Función que se ejecuta cuando el botón conmutable es activado.
-	\item \textbf{disableFunction}: Función que se ejecuta cuando el botón conmutable es desactivado.
-	\item \textbf{enableColor}: Color del botón conmutable cuando está activado.
-	\item \textbf{disableColor}: Color del botón conmutable cuando está desactivado.
-	\item \textbf{enableText}: Texto del botón conmutable cuando está activado.
-	\item \textbf{disableText}: Texto del botón conmutable cuando está desactivado.
+	\item \textbf{\emph{id}}: Identificador del elemento que se va a crear.
+	\item \textbf{\emph{widht}}: Ancho del botón en unidades del mundo 3D.
+	\item \textbf{\emph{hight}}: Alto del botón en unidades del mundo 3D.
+	\item \textbf{\emph{deep}}: Grosor del botón en unidades del mundo 3D.
+	\item \textbf{\emph{text}}: Texto del botón en caso de ser pulsable.
+	\item \textbf{\emph{texSize}}: Tamaño de la letra del botón en unidades del mundo 3D.
+	\item \textbf{\emph{position}}: Vector de posición relativa al panel de la barra de herramientas.
+	\item \textbf{\emph{tooble}}: Booleano que indica si es un botón conmutable.
+	\item \textbf{\emph{enableFucntion}}: Función que se ejecuta cuando el botón conmutable es activado.
+	\item \textbf{\emph{disableFunction}}: Función que se ejecuta cuando el botón conmutable es desactivado.
+	\item \textbf{\emph{enableColor}}: Color del botón conmutable cuando está activado.
+	\item \textbf{\emph{disableColor}}: Color del botón conmutable cuando está desactivado.
+	\item \textbf{\emph{enableText}}: Texto del botón conmutable cuando está activado.
+	\item \textbf{\emph{disableText}}: Texto del botón conmutable cuando está desactivado.
 \end{itemize}
 
 De esta manera, al crear los botones con su funcionalidad y agregar este componente dentro de la cámara, obtendremos una barra de herramientas en la aplicación que se necesite.
@@ -2036,13 +2037,14 @@ this.hudEnableButton = this.createToolbarButton('hudEnableButton',0.3, 0.15, nul
 this.toolbar.appendChild(this.hudEnableButton);
 \end{minted}
 
-Para agregar el componente a la cámara tan solo debemos configurarlo en nuestro html:
+Para agregar el componente, tan solo debemos configurar \emph{toolbar3d} dentro del elemento cámara como podemos ver en el siguiente ejemplo:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, breaklines]{html}
 <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
 raycaster="far: 4000; objects: .clickable" position="0 0 0" toolbar3d>
 \end{minted}
 \subsection{Geometría edificio}
-El siguiente componente es una implementación personalizada de geometría en \textsc{Three.js}, diseñado específicamente para representar edificios utilizando las coordenadas de su contorno. Este componente se encarga de extruir el contorno proporcionado y realizar las transformaciones afines necesarias para posicionar la geometría en el lugar correcto en la escena tridimensional.Este componente personalizado resulta especialmente útil para proyectos que involucren la visualización de edificios y estructuras arquitectónicas en entornos 3D.
+El siguiente componente es una implementación personalizada de geometría en \textsc{Three.js}, diseñado específicamente para representar edificios utilizando las coordenadas de su contorno. Este componente se encarga de extruir el contorno proporcionado y realizar las transformaciones afines necesarias para posicionar la geometría en el lugar correcto en la escena tridimensional.\\
+Este componente personalizado resulta especialmente útil para proyectos que involucren la visualización de edificios y estructuras arquitectónicas en entornos 3D.
 \subsubsection{ruta}
 {\scriptsize
 	\url{https://github.com/djprano/AFrameTFG/blob/main/js/map-ground/building-geometry.js}
@@ -2080,7 +2082,7 @@ Con estos datos y creando una entidad con la primitiva está geometría se crear
 \label{chap:conclusiones}
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
-El objetivo principal del proyecto consistió en desarrollar una aplicación que brindara una experiencia más inmersiva mediante el uso de tecnologías de realidad virtual. Se buscó replicar parte de la funcionalidad ofrecida por aplicaciones y servicios web de visualización de datos aeronáuticos, como se menciona en la sección \ref{sec:tecnosimilares}, pero en un entorno tridimensional en lugar de bidimensional.
+El objetivo principal del proyecto fue desarrollar una aplicación que proporcionara una experiencia más inmersiva en comparación con otras aplicaciones bidimensionales similares, aprovechando las tecnologías de realidad virtual. Se buscó recrear parte de la funcionalidad ofrecida por aplicaciones y servicios web de visualización de datos aeronáuticos, como se menciona en la sección \ref{sec:tecnosimilares}, pero en un entorno tridimensional en lugar de uno bidimensional.
 
 Se pretendía crear un prototipo que proporcionara una base de componentes que, en conjunto, actuaran como una plataforma sólida para la creación de funcionalidades adicionales. Además, se buscaba que esta base fuera adaptable a diferentes proyectos que involucraran datos geoespaciales y requirieran consultas en un entorno tridimensional. Esto resulta especialmente relevante para aplicaciones de sistemas de información geográfica que necesiten visualizar entidades geoespaciales.
 
@@ -2089,16 +2091,20 @@ A nivel personal, ha sido una experiencia muy gratificante avanzar en cada itera
 \label{sec:aplicacion}
 \begin{itemize}
 	\item \textbf{Fundamentos de la Programación}: Esta asignatura sentó las bases fundamentales de la programación, proporcionándome los conocimientos necesarios para desenvolverme en cualquier lenguaje de programación. Aprendí las herramientas principales utilizadas para implementar la lógica de negocio en diversos lenguajes de programación.
-	\item \textbf{Aplicaciones Telemáticas}: Durante esta asignatura, adquirí experiencia en el desarrollo de aplicaciones del lado del \emph{Front-End}, utilizando lenguajes como \emph{JavaScript} y familiarizándome con el paradigma de la programación funcional. Además, amplié mis conocimientos en el desarrollo de componentes orientados a eventos, donde la lógica se encuentra desacoplada y la comunicación se realiza a través de eventos en el \emph{DOM}.
-	\item \textbf{Prácticas Académicas Externas}: Realicé mis prácticas en la empresa Indra, donde trabajé en un software de sistemas de información geográfica. Esta experiencia fue fundamental para mi desarrollo en el proyecto actual, especialmente en el aspecto geoespacial. Adquirí conocimientos sobre proyecciones, datums y transformaciones necesarias para el manejo de ficheros binarios de alturas, donde una matriz define un espacio georeferenciado.
+	\item \textbf{Aplicaciones Telemáticas}: Durante esta asignatura, adquirí experiencia en el desarrollo de aplicaciones del lado del \emph{Front-End}, utilizando lenguajes como \emph{JavaScript} y familiarizándome con el paradigma de la programación funcional. Además, amplié mis conocimientos en el desarrollo de componentes orientados a eventos, donde la lógica se encuentra desacoplada y la comunicación se realiza a través de eventos en el \emph{\gls{DOM}}.
+	\item \textbf{Prácticas Académicas Externas}: Realicé mis prácticas en la empresa Indra, donde trabajé en un software de sistemas de información geográfica. Esta experiencia fue fundamental para mi desarrollo en el proyecto actual, especialmente en el aspecto \gls{geoespacial}. Adquirí conocimientos sobre proyecciones, datums y transformaciones necesarias para el manejo de ficheros binarios de alturas, donde una matriz define un espacio georeferenciado.
 \end{itemize}
 \section{Trabajos futuros}
+El desarrollo de una aplicación nunca termina, ya que siempre hay aspectos que se pueden mejorar o nuevas funcionalidades que se pueden añadir. Por esta razón, a continuación enumeraremos una serie de mejoras y nuevas funcionalidades que se podrían aplicar al prototipo de cara al futuro.
 \begin{enumerate}
-    \item Lectura de varios ficheros de edificios, daría mas versatilidad a la carga de edificios, siendo posible guardar varios ficheros por cada consulta, y que el software carge todos los ficheros presentes en la carpeta configurada.
-    \item Añadir un conmutable a la barra de herramientas que muestre las coordenadas geodésicas en las que se encuentra el usuario.
-    \item Añadir un conmutable que permita volvar al usuario para visualizar otra perspectiva diferente del escenario.
+    \item Lectura de varios ficheros de edificios, daría mas versatilidad a la carga de edificios, siendo posible guardar varios ficheros por cada consulta, y que el software cargue todos los ficheros presentes en la carpeta configurada, de esta manera podemos dividir las entidades geoespaciales clasificandolas por tipo y comenzar a añadir incluso datos que no sean solo edificios.
+    \item Añadir un conmutable a la barra de herramientas que active la funcionalidad de mostrar en un \textsc{HUD} las coordenadas geodésicas en las que se encuentra el usuario.
+    \item Añadir un botón conmutable en la barra de herramientas que desactive el componente gestor de altura de la cámara permitiendo volar al usuario para visualizar otra perspectiva diferente del escenario.
     \item Realizar un componente que limite al usuario poder desplazarse fuera del escenario.
     \item Se ha detectado que en escenarios grandes con velocidades de desplazamiento lentas ayudaría mucho añadir un conmutable a la barra de herramientas que despliegue un panel con el mapa visto desde arriba y nos permita seleccionar un punto del escenario donde desplazar al usuario de un salto.
+    \item Añadir un botón conmutable en la barra de herramientas que desactive el componente que amplifica los aviones con la distancia para tener una visualización más real cuando el usuario lo requiera.
+    \item Usar estimaciones con las marcas de tiempo de los vectores de posición de \textsc{OpenSky} para hacer estimaciones reales de si las muestras nuevas.\\
+    Si la nueva muestra tiene un intervalo temporal más pequeño que el utilizado por la aplicación, la posición mostrada reflejará un desplazamiento menor al real, lo que dará la sensación de que el avión se frena y luego acelera repentinamente en la siguiente muestra. En ese caso, podemos utilizar la información de la velocidad para descartar la posición y realizar una estimación basada en el trayecto y la velocidad del avión.
 \end{enumerate}
 \label{sec:trabajos_futuros}
 % Las siguientes dos instrucciones es todo lo que necesitas
@@ -2136,11 +2142,6 @@ A nivel personal, ha sido una experiencia muy gratificante avanzar en cada itera
     Conjunto estructurado de herramientas, bibliotecas, componentes y estándares que proporciona una base para el desarrollo de software
     }
 }
-\newglossaryentry{GIS}
-{
-    name=GIS,
-    description={También conocido por sus siglas en español SIG (Sistema de Información Geográfica).Es un sistema para recopilar, gestionar, manipular y analizar datos procedentes del mundo real que están vinculados a una referencia espacial}
-}
 \newglossaryentry{OpenGL}
 {
     name=OpenGL,
@@ -2152,10 +2153,100 @@ A nivel personal, ha sido una experiencia muy gratificante avanzar en cada itera
     description={"Graphics Processing Unit" (Unidad de Procesamiento Gráfico). Se trata de el componente de computación diseñado para realizar tareas relacionadas con la renderización para la visualización de gráficos en tiempo real en una computadora.}
 }
 
-\newglossaryentry{backend}
+\newglossaryentry{HUD}
 {
-    name=Backend,
-    description={También conocido como el lado del servidor, se refiere a la parte de un sistema o aplicación que se encarga procesar la lógica, los datos y la funcionalidad que no es visible directamente para los usuarios finales en el la parte servidora. Es la responsable de gestionar el control y la gestión del modelo de negocio y enviarlos a la vista para que los muestre.}
+	name={HUD},
+	description={Siglas de "Head-Up Display" (Pantalla de visualización frontal). Se refiere a una tecnología de visualización que proyecta información directamente en el campo de visión del usuario. El HUD permite al usuario ver información relevante independientemente de la dirección donde mire la cámara.}
 }
+\newglossaryentry{raster}
+{
+	name=Raster,
+	description={
+		Un raster es una representación de una imagen o datos espaciales en forma de una cuadrícula de píxeles o celdas. Cada píxel o celda contiene un valor que representa una propiedad o atributo específico. Los datos raster son comúnmente utilizados en sistemas de información geográfica (GIS) para representar información geoespacial, como mapas y fotografías aéreas.
+	}
+}
+\newglossaryentry{gis}
+{
+	name=GIS,
+	description={
+		Un GIS (Sistema de Información Geográfica), también conocido como SIG en español, es un sistema diseñado para recopilar, almacenar, analizar y visualizar datos geoespaciales. 
+	}
+}
+\newglossaryentry{oaci}{
+	name=OACI,
+	description={Organización de Aviación Civil Internacional}
+}
+\newglossaryentry{crowdsourcing}{
+	name={Crowdsourcing},
+	description={El crowdsourcing es un modelo de colaboración en línea que utiliza una comunidad en línea para obtener recursos. Se basa en la idea de que un grupo diverso de individuos puede generar soluciones innovadoras o realizar tareas complejas más eficientemente que una sola persona o una organización tradicional.}
+}
+\newglossaryentry{1090ES}{
+	name={1090ES},
+	description={El 1090ES es un estándar de comunicaciones utilizado en la aviación. Se refiere a una forma de transmisión de datos basada en el modo de transpondedor de vigilancia dependiente automática (ADS-B) en la banda de 1090 MHz.}
+}
+\newglossaryentry{UAT}{
+	name={UAT},
+	description={UAT (Universal Access Transceiver) es un sistema de comunicaciones utilizado en la aviación para la transmisión de datos basada en el modo de transpondedor de vigilancia dependiente automática (ADS-B) en la banda de frecuencia de 978 MHz. A diferencia del 1090ES, que opera en la banda de 1090 MHz.}
+}
+\newglossaryentry{SSR}{
+	name={SSR},
+	description={SSR (Secondary Surveillance Radar) es un sistema de radar secundario utilizado en la aviación para el seguimiento y la identificación de aeronaves. A diferencia del radar primario que detecta objetos por la señal reflejada, el SSR utiliza transpondedores en las aeronaves para transmitir una respuesta electrónica a las solicitudes del radar.}
+}
+\newglossaryentry{modo S}{
+	name={Modo S},
+	description={El modo S es un protocolo de comunicación utilizado en la aviación para la transmisión de información entre aeronaves y controladores de tráfico aéreo.}
+}
+\newglossaryentry{DOM}{
+	name={DOM},
+	description={El DOM (Document Object Model) es una representación estructurada y jerárquica de un documento HTML o XML.}
+}
+\newglossaryentry{ECMA}{
+	name={ECMA},
+	description={ECMA (European Computer Manufacturers Association) es una organización internacional de estándares técnicos.ECMA es conocida por su trabajo en la estandarización de lenguajes de programación, como JavaScript (ECMAScript).}
+}
+\newglossaryentry{WebGL}{
+	name={WebGL},
+	description={WebGL es una API de gráficos en 3D basada en JavaScript. Permite la renderización de gráficos interactivos en tiempo real en navegadores web compatibles sin necesidad de complementos adicionales.}
+}
+\newglossaryentry{renderización}{
+	name={Renderización},
+	description={La renderización es el proceso de generar una representación visual a partir de datos en bruto o de una descripción digital. En el contexto de los gráficos por computadora, la renderización implica convertir datos de geometría y atributos en una imagen o animación final.}
+}
+\newglossaryentry{hardware}{
+	name={Hardware},
+	description={El hardware se refiere a los componentes físicos y tangibles de un sistema informático. Incluye dispositivos como la unidad central de procesamiento (CPU), la memoria, el disco duro, la tarjeta gráfica, el monitor, el teclado, el mouse y otros periféricos.}
+}
+\newglossaryentry{npm}{
+	name={npm},
+	description={npm (Node Package Manager) es el administrador de paquetes predeterminado para Node.js, una plataforma de desarrollo de aplicaciones basada en JavaScript.}
+}
+\newglossaryentry{JSON}{
+	name={JSON},
+	description={JSON (JavaScript Object Notation) es un formato de intercambio de datos ligero y legible por humanos. Se basa en una estructura de pares clave-valor y es ampliamente utilizado para transmitir datos entre aplicaciones web.}
+}
+\newglossaryentry{raycaster}{
+	name={Raycaster},
+	description={Un raycaster es un algoritmo utilizado en gráficos por computadora para determinar la intersección entre un rayo y un objeto en una escena tridimensional. El rayo se origina en un punto específico (como la posición de la cámara) y se proyecta en una dirección determinada.}
+}
+\newglossaryentry{geoespacial}{
+	name={Geoespacial},
+	description={El término geoespacial se refiere a la integración de datos geográficos y espaciales en sistemas de información.}
+}
+\newglossaryentry{centroide}{
+	name={Centroide},
+	description={En matemáticas y geometría, el centroide es un punto que representa el centro de masa o centro de gravedad de un objeto o una figura geométrica.}
+}
+\newglossaryentry{DTO}{
+	name={DTO},
+	description={DTO (Data Transfer Object) es un patrón de diseño utilizado en el desarrollo de software para transferir datos entre diferentes capas o componentes de una aplicación.}
+}
+\newglossaryentry{DAO}{
+	name={DAO},
+	description={DAO (Data Access Object) es un patrón de diseño utilizado en el desarrollo de software para abstraer y encapsular la lógica de acceso a una fuente de datos, como una base de datos o un servicio web.}
+}
+
+
+
+
 
 \end{document}

@@ -82,34 +82,6 @@ parent={},%
 %
 }%
 
-\glsdefs@newdocentry{GIS}%
-{%
-name={GIS},%
-sort={GIS},%
-type={main},%
-first={GIS},%
-firstplural={GISs},%
-text={GIS},%
-plural={GISs},%
-description={También conocido por sus siglas en español SIG (Sistema de Información Geográfica).Es un sistema para recopilar, gestionar, manipular y analizar datos procedentes del mundo real que están vinculados a una referencia espacial},%
-descriptionplural={También conocido por sus siglas en español SIG (Sistema de Información Geográfica).Es un sistema para recopilar, gestionar, manipular y analizar datos procedentes del mundo real que están vinculados a una referencia espacial},%
-symbol={\relax },%
-symbolplural={\relax },%
-user1={},%
-user2={},%
-user3={},%
-user4={},%
-user5={},%
-user6={},%
-long={},%
-longplural={},%
-short={},%
-shortplural={},%
-counter={page},%
-parent={},%
-%
-}%
-
 \glsdefs@newdocentry{OpenGL}%
 {%
 name={OpenGL},%
@@ -166,17 +138,577 @@ parent={},%
 %
 }%
 
-\glsdefs@newdocentry{backend}%
+\glsdefs@newdocentry{HUD}%
 {%
-name={Backend},%
-sort={Backend},%
+name={HUD},%
+sort={HUD},%
 type={main},%
-first={Backend},%
-firstplural={Backends},%
-text={Backend},%
-plural={Backends},%
-description={También conocido como el lado del servidor, se refiere a la parte de un sistema o aplicación que se encarga procesar la lógica, los datos y la funcionalidad que no es visible directamente para los usuarios finales en el la parte servidora. Es la responsable de gestionar el control y la gestión del modelo de negocio y enviarlos a la vista para que los muestre.},%
-descriptionplural={También conocido como el lado del servidor, se refiere a la parte de un sistema o aplicación que se encarga procesar la lógica, los datos y la funcionalidad que no es visible directamente para los usuarios finales en el la parte servidora. Es la responsable de gestionar el control y la gestión del modelo de negocio y enviarlos a la vista para que los muestre.},%
+first={HUD},%
+firstplural={HUDs},%
+text={HUD},%
+plural={HUDs},%
+description={Siglas de "Head-Up Display" (Pantalla de visualización frontal). Se refiere a una tecnología de visualización que proyecta información directamente en el campo de visión del usuario. El HUD permite al usuario ver información relevante independientemente de la dirección donde mire la cámara.},%
+descriptionplural={Siglas de "Head-Up Display" (Pantalla de visualización frontal). Se refiere a una tecnología de visualización que proyecta información directamente en el campo de visión del usuario. El HUD permite al usuario ver información relevante independientemente de la dirección donde mire la cámara.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{raster}%
+{%
+name={Raster},%
+sort={Raster},%
+type={main},%
+first={Raster},%
+firstplural={Rasters},%
+text={Raster},%
+plural={Rasters},%
+description={ Un raster es una representación de una imagen o datos espaciales en forma de una cuadrícula de píxeles o celdas. Cada píxel o celda contiene un valor que representa una propiedad o atributo específico. Los datos raster son comúnmente utilizados en sistemas de información geográfica (GIS) para representar información geoespacial, como mapas y fotografías aéreas. },%
+descriptionplural={ Un raster es una representación de una imagen o datos espaciales en forma de una cuadrícula de píxeles o celdas. Cada píxel o celda contiene un valor que representa una propiedad o atributo específico. Los datos raster son comúnmente utilizados en sistemas de información geográfica (GIS) para representar información geoespacial, como mapas y fotografías aéreas. },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{gis}%
+{%
+name={GIS},%
+sort={GIS},%
+type={main},%
+first={GIS},%
+firstplural={GISs},%
+text={GIS},%
+plural={GISs},%
+description={ Un GIS (Sistema de Información Geográfica), también conocido como SIG en español, es un sistema diseñado para recopilar, almacenar, analizar y visualizar datos geoespaciales. },%
+descriptionplural={ Un GIS (Sistema de Información Geográfica), también conocido como SIG en español, es un sistema diseñado para recopilar, almacenar, analizar y visualizar datos geoespaciales. },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{oaci}%
+{%
+name={OACI},%
+sort={OACI},%
+type={main},%
+first={OACI},%
+firstplural={OACIs},%
+text={OACI},%
+plural={OACIs},%
+description={Organización de Aviación Civil Internacional},%
+descriptionplural={Organización de Aviación Civil Internacional},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{crowdsourcing}%
+{%
+name={Crowdsourcing},%
+sort={Crowdsourcing},%
+type={main},%
+first={Crowdsourcing},%
+firstplural={Crowdsourcings},%
+text={Crowdsourcing},%
+plural={Crowdsourcings},%
+description={El crowdsourcing es un modelo de colaboración en línea que utiliza una comunidad en línea para obtener recursos. Se basa en la idea de que un grupo diverso de individuos puede generar soluciones innovadoras o realizar tareas complejas más eficientemente que una sola persona o una organización tradicional.},%
+descriptionplural={El crowdsourcing es un modelo de colaboración en línea que utiliza una comunidad en línea para obtener recursos. Se basa en la idea de que un grupo diverso de individuos puede generar soluciones innovadoras o realizar tareas complejas más eficientemente que una sola persona o una organización tradicional.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{1090ES}%
+{%
+name={1090ES},%
+sort={1090ES},%
+type={main},%
+first={1090ES},%
+firstplural={1090ESs},%
+text={1090ES},%
+plural={1090ESs},%
+description={El 1090ES es un estándar de comunicaciones utilizado en la aviación. Se refiere a una forma de transmisión de datos basada en el modo de transpondedor de vigilancia dependiente automática (ADS-B) en la banda de 1090 MHz.},%
+descriptionplural={El 1090ES es un estándar de comunicaciones utilizado en la aviación. Se refiere a una forma de transmisión de datos basada en el modo de transpondedor de vigilancia dependiente automática (ADS-B) en la banda de 1090 MHz.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{UAT}%
+{%
+name={UAT},%
+sort={UAT},%
+type={main},%
+first={UAT},%
+firstplural={UATs},%
+text={UAT},%
+plural={UATs},%
+description={UAT (Universal Access Transceiver) es un sistema de comunicaciones utilizado en la aviación para la transmisión de datos basada en el modo de transpondedor de vigilancia dependiente automática (ADS-B) en la banda de frecuencia de 978 MHz. A diferencia del 1090ES, que opera en la banda de 1090 MHz.},%
+descriptionplural={UAT (Universal Access Transceiver) es un sistema de comunicaciones utilizado en la aviación para la transmisión de datos basada en el modo de transpondedor de vigilancia dependiente automática (ADS-B) en la banda de frecuencia de 978 MHz. A diferencia del 1090ES, que opera en la banda de 1090 MHz.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{SSR}%
+{%
+name={SSR},%
+sort={SSR},%
+type={main},%
+first={SSR},%
+firstplural={SSRs},%
+text={SSR},%
+plural={SSRs},%
+description={SSR (Secondary Surveillance Radar) es un sistema de radar secundario utilizado en la aviación para el seguimiento y la identificación de aeronaves. A diferencia del radar primario que detecta objetos por la señal reflejada, el SSR utiliza transpondedores en las aeronaves para transmitir una respuesta electrónica a las solicitudes del radar.},%
+descriptionplural={SSR (Secondary Surveillance Radar) es un sistema de radar secundario utilizado en la aviación para el seguimiento y la identificación de aeronaves. A diferencia del radar primario que detecta objetos por la señal reflejada, el SSR utiliza transpondedores en las aeronaves para transmitir una respuesta electrónica a las solicitudes del radar.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{modo S}%
+{%
+name={Modo S},%
+sort={Modo S},%
+type={main},%
+first={Modo S},%
+firstplural={Modo Ss},%
+text={Modo S},%
+plural={Modo Ss},%
+description={El modo S es un protocolo de comunicación utilizado en la aviación para la transmisión de información entre aeronaves y controladores de tráfico aéreo.},%
+descriptionplural={El modo S es un protocolo de comunicación utilizado en la aviación para la transmisión de información entre aeronaves y controladores de tráfico aéreo.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{DOM}%
+{%
+name={DOM},%
+sort={DOM},%
+type={main},%
+first={DOM},%
+firstplural={DOMs},%
+text={DOM},%
+plural={DOMs},%
+description={El DOM (Document Object Model) es una representación estructurada y jerárquica de un documento HTML o XML.},%
+descriptionplural={El DOM (Document Object Model) es una representación estructurada y jerárquica de un documento HTML o XML.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{ECMA}%
+{%
+name={ECMA},%
+sort={ECMA},%
+type={main},%
+first={ECMA},%
+firstplural={ECMAs},%
+text={ECMA},%
+plural={ECMAs},%
+description={ECMA (European Computer Manufacturers Association) es una organización internacional de estándares técnicos.ECMA es conocida por su trabajo en la estandarización de lenguajes de programación, como JavaScript (ECMAScript).},%
+descriptionplural={ECMA (European Computer Manufacturers Association) es una organización internacional de estándares técnicos.ECMA es conocida por su trabajo en la estandarización de lenguajes de programación, como JavaScript (ECMAScript).},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{WebGL}%
+{%
+name={WebGL},%
+sort={WebGL},%
+type={main},%
+first={WebGL},%
+firstplural={WebGLs},%
+text={WebGL},%
+plural={WebGLs},%
+description={WebGL es una API de gráficos en 3D basada en JavaScript. Permite la renderización de gráficos interactivos en tiempo real en navegadores web compatibles sin necesidad de complementos adicionales.},%
+descriptionplural={WebGL es una API de gráficos en 3D basada en JavaScript. Permite la renderización de gráficos interactivos en tiempo real en navegadores web compatibles sin necesidad de complementos adicionales.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{renderización}%
+{%
+name={Renderización},%
+sort={Renderización},%
+type={main},%
+first={Renderización},%
+firstplural={Renderizacións},%
+text={Renderización},%
+plural={Renderizacións},%
+description={La renderización es el proceso de generar una representación visual a partir de datos en bruto o de una descripción digital. En el contexto de los gráficos por computadora, la renderización implica convertir datos de geometría y atributos en una imagen o animación final.},%
+descriptionplural={La renderización es el proceso de generar una representación visual a partir de datos en bruto o de una descripción digital. En el contexto de los gráficos por computadora, la renderización implica convertir datos de geometría y atributos en una imagen o animación final.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{hardware}%
+{%
+name={Hardware},%
+sort={Hardware},%
+type={main},%
+first={Hardware},%
+firstplural={Hardwares},%
+text={Hardware},%
+plural={Hardwares},%
+description={El hardware se refiere a los componentes físicos y tangibles de un sistema informático. Incluye dispositivos como la unidad central de procesamiento (CPU), la memoria, el disco duro, la tarjeta gráfica, el monitor, el teclado, el mouse y otros periféricos.},%
+descriptionplural={El hardware se refiere a los componentes físicos y tangibles de un sistema informático. Incluye dispositivos como la unidad central de procesamiento (CPU), la memoria, el disco duro, la tarjeta gráfica, el monitor, el teclado, el mouse y otros periféricos.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{npm}%
+{%
+name={npm},%
+sort={npm},%
+type={main},%
+first={npm},%
+firstplural={npms},%
+text={npm},%
+plural={npms},%
+description={npm (Node Package Manager) es el administrador de paquetes predeterminado para Node.js, una plataforma de desarrollo de aplicaciones basada en JavaScript.},%
+descriptionplural={npm (Node Package Manager) es el administrador de paquetes predeterminado para Node.js, una plataforma de desarrollo de aplicaciones basada en JavaScript.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{JSON}%
+{%
+name={JSON},%
+sort={JSON},%
+type={main},%
+first={JSON},%
+firstplural={JSONs},%
+text={JSON},%
+plural={JSONs},%
+description={JSON (JavaScript Object Notation) es un formato de intercambio de datos ligero y legible por humanos. Se basa en una estructura de pares clave-valor y es ampliamente utilizado para transmitir datos entre aplicaciones web.},%
+descriptionplural={JSON (JavaScript Object Notation) es un formato de intercambio de datos ligero y legible por humanos. Se basa en una estructura de pares clave-valor y es ampliamente utilizado para transmitir datos entre aplicaciones web.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{raycaster}%
+{%
+name={Raycaster},%
+sort={Raycaster},%
+type={main},%
+first={Raycaster},%
+firstplural={Raycasters},%
+text={Raycaster},%
+plural={Raycasters},%
+description={Un raycaster es un algoritmo utilizado en gráficos por computadora para determinar la intersección entre un rayo y un objeto en una escena tridimensional. El rayo se origina en un punto específico (como la posición de la cámara) y se proyecta en una dirección determinada.},%
+descriptionplural={Un raycaster es un algoritmo utilizado en gráficos por computadora para determinar la intersección entre un rayo y un objeto en una escena tridimensional. El rayo se origina en un punto específico (como la posición de la cámara) y se proyecta en una dirección determinada.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{geoespacial}%
+{%
+name={Geoespacial},%
+sort={Geoespacial},%
+type={main},%
+first={Geoespacial},%
+firstplural={Geoespacials},%
+text={Geoespacial},%
+plural={Geoespacials},%
+description={El término geoespacial se refiere a la integración de datos geográficos y espaciales en sistemas de información.},%
+descriptionplural={El término geoespacial se refiere a la integración de datos geográficos y espaciales en sistemas de información.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{centroide}%
+{%
+name={Centroide},%
+sort={Centroide},%
+type={main},%
+first={Centroide},%
+firstplural={Centroides},%
+text={Centroide},%
+plural={Centroides},%
+description={En matemáticas y geometría, el centroide es un punto que representa el centro de masa o centro de gravedad de un objeto o una figura geométrica.},%
+descriptionplural={En matemáticas y geometría, el centroide es un punto que representa el centro de masa o centro de gravedad de un objeto o una figura geométrica.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{DTO}%
+{%
+name={DTO},%
+sort={DTO},%
+type={main},%
+first={DTO},%
+firstplural={DTOs},%
+text={DTO},%
+plural={DTOs},%
+description={DTO (Data Transfer Object) es un patrón de diseño utilizado en el desarrollo de software para transferir datos entre diferentes capas o componentes de una aplicación.},%
+descriptionplural={DTO (Data Transfer Object) es un patrón de diseño utilizado en el desarrollo de software para transferir datos entre diferentes capas o componentes de una aplicación.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{DAO}%
+{%
+name={DAO},%
+sort={DAO},%
+type={main},%
+first={DAO},%
+firstplural={DAOs},%
+text={DAO},%
+plural={DAOs},%
+description={DAO (Data Access Object) es un patrón de diseño utilizado en el desarrollo de software para abstraer y encapsular la lógica de acceso a una fuente de datos, como una base de datos o un servicio web.},%
+descriptionplural={DAO (Data Access Object) es un patrón de diseño utilizado en el desarrollo de software para abstraer y encapsular la lógica de acceso a una fuente de datos, como una base de datos o un servicio web.},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
