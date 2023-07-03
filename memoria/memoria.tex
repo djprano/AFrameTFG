@@ -95,7 +95,7 @@ Tutor : Dr. Jesús M. González Barahona\\
 \vspace{1cm}
 
 \large
-Curso académico 2022/2022
+Curso académico 2022/2023
 
 \end{center}
 \end{titlepage}
@@ -119,17 +119,17 @@ Curso académico 2022/2022
 
 \vspace{1cm}
 \large
-Título del Trabajo con Letras Capitales para Sustantivos y Adjetivos
-
+Visualización en Realidad Virtual de Datos Aeronáuticos
+con Contexto Geoespacial\\
 \vspace{1cm}
 \large
-\textbf{Autor :} Nombre del Alumno/a \\
-\textbf{Tutor :} Dr. Nombre del Profesor/a
+\textbf{Autor :} Víctor Jesús Temprano Hernández \\
+\textbf{Tutor :} Dr. Jesús M. González Barahona
 
 \end{center}
 
 \vspace{1cm}
-La defensa del presente Proyecto Fin de Carrera se realizó el día \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 202X, siendo calificada por el siguiente tribunal:
+La defensa del presente Proyecto Fin de Carrera se realizó el día \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 2023, siendo calificada por el siguiente tribunal:
 
 
 \vspace{0.5cm}
@@ -151,14 +151,14 @@ y habiendo obtenido la siguiente calificación:
 
 \vspace{1cm}
 \begin{flushright}
-Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 202X
+Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 2023
 \end{flushright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Dedicatoria
 
 \chapter*{Dedicatoria}
-
+En honor a mi padre, aunque no estés entre nosotros, siempre estarás presente en cada logro que alcanzo. Se que te sentirás orgulloso de mí, siempre te llevaré presente en mi corazón. Tu memoria y tu legado vivirá eternamente en mí.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Agradecimientos
@@ -167,8 +167,9 @@ Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 202X
 %\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
 
-Aquí vienen los agradecimientos\ldots Aunque está bien acordarse de la pareja, no hay que olvidarse de dar las gracias a tu madre, que aunque a veces no lo parezca disfrutará tanto de tus logros como tú\ldots 
-Además, la pareja quizás no sea para siempre, pero tu madre sí.
+En primer lugar quiero expresar mi profundo agradecimiento a mi mujer por acompañarme en cada uno de mis desafíos, y especialmente en este, donde ha asumido el papel de padre y madre para permitirme enfrentar este reto. Este trabajo no habría sido posible sin tu apoyo incondicional.\\
+También quiero dar las gracias a mi madre por recordarme que la vida es impredecible y que siempre es mejor tarde que nunca.\\
+Y por último a mi tutor Jesús María González Barahona, por adaptarse a mis horarios caóticos y comprender mis necesidades. Su flexibilidad ha sido fundamental en el desarrollo de este proyecto.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen
@@ -2105,6 +2106,7 @@ El desarrollo de una aplicación nunca termina, ya que siempre hay aspectos que 
     \item Añadir un botón conmutable en la barra de herramientas que desactive el componente que amplifica los aviones con la distancia para tener una visualización más real cuando el usuario lo requiera.
     \item Usar estimaciones con las marcas de tiempo de los vectores de posición de \textsc{OpenSky} para hacer estimaciones reales de si las muestras nuevas.\\
     Si la nueva muestra tiene un intervalo temporal más pequeño que el utilizado por la aplicación, la posición mostrada reflejará un desplazamiento menor al real, lo que dará la sensación de que el avión se frena y luego acelera repentinamente en la siguiente muestra. En ese caso, podemos utilizar la información de la velocidad para descartar la posición y realizar una estimación basada en el trayecto y la velocidad del avión.
+    \item Una funcionalidad adicional de alto valor añadido sería la inclusión de una interfaz gráfica que permita al usuario ingresar un identificador de vuelo y seleccionar el avión correspondiente en la escena. Esto brindaría al usuario la capacidad de consultar información sobre los vuelos directamente desde la visualización 3D.
 \end{enumerate}
 \label{sec:trabajos_futuros}
 % Las siguientes dos instrucciones es todo lo que necesitas
