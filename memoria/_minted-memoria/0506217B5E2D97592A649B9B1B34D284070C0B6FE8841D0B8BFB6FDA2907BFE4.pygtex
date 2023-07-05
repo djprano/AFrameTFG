@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	}\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{createFlightElement}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{c+c1}{//Vuelo nuevo}
+\PYG{+w}{		}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{mainScene}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{querySelector}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}a\PYGZhy{}scene\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{		}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{entityEl}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{createElement}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}a\PYGZhy{}entity\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}id\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{id}\PYG{p}{);}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}gltf\PYGZhy{}model\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZsh{}plane\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}class\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}clickable\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}scale\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{scale}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{y}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{scale}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{z}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{scale}\PYG{+w}{ }\PYG{p}{\PYGZcb{});}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{setAttribute}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}hover\PYGZhy{}scale\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}limitDistance: 100\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{addEventListener}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}mouseenter\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{evt}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{handleMouseEnter}\PYG{p}{(}\PYG{n+nx}{evt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{addEventListener}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}click\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{evt}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{handleMouseClick}\PYG{p}{(}\PYG{n+nx}{evt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{n+nx}{entityEl}\PYG{p}{.}\PYG{n+nx}{addEventListener}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}mouseleave\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{evt}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n+nx}{handleMouseLeave}\PYG{p}{(}\PYG{n+nx}{evt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{n+nx}{mainScene}\PYG{p}{.}\PYG{n+nx}{appendChild}\PYG{p}{(}\PYG{n+nx}{entityEl}\PYG{p}{);}
+\PYG{+w}{		}\PYG{k}{return}\PYG{+w}{ }\PYG{n+nx}{entityEl}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

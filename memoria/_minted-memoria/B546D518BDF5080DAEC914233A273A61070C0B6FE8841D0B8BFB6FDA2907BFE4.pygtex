@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{	}\PYG{c+c1}{//Creamos un botón para habilitar el hud}
+\PYG{+w}{	}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{hudEnableButton}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{createToolbarButton}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}hudEnableButton\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mf}{0.3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.15}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{,}\PYG{k+kc}{null}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{x}\PYG{o}{:}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.09}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{y}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{z}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{0.06}\PYG{+w}{ }\PYG{p}{\PYGZcb{},}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{,}
+\PYG{+w}{	}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{sceneEl}\PYG{p}{.}\PYG{n+nx}{emit}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}hud\PYGZhy{}enable\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{),}
+\PYG{+w}{	}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{sceneEl}\PYG{p}{.}\PYG{n+nx}{emit}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}hud\PYGZhy{}disable\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{),}
+\PYG{+w}{	}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}0a0\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}a00\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Hud enable\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Hud disable\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{	}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{toolbar}\PYG{p}{.}\PYG{n+nx}{appendChild}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{hudEnableButton}\PYG{p}{);}
+\end{Verbatim}
