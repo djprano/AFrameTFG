@@ -108,51 +108,69 @@ Curso académico 2022/2023
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Para firmar
-\clearpage
-\pagenumbering{gobble}
-\chapter*{}
+%\clearpage
+%\pagenumbering{gobble}
+%\chapter*{}
+%
+%\vspace{-4cm}
+%\begin{center}
+%\LARGE
+%\textbf{Trabajo Fin de Grado/Máster}
+%
+%\vspace{1cm}
+%\large
+%Visualización en Realidad Virtual de Datos Aeronáuticos
+%con Contexto Geoespacial\\
+%\vspace{1cm}
+%\large
+%\textbf{Autor :} Víctor Jesús Temprano Hernández \\
+%\textbf{Tutor :} Dr. Jesús M. González Barahona
+%
+%\end{center}
+%
+%\vspace{1cm}
+%La defensa del presente Proyecto Fin de Carrera se realizó el día \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 2023, siendo calificada por el siguiente tribunal:
+%
+%
+%\vspace{0.5cm}
+%\textbf{Presidente:}
+%
+%\vspace{1.2cm}
+%\textbf{Secretario:}
+%
+%\vspace{1.2cm}
+%\textbf{Vocal:}
+%
+%
+%\vspace{1.2cm}
+%y habiendo obtenido la siguiente calificación:
+%
+%\vspace{1cm}
+%\textbf{Calificación:}
+%
+%
+%\vspace{1cm}
+%\begin{flushright}
+%Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 2023
+%\end{flushright}
+%
 
-\vspace{-4cm}
-\begin{center}
-\LARGE
-\textbf{Trabajo Fin de Grado/Máster}
-
-\vspace{1cm}
-\large
-Visualización en Realidad Virtual de Datos Aeronáuticos
-con Contexto Geoespacial\\
-\vspace{1cm}
-\large
-\textbf{Autor :} Víctor Jesús Temprano Hernández \\
-\textbf{Tutor :} Dr. Jesús M. González Barahona
-
-\end{center}
-
-\vspace{1cm}
-La defensa del presente Proyecto Fin de Carrera se realizó el día \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 2023, siendo calificada por el siguiente tribunal:
-
-
-\vspace{0.5cm}
-\textbf{Presidente:}
-
-\vspace{1.2cm}
-\textbf{Secretario:}
-
-\vspace{1.2cm}
-\textbf{Vocal:}
-
-
-\vspace{1.2cm}
-y habiendo obtenido la siguiente calificación:
-
-\vspace{1cm}
-\textbf{Calificación:}
-
-
-\vspace{1cm}
+%%%%%%%%%%%%%%%%%%%%%%LICENCIA%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfill
 \begin{flushright}
-Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 2023
+\begin{minipage}{0.65\textwidth}
+{\footnotesize 
+\noindent©2023 Víctor Jesús Temprano Hernández\\ 
+Algunos derechos reservados\\
+Este documento se distribuye bajo la licencia\\
+“Atribución-CompartirIgual 4.0 Internacional” de Creative Commons,\\
+disponible en  \\
+\url{https://creativecommons.org/licenses/by-sa/4.0/deed.es}
+}
+
+\end{minipage}
 \end{flushright}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Dedicatoria
@@ -253,7 +271,7 @@ A continuación en la figura ~\ref{figura:mapaTecnologias}, mostramos el mapa de
 
 Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{\gls{gis}} llamado \textsc{IGEA} de la compañía \textsc{Indra}, tuve la oportunidad de asumir la responsabilidad de integrar el núcleo del proyecto software \textsc{IGEA}\footnote{\url{https://www.indracompany.com/sites/default/files/indra_in_grid_esp_baja.pdf}} en una nueva aplicación de software para el proyecto \textsc{iTEC}, el cual se enfoca en la visualización y gestión de espacios aéreos europeos. Este desafío representó un hito muy interesante en mi carrera, ya que me permitió salir de mi zona de confort y experimentar un crecimiento de conocimientos sobre entornos de programación en 3D sobre la tecnología \textsc{JAVA}.
 
-El objetivo principal de esta integración fue reutilizar los componentes centrales de \textsc{IGEA} para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia del proyecto \textsc{IGEA} para gestionar de manera efectiva los datos. Este enfoque permitió crear una solución poderosa y eficiente en poco tiempo para el proyecto\textsc{iTEC}.
+El objetivo principal de esta integración fue reutilizar los componentes centrales de \textsc{IGEA} para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia del proyecto \textsc{IGEA} para gestionar de manera efectiva los datos. Este enfoque permitió crear una solución poderosa y eficiente en poco tiempo para el proyecto \textsc{iTEC}.
 
 Desde el momento en que comencé a buscar un proyecto para la finalización de mis estudios y comencé a analizar las posibilidades que me proporcionaba un proyecto basado en una aplicación \textsc{3D}, me di cuenta de la interesante oportunidad de combinar mi experiencia laboral previa con las demandas de este proyecto. \\
 Explorando las posibilidades se me ocurrió la idea de visualizar información aeroespacial en un entorno de realidad virtual, ya que la representación bidimensional de datos aéreos que proporcionan la mayoría de las aplicaciones web actuales resulta limitada y la dimensión de altura es fundamental para la gestión de espacios aereos. Además, la posibilidad de formar parte activa de la escena añade un valor significativo a las aplicaciones de consultas de datos. En este sentido, el futuro de estas aplicaciones parece prometedor.
@@ -471,7 +489,7 @@ Aquí nos topamos con el primer problema en este \emph{sprint}, del cual nos dam
 Hemos elegido una estrategia en la que el panel del \textsc{\gls{HUD}} es un elemento \emph{clickable} y, por tanto, intercepta los eventos del \emph{\gls{raycaster}}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no vemos que el panel está tapando, al estar invisible, el panel consume los eventos y no podemos seleccionar los aviones.
 
 Solucionamos este problema al posicionar el panel detrás del usuario en lugar de hacerlo invisible. En resumen, cuando el panel recibe el evento de cerrar, se coloca detrás del usuario en una posición donde nunca puede ser visible. De esta manera, deja de interferir en los eventos del controlador principal y podemos seleccionar los objetos sin problemas.
-Además, cuando el panel recibe un evento de elemento seleccionado y cambia su posición de oculto a visible, guarda la última posición en la que estaba posicionado antes de recibir el evento de ocultar. De esta manera, cada vez que se oculta el panel, la instancia almacena la última posición para su posterior uso cuando reciba el evento de avión seleccionado.\\
+Además, cuando el panel recibe un evento de elemento seleccionado y cambia su posición de oculto a visible, guarda la última posición en la que estaba posicionado antes de recibir el evento de ocultar. De esta manera, cada vez que se oculta el panel, la instancia almacena la última posición para su posterior uso cuando reciba el evento de avión seleccionado.
 
 Desarrollamos una barra de herramientas de dos dimensiones para gestionar la activación y desactivación de funcionalidades. En un principio, esta barra se implementó como un elemento \emph{div} en el \textsc{HTML} principal. Sin embargo, más adelante, cuando probé el prototipo en modo \textsc{VR} utilizando las gafas \textsc{Oculus}, me di cuenta de que los elementos \emph{div} desaparecían en dicho modo.
 
