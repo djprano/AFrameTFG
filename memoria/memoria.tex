@@ -284,6 +284,10 @@ FlightRadar24, una empresa destacada en este campo, ofrece servicios web que mue
 
 OpenSky\ref{sec:opensky}, por su parte, es otra plataforma relevante que recopila y proporciona datos de vuelo en tiempo real. Además de mostrar información sobre los vuelos, OpenSky ha contribuido significativamente a la investigación en el ámbito de la aviación al proporcionar acceso a su base de datos para investigadores y desarrolladores interesados en analizar y utilizar datos aeroespaciales.
 
+El avance en la recopilación y transmisión de datos en tiempo real, junto con el crecimiento de los sistemas \textsc{ADS-B}, ha sentado las bases para el desarrollo de aplicaciones y servicios web que permiten la visualización de información aeronáutica en tiempo real en dos dimensiones. La migración hacia aplicaciones \textsc{3D} inmersivas en realidad virtual podría llevar esta experiencia a un nivel superior, ofreciendo una representación más completa y envolvente de los datos aeroespaciales.
+Imaginar la inclusión de un controlador de espacios aéreos dentro de un entorno tridimensional, proporcionando la capacidad de gestionar aviones en tiempo real, es sumamente emocionante. Con un desarrollo adecuado, esta idea tiene el potencial de revolucionar la forma en que se controlan y gestionan los espacios aéreos.
+La idea de poder estar en un aeropuerto, esperando a un familiar y tener la posibilidad de seguir el aterrizaje y visualizar lo que están viendo desde el avión a través de una experiencia en realidad virtual también resulta emocionante. Esta perspectiva nos permitiría tener una conexión más inmersiva con la experiencia de vuelo y compartir virtualmente el viaje con nuestros seres queridos. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OBJETIVOS %
@@ -292,9 +296,10 @@ OpenSky\ref{sec:opensky}, por su parte, es otra plataforma relevante que recopil
 \newpage
 \section{Objetivo general}
 \label{sec:objetivoGeneral}
-El avance en la recopilación y transmisión de datos en tiempo real, junto con el crecimiento de los sistemas \textsc{ADS-B}, ha creado oportunidades emocionantes para el desarrollo de aplicaciones y servicios web que permiten la visualización de información aeronáutica en tiempo real. La migración hacia aplicaciones \textsc{3D} inmersivas en realidad virtual podría llevar esta experiencia a un nivel superior, ofreciendo una representación más completa y envolvente de los datos aeroespaciales.
-Imaginar la inclusión de un controlador de espacios aéreos dentro de un entorno tridimensional, proporcionando la capacidad de gestionar aviones en tiempo real, es sumamente emocionante. Con un desarrollo adecuado, esta idea tiene el potencial de revolucionar la forma en que se controlan y gestionan los espacios aéreos.
-La idea de poder estar en un aeropuerto, esperando a un familiar y tener la posibilidad de seguir el aterrizaje y visualizar lo que están viendo desde el avión a través de una experiencia en realidad virtual también resulta emocionante. Esta perspectiva nos permitiría tener una conexión más inmersiva con la experiencia de vuelo y compartir virtualmente el viaje con nuestros seres queridos. 
+El objetivo general del proyecto consiste en investigar y adquirir conocimientos sobre tecnologías de realidad virtual y el framework \textsc{A-Frame}, el cual permite la creación de aplicaciones \gls{3D} para visualizar datos. Estas aplicaciones pueden ser ejecutadas en un navegador y ser utilizadas tanto en entornos de escritorio como en dispositivos móviles y dispositivos de realidad virtual, como los \textsc{Oculus Quest}.
+
+En este contexto, se desarrollará un prototipo que constará de un conjunto de herramientas altamente configurable que siente las bases para facilitar la creación de escenas \textsc{3D}. 
+Estas escenas permitirán la visualización de datos aeronáuticos, como vuelos en movimiento, en un contexto geoespacial. Además, se podrán visualizar entidades geoespaciales, como edificios y terrenos, que contendrán información sobre alturas. El objetivo es proporcionar una plataforma flexible y versátil que permita la visualización y exploración de datos aeronáuticos de forma interactiva en un entorno 3D.
 \section{Objetivos específicos} % título de sección (se muestra)
 \label{sec:objetivosEspecificos} % identificador de sección (no se muestra, es para poder referenciarla)
 A continuación, se detallan los objetivos específicos del proyecto:
@@ -480,6 +485,10 @@ Desde entonces, \textsc{HTML5} se ha convertido en el estándar predominantes pa
 Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la \gls{API} de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.
 La \textsc{API} de almacenamiento local permite a las aplicaciones web almacenar datos en el dispositivo del usuario, lo que acelera la experiencia del usuario debido al cacheo de muchos metadatos para mantener estados he incluso poder operar con aplicaciones de manera offline.
 Además, \textsc{HTML5} ha introducido nuevas etiquetas semánticas y atributos que permiten una mejor estructuración del contenido y una mayor accesibilidad. Esto facilita a los motores de búsqueda y a los usuarios comprender la información presente en las páginas web de manera más precisa.
+
+Una característica importante que \textsc{HTML5} introdujo en el contexto del proyecto fue la capacidad de crear etiquetas personalizadas. Esta característica permite a los desarrolladores definir sus propias etiquetas \textsc{HTML} para especificar el comportamiento y apariencia utilizando \textsc{JavaScript}.
+
+Esta capacidad de crear etiquetas personalizadas fue aprovechada por los creadores de \textsc{A-Frame} para facilitar la creación de escenas en \textsc{3D}. Utilizando estas etiquetas personalizadas \cite{aframedocs}, los desarrolladores de \textsc{A-Frame} crearon etiquetas que ejecutan el \textsc{JavaScript} necesario para la inicialización de geometrías o componentes de \textsc{Three.js}\cite{threejs}. Esto brinda una forma sencilla y rápida de crear escenas en 3D sin la necesidad de tener un amplio conocimiento de programación 3D, tan solo es necesario definir un \texttt{index.html} usando los elementos creados por la librería para la creación de una escena \textsc{3D}.
 \subsection{Contexto y aplicación en el prototipo}
 Esta tecnología es la base sobre la cual \textsc{A-Frame} crea la estructura del contenido de realidad virtual en el entorno web. 
 Como veremos en la sección \ref{sec:aframe} \textsc{A-Frame} utiliza una combinación de elementos \textsc{HTML5} como \emph{\textless a-scene\textgreater}, \emph{\textless a-entity\textgreater} y \emph{\textless a-camera\textgreater}, junto con componentes propios de \textsc{A-Frame}, para construir y definir objetos \textsc{\gls{3D}}, cámaras, luces y la escena principal.
