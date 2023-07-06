@@ -270,14 +270,14 @@ Después de trabajar durante seis años en el proyecto \emph{fullstack} \textsc{
 
 El objetivo principal de esta integración fue reutilizar los componentes centrales de \textsc{IGEA} para desarrollar una interfaz gráfica que facilitara a los usuarios administrativos la visualización y manipulación de datos aéreos de manera más intuitiva. Además, se aprovecharon las herramientas gráficas desarrolladas a lo largo de los más de veinte años de experiencia del proyecto \textsc{IGEA} para gestionar de manera efectiva los datos. Este enfoque permitió crear una solución poderosa y eficiente en poco tiempo para el proyecto \textsc{iTEC}.
 
-Desde el momento en que comencé a buscar un proyecto para la finalización de mis estudios y comencé a analizar las posibilidades que me proporcionaba un proyecto basado en una aplicación \textsc{3D}, me di cuenta de la interesante oportunidad de combinar mi experiencia laboral previa con las demandas de este proyecto. \\
+Desde el momento en que comencé a buscar un proyecto para la finalización de mis estudios y comencé a analizar las posibilidades que me proporcionaba un proyecto basado en una aplicación \textsc{3D}, me di cuenta de la interesante oportunidad de combinar mi experiencia laboral previa con las demandas de este proyecto. 
 Explorando las posibilidades se me ocurrió la idea de visualizar información aeroespacial en un entorno de realidad virtual, ya que la representación bidimensional de datos aéreos que proporcionan la mayoría de las aplicaciones web actuales resulta limitada y la dimensión de altura es fundamental para la gestión de espacios aereos. Además, la posibilidad de formar parte activa de la escena añade un valor significativo a las aplicaciones de consultas de datos. En este sentido, el futuro de estas aplicaciones parece prometedor.
 
 \section{Contexto}
 \label{sec:contexto}
 Durante la última década, la recopilación y transmisión de datos en tiempo real se han vuelto más accesibles gracias a la fusión de las tecnologías web junto a las tecnologías de vigilancia aérea, lo que ha creado nuevas oportunidades para el desarrollo de aplicaciones y servicios web que permiten a los usuarios visualizar el tráfico aéreo y los datos de vuelo en tiempo real.
 
-Uno de los sistemas que ha experimentado un gran desarrollo y éxito en el ámbito aeronáutico es el sistema de vigilancia automática dependiente de difusión \textsc{ADS-B}~\ref{sec:adsb}. Este sistema permite que las aeronaves transmitan información precisa de sus sensores, como la posición, velocidad, altitud, orientación, entre otros datos relevantes. \\
+Uno de los sistemas que ha experimentado un gran desarrollo y éxito en el ámbito aeronáutico es el sistema de vigilancia automática dependiente de difusión \textsc{ADS-B}~\ref{sec:adsb}. Este sistema permite que las aeronaves transmitan información precisa de sus sensores, como la posición, velocidad, altitud, orientación, entre otros datos relevantes. 
 El crecimiento de esta tecnología ha llevado a empresas y plataformas como FlightRadar24 y OpenSky a expandir sus redes y ofrecer servicios, incluso gratuitos, que proporcionan estos metadatos a través de la web. Esto ha impulsado el aumento de aplicaciones de dos dimensiones que muestran información de vuelos en tiempo real mediante mapas interactivos.
 
 FlightRadar24, una empresa destacada en este campo, ofrece servicios web que muestran información en tiempo real sobre vuelos en un mapa bidimensional. Además del seguimiento de vuelos, proporciona detalles como el origen y destino de los vuelos, números de vuelo, tipos de aviones, altitudes, rumbos y velocidades.
@@ -292,7 +292,7 @@ OpenSky\ref{sec:opensky}, por su parte, es otra plataforma relevante que recopil
 \newpage
 \section{Objetivo general}
 \label{sec:objetivoGeneral}
-El avance en la recopilación y transmisión de datos en tiempo real, junto con el crecimiento de los sistemas \textsc{ADS-B}, ha creado oportunidades emocionantes para el desarrollo de aplicaciones y servicios web que permiten la visualización de información aeronáutica en tiempo real. La migración hacia aplicaciones \textsc{3D} inmersivas en realidad virtual podría llevar esta experiencia a un nivel superior, ofreciendo una representación más completa y envolvente de los datos aeroespaciales.\\
+El avance en la recopilación y transmisión de datos en tiempo real, junto con el crecimiento de los sistemas \textsc{ADS-B}, ha creado oportunidades emocionantes para el desarrollo de aplicaciones y servicios web que permiten la visualización de información aeronáutica en tiempo real. La migración hacia aplicaciones \textsc{3D} inmersivas en realidad virtual podría llevar esta experiencia a un nivel superior, ofreciendo una representación más completa y envolvente de los datos aeroespaciales.
 Imaginar la inclusión de un controlador de espacios aéreos dentro de un entorno tridimensional, proporcionando la capacidad de gestionar aviones en tiempo real, es sumamente emocionante. Con un desarrollo adecuado, esta idea tiene el potencial de revolucionar la forma en que se controlan y gestionan los espacios aéreos.
 La idea de poder estar en un aeropuerto, esperando a un familiar y tener la posibilidad de seguir el aterrizaje y visualizar lo que están viendo desde el avión a través de una experiencia en realidad virtual también resulta emocionante. Esta perspectiva nos permitiría tener una conexión más inmersiva con la experiencia de vuelo y compartir virtualmente el viaje con nuestros seres queridos. 
 \section{Objetivos específicos} % título de sección (se muestra)
@@ -342,27 +342,23 @@ Por último se van a repasar tecnologías similares en el mercado.
 \subsection{Introducción a la tecnología}
 El Sistema de Vigilancia Dependiente Automática, conocido por sus siglas en inglés \textsc{ADS-B} (Automatic Dependent Surveillance Broadcast), es un sistema de vigilancia cooperativa en el cual una aeronave obtiene su posición a través de un sistema de navegación por satélite y emite periódicamente esta información para permitir un seguimiento de la aeronave.
 Esta tecnología no solo se encarga de transmitir información sobre la posición de la aeronave, sino que también puede proporcionar datos adicionales como velocidad, orientación, altitud, nombre de vuelo, identificador único de la aeronave, país de origen y otros datos relevantes.
-
-
-El término \emph{Automatic} (automática) refleja el hecho de que las aeronaves equipadas con \textsc{ADS-B} transmiten información de manera automática y periódica sin requerir intervención humana directa.
-
-
-El adjetivo \emph{Dependent} (dependiente) se emplea debido a que la información transmitida depende del equipamiento de sensores y sistemas presentes en la aeronave.
-
-
-La palabra \emph{Surveillance} (vigilancia) alude al hecho de que el \textsc{ADS-B} proporciona datos que permiten el seguimiento y control de la aeronave.
-
-
-Por último, el término \emph{Broadcast} (transmisión) indica que la información es enviada por la aeronave a través de señales de radio en modo unidireccional, posibilitando que cualquier receptor en su área de cobertura pueda capturar la señal.
+\begin{itemize}
+	\item El término \textbf{\emph{Automatic}} (automática) refleja el hecho de que las aeronaves equipadas con \textsc{ADS-B} transmiten información de manera automática y periódica sin requerir intervención humana directa.
+	\item El adjetivo \textbf{\emph{Dependent}} (dependiente) se emplea debido a que la información transmitida depende del equipamiento de sensores y sistemas presentes en la aeronave.
+	\item La palabra \textbf{\emph{Surveillance}} (vigilancia) alude al hecho de que el \textsc{ADS-B} proporciona datos que permiten el seguimiento y control de la aeronave.
+	\item Por último, el término\textbf{ \emph{Broadcast}} (transmisión) indica que la información es enviada por la aeronave a través de señales de radio en modo unidireccional, posibilitando que cualquier receptor en su área de cobertura pueda capturar la señal.
+\end{itemize}
 \subsection{Historia y evolución}
-En \textsc{2019}, la \emph{Organización de Aviación Civil Internacional} (\textsc{\gls{oaci}}) estableció un grupo de trabajo para desarrollar estándares y recomendaciones para la implementación del \textsc{ADS-B} tal y como podemos ver en sus sumarios de reuniones en la página oficial.\footnote{\url{https://www.icao.int/NACC/Pages/meetings-2018-adsbout.aspx}}
-Anteriormente, los sistemas de vigilancia aeronáutica se basaban en radares terrestres para detectar aeronaves en el espacio aéreo. Sin embargo, la \textsc{\gls{oaci}} tenía como objetivo permitir que las propias aeronaves transmitieran su información de posición y otros datos relevantes a través de señales de radio, en lugar de depender únicamente de los radares terrestres.
+En el pasado, los sistemas de vigilancia aeronáutica se fundamentaban en radares terrestres para detectar aeronaves en el espacio aéreo. Sin embargo, la \textsc{\gls{oaci}} tenía como objetivo permitir que las propias aeronaves transmitieran su información de posición y otros datos relevantes mediante señales de radio, en lugar de depender exclusivamente de los radares terrestres.
 
 En la primera década de los años 2000, se llevaron a cabo varios proyectos piloto para probar los primeros prototipos de sistemas \textsc{ADS-B}. Un ejemplo de ello es el proyecto \emph{Capstone}\footnote{\url{https://www.aopa.org/news-and-media/all-news/2017/august/pilot/ads-b-in-alaska}} en Estados Unidos, que se llevó a cabo en Alaska entre 1999 y 2004. El objetivo de este proyecto piloto a gran escala era evaluar si la tecnología \textsc{ADS-B} mostraba mejoras significativas en la seguridad de la aviación en Alaska.
 
-Conforme avanzaba la década de los años 2000, varios países comenzaron a adoptar la tecnología y los estándares de \textsc{ADS-B}. Además, se establecieron requisitos regulatorios más estrictos para equipar a más aeronaves con transpondedores \textsc{ADS-B}. Esto implicó un esfuerzo en la modernización de los sistemas de gestión del tráfico aéreo existentes, con el fin de aprovechar plenamente los beneficios de los sistemas \textsc{ADS-B}.\\
-Hacia finales de la primera década del 2000, surgieron empresas como \textsc{FlightRadar24} y proyectos de código abierto como \textsc{OpenSky}, los cuales empezaron a desarrollar una red de receptores \textsc{ADS-B}. Estas organizaciones llegaron a acuerdos con instituciones académicas y proveedores de servicios de tráfico aéreo, lo que permitió que la red se expandiera con el tiempo. \\
+Conforme avanzaba la década de los años 2000, varios países comenzaron a adoptar la tecnología y los estándares de \textsc{ADS-B}. Además, se establecieron requisitos regulatorios más estrictos para equipar a más aeronaves con transpondedores \textsc{ADS-B}. Esto implicó un esfuerzo en la modernización de los sistemas de gestión del tráfico aéreo existentes, con el fin de aprovechar plenamente los beneficios de los sistemas \textsc{ADS-B}.
+
+Hacia finales de la primera década del 2000, surgieron empresas como \textsc{FlightRadar24} y proyectos de código abierto como \textsc{OpenSky}, los cuales empezaron a desarrollar una red de receptores \textsc{ADS-B}. Estas organizaciones llegaron a acuerdos con instituciones académicas y proveedores de servicios de tráfico aéreo, lo que permitió que la red se expandiera con el tiempo. 
 Además, se implementaron estrategias de \emph{\gls{crowdsourcing}}, donde personas de todo el mundo instalaban receptores \textsc{ADS-B} en sus ubicaciones y enviaban los datos de las señales de las aeronaves a los servidores de estas plataformas. Esto permitió a dichas plataformas recopilar información y proporcionar servicios a través de sus servidores.
+
+Se ha demostrado que esta tecnología contribuye al control y la seguridad aérea, lo cual llevó a que la Agencia de la Unión Europea para la Seguridad Aérea estableciera requisitos y fechas límite para la implementación de \textsc{ADS-B OUT} en el espacio aéreo europeo, estableciendo la fecha límite del \emph{7 de junio de 2020} como se indica en el \emph{reglamento de ejecución 2017/386}\footnote{\url{https://www.boe.es/doue/2017/059/L00034-00036.pdf}}. Actualmente, el uso de esta tecnología es obligatorio en las aeronaves registradas en la Unión Europea.
 \subsection{Descripción técnica}
 Para utilizar la tecnología \textsc{ADS-B}, una aeronave debe estar equipada con un dispositivo que admita el enlace \textsc{\gls{1090ES}}, el cual permite un enlace de datos a través de \textsc{VHF} en la banda de \emph{1090 MHz}, una frecuencia asignada para las comunicaciones aeronáuticas. Este dispositivo es el encargado de transmitir periódicamente la información.
 
@@ -385,18 +381,18 @@ Existen tres tipos de transpondedores en función de su capacidad:
 	\label{fig:adsbtypes}
 \end{figure}
 \subsection{Contexto y aplicación en el prototipo}
-La tecnología \textsc{ADS-B} juega un papel fundamental en el contexto de este proyecto, el objetivo principal del prototipo es la visualización de datos aeronáuticos en un entorno \textsc{\gls{3D}}. Por to tanto esta tecnología nos aporta la capacidad de obtener la información que necesita nuestra aplicación para acceder a los datos que proporcionan dinamismo, ya que las entidades que utilizan esta tecnología estarán constantemente cambiando de posición en el escenario gracias a la variación de los datos de posición.\\
-La tecnología estándar \textsc{ADS-B} nos ofrece una resolución temporal de un segundo entre muestras, aunque los servidores gratuitos normalmente ofrecerán solo la capacidad de acceder a los vectores de información cada cinco segundos como es el caso de \textsc{OpenSky}, resolución suficiente para crear una interpolación entre posiciones y recrear el vuelo de los aviones.\\
+La tecnología \textsc{ADS-B} juega un papel fundamental en el contexto de este proyecto, el objetivo principal del prototipo es la visualización de datos aeronáuticos en un entorno \textsc{\gls{3D}}. Por to tanto esta tecnología nos aporta la capacidad de obtener la información que necesita nuestra aplicación para acceder a los datos que proporcionan dinamismo, ya que las entidades que utilizan esta tecnología estarán constantemente cambiando de posición en el escenario gracias a la variación de los datos de posición.
+La tecnología estándar \textsc{ADS-B} nos ofrece una resolución temporal de un segundo entre muestras, aunque los servidores gratuitos normalmente ofrecerán solo la capacidad de acceder a los vectores de información cada cinco segundos como es el caso de \textsc{OpenSky}, resolución suficiente para crear una interpolación entre posiciones y recrear el vuelo de los aviones.
 \section{Opensky-network API}
 \label{sec:opensky}
 \subsection{Introducción a la tecnología}
 \textsc{OpenSky} es un proyecto colaborativo de código abierto que permite acceder a la información detallada de las aeronaves gracias a una plataforma o red de sensores distribuida por el mundo recopilando datos en tiempo real sobre el tráfico aéreo.
 \subsection{Historia y evolución}
-\textsc{OpenSky} se inició sobre los años 2012 cuando un equipo de investigadores de \emph{Armasuisse} (Suiza), la \emph{Universidad de Kaiserslautern} (Alemania) y la \emph{Universidad de Oxford} (Reino Unido) comenzaron a colaborar capturando datos de tráfico aéreo a través de la tecnología \textsc{ADS-B}.\\
+\textsc{OpenSky} se inició sobre los años 2012 cuando un equipo de investigadores de \emph{Armasuisse} (Suiza), la \emph{Universidad de Kaiserslautern} (Alemania) y la \emph{Universidad de Oxford} (Reino Unido) comenzaron a colaborar capturando datos de tráfico aéreo a través de la tecnología \textsc{ADS-B}.
 A medida que el proyecto fue creciendo crearon la plataforma online sin ánimo de lucro que hoy conocemos como \textsc{OpenSky Network}, con la finalidad de permitir a los investigadores, desarrolladores y entusiastas de la aviación acceder a los datos que se recopilan.
 \subsection{Descripción técnica}
 En la red de \textsc{OpenSky} tan pronto como llega un mensaje \textsc{ADS-B} se crea un registro para el avión llamado \emph{vector de estado}.
-El vector de estado del servicio contiene la información descrita en la tabla \ref{tab:vectorEstado}.\\
+El vector de estado del servicio contiene la información descrita en la tabla \ref{tab:vectorEstado}.
 En la sección \ref{subsec:dao} hablaremos como el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
 
 \subsection{Contexto y aplicación en el prototipo}
@@ -407,15 +403,15 @@ En este ejemplo, se realiza una petición \emph{GET} al \emph{endpoint} \emph{ht
 \begin{figure}[h]
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{text}
-		GET /api/states/all?lamin=40.023417&lomin=-4.2041338&lamax=40.7441446&lomax=-3.2538165
-		Host: opensky-network.org
-		Authorization: "Basic user:password"
+GET /api/states/all?lamin=40.023417&lomin=-4.2041338&lamax=40.7441446&lomax=-3.2538165
+Host: opensky-network.org
+Authorization: "Basic user:password"
 	\end{minted}
 	\caption{Petición a la API de OpenSky.}
 	\label{fig:getOpensky}
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}[h]
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{|c|c|c|c|c|c|}
 			\hline
@@ -458,16 +454,16 @@ En este ejemplo, se realiza una petición \emph{GET} al \emph{endpoint} \emph{ht
 			17 & category & int & Enumerado de categoría del avión. \\
 			\hline
 		\end{tabular}%
-	}\\
+	}
 	\caption{Vector de estado de la API Rest OpenSky Network.}
 	\label{tab:vectorEstado}
 \end{table}
 \section{DOM}
 \label{sec:dom}
 \subsection{Introducción a la tecnología}
-El \emph{Modelo de Objetos del Documento} conocido como (\textsc{DOM}) es una interfaz de programación para documentos web. Representa la página de manera que los programas puedan cambiar la estructura, estilo y contenido del documento. \\
-El \textsc{DOM} representa el documento como nodos y objetos, de esta manera, los lenguajes de programación pueden interactuar con la página.\\
-Una página web es un documento que puede ser mostrado tanto en la ventana del navegador como en forma de código fuente \textsc{HTML}. En ambos casos, se trata del mismo documento, pero la representación del \textsc{DOM} permite manipularlo de forma dinámica. Como una representación orientada a objetos de la página web, puede ser modificada con un lenguaje de scripting como \textsc{JavaScript}.\\
+El \emph{Modelo de Objetos del Documento} conocido como (\textsc{DOM}) es una interfaz de programación para documentos web. Representa la página de manera que los programas puedan cambiar la estructura, estilo y contenido del documento. 
+El \textsc{DOM} representa el documento como nodos y objetos, de esta manera, los lenguajes de programación pueden interactuar con la página.
+Una página web es un documento que puede ser mostrado tanto en la ventana del navegador como en forma de código fuente \textsc{HTML}. En ambos casos, se trata del mismo documento, pero la representación del \textsc{DOM} permite manipularlo de forma dinámica. Como una representación orientada a objetos de la página web, puede ser modificada con un lenguaje de scripting como \textsc{JavaScript}.
 El DOM no es un lenguaje de programación en sí, pero sin él, el lenguaje \textsc{Javascript}~\ref{sec:javascript} no tendría ningún modelo de objetos para una página HTML y sus componentes. El documento en su totalidad, la cabeza, las tablas dentro del documento, los encabezados de tabla, el texto dentro de las celdas de la tabla y todos los demás elementos en un documento son partes del modelo de objetos del documento. Todos ellos pueden ser accedidos y manipulados utilizando el DOM y un lenguaje de scripting como \textsc{JavaScript}.
 
 \subsection{Historia y evolución}
@@ -512,7 +508,7 @@ Desde cualquier parte del código de nuestra aplicación podemos manipular el \t
 La combinación de \textsc{HTML5} y \textsc{DOM} permite a los desarrolladores acceder, modificar y actualizar de forma dinámica los elementos y estilos de una página web.
 \subsection{Historia y evolución}
 En 2004, el \emph{WHATWG}, liderado por Ian Hickson, inició el desarrollo de lo que ahora conocemos como \textsc{HTML5}  Su objetivo principal era mejorar la semántica y estructura del lenguaje \textsc{HTML}, además de agregar nuevas funcionalidades y capacidades para el desarrollo web moderno. El enfoque que resultó exitoso fue el de abordar los problemas y limitaciones que \textsc{HTML} presentaba en ese momento.
-Paralelamente, la \textsc{W3C} también estaba trabajando en la evolución de \textsc{HTML}, presentando \textsc{XHTML} como su propuesta. Sin embargo, a medida que el proyecto avanzaba, quedó claro que \textsc{XHTML} no era compatible con el ecosistema web existente.\\
+Paralelamente, la \textsc{W3C} también estaba trabajando en la evolución de \textsc{HTML}, presentando \textsc{XHTML} como su propuesta. Sin embargo, a medida que el proyecto avanzaba, quedó claro que \textsc{XHTML} no era compatible con el ecosistema web existente.
 En 2006, la \textsc{W3C} decidió abandonar el desarrollo de \textsc{XHTML} y unirse al grupo de trabajo \textsc{WHATWG} para colaborar en el desarrollo de \textsc{HTML5}.
 Durante el proceso de desarrollo de \textsc{HTML5}, se llevaron a cabo múltiples revisiones y actualizaciones con el fin de incorporar nuevas características, mejorar la semántica, definir \textsc{APIs} y abordar los desafíos técnicos y las necesidades emergentes de la web moderna.
 
@@ -522,9 +518,9 @@ Desde entonces, \textsc{HTML5} se ha convertido en el estándar predominantes pa
 \subsection{Descripción técnica}
 \textsc{HTML5} se basa en la combinación de las tecnologías \textsc{HTML}, \textsc{CSS} y \textsc{JavaScript} para proporcionar una plataforma de desarrollo web versátil y adaptada a las necesidades modernas. 
 
-\textsc{HTML5} ofrece a los desarrolladores una amplia gama de \textsc{APIs} que les permiten acceder y manipular diversas características del navegador. \\
-Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la \gls{API} de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.\\
-La \textsc{API} de almacenamiento local permite a las aplicaciones web almacenar datos en el dispositivo del usuario, lo que acelera la experiencia del usuario debido al cacheo de muchos metadatos para mantener estados he incluso poder operar con aplicaciones de manera offline.\\
+\textsc{HTML5} ofrece a los desarrolladores una amplia gama de \textsc{APIs} que les permiten acceder y manipular diversas características del navegador. 
+Estas APIs han permitido a los desarrolladores crear experiencias avanzadas como por ejemplo hacer uso de la \gls{API} de geolocalización para obtener la ubicación del usuario y ofrecer servicios personalizados de basados en su posición. Estas herramientas han brindado a los desarrolladores el ecosistema de tecnologías necesarios para el desarrollo de aplicaciones web más sofisticadas.
+La \textsc{API} de almacenamiento local permite a las aplicaciones web almacenar datos en el dispositivo del usuario, lo que acelera la experiencia del usuario debido al cacheo de muchos metadatos para mantener estados he incluso poder operar con aplicaciones de manera offline.
 Además, \textsc{HTML5} ha introducido nuevas etiquetas semánticas y atributos que permiten una mejor estructuración del contenido y una mayor accesibilidad. Esto facilita a los motores de búsqueda y a los usuarios comprender la información presente en las páginas web de manera más precisa.
 \subsection{Contexto y aplicación en el prototipo}
 Esta tecnología es la base sobre la cual \textsc{A-Frame} crea la estructura del contenido de realidad virtual en el entorno web. 
@@ -627,7 +623,7 @@ Las principales características técnicas de \textsc{Three.js} son las siguient
 	\item \textbf{\emph{Renderizado en tiempo real}}: aprovechando la aceleración de \emph{\gls{hardware}} proporcionada por \textsc{WebGL}, \textsc{Three.js} es capaz de renderizar gráficos en \textsc{3D} de manera eficiente en los navegadores web modernos.
 	\item \textbf{\emph{Geometrías y mallas}}: la biblioteca ofrece una amplia variedad de geometrías predefinidas, como esferas, cilindros, cubos, entre otros. Estas geometrías pueden modificarse mediante atributos, e incluso es posible crear geometrías personalizadas utilizando técnicas de extrusión. Estas geometrías pueden combinarse con mallas para crear superficies y escenas complejas.
 	\item \textbf{\emph{Materiales y texturas}}: \textsc{Three.js} proporciona una amplia gama de materiales predefinidos, incluyendo materiales básicos, materiales refractivos, reflectantes y texturas. Estos materiales y texturas se utilizan para agregar detalles a las geometrías y mallas, logrando un mayor realismo en las escenas \textsc{3D}.
-	\item \textbf{\emph{Iluminación y sombreado}}: la biblioteca admite diferentes técnicas de iluminación, como luces direccionales, puntuales y de área, lo que permite simular una iluminación realista en la escena. \\
+	\item \textbf{\emph{Iluminación y sombreado}}: la biblioteca admite diferentes técnicas de iluminación, como luces direccionales, puntuales y de área, lo que permite simular una iluminación realista en la escena. 
 	Además, se pueden aplicar técnicas de sombreado suave y sombreado de \emph{Phong} para lograr efectos visuales más sofisticados.
 	\item \textbf{\emph{Cámaras y controles}}: \textsc{Three.js} proporciona cámaras que permiten definir la perspectiva y la vista de la escena. Además, incluye controles de cámara predefinidos, como los controles de órbita y los controles de vuelo, que facilitan la interacción del usuario para visualizar la escena \textsc{3D}.
 	\item \textbf{\emph{Animaciones}}: \textsc{Three.js} ofrece un sistema de animación que permite crear animaciones de objetos mediante la transición de sus propiedades, como la posición o la escala.
@@ -653,9 +649,9 @@ En el siguiente ejemplo, podemos apreciar lo sencillo que resulta crear un mater
 \section{A-Frame}
 \label{sec:aframe}
 \subsection{Introducción a la tecnología}
-\textsc{A-Frame}\cite{aframedocs} es un \emph{\gls{framework}} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{\gls{framework}s} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. \\
-Esto facilita a los desarrolladores web la creación rápida e intuitiva de aplicaciones de realidad virtual, sin necesidad de poseer un profundo conocimiento ni adentrarse en la complejidad de la programación en entornos tridimensionales.\\
-Una de las principales ventajas de \textsc{A-Frame} es que se basa en el \emph{modelo entidad componente}, lo que permite el desarrollo de componentes reutilizables y su parametrización para configurar su comportamiento.\\
+\textsc{A-Frame}\cite{aframedocs} es un \emph{\gls{framework}} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{\gls{framework}s} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. 
+Esto facilita a los desarrolladores web la creación rápida e intuitiva de aplicaciones de realidad virtual, sin necesidad de poseer un profundo conocimiento ni adentrarse en la complejidad de la programación en entornos tridimensionales.
+Una de las principales ventajas de \textsc{A-Frame} es que se basa en el \emph{modelo entidad componente}, lo que permite el desarrollo de componentes reutilizables y su parametrización para configurar su comportamiento.
 Además, \textsc{A-Frame} ya proporciona una amplia gama de geometrías y componentes para la creación de materiales, iluminación, sombras y la gestión de eventos de controladores de realidad virtual, como las gafas \textsc{Oculus}. Esto permite que los proyectos puedan comenzar el desarrollo desde un punto avanzado.
 
 \subsection{Historia y evolución}
@@ -709,7 +705,7 @@ En definitiva, las capacidades técnicas de \textsc{A-Frame} están en continuo 
 \subsection{Introducción a la tecnología}
 \textsc{Leaflet} es una biblioteca creada por \emph{Volodymyr Agafonkin} en \textsc{JavaScript} y de código abierto.
 Su principal funcionalidad está orientada a la creación de aplicaciones de mapas web. Fue lanzada por primera vez en 2011 y es compatible con la mayoría de las plataformas móviles y de escritorio.
-Está tan extendida y es tan liviana que empresas como \textsc{FourSquare}, \textsc{Pinterest} y \textsc{Flickr} la integran dentro de su arquitectura.\\
+Está tan extendida y es tan liviana que empresas como \textsc{FourSquare}, \textsc{Pinterest} y \textsc{Flickr} la integran dentro de su arquitectura.
 \textsc{Leaflet} permite a los desarrolladores mostrar de manera muy sencilla mapas web basados en teselas alojadas en un servidor público. Sobre estos mapas nos permite añadir capas que muestren información creando aplicaciones de manera sencilla y liviana.
 \subsection{Contexto y aplicación en el prototipo}
 Se ha utilizado esta librería para implementar las conversiones entre coordenadas geodésicas y cartesianas, como se describe en la sección \ref{subsec:mapConversion}. Al utilizar esta librería, nos beneficiamos del soporte técnico que proporciona, asegurándonos de contar con los ajustes necesarios para las fórmulas que desempeñan un papel importante en nuestra aplicación. Además, nos aseguramos de que las conversiones se realicen de la manera más eficiente posible para proporcionar un rendimiento óptimo en entornos móviles.
@@ -723,7 +719,7 @@ A continuación, se presenta un ejemplo de cómo realizamos la conversión de co
 \end{minted}
 \section{GDAL}
 \subsection{Introducción a la tecnología}
-\textsc{GDAL}\footnote{\url{https://gdal.org/}} es una biblioteca de código abierto que proporciona un conjunto de herramientas para la lectura, escritura y manipulación de datos geoespaciales en diversos formatos. Su desarrollo inicial se centró en facilitar el acceso y procesamiento de datos geoespaciales en diferentes formatos y proyecciones.\\
+\textsc{GDAL}\footnote{\url{https://gdal.org/}} es una biblioteca de código abierto que proporciona un conjunto de herramientas para la lectura, escritura y manipulación de datos geoespaciales en diversos formatos. Su desarrollo inicial se centró en facilitar el acceso y procesamiento de datos geoespaciales en diferentes formatos y proyecciones.
 Esta biblioteca es ampliamente utilizada en numerosos proyectos que requieren acceder a datos geográficos, como \textsc{Mapserver}\footnote{\url{https://mapserver.org/}}, \textsc{QGIS}\footnote{\url{https://www.qgis.org/es/site/}} y \textsc{GRASS GIS}\footnote{\url{https://grass.osgeo.org/}}. Estas aplicaciones hacen uso de la funcionalidad proporcionada por \textsc{GDAL} para gestionar y visualizar datos geoespaciales de manera efectiva y eficiente.
 \subsection{Contexto y aplicación en el prototipo}
 Como se explica en la sección \ref{sec:dem}, utilizaremos esta tecnología para llevar a cabo las conversiones de los datos descargados del servidor de \textsc{Copernicus}\footnote{\url{https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1}}. Estos datos consisten en archivos binarios de alturas, y mediante el uso de esta biblioteca, realizaremos la unión y recorte de una zona específica que representará el terreno de nuestro escenario.
@@ -2129,20 +2125,29 @@ A nivel personal, ha sido una experiencia muy gratificante avanzar en cada itera
 	\item \textbf{Prácticas Académicas Externas}: Realicé mis prácticas en la empresa Indra, donde trabajé en un software de sistemas de información geográfica. Esta experiencia fue fundamental para mi desarrollo en el proyecto actual, especialmente en el aspecto \gls{geoespacial}. Adquirí conocimientos sobre proyecciones, datums y transformaciones necesarias para el manejo de ficheros binarios de alturas, donde una matriz define un espacio georeferenciado.
 \end{itemize}
 \section{Trabajos futuros}
-El desarrollo de una aplicación nunca termina, ya que siempre hay aspectos que se pueden mejorar o nuevas funcionalidades que se pueden añadir. Por esta razón, a continuación enumeraremos una serie de mejoras y nuevas funcionalidades que se podrían aplicar al prototipo de cara al futuro.
+\label{sec:trabajos_futuros}
+El desarrollo de una aplicación es un proceso continuo, ya que siempre existen aspectos que se pueden mejorar y nuevas funcionalidades que se pueden añadir. Por esta razón, a continuación enumeraremos una serie de mejoras y nuevas funcionalidades que podrían aplicarse al prototipo en el futuro.
+
+Estas mejoras y funcionalidades se han dividido en dos secciones según su complejidad. Los evolutivos complejos son tareas que requieren una estimación de tiempo prolongado o el desarrollo de varios componentes, mientras que los evolutivos sencillos son tareas simples que aportan un gran valor al proyecto con un costo temporal reducido. Cabe destacar que el prototipo está preparado para recibir modificaciones de manera sencilla.
+\subsection{Evolutivos sencillos}
 \begin{enumerate}
 	\item Lectura de varios ficheros de edificios, daría mas versatilidad a la carga de edificios, siendo posible guardar varios ficheros por cada consulta, y que el software cargue todos los ficheros presentes en la carpeta configurada, de esta manera podemos dividir las entidades geoespaciales clasificandolas por tipo y comenzar a añadir incluso datos que no sean solo edificios.
 	\item Añadir un conmutable a la barra de herramientas que active la funcionalidad de mostrar en un \textsc{HUD} las coordenadas geodésicas en las que se encuentra el usuario.
 	\item Añadir un botón conmutable en la barra de herramientas que desactive el componente gestor de altura de la cámara permitiendo volar al usuario para visualizar otra perspectiva diferente del escenario.
 	\item Realizar un componente que limite al usuario poder desplazarse fuera del escenario.
-	\item Se ha detectado que en escenarios grandes con velocidades de desplazamiento lentas ayudaría mucho añadir un conmutable a la barra de herramientas que despliegue un panel con el mapa visto desde arriba y nos permita seleccionar un punto del escenario donde desplazar al usuario de un salto.
 	\item Añadir un botón conmutable en la barra de herramientas que desactive el componente que amplifica los aviones con la distancia para tener una visualización más real cuando el usuario lo requiera.
-	\item Usar estimaciones con las marcas de tiempo de los vectores de posición de \textsc{OpenSky} para hacer estimaciones reales de si las muestras nuevas.
-	Si la nueva muestra tiene un intervalo temporal más pequeño que el utilizado por la aplicación, la posición mostrada reflejará un desplazamiento menor al real, lo que dará la sensación de que el avión se frena y luego acelera repentinamente en la siguiente muestra. En ese caso, podemos utilizar la información de la velocidad para descartar la posición y realizar una estimación basada en el trayecto y la velocidad del avión.
 	\item Una funcionalidad adicional de alto valor añadido sería la inclusión de una interfaz gráfica que permita al usuario ingresar un identificador de vuelo y seleccionar el avión correspondiente en la escena. Esto brindaría al usuario la capacidad de consultar información sobre los vuelos directamente desde la visualización 3D.
 	\item Se puede implementar fácilmente que el gestor de terreno lea un archivo \textsc{JSON} que permita configurar entidades mediante una posición en el sistema de coordenadas \textsc{WGS84}, un texto informativo y un archivo \emph{gltf} que represente el modelo de esa entidad. De esta manera, se pueden cargar y añadir modelos \textsc{3D} de edificios importantes o monumentos al terreno añadiendo más realismo. Esto permite que el usuario configure de manera sencilla dichas entidades sobre el terreno y además proporcione información adicional cuando son seleccionadas por el usuario.
 \end{enumerate}
-\label{sec:trabajos_futuros}
+\subsection{Evolutivos complejos}
+\begin{enumerate}
+		\item Se ha detectado que en escenarios grandes con velocidades de desplazamiento lentas ayudaría mucho añadir un conmutable a la barra de herramientas que despliegue un panel con el mapa visto desde arriba y nos permita seleccionar un punto del escenario donde desplazar al usuario de un salto.
+		\item Usar estimaciones con las marcas de tiempo de los vectores de posición de \textsc{OpenSky} para hacer estimaciones reales de si las muestras nuevas.
+		Si la nueva muestra tiene un intervalo temporal más pequeño que el utilizado por la aplicación, la posición mostrada reflejará un desplazamiento menor al real, lo que dará la sensación de que el avión se frena y luego acelera repentinamente en la siguiente muestra. En ese caso, podemos utilizar la información de la velocidad para descartar la posición y realizar una estimación basada en el trayecto y la velocidad del avión.
+		\item Una mejora interesante sería habilitar la navegación entre escenarios directamente desde la aplicación. Sería muy útil comenzar la escena con una vista panorámica aérea en una escala amplia, similar a lo que hacen aplicaciones como \emph{FlightRadar24} ó \emph{Plane Finder}. Podríamos superponer entidades rectangulares transparentes que representen las áreas de los escenarios disponibles. Cuando el usuario pase el ratón por encima de una de estas entidades, podría seleccionarla y dirigirse a la aplicación correspondiente de ese escenario, manteniendo la misma marca temporal si se está visualizando la aplicación en el modo datos cacheados. Esta funcionalidad proporcionaría una manera atractiva y global de visualizar todos los escenarios disponibles para ejecutar.
+\end{enumerate}
+
+
 % Las siguientes dos instrucciones es todo lo que necesitas
 % para incluir las citas en la memoria
 \nocite{*}
