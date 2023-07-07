@@ -302,27 +302,31 @@ En este contexto, se desarrollará un prototipo que constará de un conjunto de 
 Estas escenas permitirán la visualización de datos aeronáuticos, como vuelos en movimiento, en un contexto geoespacial. Además, se podrán visualizar entidades geoespaciales, como edificios y terrenos, que contendrán información sobre alturas. El objetivo es proporcionar una plataforma flexible y versátil que permita la visualización y exploración de datos aeronáuticos de forma interactiva en un entorno 3D.
 \section{Objetivos específicos} % título de sección (se muestra)
 \label{sec:objetivosEspecificos} % identificador de sección (no se muestra, es para poder referenciarla)
-A continuación, se detallan los objetivos específicos del proyecto:
-\begin{enumerate}
-    \item Desarrollar un escenario 3D que represente un rectángulo geodésico y que incluya un terreno con las alturas de la zona.
-    \item Aplicar una textura al terreno para mejorar su realismo.
-    \item Implementar la capacidad de referenciar cualquier posición geodésica dentro del escenario.
-    \item Implementar la capacidad de calcular la altura del terreno en cualquier punto del escenario.
-    \item Introducir aviones que representen vuelos reales utilizando posiciones geodésicas.
-    \item Animar los aviones mediante desplazamientos interpolados de forma lineal basados en sus posiciones.
-    \item Obtener metadatos de algún servicio web que ofrezca datos \textsc{ADS-B}~\ref{sec:adsb} y utilizarlos en tiempo real para animar los aviones.
-    \item Establecer un proceso de almacenamiento de datos de algún servicio web que ofrezca datos \textsc{ADS-B} para reproducir las animaciones de los aviones de manera local a través de una caché.
-    \item Obtener metadatos de un servicio web que contenga información sobre contornos y alturas de edificios.
-    \item Permitir la navegación por el escenario utilizando tanto el teclado y el ratón como dispositivos de realidad virtual, navegando sobre el contorno del terreno.
-    \item Crear componentes \textsc{\gls{HUD}} que formen parte de la escena y se muevan con el usuario dentro de su campo de visión para habilitar o deshabilitar funciones.
-    \item Permitir al usuario mover los componentes de visualización de datos dentro de su campo de visión.
-    \item Posibilitar la selección de aviones para visualizar su información actualizada en tiempo real.
-    \item Visualizar metadatos de los edificios mediante el posicionamiento del ratón encima.
-    \item Mostrar el trayecto que realiza un avión desde que entra en el escenario.
-    \item Visualizar una cámara de a bordo del avión.
-    \item Modularizar la aplicación creando componentes reutilizables.
-    \item Crear un sistema que proporcione una plataforma sencilla para la creación de escenarios que representen cualquier zonas del mundo a través de configuración.
-\end{enumerate}
+A continuación, se detallan los objetivos específicos del proyecto, clasificados en objetivos funcionales y objetivos técnicos.
+\subsection{Objetivos funcionales}
+\begin{itemize}
+	\item Desarrollar un escenario que represente un rectángulo geodésico y que incluya un terreno con alturas reales. Además, se puede utilizar una imagen de satélite como textura para brindar mayor realismo al terreno.
+	\item Introducir aviones que representen vuelos reales utilizando posiciones geodésicas. Estas posiciones se obtendrán de algún servicio servicio web que ofrezca datos \textsc{ADS-B}~\ref{sec:adsb}, y se utilizarán estos datos para animar los aviones.
+	\item Permitir la navegación por el escenario utilizando tanto el teclado y el ratón como dispositivos de realidad virtual, navegando sobre el contorno del terreno.
+	\item Representar edificios sobre el terreno y mostrar datos de los mismos mediante el posicionamiento del ratón encima.
+	\item Crear componentes \textsc{\gls{HUD}} que formen parte de la escena y se muevan con el usuario dentro de su campo de visión para habilitar o deshabilitar funcionalidades a parte de mostrar información sobre entidades.
+	\item Permitir al usuario mover los componentes de visualización de datos dentro de su campo de visión.
+	\item Posibilitar la selección de aviones para visualizar su información sobre el componente \textsc{\gls{HUD}}.
+	\item Mostrar el trayecto que realiza un avión desde que entra en el escenario.
+	\item Permitir la visualización de una cámara de a bordo del avión seleccionado.
+	
+\end{itemize}
+\subsection{Objetivos técnicos}
+\begin{itemize}
+	\item Utilizar la librería \textsc{A-Frame} como tecnología principal para la creación del prototipo.
+	\item Desarrollar una \gls{API} que brinde la capacidad de referenciar cualquier posición geodésica dentro del escenario.
+	\item Desarrollar una \gls{API} que proporcione las llamadas necesarias para calcular la altura del terreno en cualquier punto del escenario.
+	\item Establecer un proceso de almacenamiento de datos de algún servicio web que ofrezca datos \textsc{ADS-B} para reproducir las animaciones de los aviones de manera local a través de una caché.
+	\item Obtener metadatos de un servicio web que contenga información sobre contornos y alturas de edificios.
+	\item Modularizar la aplicación mediante la creación de componentes reutilizables.
+	\item Implementar un sistema configurable que permita la representación de escenarios en cualquier zona del mundo. Esto se logrará mediante la configuración de parámetros como las coordenadas geodésicas de la zona y la carga de datos específicos de esa zona.
+	\item El prototipo final podrá ser ejecutado en entornos de escritorio, en dispositivos de realidad virtual como el dispositivo Oculus Quest que proporciona para las pruebas la universidad. 
+\end{itemize}
 \section{Distribución del software}
 \label{sec:planificacion-temporal}
 Todo el código fuente, así como los componentes y las demos están alojados en el repositorio de GitHub en la siguiente dirección: \url{https://github.com/djprano/AFrameTFG}
