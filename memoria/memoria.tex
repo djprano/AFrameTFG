@@ -332,11 +332,22 @@ A continuación, se detallan los objetivos específicos del proyecto, clasificad
 Todo el código fuente, así como los componentes y las demos están alojados en el repositorio de GitHub en la siguiente dirección: \url{https://github.com/djprano/AFrameTFG}
 \section{Tecnologías Similares}
 \label{sec:tecnosimilares}
-En el mercado encontramos aplicaciones líderes en este campo como es el caso de \emph{FlightRadar24}\footnote{\url{https://www.flightradar24.com/}}. Esta aplicación utiliza datos de fuentes como los transpondedores de las aeronaves, radares y sistemas de seguimiento de vuelo para mostrar la posición y la trayectoria de los aviones en tiempo real en un entorno de dos dimensiones.
+En el mercado podemos encontrar aplicaciones líderes en el sector de visualización de datos aeronáuticos algunas de las cuales son:
+\begin{itemize}
+	\item \textbf{\emph{FlightRadar24}}\footnote{\url{https://www.flightradar24.com/}}: Esta aplicación utiliza datos de fuentes como los transpondedores de las aeronaves, radares y sistemas de seguimiento de vuelo para mostrar la posición y la trayectoria de los aviones en tiempo real en un entorno bidimensional.
+	
+	La aplicación permite hacer zoom, arrastrar y hacer clic en las aeronaves para obtener información adicional, como el número de vuelo, la aerolínea, el tipo de aeronave y los aeropuertos de origen y destino.
+	
+	Esta aplicación ofrece un servicio de visualización de datos en 3D basado en la plataforma de desarrollo de aplicaciones geoespaciales 3D llamada \textsc{cesium}\footnote{\url{https://cesium.com/platform/cesiumjs/}}, que es similar a la funcionalidad que se desea desarrollar en el proyecto utilizando A-Frame.
+	
+	Además, la aplicación cuenta con versiones móviles para dispositivos iOS y Android, lo que permite acceder a la información de seguimiento de vuelos desde teléfonos y tablets.
+	\item \textbf{\emph{Plane Finder}}\footnote{\url{https://planefinder.net/}}: Esta aplicación comparte muchas similitudes con \emph{FlightRadar24} en términos de funcionalidad y características. Sin embargo la principal diferencia radica en la fuente de los datos, mientras que \emph{FlightRadar24} tiene una amplia cobertura global y una densidad de datos considerable debido a su extensa red de receptores. \emph{Plane Finder} ha aumentado su cobertura y densidad de datos en los últimos años, pero inicialmente tenía una cobertura más centrada en Europa.
+	\item \textbf{\emph{FlightAware}}\footnote{\url{https://es.flightaware.com/}}: FlightAware es una plataforma en línea que proporciona seguimiento de vuelos en tiempo real y datos de aviación. Ofrece una amplia cobertura de seguimiento de vuelos comerciales y privados en todo el mundo, así como información detallada sobre aeropuertos, rutas y aeronaves, se diferencia principalmente con los servicios anteriores en que no dispone de funcionalidad 3D y sus datos están mas centrados en América del Norte.
+	\item \textbf{\emph{RadarBox}}\footnote{\url{https://www.radarbox.com/}}: RadarBox es una herramienta de seguimiento de vuelos en tiempo real que ofrece datos y visualización de tráfico aéreo en todo el mundo. Al igual que el servicio anterior no ofrece una funcionalidad nativa de visualización en 3D como parte de su servicio principal de seguimiento de vuelos. RadarBox se centra en proporcionar datos de seguimiento de vuelos en tiempo real y herramientas de análisis para el tráfico aéreo.
+\end{itemize}
 
-Otra aplicación ampliamente utilizada es \emph{Plane Finder}\footnote{\url{https://planefinder.net/}}, que ofrece una interfaz interactiva para visualizar datos de aviones en tiempo real. Esta aplicación permite a los usuarios filtrar y clasificar los aviones por diferentes criterios, como aerolínea, tipo de aeronave o ubicación geográfica. Además, proporciona información detallada sobre cada avión, incluyendo su identificador de transpondedor, origen y destino, y velocidad actual.
 
-Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuarios acceder a información valiosa sobre los aviones en tiempo real y mejorar la comprensión de la situación operativa.
+Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuarios acceder a información valiosa sobre la ubicación de los aviones en tiempo real sobre un entorno bidimensional y tridimensional, lo que contribuye a mejorar la comprensión de la situación operativa.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
