@@ -242,23 +242,31 @@ By utilizing virtual reality technologies and leveraging aeronautical and geospa
 \chapter{Introducción}
 \label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~\ref{sec:intro}
 \pagenumbering{arabic} % para empezar la numeración de página con números
-El proyecto se centra en la creación de una aplicación para visualización de espacios \textsc{\gls{3D}} que ofrezca la posibilidad de una experiencia inmersiva en realidad virtual.
-Irá dirigida a un entorno web, con el objetivo de poder ser compatible tanto en un entorno \emph{desktop} como en un dispositivo de realidad virtual generando experiencia inmersiva en realidad virtual para la visualización de datos aeronáuticos y geoespaciales. 
-Los datos con los que vamos a trabajar pueden ser obtenidos en tiempo real o desde una caché local, y se representarán como entidades dentro de una escena tridimensional.
-Para lograr este propósito, hemos optado por utilizar un \Gls{framework} de desarrollo llamado \textsc{A-Frame}\footnote{\url{https://aframe.io/}}. Este \emph{framework} proporciona una capa de abstracción fácil de usar y comprender, lo cual facilita una implementación más sencilla de conceptos como la creación de escenas en realidad virtual y la manipulación e interacción de objetos \textsc{3D}. 
+El proyecto se enfoca en la creación de un conjunto de herramientas que proporcionen una plataforma para la visualización de datos aéreos en un entorno tridimensional, brindando al usuario una experiencia inmersiva.
 
-Estos aspectos se analizarán con mayor detalle en secciones posteriores. 
-La razón principal de usar la tecnología \textsc{A-Frame} es centrar nuestro esfuerzo en la codificación del modelo negocio acelerando el proceso de desarrollo en la gestión y generación de modelos \textsc{3D}, que es un proceso complejo y laborioso.
+Gracias al avance significativo de los dispositivos de realidad virtual y la disponibilidad de librerías de desarrollo que facilitan la creación de aplicaciones \gls{3D}, se creará una plataforma que ofrezca funcionalidades de visualización de datos aéreos en un entorno geoespacial \textsc{3D}. Este entorno estará rodeado de entidades que crean un contexto que proporciona una experiencia más realista para el usuario.
 
-Es importante destacar que la tecnología \textsc{A-Frame} se basa en la librería \textsc{Three.js}, que proporciona las funcionalidades esenciales para el desarrollo de gráficos \textsc{3D} en entornos web. A su vez, \textsc{Three.js} se construye sobre \textsc{\gls{WebGL}}\footnote{\url{https://www.khronos.org/webgl/}}, una \Gls{API} de gráficos en \textsc{3D} basada en \textsc{OpenGL}. Esto permite a los desarrolladores web acceder directamente a la capacidad de procesamiento de gráficos de la tarjeta gráfica del dispositivo mediante el uso de \emph{JavaScript} para controlar la \gls{renderización} y la manipulación de los objetos \textsc{3D}.
+Estas herramientas estarán dirigidas a un entorno web, con el objetivo de ser compatibles tanto en dispositivos móviles como en entornos de escritorio o en dispositivos de realidad virtual.
 
-Esta arquitectura nos ofrece la ventaja de poder trabajar en un nivel de abstracción inferior cuando necesitamos abordar tareas más complejas relacionadas con objetos \textsc{3D}. Además, podemos crear componentes reutilizables que serán útiles tanto en el proyecto actual como en proyectos futuros.
+Los datos con los que voy a trabajar, procederán de servicios web gratuitos y podrán ser obtenidos en tiempo real o desde una caché local. Estos datos nos proporcionaran información sobre los vuelos y también información sobre las alturas del terreno y edificios presentes en la escena tridimensional.
 
-En resumen, la combinación de \textsc{A-Frame}, \textsc{Three.js} y \textsc{WebGL} nos brinda un conjunto de herramientas poderosas para el desarrollo de experiencias \textsc{3D} en entornos web, permitiéndonos aprovechar al máximo el potencial de la tarjeta gráfica del dispositivo y facilitando la reutilización de componentes en futuros proyectos.
-A continuación en la figura ~\ref{figura:mapaTecnologias}, mostramos el mapa de tecnologías principales en las que se basa el prototipo que se va a realizar. 
+Para lograr este propósito, construiré todo el prototipo utilizando el \Gls{framework} de desarrollo llamado \textsc{A-Frame}\footnote{\url{https://aframe.io/}}. Este \emph{framework} proporciona una capa de abstracción fácil de usar y comprender, lo cual facilita una implementación más sencilla de conceptos más complejos como la creación de escenas en realidad virtual y la manipulación e interacción de objetos \textsc{3D}. 
+Estos aspectos se analizarán con mayor detalle en secciones posteriores.
+
+La razón principal de usar la tecnología \textsc{A-Frame} es centrar nuestro esfuerzo en la codificación del modelo negocio acelerando el proceso de desarrollo de la gestión y generación de modelos \textsc{3D}, que es un proceso complejo y laborioso.
+
+Es importante destacar que la tecnología \textsc{A-Frame} se basa en \textsc{HTML5} para crear un ecosistema de componentes y geometrías utilizando elementos \textsc{HTML}. Esta tecnología permite aprovechar la potencia y flexibilidad de la librería \textsc{Three.js} a través de un lenguaje de marcado simplificado, acelerando así el desarrollo de aplicaciones \textsc{3D}. \textsc{A-Frame} facilita la creación de escenarios tridimensionales al proporcionar una forma más intuitiva y rápida de trabajar con \textsc{Three.js}.
+
+A su vez, \textsc{Three.js} se construye sobre \textsc{\gls{WebGL}}\footnote{\url{https://www.khronos.org/webgl/}}, una \Gls{API} de gráficos en \textsc{3D} basada en \textsc{OpenGL}. Esto permite a los desarrolladores web acceder directamente a la capacidad de procesamiento de gráficos de la tarjeta gráfica del dispositivo mediante el uso de \emph{JavaScript} para controlar la \gls{renderización} y la manipulación de los objetos \textsc{3D}.
+
+Esta arquitectura nos ofrece la ventaja de poder trabajar en un nivel de abstracción inferior cuando necesitamos abordar tareas más complejas relacionadas con objetos \textsc{3D}. Además, podemos crear componentes reutilizables que serán útiles tanto en el proyecto actual como en proyectos futuros basados en la tecnología \textsc{A-Frame}.
+
+En resumen, la combinación de \textsc{HTML5}, \textsc{A-Frame}, \textsc{Three.js} y \textsc{WebGL} nos brinda un conjunto de herramientas poderosas para el desarrollo de experiencias \textsc{3D} en entornos web, permitiéndonos aprovechar al máximo el potencial de la tarjeta gráfica del dispositivo y facilitando la reutilización de componentes en futuros proyectos.
+
+A continuación en la figura ~\ref{figura:mapaTecnologias}, muestro un mapa donde se puede visualizar como se relacionan las tecnologías y los servicios de datos principales en las que se basará el prototipo que voy a realizar. 
  \begin{figure}[h]
     \centering
-    \includegraphics[bb=0 0 564 586, width=12cm, keepaspectratio]{img/mapaFuncional.drawio.png}
+    \includegraphics[bb=0 0 564 586, width=13cm, keepaspectratio]{img/mapaFuncional.drawio.png}
     \caption{Mapa de tecnologías}
     \label{figura:mapaTecnologias}
  \end{figure}
