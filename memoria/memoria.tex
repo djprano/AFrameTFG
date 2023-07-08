@@ -814,15 +814,45 @@ Una de las ventajas de \textsc{VSCode} es su integración con herramientas de co
 \section{Prototipos de demostración}
 Podemos acceder y visualizar todas las demostraciones en la página web del proyecto, donde tenemos acceso a demostraciones, videos y escenarios creados utilizando la plataforma del proyecto. Puedes encontrarlos en el siguiente enlace: \url{https://djprano.github.io/AFrameTFG/}.
 \subsection{Escritorio}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm, keepaspectratio]{img/desktop_demo.png}
+	\caption{Visualización del prototipo en entornos de escritorio.}
+	\label{fig:desktop_demo}
+\end{figure}
+En el entorno de escritorio, podemos navegar por el escenario utilizando el teclado con las teclas \emph{WASD}. Además, al mantener presionado el botón del ratón en cualquier parte de la pantalla que no sea un objeto interactivo, podemos mover la cabeza para cambiar la vista.
+
+Si activamos el botón \emph{hud} en la barra de herramientas \textsc{3D}, podremos interactuar con los aviones. Por ejemplo, al colocar el cursor sobre un avión, se mostrará un icono indicando que lo hemos seleccionado. Al hacer clic en él, podremos ver información en tiempo real sobre el avión en el panel \textsc{HUD}.
+
+Otra opción conmutable en la barra de herramientas es \emph{info}. Si la activamos al colocar el ratón sobre cualquier edificio, podremos visualizar los metadatos asociados a dicho edificio procedentes de los servidores de \textsc{OpenStreetMaps}.
+
+\subsection{Gafas de realidad virtual}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm, keepaspectratio]{img/desktop_demo.png}
-	\caption{Visualización del prototipo en entornos de escritorio.}
+	\includegraphics[width=11cm, keepaspectratio]{img/oculusDemo.png}
+	\caption{Visualización del prototipo dispositivos de realidad virtual.}
 	\label{fig:scrum}
 \end{figure}
-\subsection{Gafas de realidad virtual}
+En el entorno de realidad virtual utilizando las gafas \textsc{Oculus Quest 2}, podemos desplazarnos por el escenario utilizando el \emph{joystick} de la mano izquierda. Además, podemos girar utilizando el \emph{joystick} de la mano derecha.
+
+Para mover la cámara, simplemente tenemos que girar la cabeza, ya que los sensores de posición de las gafas controlan la posición de la cámara en \textsc{A-Frame}.
+
+Los controladores de la mano izquierda y derecha están equipados con dos rayos que nos permiten apuntar a los elementos con los que queremos interactuar, arrastrar o hacer clic. Con estos rayos, podemos arrastrar los elementos de la interfaz gráfica y hacer clic en aviones o edificios para visualizar datos, al igual que en el entorno de escritorio.
+
 \subsection{Móvil}
-\section{Progreso de desarrollo}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=11cm, keepaspectratio]{img/androidDemo.jpg}
+	\caption{Visualización del prototipo en dispositivos móviles.}
+	\label{fig:scrum}
+\end{figure}
+En el entorno de dispositivos móviles, utilizaremos los sensores de posición del móvil para mover la cámara de \textsc{A-Frame}. Al enfocar el móvil hacia donde deseamos, podremos mover la cámara en la dirección deseada.
+
+Para desplazarnos, simplemente debemos pulsar en cualquier parte de la pantalla. Esto nos permitirá avanzar, y al girar el móvil o deslizar el dedo hacia los lados, podremos girar y dirigirnos a cualquier parte del escenario.
+
+También podemos hacer clic sobre los aviones y en la barra de herramientas para inspeccionar los datos del escenario de la misma manera que en los entornos anteriores.
+
+\section{Proceso de desarrollo}
 Para modelar el proceso de desarrollo del proyecto, me he basado en la metodología de planificación \textsc{Scrum}.
 Esta metodología hace uso de un marco de trabajo ágil, introducido por primera vez en la década de los 90 por \emph{Ken Schwaber} y \emph{Jeff Sutherland} como una herramienta para abordar proyectos complejos.
 El enfoque principal de \textsc{Scrum} se fundamenta en la realización de iteraciones incrementales. Esto implica dividir el proyecto en tareas más pequeñas y de corta duración conocidas como \emph{sprints}. 
