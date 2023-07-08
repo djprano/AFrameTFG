@@ -726,3 +726,31 @@ parent={},%
 %
 }%
 
+\glsdefs@newdocentry{datum}%
+{%
+name={DATUM},%
+sort={DATUM},%
+type={main},%
+first={DATUM},%
+firstplural={DATUMs},%
+text={DATUM},%
+plural={DATUMs},%
+description={En el campo de la geodesia, un datum se refiere a un conjunto de puntos de referencia en la superficie terrestre que se utilizan para realizar mediciones de posición. Además, está asociado a un modelo que describe la forma de la Tierra, conocido como elipsoide de referencia, y se utiliza para establecer un sistema de coordenadas geográficas. En resumen, un datum proporciona los puntos de referencia y el marco de referencia necesario para definir y utilizar un sistema de coordenadas geográficas en mediciones de posición en la Tierra.},%
+descriptionplural={En el campo de la geodesia, un datum se refiere a un conjunto de puntos de referencia en la superficie terrestre que se utilizan para realizar mediciones de posición. Además, está asociado a un modelo que describe la forma de la Tierra, conocido como elipsoide de referencia, y se utiliza para establecer un sistema de coordenadas geográficas. En resumen, un datum proporciona los puntos de referencia y el marco de referencia necesario para definir y utilizar un sistema de coordenadas geográficas en mediciones de posición en la Tierra.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+

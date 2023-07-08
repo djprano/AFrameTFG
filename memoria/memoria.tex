@@ -1427,8 +1427,8 @@ Dentro del archivo \emph{mainScene.js}, se puede encontrar una variable llamada 
 \label{sec:configuration}
 Debido a la naturaleza altamente reutilizable y configurable de la aplicación, he dedicado especial atención a la parametrización de todos los componentes. El objetivo es que la creación de cualquier tipo de escenario se centre en un único archivo de configuración, simplificando así el proceso de establecer los parámetros necesarios para su correcto funcionamiento.
 
-Para lograr esto, hemos desarrollado una pieza clave llamada \emph{configurationModel.js}, que contiene un módulo utilizado por todos los componentes de la aplicación. Este módulo almacena todos los parámetros específicos de un escenario en particular. Para establecer los valores internos de \emph{configurationModel.js}, creamos un archivo \textsc{JavaScript} que invoca los métodos \texttt{set} del módulo de configuración, estableciendo así todas las propiedades necesarias para el escenario tal y como podemos ver en la figura \ref{codigo:madridConf}. 
-Como resultado, el archivo \textsc{HTML} principal de nuestro escenario carga el módulo de configuración y el archivo \textsc{JavaScript} que establece las propiedades requeridas para su correcto funcionamiento como se puede apreciar en la figura \ref{codigo:cargaConfiguracion}.
+Para lograr esto, se ha desarrollado una pieza clave llamada \emph{configurationModel.js}, que contiene un módulo utilizado por todos los componentes de la aplicación. Este módulo almacena todos los parámetros específicos de un escenario en particular. Para establecer los valores internos de \emph{configurationModel.js}, se crea un archivo \textsc{JavaScript} que invoca los métodos \texttt{set} del módulo de configuración, estableciendo así todas las propiedades necesarias para el escenario tal y como se puede ver en la figura \ref{codigo:madridConf}. 
+Como resultado, el archivo \textsc{HTML} principal del escenario carga el módulo de configuración y el archivo \textsc{JavaScript} que establece las propiedades requeridas para su correcto funcionamiento como se puede apreciar en la figura \ref{codigo:cargaConfiguracion}.
 \begin{figure}[h]
 \centering
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
@@ -1466,7 +1466,7 @@ En esta sección, se describirá en detalle la implementación de toda la lógic
 \subsection{Gestor de conversiones del mapa}
 \label{subsec:mapConversion}
 En este fichero, se han implementado todas las funciones necesarias dentro de la aplicación para transformar coordenadas geoespaciales, en particular el objetivo principal de este gestor es la conversión de coordenadas expresadas en latitud y longitud en grados, a un vector válido para el escenario \gls{3D} (x, y, z).
-Antes de adentrarnos en la descripción técnica, es importante hacer una breve introducción sobre los sistemas de referencia que vamos a utilizar y por qué es necesario realizar estas transformaciones.
+Antes de adentrase en la descripción técnica, es importante hacer una breve introducción sobre los sistemas de referencia que voy a utilizar y por qué es necesario realizar estas transformaciones.
 En el mundo de los Sistemas de Información Geográfica (\textsc{\gls{gis}}), es común utilizar sistemas de referencia geoespaciales representados por coordenadas geográficas y sistemas de proyección cartográfica.
 Una coordenada geográfica es un par de valores numéricos que representan la ubicación de un punto en la superficie de la Tierra. Como podemos observar en la figura \ref{fig:latlong} la \emph{latitud} y una \emph{longitud}, indican la posición definiendo la relación con los meridianos y paralelos terrestres.
 
@@ -1477,10 +1477,10 @@ Una coordenada geográfica es un par de valores numéricos que representan la ub
 	\label{fig:latlong}
 \end{figure}
 
-En los sistemas de referencia geoespaciales, es común utilizar un datum que es un modelo matemático que describe la forma y la orientación de la Tierra, así como un punto de referencia. Muchos servicios y aplicaciones que proporcionan datos espaciales a nivel mundial, como \textsc{Google Maps} y \textsc{OpenSky}, utilizan el datum \textsc{WGS84} como su sistema de referencia estándar.
+En los sistemas de referencia geoespaciales, es común utilizar un \gls{datum} que es un modelo matemático que describe la forma y la orientación de la Tierra, así como un punto de referencia. Muchos servicios y aplicaciones que proporcionan datos espaciales a nivel mundial, como \textsc{Google Maps} y \textsc{OpenSky}, utilizan el datum \textsc{WGS84} como su sistema de referencia estándar.
 El datum \textsc{WGS84} (Sistema Mundial Geodésico de 1984) es ampliamente aceptado y utilizado en todo el mundo. Fue desarrollado por el Departamento de Defensa de los Estados Unidos y la Agencia Nacional de Inteligencia \gls{geoespacial} (\textsc{NGA}) como un sistema de referencia global para el intercambio de datos geoespaciales.
 \textsc{WGS84} se basa en un modelo matemático que representa la forma de la Tierra como un elipsoide de revolución y establece un conjunto de parámetros para la conversión precisa entre coordenadas geográficas y sistemas de coordenadas proyectadas.
-Dado que muchos servicios y datos geoespaciales se basan en \textsc{WGS84}, es importante que nuestra aplicación sea capaz de trabajar en este datum para garantizar la interoperabilidad y la correcta interpretación de los datos. Esto nos permite realizar conversiones precisas entre coordenadas geográficas en formato de \emph{latitud} y \emph{longitud}, y las coordenadas del escenario \textsc{3D} en el que estamos trabajando.
+Dado que muchos servicios y datos geoespaciales se basan en \textsc{WGS84}, es importante que la aplicación sea capaz de trabajar en este datum para garantizar la interoperabilidad y la correcta interpretación de los datos. Esto permite realizar conversiones precisas entre coordenadas geográficas en formato de \emph{latitud} y \emph{longitud}, y las coordenadas del escenario \textsc{3D} en el que se está trabajando.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm, keepaspectratio]{img/simple-cylindrical-projection-earth-map-globe-mercator.jpg}
@@ -1488,7 +1488,7 @@ Dado que muchos servicios y datos geoespaciales se basan en \textsc{WGS84}, es i
 	\label{fig:mercator}
 \end{figure}
 \\Por otro lado, un sistema de proyección cartográfica es una metodología que permite representar la forma curva de la Tierra en un plano. Debido a que nuestro planeta es un objeto tridimensional, es necesario utilizar proyecciones cartográficas para convertir la superficie esférica de la Tierra en un plano bidimensional. Estas proyecciones utilizan fórmulas matemáticas y parámetros específicos para lograr una representación precisa y adecuada de la Tierra en un mapa plano.
-En nuestra aplicación, para convertir las coordenadas geoespaciales en un plano bidimensional, utilizaremos la proyección Mercator. Esta proyección es una de las proyecciones cartográficas más comunes y ampliamente utilizadas en internet. Fue desarrollada por Gerardus Mercator en el siglo XVI y se caracteriza por preservar los ángulos rectos y las formas de las áreas pequeñas, lo que la hace adecuada para representar regiones con menor extensión latitudinal. 
+En la aplicación, para convertir las coordenadas geoespaciales en un plano bidimensional, se utiliza la proyección Mercator. Esta proyección es una de las proyecciones cartográficas más comunes y ampliamente utilizadas en internet. Fue desarrollada por Gerardus Mercator en el siglo XVI y se caracteriza por preservar los ángulos rectos y las formas de las áreas pequeñas, lo que la hace adecuada para representar regiones con menor extensión latitudinal. 
 Se basa en envolver con un cilindro la superficie de la tierra y trazar una linea desde el centro terrestre hasta el plano del cilindro creando una relación entre el punto de intersección de la tierra con el del plano del cilindro tal y como podemos ver en la figura \ref{fig:mercator}.
 \begin{figure}[H]
 \begin{minipage}{0.7\textwidth}
@@ -1509,9 +1509,9 @@ Según la regla de la mano derecha, si extendemos el pulgar, el índice y el ded
 \end{minipage}
 \end{figure}
 Esta convención es ampliamente utilizada en gráficos \textsc{3D} y programación, incluido el entorno de desarrollo \textsc{A-Frame}. Al seguir la regla de la mano derecha, podemos establecer una consistencia en la orientación de los ejes y facilitar la comprensión y manipulación de los objetos en el espacio tridimensional.
-En este punto, nos enfrentamos al primer problema que debemos abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un datum \textsc{WGS84} y proyectado con \textsc{Mercator}, notaremos una diferencia en las coordenadas.
-La coordenada \textsc{Y}, que representa la latitud en el sistema \gls{geoespacial}, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debemos tener en cuenta al diseñar nuestras fórmulas de conversión.
-Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema \gls{geoespacial} se representa de manera diferente en ambos sistemas de referencia.
+En este punto, me enfrento al primer problema que debo abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un \gls{datum} \textsc{WGS84} y proyectado con \textsc{Mercator}, notaremos una diferencia en las coordenadas.
+La coordenada \textsc{Y}, que representa la latitud en el sistema \gls{geoespacial}, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debo tener en cuenta al diseñar las fórmulas de conversión.
+Si observamos la figura \ref{fig:sistemasDeReferencia}, se puede apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema \gls{geoespacial} se representa de manera diferente en ambos sistemas de referencia.
 \begin{figure}[H]
   \centering
   \includegraphics[width=13cm, keepaspectratio]{img/sistemasDeReferencia.drawio.png}
@@ -1519,8 +1519,8 @@ Si observamos la figura \ref{fig:sistemasDeReferencia}, podemos apreciar cómo l
   \label{fig:sistemasDeReferencia}
 \end{figure}
 
-El siguiente problema al que nos enfrentamos está relacionado con las dimensiones de nuestra aplicación. Si consideramos cuidadosamente los escenarios que vamos a representar, el radio de alcance del escenario en kilómetros es considerablemente grande. \textsc{A-Frame} trabaja con unidades de metros, lo cual es adecuado para aplicaciones de realidad aumentada donde se busca que las dimensiones en el mundo 3D sean equivalentes a la realidad. Sin embargo, en el caso de nuestra aplicación, nuestro objetivo es asegurar que los aviones se puedan visualizar correctamente incluso a distancias de varios kilómetros. Manejar dimensiones tan grandes plantea problemas en el renderizado de objetos lejanos y en la interacción con entidades distantes, además de dificultades en el manejo de coordenadas 3D con unidades tan grandes.
-Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry}, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan \texttt{[xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094)}. Utilizando un pequeño \emph{script} en \textsc{Google Earth Engine}, podemos calcular las distancias de altura y anchura para este rectángulo:
+El siguiente problema al que me enfrento está relacionado con las dimensiones de la aplicación. Si se considera cuidadosamente los escenarios que se van a representar, el radio de alcance del escenario en kilómetros es considerablemente grande. \textsc{A-Frame} trabaja con unidades de metros, lo cual es adecuado para aplicaciones de realidad aumentada donde se busca que las dimensiones en el mundo 3D sean equivalentes a la realidad. Sin embargo, en el caso de nuestra aplicación, el objetivo es asegurar que los aviones se puedan visualizar correctamente incluso a distancias de varios kilómetros. Manejar dimensiones tan grandes plantea problemas en el \glsdisp{renderización}{renderizado} de objetos lejanos y en la interacción con entidades distantes, además de dificultades en el manejo de coordenadas 3D con unidades tan grandes.
+Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry}, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan \texttt{[xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094)}. Utilizando un pequeño \emph{script} en \textsc{Google Earth Engine}, voy a calcular las distancias de altura y anchura para este rectángulo:
 \begin{figure}[H]
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
@@ -1564,30 +1564,30 @@ Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry
 	\label{codigo:resultadoDimensiones}
 	}
 \end{figure}
-Como se puede observar en la figura \ref{codigo:resultadoDimensiones}, este \emph{script} nos arroja que estamos manejando distancias de aproximadamente 60 km. 
-Por lo tanto, debemos tener en cuenta que cuando los aviones se alejan, se verán muy pequeños si representamos las unidades con una anchura de 60.000 unidades en el mundo 3D de A-Frame. Además, las operaciones como la intersección del rayo utilizado para seleccionar los aviones pueden presentar problemas y afectar el rendimiento de nuestra aplicación.
-Para abordar esta situación, vamos a realizar una operación de escalado en nuestras ecuaciones. Esto nos permitirá dimensionar nuestro escenario de una manera más óptima, ajustando las unidades a una escala adecuada para asegurar una representación visual adecuada y un rendimiento eficiente.
+Como se puede observar en la figura \ref{codigo:resultadoDimensiones}, este \emph{script} nos arroja que estoy manejando distancias de aproximadamente 60 km. 
+Por lo tanto, se debe tener en cuenta que cuando los aviones se alejan, se verán muy pequeños si representamos las unidades con una anchura de 60.000 unidades en el mundo 3D de A-Frame. Además, las operaciones como la intersección del rayo utilizado para seleccionar los aviones pueden presentar problemas y afectar el rendimiento de nuestra aplicación.
+Para abordar esta situación, voy a realizar una operación de escalado en nuestras ecuaciones. Esto permitirá dimensionar nuestro escenario de una manera más óptima, ajustando las unidades a una escala adecuada para asegurar una representación visual adecuada y un rendimiento eficiente.
 
-El tercer problema al que nos enfrentamos es la asimetría en el escenario de representación. A menos que estemos representando una zona cercana al meridiano de \textsc{Greenwich} y al ecuador, al trabajar con coordenadas en metros es común que estemos manejando unidades excesivamente grandes. Por ejemplo, en la ciudad de \emph{Vatry}, las coordenadas se centran en aproximadamente x = 472476 e y = 6245020. A medida que nos alejamos, podemos encontrarnos con zonas de Rusia donde las coordenadas se expresan en millones de metros, lo cual hace que las operaciones resulten poco prácticas.
-Para abordar este problema, se ha tomado la decisión de desplazar el centro del mapa al centro del escenario. Esto implica que, además del escalado mencionado anteriormente, realizaremos un desplazamiento de tal manera que el centro del escenario coincida con el centro del mapa.
-Esta solución nos permite trabajar con dimensiones más manejables y evita la asimetría en la representación. Al centrar el mapa en el escenario, las operaciones y cálculos se realizan de manera más eficiente y se logra una representación equilibrada de los elementos geoespaciales en el entorno 3D.
+El tercer problema al que me enfrento es la asimetría en el escenario de representación. A menos que estemos representando una zona cercana al meridiano de \textsc{Greenwich} y al ecuador, al trabajar con coordenadas en metros es común que se estén manejando unidades excesivamente grandes. Por ejemplo, en la ciudad de \emph{Vatry}, las coordenadas se centran en aproximadamente x = 472476 e y = 6245020. A medida que nos alejamos, podemos encontrarnos con zonas de Rusia donde las coordenadas se expresan en millones de metros, lo cual hace que las operaciones resulten poco prácticas.
+Para abordar este problema, se ha tomado la decisión de desplazar el centro del mapa al centro del escenario. Esto implica que, además del escalado mencionado anteriormente, se realizará un desplazamiento de tal manera que el centro del escenario coincida con el centro del mapa.
+Esta solución permite trabajar con dimensiones más manejables y evita la asimetría en la representación. Al centrar el mapa en el escenario, las operaciones y cálculos se realizan de manera más eficiente y se logra una representación equilibrada de los elementos geoespaciales en el entorno 3D.
 Recapitulando, podemos resumir los siguientes puntos:
 \begin{itemize}
-    \item Nuestras transformaciones se centrarán en establecer las equivalencias de ejes entre los sistemas de referencia. En este caso, el eje \textsc{X} \gls{geoespacial} se mapeará al eje X en el mundo \textsc{3D}, el eje Y geoespacial se mapeará al eje \textsc{Z} en el mundo \textsc{3D}, y la altura se representará en el eje Y en el vector 3D.
+    \item Las transformaciones se centrarán en establecer las equivalencias de ejes entre los sistemas de referencia. En este caso, el eje \textsc{X} \gls{geoespacial} se mapeará al eje X en el mundo \textsc{3D}, el eje Y geoespacial se mapeará al eje \textsc{Z} en el mundo \textsc{3D}, y la altura se representará en el eje Y en el vector 3D.
     \item Habrá una inversión en el eje que representa la latitud. Esto significa que la coordenada Y geoespacial se mapeará al eje \textsc{-Z} en el mundo \textsc{3D} debido a la inversión.
     \item Se realizará un desplazamiento para centrar el escenario en la coordenada \texttt{(0,0,0)} en el mundo \textsc{3D}. Esto asegurará que el centro del escenario coincida con el origen de coordenadas en el mundo \textsc{3D}.
     \item Además, se aplicará un escalado para facilitar el dimensionado del escenario en el mundo \textsc{3D}. Esto permitirá trabajar con dimensiones más manejables y evitar problemas de representación y rendimiento.
 \end{itemize}
-En resumen, estas transformaciones nos permitirán establecer una correspondencia adecuada entre los sistemas de referencia geoespacial y el entorno 3D, asegurando una representación coherente y optimizada de los elementos geoespaciales en nuestro escenario.
+En resumen, estas transformaciones permitirán establecer una correspondencia adecuada entre los sistemas de referencia geoespacial y el entorno 3D, asegurando una representación coherente y optimizada de los elementos geoespaciales en el escenario.
 
-Para la conversión de coordenadas de \textsc{WGS84} en grados a metros, hemos optado por utilizar la librería \textsc{Leaflet}~\ref{sec:leaflet} en lugar de las fórmulas clásicas de la proyección \textsc{Mercator}. Las razones principales que respaldan esta elección son las siguientes:
+Para la conversión de coordenadas de \textsc{WGS84} en grados a metros, se ha optado por utilizar la librería \textsc{Leaflet}~\ref{sec:leaflet} en lugar de las fórmulas clásicas de la proyección \textsc{Mercator}. Las razones principales que respaldan esta elección son las siguientes:
 \begin{itemize}
     \item \textbf{\emph{Facilidad de uso}}: \textsc{Leaflet} proporciona una interfaz intuitiva y sencilla para trabajar con diversos sistemas de coordenadas y proyecciones. La librería admite múltiples sistemas de proyección, incluyendo la proyección \textsc{Mercator} ampliamente utilizada. 
     Además, ofrece funciones integradas para realizar conversiones de coordenadas y proyecciones, lo cual simplifica la transformación de datos geoespaciales en el contexto del mapa.
     \item \textbf{\emph{Optimización de rendimiento}}: \textsc{Leaflet} está diseñado para ofrecer un rendimiento óptimo en entornos web en tiempo real. Sus conversiones están optimizadas para asegurar un alto rendimiento.
-    \item \textbf{\emph{Mantenibilidad y actualizaciones regulares}}: \textsc{Leaflet} cuenta con una comunidad activa de desarrolladores que constantemente trabajan en mejorar la biblioteca, solucionar problemas, agregar nuevas características y garantizar la compatibilidad con las últimas tecnologías y estándares. Esto brinda confianza en la estabilidad y continuidad del proyecto, al tiempo que reduce la carga de mantenimiento para nuestro prototipo.
+    \item \textbf{\emph{Mantenibilidad y actualizaciones regulares}}: \textsc{Leaflet} cuenta con una comunidad activa de desarrolladores que constantemente trabajan en mejorar la biblioteca, solucionar problemas, agregar nuevas características y garantizar la compatibilidad con las últimas tecnologías y estándares. Esto brinda confianza en la estabilidad y continuidad del proyecto, al tiempo que reduce la carga de mantenimiento para el prototipo.
 \end{itemize}
-A continuación, en la Figura \ref{formula:desplazamiento}, se presenta el cálculo del desplazamiento. Se puede observar que primero se calculan las coordenadas geodésicas del centro del escenario. Para ello, se toma el punto medio de la latitud y la longitud. Dado que deseamos desplazar el centro del escenario al punto \emph{(0,0,0)} en el mundo \textsc{3D}, es necesario tener previamente calculado el desplazamiento en metros que se aplicará a cada coordenada.
+A continuación, en la Figura \ref{formula:desplazamiento}, se presenta el cálculo del desplazamiento. Se puede observar que primero se calculan las coordenadas geodésicas del centro del escenario. Para ello, se toma el punto medio de la latitud y la longitud. Dado que se desea desplazar el centro del escenario al punto \emph{(0,0,0)} en el mundo \textsc{3D}, es necesario tener previamente calculado el desplazamiento en metros que se aplicará a cada coordenada.
 
 Posteriormente, se utiliza una función que realiza la conversión a metros mediante la proyección de \textsc{Mercator} \ref{funcion:deegreeToMeter}. Esto da como resultado las coordenadas cartesianas del centro del escenario expresadas en metros. Estas coordenadas representan el desplazamiento que se aplicará a cada coordenada para lograr que el mapa esté centrado en el punto \emph{(0,0,0)}.
 \begin{figure}[h]
@@ -1600,7 +1600,7 @@ Posteriormente, se utiliza una función que realiza la conversión a metros medi
   \label{formula:desplazamiento}
 \end{figure}
 
-Por lo tanto, el constructor de nuestra clase \emph{MapConversion} realizará estos cálculos y almacenará el resultado en una \emph{instancia única} para que pueda ser utilizado en todas las funciones de conversión. De esta manera, evitamos repetir los cálculos y garantizamos que todas las transformaciones se realicen utilizando el mismo desplazamiento y escala.
+Por lo tanto, el constructor de la clase \emph{MapConversion} realizará estos cálculos y almacenará el resultado en una \emph{instancia única} para que pueda ser utilizado en todas las funciones de conversión. De esta manera, se evita repetir los cálculos y garantizamos que todas las transformaciones se realicen utilizando el mismo desplazamiento y escala.
 \subsubsection{De WGS84 a Mercator}
 \label{funcion:deegreeToMeter}
 Esta función utiliza la librería \textsc{Leaflet} para crear una coordenada geodésicas en el sistema de referencia \textsc{WGS84} a partir de una \emph{latitud} y \emph{longitud} dadas. Luego, realiza la proyección en \textsc{Mercator} para convertir la coordenada geodésica en una coordenada cartesiana expresada en metros.
@@ -1654,7 +1654,7 @@ Aunque esta función no se utiliza actualmente en la aplicación, resulta útil 
 
 \subsubsection{Devuelve el tamaño del terreno}
 \label{funcion:getGroundSize}
-La función proporcionará las dimensiones del escenario en el entorno \textsc{3D} al utilizar las constantes que definen la \emph{latitud} y \emph{longitud} máxima del rectángulo del escenario geodésico. Mediante la transformación de estas coordenadas al sistema de coordenadas del mundo \textsc{3D} y considerando que el escenario está centrado, podremos calcular con precisión las dimensiones de anchura y altura en el entorno tridimensional (Mundo 3D). Esta función será de gran utilidad en etapas posteriores para el gestor del terreno del escenario, ya que se requieren estas dimensiones para el correcto funcionamiento del componente de terreno descrito en la sección \ref{subsec:heightManager}.
+La función proporcionará las dimensiones del escenario en el entorno \textsc{3D} al utilizar las constantes que definen la \emph{latitud} y \emph{longitud} máxima del rectángulo del escenario geodésico. Mediante la transformación de estas coordenadas al sistema de coordenadas del mundo \textsc{3D} y considerando que el escenario está centrado, se podrá calcular con precisión las dimensiones de anchura y altura en el entorno tridimensional (Mundo 3D). Esta función será de gran utilidad en etapas posteriores para el gestor del terreno del escenario, ya que se requieren estas dimensiones para el correcto funcionamiento del componente de terreno descrito en la sección \ref{subsec:heightManager}.
 
 \subsubsection{Crear entidades en los corner del terreno}
 \label{funcion:createCorner}
@@ -1663,10 +1663,10 @@ Esta función no tiene ninguna aplicación en el prototipo final, su único prop
 \section{Terreno en el mapa}
 \label{sec:mapGround}
 En esta carpeta se encuentran todos los archivos responsables de gestionar la lógica relacionada con el suelo y las entidades asociadas. El objetivo de estos archivos es gestionar todas las operaciones relacionadas con el suelo, desde la generación del mallado hasta el posicionamiento y desplazamiento de las entidades sobre la superficie del suelo. Para lograr esto, se utilizan diversas tecnologías y librerías que permiten realizar las operaciones necesarias de forma eficiente y precisa.
-También podremos encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos \gls{raster}. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.
-Cada celda en la matriz representa una unidad de área cuadrada y contiene un valor numérico que representa una altura tal y como podemos apreciar en la figura \ref{fig:dem}.
+También se podrá encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos \gls{raster}. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.
+Cada celda en la matriz representa una unidad de área cuadrada y contiene un valor numérico que representa una altura tal y como se puede apreciar en la figura \ref{fig:dem}.
 
-Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un datum de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
+Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un \gls{datum} de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
 
 \begin{figure}[h]
   \centering
@@ -1680,7 +1680,7 @@ Para crear la entidad del terreno, este componente requiere varios parámetros. 
 	\item las dimensiones de la entidad en el escenario para lo cual se creó la función descrita en la sección \ref{funcion:getGroundSize}.
 	\item la textura que se utilizará para pintar el terreno.
 	\item la resolución del terreno (dimensiones de la matriz de alturas).
-	\item un parámetro de magnificación de alturas que controla la escala de las elevaciones del terreno en relación con la entidad visual resultante, de esto hablaremos más adelante pero este parámetro define el valor máximo en el mundo 3D para la altura más alta del fichero de alturas, esto es debido a que se normalizan los valores.
+	\item un parámetro de magnificación de alturas que controla la escala de las elevaciones del terreno en relación con la entidad visual resultante, de esto se hablará más adelante pero este parámetro define el valor máximo en el mundo 3D para la altura más alta del fichero de alturas, esto es debido a que se normalizan los valores.
 \end{itemize}
 Con estos parámetros, el componente \emph{aframe-terrain-model-component} genera y renderiza el terreno en el escenario, permitiendo así la representación realista de la superficie terrestre.
 \subsection{Generación del fichero DEM}
@@ -2380,7 +2380,10 @@ Estas mejoras y funcionalidades se han dividido en dos secciones según su compl
 	name={DAO},
 	description={DAO (Data Access Object) es un patrón de diseño utilizado en el desarrollo de software para abstraer y encapsular la lógica de acceso a una fuente de datos, como una base de datos o un servicio web.}
 }
-
+\newglossaryentry{datum}{
+	name={DATUM},
+	description={En el campo de la geodesia, un datum se refiere a un conjunto de puntos de referencia en la superficie terrestre que se utilizan para realizar mediciones de posición. Además, está asociado a un modelo que describe la forma de la Tierra, conocido como elipsoide de referencia, y se utiliza para establecer un sistema de coordenadas geográficas. En resumen, un datum proporciona los puntos de referencia y el marco de referencia necesario para definir y utilizar un sistema de coordenadas geográficas en mediciones de posición en la Tierra.}
+}
 
 
 
