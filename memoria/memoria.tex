@@ -429,7 +429,7 @@ A medida que el proyecto fue creciendo crearon la plataforma online sin ánimo d
 \subsection{Descripción técnica}
 En la red de \textsc{OpenSky} tan pronto como llega un mensaje \textsc{ADS-B} se crea un registro para el avión llamado \emph{vector de estado}.
 El vector de estado del servicio contiene la información descrita en la tabla \ref{tab:vectorEstado}.
-En la sección \ref{subsec:dao} hablaré de como el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
+En la sección \ref{subsec:dao} hablaré de cómo el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
 
 \subsection{Contexto y aplicación en el prototipo}
 En mi caso, utilizaré la \textsc{API} gratuita que me proporciona los servidores de OpenSky con una resolución temporal de 5 segundos. Por lo tanto, aunque podría tener una mayor resolución temporal utilizando la tecnología \textsc{ADS-B} como vimos en la sección \ref{sec:adsb}, mí aplicación se adaptará a la opción gratuita que nos ofrece el servicio \textsc{REST} de \textsc{OpenSky}.
@@ -551,7 +551,7 @@ El \textsc{DOM} se compone de varios conceptos:
 \subsection{Contexto y aplicación en el prototipo}
 Esta tecnología dentro del contexto de la implementación es usada como base para generar entidades y componentes en tiempo real dando el dinamismo a la escena de \textsc{A-Frame}. Es la tecnología usada para que las entidades contenidas en la escena sean manipuladas a través de la modificación de sus propiedades y el envío de eventos.
 \subsection{Ejemplos de uso}
-Desde cualquier parte del código de la aplicación se puede manipular el \textsc{DOM} a través de los métodos que nos proporciona la \textsc{\gls{API}} de \textsc{Javascript}. Por ejemplo voy a mostrar como se puede crear un elemento en la aplicación que representa un avión y agregarlo dentro del elemento que representa la escena:
+Desde cualquier parte del código de la aplicación se puede manipular el \textsc{DOM} a través de los métodos que nos proporciona la \textsc{\gls{API}} de \textsc{Javascript}. Por ejemplo voy a mostrar cómo se puede crear un elemento en la aplicación que representa un avión y agregarlo dentro del elemento que representa la escena:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 	function createFlightElement(id) {
 		//Vuelo nuevo
@@ -750,7 +750,7 @@ Su principal funcionalidad está orientada a la creación de aplicaciones de map
 Está tan extendida y es tan liviana que empresas como \textsc{FourSquare}, \textsc{Pinterest} y \textsc{Flickr} la integran dentro de su arquitectura.
 \textsc{Leaflet} permite a los desarrolladores mostrar de manera muy sencilla mapas web basados en teselas alojadas en un servidor público. Sobre estos mapas permite añadir capas que muestren información creando aplicaciones de manera sencilla y liviana.
 \subsection{Contexto y aplicación en el prototipo}
-Se ha utilizado esta librería para implementar las conversiones entre coordenadas geodésicas y cartesianas, como se describe en la sección \ref{subsec:mapConversion}. Al utilizar esta librería, me beneficio del soporte técnico que proporciona, asegurándome de contar con los ajustes necesarios para las fórmulas que desempeñan un papel importante en mi aplicación. Además, me aseguro de que las conversiones se realicen de la manera más eficiente posible para proporcionar un rendimiento óptimo en entornos móviles.
+Se ha utilizado esta librería para implementar las conversiones entre coordenadas geodésicas y cartesianas, como se describe en la sección \ref{subsec:mapConversion}. Al utilizar esta librería, me beneficio del soporte técnico que proporciona, asegurándome de contar con los ajustes necesarios para las fórmulas, que desempeñan un papel importante en la aplicación. Además, me aseguro de que las conversiones se realicen de la manera más eficiente posible para proporcionar un rendimiento óptimo en entornos móviles.
 \subsection{Ejemplos de uso}
 A continuación, se presenta un ejemplo de cómo he realizado la conversión de coordenadas geodésicas a cartesianas utilizando la proyección \textsc{Mercator} a través del objeto global \emph{L} que me proporciona un punto de entrada a las funcionalidades de la librería.
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
@@ -974,7 +974,7 @@ Después descargo los datos de edificios y los proceso según se detalla en la s
 \end{figure}
 Se realizan todos las modificaciones finales en el modulo de configuración para poder parametrizar la plataforma para otro escenario, y se descargan vuelos, rater y fichero de alturas y edificios tal y como se detalla finalmente en el manual de usuario para generar el escenario de Vatry (Francia) y poner a prueba la versatilidad de la plataforma.
 \subsubsection{Resultado}
-Se puede observar en la figura \ref{fig:demAframe} como cargo una demostración simple con los ficheros generados del binario de alturas con su respectivo \gls{raster}. 
+Se puede observar en la figura \ref{fig:demAframe} cómo cargo una demostración simple con los ficheros generados del binario de alturas con su respectivo \gls{raster}. 
 
 Se puede visualizar la demostración en el siguiente enlace \url{https://djprano.github.io/AFrameTFG/demos/madrid_terrain.html}.
 Se realiza la reunión final con el \emph{Product Owner} concluyendo que se han cumplido todos los objetivos cerrando el desarrollo y definiendo los próximos objetivos para el siguiente sprint.
@@ -1023,7 +1023,7 @@ Para el requisito de visualizar los datos de los edificios, he desarrollado un c
 
 En resumen esta funcionalidad, al crear los edificios, se procesan los metadatos provenientes de la información de \textsc{OpenStreetMap}. Se genera una cadena de texto que se pasa como parámetro al componente \emph{tooltip-info}, asignándolo a la entidad correspondiente. El componente \emph{tooltip-info} calcula la posición más alta de la geometría del edificio y crea un texto que se muestra de manera visible y siempre mirando hacia la cámara cuando el cursor se posiciona encima del edificio.
 
-El último desafío al que me enfrenté fue el de mover las entidades \textsc{\gls{HUD}} que existen dentro de la estructura del usuario, ya sea a través del ratón o de los controladores de realidad virtual de las gafas \textsc{Oculus} que me proporcionó la universidad. En un principio, considero utilizar el componente \emph{aframe-super-hands-component}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, ya que es ampliamente utilizado en la comunidad de desarrollo de \textsc{A-Frame}. Comienzo a integrar este componente en nuestro prototipo, obteniendo unos resultados no satisfactorios. Los movimientos solo funcionaban cuando la cámara miraba en una dirección, y a medida que se movía la cámara y el usuario, los movimientos se volvían incoherentes.
+El último desafío al que me enfrenté fue el de mover las entidades \textsc{\gls{HUD}} que existen dentro de la estructura del usuario, ya sea a través del ratón o de los controladores de realidad virtual de las gafas \textsc{Oculus} que me proporcionó la Universidad Rey Juan Carlos. En un principio, considero utilizar el componente \emph{aframe-super-hands-component}\footnote{\url{https://github.com/c-frame/aframe-super-hands-component}}, ya que es ampliamente utilizado en la comunidad de desarrollo de \textsc{A-Frame}. Comienzo a integrar este componente en nuestro prototipo, obteniendo unos resultados no satisfactorios. Los movimientos solo funcionaban cuando la cámara miraba en una dirección, y a medida que se movía la cámara y el usuario, los movimientos se volvían incoherentes.
 
 Después de investigar el código fuente de la biblioteca, llego a la conclusión de que el componente no era adecuado para el caso de uso, ya que estoy intentando mover una entidad que no tiene coordenadas absolutas, sino coordenadas relativas a la cámara. 
 Además, los componentes \emph{movement-controls} establecidos en la entidad \emph{Rig} en combinación con el componente \emph{look-controls} en la cámara hacen que las posiciones relativas de la cámara tampoco sean absolutas. También debo asegurarme de que al arrastrar una entidad, no mueva la cámara, ya que el movimiento natural del ratón después de dejar pulsado el botón izquierdo se utiliza para desplazar la orientación cámara.
@@ -1241,7 +1241,7 @@ Por último, es recomendable configurar el componente \emph{look-at}\footnote{\u
 	\end{verbatim}
 }
 \subsection{Componente barra de herramientas 3D}
-En esta sección vamos a detallar como reutilizar el componente de barra de herramientas que junto con el componente \emph{custom-draggable} del que hablamos en la sección anterior proporciona un elemento en el mundo de realidad virtual con botones conmutables que viajan con la cámara permitiendo activar o desactivar funcionalidades de la aplicación al usuario.
+En esta sección se va a detallar, cómo reutilizar el componente de barra de herramientas, que junto con el componente \emph{custom-draggable} del que hablamos en la sección anterior, proporciona un elemento en el mundo de realidad virtual con botones conmutables que viajan con la cámara, permitiendo activar o desactivar funcionalidades de la aplicación al usuario.
 \subsubsection{ruta}
 {\scriptsize
 	\url{https://github.com/djprano/AFrameTFG/blob/main/js/gui/toolbar3d.js}
@@ -1282,7 +1282,7 @@ A continuación mostramos un ejemplo para la creación de un botón:
 	this.toolbar.appendChild(this.hudEnableButton);
 \end{minted}
 
-Para agregar el componente, tan solo debemos configurar \emph{toolbar3d} dentro del elemento cámara como podemos ver en el siguiente ejemplo:
+Para agregar el componente, tan solo debemos configurar \emph{toolbar3d} dentro del elemento cámara, como se puede ver en el siguiente ejemplo:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, breaklines]{html}
 	<a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
 	raycaster="far: 4000; objects: .clickable" position="0 0 0" toolbar3d>
@@ -1301,7 +1301,7 @@ Para usar esta geometría necesitamos pasarle los siguientes parámetros:
 	\item \textbf{terrainHeight}: Altura del terreno, donde se asienta la geometría del edificio.
 	\item \textbf{height}: Altura del edificio.
 \end{itemize}
-Con estos datos y creando una entidad con la primitiva está geometría se creará un edificio en el escenario.
+Con estos datos y creando una entidad que establece esta geometría como primitiva, se creará un edificio en el escenario.
 \subsubsection{Ejemplo de uso}
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false, breaklines]{javascript}
 	let wayPoints = [];
@@ -1387,8 +1387,7 @@ Después de comprender el concepto de la \emph{throttledFunction}, la última ta
 Una vez que se obtengan los nuevos datos, la función invocará a \emph{updateData}, que está definida dentro del archivo \emph{mainScene.js}. En este punto, se realizará el análisis y \emph{parseo} del archivo \emph{\gls{JSON}} que contiene los datos aeronáuticos. Si se encuentran nuevos componentes que deben ser creados en la escena, se generarán las entidades necesarias. Para los componentes existentes, se crearán animaciones que permitirán que los aviones se muevan de manera fluida dentro del entorno \emph{3D}.
 Esta estrategia garantiza que los datos aeronáuticos se actualicen regularmente y que la representación de los aviones en la escena sea realista y dinámica.
 
-Es importante remarcar que el componente \emph{main-scene} también será responsable de registrar los eventos necesarios para el envío de eventos sobre los elementos creados como aviones, para que el componente que explicaremos más adelante responsable de mostrar los datos reciba la información y el evento de mostrarse.
-
+Es importante remarcar que el componente \emph{main-scene}, también es responsable de suscribirse a los eventos generados por los controladores, con la finalidad de enviar información a los componentes involucrados en la interfaz gráfica, responsables de mostrar los datos de los aviones.
 \subsection{Movimiento fluido de aviones dentro de la escena}
 \label{subsec:movimientoFluido}
 Para lograr un movimiento fluido de los aviones dentro de la escena, voy a crear una interpolación lineal utilizando las animaciones proporcionadas por \textsc{A-Frame}, tal como se muestra en el código de la Figura \ref{codigo:movimientoFluido}. En esta implementación, cada vez que se ejecute el método de actualización de la escena en intervalos de tiempo regulares, genero una animación que interpolará de forma lineal la posición anterior y la nueva del avión. Esta animación tendrá una duración igual al intervalo de actualización asegurando de tal manera que la animación termina cuando ser recupera un nuevo dato para generar la siguiente.
