@@ -9,7 +9,7 @@
 \PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setMapDem}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}madrid\PYGZus{}dem.bin\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//fichero de alturas del terreno}
 \PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setLocalApiMode}\PYG{p}{(}\PYG{k+kc}{true}\PYG{p}{);}\PYG{c+c1}{//establece el modo offline datos cacheados.}
 \PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoInterval}\PYG{p}{(}\PYG{l+m+mf}{1000}\PYG{p}{);}\PYG{c+c1}{//intervalo de refresco.}
-\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoLocalIndex}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{);}\PYG{c+c1}{//indice del fichero por donde comienza.}
+\PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setDaoLocalIndex}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{);}\PYG{c+c1}{//índice del fichero por donde comienza.}
 \PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setApiUsuer}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}xxxx\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//Establece el usuario para el modo online}
 \PYG{+w}{    }\PYG{n+nx}{configuration}\PYG{p}{.}\PYG{n+nx}{setApiPassword}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}xxxxx\PYGZsq{}}\PYG{p}{);}\PYG{c+c1}{//Establece la contraseña para el modo online}
 \end{Verbatim}

@@ -451,7 +451,7 @@ Authorization: "Basic user:password"
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{|c|c|c|c|c|c|}
 			\hline
-			\textbf{Indice} & \textbf{Propiedad} & \textbf{Tipo} & \textbf{Descripción} \\
+			\textbf{Índice} & \textbf{Propiedad} & \textbf{Tipo} & \textbf{Descripción} \\
 			\hline
 			0 & icao24 & string & Dirección del transpondedor en hexadecimal. \\
 			\hline
@@ -1441,7 +1441,7 @@ Como resultado, el archivo \textsc{HTML} principal del escenario carga el módul
     configuration.setMapDem('madrid_dem.bin');//fichero de alturas del terreno
     configuration.setLocalApiMode(true);//establece el modo offline datos cacheados.
     configuration.setDaoInterval(1000);//intervalo de refresco.
-    configuration.setDaoLocalIndex(0);//indice del fichero por donde comienza.
+    configuration.setDaoLocalIndex(0);//índice del fichero por donde comienza.
     configuration.setApiUsuer('xxxx');//Establece el usuario para el modo online
     configuration.setApiPassword('xxxxx');//Establece la contraseña para el modo online
 \end{minted}
@@ -1685,7 +1685,7 @@ Con estos parámetros, el componente \emph{aframe-terrain-model-component} gener
 \subsection{Generación del fichero DEM}
 \label{sec:dem}
 En primer lugar, voy a detallar el proceso utilizado para generar el archivo de alturas \textsc{DEM} en formato \textsc{ENVI}, que luego se inyectará en el componente \emph{aframe-terrain-model-component}.
-Basándome en la experiencia del tutor del proyecto, el \emph{Dr. Jesús M. González Barahona}, quien ha investigado y experimentado con la carga de terrenos del programa \textsc{Copernicus} de la Unión Europea a través transformaciones con las herramientas proporcionadas por \textsc{GDAL}, una biblioteca de código abierto ampliamente utilizada en el campo de los sistemas de información geográfica que permite la manipulación de datos geoespaciales.
+Basándome en la experiencia del tutor del proyecto, el \emph{Dr. Jesús M. González Barahona}, quien ha investigado y experimentado con la carga de terrenos del programa \textsc{Copernicus}, a través de transformaciones con las herramientas proporcionadas por \textsc{GDAL}, una biblioteca de código abierto, ampliamente utilizada en el campo de los sistemas de información geográfica, que permite la manipulación de datos geoespaciales.
 Se va a describir los pasos para generar el fichero \textsc{DEM} de Madrid como ejemplo:
 \label{manual:generacionDem}
 \begin{enumerate}
@@ -1756,7 +1756,7 @@ Se va a describir los pasos para generar el fichero \textsc{DEM} de Madrid como 
 \subsection{Generación de la capa de textura raster}
 \label{sec:raster}
 Voy a describir cómo utilizando la tecnología que nos brinda \textsc{Google Earth Engine} se puede extraer la capa \gls{raster} correspondiente a las coordenadas del rectángulo para el cual se ha generado el archivo bin en formato \textsc{ENVI}. Esto permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que proporciona una representación más realista del terreno.
-En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estoy usando el \textsc{API} que ofrece el \gls{framework} de \textsc{Google Earth Engine}, el objeto \texttt{ee} (\emph{Earth Engine}) ofrece la capacidad de crear geometrías añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que sigo para realizar la extracción del raster:
+En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estoy usando el \textsc{API} que ofrece el \gls{framework} de \textsc{Google Earth Engine}, el objeto \texttt{ee} (\emph{Earth Engine}) ofrece la capacidad de crear geometrías, añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que sigo para realizar la extracción del raster:
 \begin{enumerate}
     \item Se crea una geometría rectangular con coordenadas \textsc{WGS84} que  permitirá realizar una operación de intersección con el raster para la obtención de una porción.
     \item Se añade el rectángulo como capa para visualizar la zona que vamos a exportar y realizar una comprobación visual de los datos.
@@ -1848,7 +1848,7 @@ Dado que la matriz empieza a contar los índices desde la esquina superior izqui
 Para tener en cuenta este desplazamiento, se calcula el centro de la matriz dividiendo la anchura total del terreno por la mitad y sumando el resultado al eje x del vector 3D. 
 Para determinar la columna correspondiente en la matriz, se divide la posición \texttt{x} entre el ancho de cada celda y se redondea el resultado para obtener un índice exacto. Esto dará la columna correspondiente en la matriz. 
 De manera similar, se calcula la fila correspondiente en la matriz utilizando el eje Z. Estos cálculos proporcionarán la fila y columna adecuadas en la matriz de alturas.
-En la figura \ref{formula:calculoIndiceAlturas} podemos ver las fórmulas de calculo de indices en columna y fila que acabo de describir.
+En la figura \ref{formula:calculoIndiceAlturas} podemos ver las fórmulas de cálculo de índices en columna y fila que acabo de describir.
 
 Finalmente, es importante mencionar que se está utilizando una representación de la matriz de alturas en formato de array unidimensional. Aunque conceptualmente es una matriz bidimensional, se almacena en una variable de tipo array de una sola dimensión. 
 Para determinar el índice en el array al que corresponde una determinada fila y columna en la matriz, se realiza una operación básica para convertir el índice bidimensional en un índice unidimensional.
@@ -2093,7 +2093,8 @@ La barra de herramientas está representada por un plano principal con transpare
 Cada botón se crea mediante una función interna (ver Código \ref{codigo:crearBoton}) que recibe varios argumentos. Estos argumentos incluyen un identificador único utilizado para hacer referencia al botón en el contexto del \textsc{\gls{DOM}}, las dimensiones de la entidad que determinan su ancho y alto, el texto, la posición dentro de la barra de herramientas, si el botón es conmutable o no, la acción a ejecutar cuando el botón está activado y la acción a ejecutar cuando el botón está desactivado.
 Además, se pueden especificar propiedades visuales para el botón cuando está en estado activado y cuando está en estado desactivado, como el color y el texto correspondiente. Esta configuración flexible y modular hace que la barra de herramientas sea altamente reutilizable para otros proyectos y fácilmente extensible para añadir más funcionalidades dentro de la aplicación.
 En la sección \ref{subsec:guiaBarra3d} se muestra un ejemplo de como reutilizar la barra de herramientas con mas detalles sobre la función que se acaba de describir.
-La aplicación, haciendo uso del método anteriormente descrito en el componente barra de herramientas crea dos botones conmutables que permiten habilitar la funcionalidad de selección de aviones y visualizar su información a través de un panel \textsc{\gls{HUD}} que contiene acciones adicionales. Además, se incluye un botón que activa y desactiva la funcionalidad de texto contextual, como se describe en la sección anterior \ref{subsec:tooltip}.
+
+La aplicación, haciendo uso del método anteriormente descrito, en el componente barra de herramientas crea dos botones conmutables, que permiten habilitar la funcionalidad de selección de aviones y, visualizar su información a través de un panel \textsc{\gls{HUD}}, que contiene acciones adicionales. Además, se incluye un botón que activa y desactiva la funcionalidad de texto contextual, como se describe en la sección anterior \ref{subsec:tooltip}.
 \subsubsection{Animación de la barra de herramientas}
 \label{subsec:animationToolbar}
 Para lograr la funcionalidad de plegado, se han implementado animaciones que actúan sobre la escala y opacidad de los componentes de la barra de herramientas. Cuando el usuario presiona el botón de plegado, la barra de herramientas oculta los botones mediante una animación que los desvanece gradualmente a través de la opacidad. Luego, la barra de herramientas se comprime horizontalmente, lo que también afecta al botón de plegado, haciendo que se comprima en tamaño.
