@@ -551,7 +551,7 @@ El \textsc{DOM} se compone de varios conceptos:
 \subsection{Contexto y aplicación en el prototipo}
 Esta tecnología dentro del contexto de la implementación es usada como base para generar entidades y componentes en tiempo real dando el dinamismo a la escena de \textsc{A-Frame}. Es la tecnología usada para que las entidades contenidas en la escena sean manipuladas a través de la modificación de sus propiedades y el envío de eventos.
 \subsection{Ejemplos de uso}
-Desde cualquier parte del código de nuestra aplicación podemos manipular el \textsc{DOM} a través de los métodos que nos proporciona la \textsc{\gls{API}} de \textsc{Javascript}. Por ejemplo vamos a mostrar como podemos crear un elemento del DOM en nuestra aplicación que representa un avión y agregarlo dentro del elemento que representa la escena:
+Desde cualquier parte del código de la aplicación se puede manipular el \textsc{DOM} a través de los métodos que nos proporciona la \textsc{\gls{API}} de \textsc{Javascript}. Por ejemplo voy a mostrar como se puede crear un elemento en la aplicación que representa un avión y agregarlo dentro del elemento que representa la escena:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
 	function createFlightElement(id) {
 		//Vuelo nuevo
@@ -599,7 +599,7 @@ Para conciliar ambos lenguajes, \textsc{Netscape} presentó \textsc{JavaScript} 
 	\end{tabular}
 \end{center}
 \subsection{Contexto y aplicación en el prototipo}
-En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base utilizado para la implementación de toda la lógica de negocio desarrollada para el prototipo. Es por lo tanto la herramienta principal para el diseño y desarrollo de componentes que compondrán la escena final . A parte de esto como veremos más adelante es la tecnología sobre la que está construida los \emph{\gls{framework}s} y librerías usados en este proyecto tales como \textsc{A-Frame}~\ref{sec:aframe} y \textsc{Leaflet}~\ref{sec:leaflet}
+En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base utilizado para la implementación de toda la lógica de negocio desarrollada para el prototipo. Es por lo tanto la herramienta principal para el diseño y desarrollo de componentes que compondrán la escena final. A parte de esto como podréis ver en las secciones posteriores es la tecnología sobre la que está construida los \emph{\gls{framework}s} y librerías usados en este proyecto tales como \textsc{A-Frame}~\ref{sec:aframe}, \textsc{Leaflet}~\ref{sec:leaflet} y \textsc{Three.js}\ref{sec:threejs}.
 \subsection{Ejemplos de uso}
 
 \section{WebGL}
@@ -628,7 +628,7 @@ El prototipo de este proyecto está diseñado para funcionar con dispositivos qu
 
 Con \textsc{Node.js}, los desarrolladores pueden construir aplicaciones del lado del servidor utilizando \textsc{JavaScript}, lo que proporciona coherencia en el lenguaje de programación tanto en el lado del cliente como en el servidor. Además, cuenta con una amplia gama de módulos y bibliotecas disponibles a través de su gestor de paquetes \textsc{\gls{npm}}, lo que facilita el desarrollo rápido y eficiente de aplicaciones web y de red.
 \subsection{Contexto y aplicación en el prototipo}
-Como mencionamos en la sección \ref{subsec:obtencionCache}, hemos utilizado \textsc{Node.js} para desarrollar un \emph{proceso batch} que se encarga de almacenar los datos de la \textsc{API} de \textsc{OpenSky}~\ref{sec:opensky} en una caché local. Esta técnica nos permite ejecutar la aplicación en modo diferido, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso.
+Como mencioné en la sección \ref{subsec:obtencionCache}, he utilizado \textsc{Node.js} para desarrollar un proceso por lotes responsable de almacenar los datos de la \textsc{API} de \textsc{OpenSky}~\ref{sec:opensky} en una caché local. Esta técnica me permitirá ejecutar la aplicación en modo diferido, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso y reproducción.
 \subsection{Ejemplos de uso}
 A continuación se muestra un ejemplo de código que puede ser ejecutado por \textsc{Node.js} para almacenar los datos obtenidos de la \textsc{API} en un archivo \textsc{\gls{JSON}} para su posterior uso:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
@@ -672,7 +672,7 @@ Las principales características técnicas de \textsc{Three.js} son las siguient
 	\item \textbf{\emph{Interactividad}}: \textsc{Three.js} permite la interacción con los objetos de la escena a través de eventos de ratón, teclado y táctiles, lo que brinda una experiencia interactiva al usuario.
 \end{itemize}
 \subsection{Contexto y aplicación en el prototipo}
-\textsc{Three.js} es la librería utilizada por \textsc{A-Frame} como motor gráfico, lo que la convierte en la base para el desarrollo de componentes en el prototipo del proyecto. Además, \textsc{Three.js} se encarga del renderizado en \textsc{3D} y nos brinda las capacidades necesarias para crear componentes que luego pueden ser utilizados con una sintaxis declarativa similar a \textsc{HTML}, a través del uso de \textsc{A-Frame}. 
+\textsc{Three.js} es la librería utilizada por \textsc{A-Frame} como motor gráfico, lo que la convierte en la base para el desarrollo de componentes en el prototipo del proyecto. Además, \textsc{Three.js} se encarga del \glsdisp{renderización}{renderizado} en \textsc{3D} y me proporciona las capacidades necesarias para crear componentes que luego pueden ser utilizados con una sintaxis declarativa similar a \textsc{HTML}, a través del uso de \textsc{A-Frame}. 
 
 Por lo tanto, se ha utilizado como tecnología heredada por \textsc{A-Frame}, y los componentes desarrollados en el prototipo hacen uso de la \textsc{API} proporcionada por esta librería.
 \subsection{Ejemplos de uso}
@@ -718,7 +718,7 @@ Las principales características técnicas de \textsc{A-Frame} son las siguiente
 
 En definitiva, las capacidades técnicas de \textsc{A-Frame} están en continuo crecimiento gracias al gran ecosistema que hay de desarrollo a su alrededor, permitiendo nutrirse también del crecimiento de la tecnología principal, \textsc{Three.js}.
 \subsection{Contexto y aplicación en el prototipo}
-\textsc{A-Frame} es el motor principal de \emph{renderizado} del prototipo, ya que toda la aplicación está construida haciendo uso de la \textsc{\gls{API}} que proporciona esta librería. Al estar basada en \textsc{JavaScript}, el gestor principal sobrescribe el componente de la escena y define el comportamiento principal de nuestra aplicación mediante el uso de la \textsc{API} de JavaScript en conjunto con los componentes de \textsc{A-Frame} y \textsc{Three.js}.
+\textsc{A-Frame} es el motor principal de \glsdisp{renderización}{renderizado} del prototipo, ya que toda la aplicación está construida haciendo uso de la \textsc{\gls{API}} proporcionada por esta librería. Al estar basada en \textsc{JavaScript}, el gestor principal sobrescribe el componente de la escena y define el comportamiento principal de la aplicación haciendo uso de la \textsc{API} de \textsc{JavaScript} en conjunto con los componentes de \textsc{A-Frame} y \textsc{Three.js}.
 \subsection{Ejemplos de uso}
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{html}
 	<html>
