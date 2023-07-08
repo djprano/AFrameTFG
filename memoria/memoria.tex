@@ -372,8 +372,7 @@ Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tecnologías relacionadas}
 \label{chap:tecnologias}
-En este capítulo vamos a describir el contexto tecnológico en el que se encuentra asentado el prototipo de aplicación web, repasando todas las herramientas tecnológicas usadas y estudiadas para el desarrollo de este proyecto.
-Por último se van a repasar tecnologías similares en el mercado.
+En este capítulo voy a describir el contexto tecnológico en el que se encuentra asentado el prototipo de aplicación web, repasando todas las herramientas tecnológicas usadas y estudiadas para el desarrollo de este proyecto.
 \section{Sistema de Vigilancia Dependiente Automática (ADS-B)}
 \label{sec:adsb}
 \subsection{Introducción a la tecnología}
@@ -418,8 +417,8 @@ Existen tres tipos de transpondedores en función de su capacidad:
 	\label{fig:adsbtypes}
 \end{figure}
 \subsection{Contexto y aplicación en el prototipo}
-La tecnología \textsc{ADS-B} juega un papel fundamental en el contexto de este proyecto, el objetivo principal del prototipo es la visualización de datos aeronáuticos en un entorno \textsc{\gls{3D}}. Por to tanto esta tecnología nos aporta la capacidad de obtener la información que necesita nuestra aplicación para acceder a los datos que proporcionan dinamismo, ya que las entidades que utilizan esta tecnología estarán constantemente cambiando de posición en el escenario gracias a la variación de los datos de posición.
-La tecnología estándar \textsc{ADS-B} nos ofrece una resolución temporal de un segundo entre muestras, aunque los servidores gratuitos normalmente ofrecerán solo la capacidad de acceder a los vectores de información cada cinco segundos como es el caso de \textsc{OpenSky}, resolución suficiente para crear una interpolación entre posiciones y recrear el vuelo de los aviones.
+La tecnología \textsc{ADS-B} juega un papel fundamental en el contexto de este proyecto, el objetivo principal del prototipo es la visualización de datos aeronáuticos en un entorno \textsc{\gls{3D}}. Por lo tanto, al utilizar esta tecnología en el prototipo, obtengo la capacidad de acceder a los datos que proporcionan dinamismo a la aplicación. Esto se debe a que las entidades que utilizan esta tecnología estarán constantemente cambiando de posición en el escenario, gracias a la variación de los datos de posición.
+La tecnología estándar \textsc{ADS-B} ofrece una resolución temporal de un segundo entre muestras, aunque los servidores gratuitos normalmente ofrecerán solo la capacidad de acceder a los vectores de información cada cinco segundos como es el caso de \textsc{OpenSky}, resolución suficiente para crear una interpolación entre posiciones y recrear el vuelo de los aviones.
 \section{Opensky-network API}
 \label{sec:opensky}
 \subsection{Introducción a la tecnología}
@@ -430,13 +429,13 @@ A medida que el proyecto fue creciendo crearon la plataforma online sin ánimo d
 \subsection{Descripción técnica}
 En la red de \textsc{OpenSky} tan pronto como llega un mensaje \textsc{ADS-B} se crea un registro para el avión llamado \emph{vector de estado}.
 El vector de estado del servicio contiene la información descrita en la tabla \ref{tab:vectorEstado}.
-En la sección \ref{subsec:dao} hablaremos como el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
+En la sección \ref{subsec:dao} hablaré de como el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
 
 \subsection{Contexto y aplicación en el prototipo}
-En nuestro caso, utilizaremos la API gratuita que nos brindan los servidores de OpenSky con una resolución temporal de 5 segundos. Por lo tanto, aunque podríamos tener una mayor resolución temporal utilizando la tecnología ADS-B como vimos en la sección \ref{sec:adsb}, nuestra aplicación se adaptará a la opción gratuita que nos ofrece el servicio REST de OpenSky.
+En mi caso, utilizaré la \textsc{API} gratuita que me proporciona los servidores de OpenSky con una resolución temporal de 5 segundos. Por lo tanto, aunque podría tener una mayor resolución temporal utilizando la tecnología \textsc{ADS-B} como vimos en la sección \ref{sec:adsb}, mí aplicación se adaptará a la opción gratuita que nos ofrece el servicio \textsc{REST} de \textsc{OpenSky}.
 \subsection{Ejemplos de uso}
-En la figura \ref{fig:getOpensky}, se muestra un ejemplo de una petición GET para las coordenadas de Madrid utilizando la \gls{API} de OpenSky.
-En este ejemplo, se realiza una petición \emph{GET} al \emph{endpoint} \emph{https://opensky-network.org/api/states/all} con los parámetros de consulta \emph{lamin}, \emph{lomin}, \emph{lamax} y \emph{lomax} especificados. Además, se incluye un encabezado de autorización con el valor (\emph{Basic user:password}) para autenticar la solicitud donde la parte (\emph{user:password}) puede codificarse en \textsc{Base64} para no ir los datos en claro.
+En la figura \ref{fig:getOpensky}, se muestra un ejemplo de una petición \texttt{GET} para las coordenadas de Madrid utilizando la \gls{API} de \textsc{OpenSky}.
+En este ejemplo, se realiza una petición \texttt{GET} al \emph{endpoint} \emph{https://opensky-network.org/api/states/all} con los parámetros de consulta \emph{lamin}, \emph{lomin}, \emph{lamax} y \emph{lomax} especificados. Además, se incluye un encabezado de autorización con el valor (\emph{Basic user:password}) para autenticar la solicitud donde la parte (\emph{user:password}) puede codificarse en \textsc{Base64}\footnote{\url{https://www.base64decode.org/}} para no ir los datos en claro.
 \begin{figure}[h]
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{text}
