@@ -6,7 +6,7 @@ class HeightManager {
     //**Constructor */
     constructor() {
         this.mainScene = document.querySelector('a-scene');
-        this.zMagnification = 120;
+        this.zMagnification = 110;
         this.terrainListeners = [];
         this.raycaster = new THREE.Raycaster(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0));
     }

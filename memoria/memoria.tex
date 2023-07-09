@@ -619,8 +619,8 @@ Una de las ventajas principales de \textsc{WebXR} es que permite crear experienc
 
 \textsc{WebXR} proporciona \textsc{\gls{API}} y funcionalidades que permiten interactuar con dispositivos de realidad virtual y realidad aumentada, como gafas \textsc{VR}, cascos \textsc{AR} o incluso dispositivos móviles con capacidades \textsc{AR}. Estas funcionalidades incluyen el seguimiento de la posición y la orientación del dispositivo, renderización de escenas \textsc{3D}, detección de gestos y eventos de interacción, entre otros.
 
-\section{VR}
-La realidad virtual (\textsc{VR}) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de \gls{hardware} y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
+\section{Realidad Virtual (VR)}
+La realidad virtual (\textsc{VR}) es la tecnología responsable de recrear un entorno ficticio que simula la apariencia real, permitiendo al usuario sumergirse en él y sentir que forma parte de ese entorno. Para experimentar esta realidad virtual, se requieren dispositivos especiales como las gafas o cascos de realidad virtual. Estos dispositivos generan entornos virtuales utilizando la combinación de \glsdisp{hardware}{hardware} y software diseñados para engañar a nuestros sentidos. Las imágenes en el visor se muestran de manera estereoscópica, lo que significa que se crean dos imágenes ligeramente diferentes para simular una perspectiva diferente en cada ojo. Esto crea una sensación de percepción tridimensional, similar a cómo percibimos el mundo real con nuestros sentidos.
 \subsection{Contexto y aplicación en el prototipo}
 El prototipo de este proyecto está diseñado para funcionar con dispositivos que generan entornos virtuales, permitiendo una inmersión completa y realista en dicho entorno. Para lograr esto, se utilizan las herramientas proporcionadas por la plataforma A-Frame, como se describe en la sección \ref{sec:aframe}. 
 \section{Node JS}
@@ -629,7 +629,7 @@ El prototipo de este proyecto está diseñado para funcionar con dispositivos qu
 
 Con \textsc{Node.js}, los desarrolladores pueden construir aplicaciones del lado del servidor utilizando \textsc{JavaScript}, lo que proporciona coherencia en el lenguaje de programación tanto en el lado del cliente como en el servidor. Además, cuenta con una amplia gama de módulos y bibliotecas disponibles a través de su gestor de paquetes \textsc{\gls{npm}}, lo que facilita el desarrollo rápido y eficiente de aplicaciones web y de red.
 \subsection{Contexto y aplicación en el prototipo}
-Como mencioné en la sección \ref{subsec:obtencionCache}, he utilizado \textsc{Node.js} para desarrollar un proceso por lotes responsable de almacenar los datos de la \textsc{API} de \textsc{OpenSky}~\ref{sec:opensky} en una caché local. Esta técnica me permitirá ejecutar la aplicación en modo diferido, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso y reproducción.
+Como mencioné en la sección \ref{subsec:obtencionCache}, he utilizado \textsc{Node.js} para desarrollar un proceso por lotes responsable de almacenar los datos de la \textsc{API} de \textsc{OpenSky}~\ref{sec:opensky} en una caché local. Esta técnica permitirá ejecutar la aplicación de modo asíncrona, es decir, obteniendo previamente los datos necesarios y almacenándolos en la caché para su posterior uso y reproducción.
 \subsection{Ejemplos de uso}
 A continuación se muestra un ejemplo de código que puede ser ejecutado por \textsc{Node.js} para almacenar los datos obtenidos de la \textsc{API} en un archivo \textsc{\gls{JSON}} para su posterior uso:
 \begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{javascript}
@@ -653,7 +653,7 @@ A continuación se muestra un ejemplo de código que puede ser ejecutado por \te
 \label{sec:threejs}
 \subsection{Introducción a la tecnología}
 \textsc{Three.js} es una biblioteca escrita en \textsc{JavaScript} que ofrece una \textsc{API} para interactuar con \textsc{WebGL}~\ref{sec:webgl} y crear de manera sencilla animaciones y escenas \gls{3D} sobre entornos web. 
-\textsc{A-Frame}~\ref{sec:aframe} es una de las tecnologías usadas en el prototipo y se basa en \textsc{Three.js} creando una capa de abstracción que simplifica el desarrollo de entornos tridimensionales al permitir el uso directo de \textsc{HTML5}, entidades y componentes. A través de \textsc{A-Frame}, es posible crear escenarios de manera rápida y sencilla, aprovechando la potencia de \textsc{Three.js} en combinación con la facilidad y familiaridad de \textsc{HTML5}.
+\textsc{A-Frame}~\ref{sec:aframe} que es una de las tecnologías usadas en el prototipo, se basa en \textsc{Three.js} creando una capa de abstracción que simplifica el desarrollo de entornos tridimensionales, permitiendo el uso directo de \textsc{HTML5} para crear entidades y componentes ya predefinidos. A través de \textsc{A-Frame}, es posible crear escenarios de manera rápida y sencilla, aprovechando la potencia de \textsc{Three.js} en combinación con la facilidad y familiaridad de \textsc{HTML5}.
 \subsection{Historia y evolución}
 El origen de \textsc{Three.js} se remonta a principios de la década de 2000, cuando el desarrollador \emph{Ricardo Cabello}, también conocido como \emph{Mr.doob}, comenzó a experimentar con gráficos y animaciones en tres dimensiones utilizando tecnologías web. En ese momento, \textsc{WebGL}~\ref{sec:webgl} aún no era muy utilizado y los navegadores no ofrecían un método sencillo para crear contenido \textsc{3D} interactivo.
 \emph{Cabello} optó por utilizar la especificación \textsc{WebGL} recién lanzada en 2009, que permitía usar gráficos \textsc{3D} acelerados por \emph{\gls{hardware}} en los navegadores web. Comenzó a trabajar en una biblioteca \textsc{JavaScript} para que los desarrolladores web pudieran crear contenido \textsc{WebGL} más fácilmente.
@@ -663,7 +663,7 @@ A medida que más desarrolladores se dieron cuenta de su potencial y comenzaron 
 \subsection{Descripción técnica}
 Las principales características técnicas de \textsc{Three.js} son las siguientes:
 \begin{itemize}
-	\item \textbf{\emph{Renderizado en tiempo real}}: aprovechando la aceleración de \emph{\gls{hardware}} proporcionada por \textsc{WebGL}, \textsc{Three.js} es capaz de renderizar gráficos en \textsc{3D} de manera eficiente en los navegadores web modernos.
+	\item \textbf{\emph{Renderizado en tiempo real}}: aprovechando la aceleración de \emph{\glsdisp{hardware}{hardware}} proporcionada por \textsc{WebGL}, \textsc{Three.js} es capaz de renderizar gráficos en \textsc{3D} de manera eficiente en los navegadores web modernos.
 	\item \textbf{\emph{Geometrías y mallas}}: la biblioteca ofrece una amplia variedad de geometrías predefinidas, como esferas, cilindros, cubos, entre otros. Estas geometrías pueden modificarse mediante atributos, e incluso es posible crear geometrías personalizadas utilizando técnicas de extrusión. Estas geometrías pueden combinarse con mallas para crear superficies y escenas complejas.
 	\item \textbf{\emph{Materiales y texturas}}: \textsc{Three.js} proporciona una amplia gama de materiales predefinidos, incluyendo materiales básicos, materiales refractivos, reflectantes y texturas. Estos materiales y texturas se utilizan para agregar detalles a las geometrías y mallas, logrando un mayor realismo en las escenas \textsc{3D}.
 	\item \textbf{\emph{Iluminación y sombreado}}: la biblioteca admite diferentes técnicas de iluminación, como luces direccionales, puntuales y de área, lo que permite simular una iluminación realista en la escena. 
@@ -692,13 +692,13 @@ En el siguiente ejemplo, podemos apreciar lo sencillo que resulta crear un mater
 \section{A-Frame}
 \label{sec:aframe}
 \subsection{Introducción a la tecnología}
-\textsc{A-Frame}\cite{aframedocs} es un \emph{\gls{framework}} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{\gls{framework}s} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. 
+\textsc{A-Frame}\cite{aframedocs} es un \emph{\glsdisp{framework}{framework}} de código abierto construido sobre la tecnología \textsc{Three.js} de la que se habla en la sección~\ref{sec:threejs}, que permite la creación de experiencias de realidad virtual en entornos web. A diferencia de otros \emph{\glsdisp{framework}{frameworks}} \textsc{3D}, \textsc{A-Frame} ofrece un sistema de implementación sencillo, utilizando una sintaxis declarativa similar a la de \textsc{HTML5}. 
 Esto facilita a los desarrolladores web la creación rápida e intuitiva de aplicaciones de realidad virtual, sin necesidad de poseer un profundo conocimiento ni adentrarse en la complejidad de la programación en entornos tridimensionales.
 Una de las principales ventajas de \textsc{A-Frame} es que se basa en el \emph{modelo entidad componente}, lo que permite el desarrollo de componentes reutilizables y su parametrización para configurar su comportamiento.
 Además, \textsc{A-Frame} ya proporciona una amplia gama de geometrías y componentes para la creación de materiales, iluminación, sombras y la gestión de eventos de controladores de realidad virtual, como las gafas \textsc{Oculus}. Esto permite que los proyectos puedan comenzar el desarrollo desde un punto avanzado.
 
 \subsection{Historia y evolución}
-\textsc{A-Frame} fue desarrollado por el equipo de \textsc{Mozilla VR} a finales de 2015. Este equipo fue líder en el desarrollo de herramientas para la tecnología \textsc{WebVR}. Debido a la necesidad de crear contenido de manera más sencilla y rápida, se formó un equipo que incluía a los principales mantenedores de este \emph{\gls{framework}}, como \emph{Diego Marcos} y \emph{Josh Carpenter}. 
+\textsc{A-Frame} fue desarrollado por el equipo de \textsc{Mozilla VR} a finales de 2015. Este equipo fue líder en el desarrollo de herramientas para la tecnología \textsc{WebVR}. Debido a la necesidad de crear contenido de manera más sencilla y rápida, se formó un equipo que incluía a los principales mantenedores de este \emph{\glsdisp{framework}{framework}}, como \emph{Diego Marcos} y \emph{Josh Carpenter}. 
 
 El objetivo de \textsc{A-Frame} era permitir a los desarrolladores web y diseñadores de experiencias \textsc{3D} y realidad virtual crear contenido utilizando \textsc{HTML}, sin necesidad de tener conocimientos profundos de \textsc{\gls{WebGL}}. El primer lanzamiento público de \textsc{A-Frame} tuvo lugar el 16 de diciembre de 2015. En la actualidad, hay más de 75 contribuyentes en total.
 \subsection{Descripción técnica}
@@ -707,13 +707,13 @@ Las principales características técnicas de \textsc{A-Frame} son las siguiente
 \begin{itemize}
 	\item Configuración de la escena mediante el uso de lenguaje de marcado que nos permite configurar las luces, los controles, las cámaras, los eventos y todo lo relacionado con la configuración \textsc{WebXR}.
 	\item Es compatible con la mayor parte de las bibliotecas de desarrollo web basadas en \textsc{JavaScript} como \textsc{React}, \textsc{Angular} o \textsc{Vue}.
-	\item Arquitectura entidad-componente favoreciendo la reutilización de componentes complejos.
+	\item Arquitectura \emph{entidad-componente} favoreciendo la reutilización de componentes complejos.
 	\item Contiene una herramienta de inspector visual que se puede invocar desde el navegador mediante la combinación de teclas \texttt{control+alt+i}, ayudando a la depuración y la detección de errores, y permitiendo la visualización de la jerarquía de la escena, consultando sus componentes y permitiendo la modificación de sus atributos.
 	\item Proporciona utilidades para optimizar el rendimiento, como es el caso de la función \emph{throttled}, que permite que un código no sea ejecutado en cada refresco de la escena y solo sea ejecutado cada cierto intervalo de tiempo configurado.
 	\item Proporciona un componente de animación que permite crear dinamismo de forma sencilla y configurable.
 	\item Contiene componentes para los principales controladores de realidad virtual del mercado.
 	\item Proporciona primitivas \textsc{HTML5} para las principales geometrías como son planos, cajas, círculos, conos, cilindros, esferas, texto, entre otros.
-	\item Gestión de eventos mediante \emph{\gls{raycaster}} que proporciona facilidad de interactuar con las entidades presentes en la escena.
+	\item Gestión de eventos mediante la técnica de \emph{\gls{raycaster}} que proporciona facilidad de interactuar con las entidades presentes en la escena.
 	\item Capacidad de creación de componentes propios o extender alguno existente de manera sencilla e intuitiva.
 \end{itemize}
 
@@ -770,7 +770,7 @@ Como se explica en la sección \ref{sec:dem}, utilizaré esta tecnología para l
 El objetivo es exportar los datos resultantes en el formato binario de alturas requerido por el \emph{componente generador de terrenos}\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}} de la biblioteca \textsc{A-Frame}.
 \section{Google Earth Engine}
 \subsection{Introducción a la tecnología}
-Es una plataforma geográfica basada en la nube que brinda a los usuarios la capacidad de operar, visualizar, analizar y exportar imágenes \gls{raster} de nuestro planeta. Esta plataforma es ampliamente utilizada por científicos y organizaciones sin ánimo de lucro para acceder a información geográfica en forma de datos raster y realizar preprocesamiento y exportación de los mismos.
+Es una plataforma geográfica basada en la nube que brinda a los usuarios la capacidad de operar, visualizar, analizar y exportar imágenes \glsdisp{raster}{raster} de nuestro planeta. Esta plataforma es ampliamente utilizada por científicos y organizaciones sin ánimo de lucro para acceder a información geográfica en forma de datos raster y realizar preprocesamiento y exportación de los mismos.
 
 Los datos geográficos se almacenan en servidores en la nube y se puede acceder a ellos y analizarlos mediante una interfaz de programación de aplicaciones \textsc{API} y un entorno de desarrollo integrado \textsc{IDE} en la nube\footnote{\url{https://code.earthengine.google.com/}}. 
 Esta plataforma ofrece a los usuarios una serie de herramientas y funcionalidades que les permiten trabajar con los datos de manera eficiente y precisa.
@@ -820,9 +820,9 @@ Podemos acceder y visualizar todas las demostraciones en la página web del proy
 	\caption{Visualización del prototipo en entornos de escritorio.}
 	\label{fig:desktop_demo}
 \end{figure}
-En el entorno de escritorio, podemos navegar por el escenario utilizando el teclado con las teclas \emph{WASD}. Además, al mantener presionado el botón del ratón en cualquier parte de la pantalla que no sea un objeto interactivo, podemos mover la cabeza para cambiar la vista.
+En el entorno de escritorio, podemos navegar por el escenario utilizando el teclado con las teclas \emph{WASD}. Además, al mantener presionado el botón izquierdo del ratón en cualquier parte de la pantalla que no sea un objeto interactivo, podemos mover la cabeza para cambiar la vista.
 
-Si activamos el botón \emph{hud} en la barra de herramientas \textsc{3D}, podremos interactuar con los aviones. Por ejemplo, al colocar el cursor sobre un avión, se mostrará un icono indicando que lo hemos seleccionado. Al hacer clic en él, podremos ver información en tiempo real sobre el avión en el panel \textsc{HUD}.
+Si activamos el botón \emph{hud} en la barra de herramientas \textsc{3D}, podremos interactuar con los aviones. Por ejemplo, al colocar el cursor sobre un avión, se mostrará un icono indicando que lo podemos seleccionar. Al hacer clic en él, podremos ver información en tiempo real sobre el avión en el panel \textsc{HUD}.
 
 Otra opción conmutable en la barra de herramientas es \emph{info}. Si la activamos al colocar el ratón sobre cualquier edificio, podremos visualizar los metadatos asociados a dicho edificio procedentes de los servidores de \textsc{OpenStreetMaps}.
 
@@ -858,11 +858,11 @@ Esta metodología hace uso de un marco de trabajo ágil, introducido por primera
 El enfoque principal de \textsc{Scrum} se fundamenta en la realización de iteraciones incrementales. Esto implica dividir el proyecto en tareas más pequeñas y de corta duración conocidas como \emph{sprints}. 
 Cada \emph{sprint} tiene una duración estimada en la cual se llevan a cabo actividades como la planificación, el desarrollo, las pruebas y la revisión.
 
-En el ámbito laboral, es muy común utilizar esta metodología en proyectos tecnológicos, y muchas empresas ofrecen productos para la planificación de proyectos. Uno de los más ampliamente utilizados es \textsc{JIRA}\footnote{\url{https://www.atlassian.com/software/jira}} de \textsc{Atlassian}, que cuenta con una guía de la metodología muy bien documentada \cite{scrumGuide}.
+En el ámbito laboral, es muy común utilizar esta metodología en proyectos tecnológicos, y muchas empresas ofrecen productos para la planificación de proyectos. Uno de los más utilizados es \textsc{JIRA}\footnote{\url{https://www.atlassian.com/software/jira}} de \textsc{Atlassian}, que cuenta con una guía de la metodología muy bien documentada \cite{scrumGuide}.
 
 \noindent Algunas de las características que utilizaremos de \emph{Scrum} son las siguientes:
 \begin{itemize}
-\item \textbf{\emph{Roles}}: se define tres roles principales: \emph{Product Owner} (Dueño del producto), el \emph{Scrum Master} (responsable de que se cumpla la metodología) y el equipo de desarrollo (desarrolladores).
+\item \textbf{\emph{Roles}}: se define tres roles principales: \emph{Product Owner} (Dueño del producto), el \emph{Scrum Master} (responsable de que se cumpla la metodología) y el equipo de desarrollo (desarrolladores). En nuestro caso, el tutor realizará el papel tanto de \emph{Product Owner} como de \emph{Scrum Master}, mientras que yo seré el desarrollador.
 \item \textbf{\emph{Backlog}}: registro de tareas pendientes, que deberán estar estimadas y priorizadas.
 \item \textbf{\emph{Artefactos}}: se utiliza varios artefactos para gestionar el trabajo. El más importante es el \emph{Product Backlog}, que es una lista priorizada de todas las funcionalidades, mejoras y tareas pendientes. Otros artefactos incluyen el \emph{Sprint} \emph{Backlog}, que contiene las tareas seleccionadas para el \emph{sprint} actual, y el Incremento, que es la versión funcional del producto al finalizar cada \emph{sprint}.
 \item \textbf{\emph{Reuniones}}: la metodología incluye varias reuniones estructuradas para facilitar la colaboración y la toma de decisiones. Estas reuniones incluyen la \emph{Sprint Planning}, donde se define el alcance del \textsc{sprint} actual, la \emph{Daily Scrum}, una breve reunión diaria de seguimiento, y la \emph{Sprint Review}, donde se revisa y se demuestra el trabajo realizado durante el \emph{sprint}.
@@ -937,7 +937,7 @@ Se realizaron las primeras animaciones de los aviones, pero surgieron algunos pr
 Después de una reunión con el \emph{Product Owner}, se decidió crear un módulo dedicado a gestionar las conversiones entre las coordenadas geodésicas y las coordenadas en el mundo \textsc{\gls{3D}}. En este módulo, se invirtió el eje problemático y se realizó una traslación para centrar el escenario en las coordenadas \emph{(0, 0, 0)}. Además, se aplicó un escalado para manejar distancias en escenarios de grandes dimensiones, como cientos de kilómetros. Todas estas transformaciones se realizaron de manera parametrizada a través de la configuración.
 Se comenzaron a crear las primeras animaciones de los aviones con éxito sobre un escenario que representa el aeropuerto de Barajas y sus alrededores. 
 También se generaron las primeras siluetas sin extruir en el suelo para comprobar que las posiciones de los aviones coincidían con las posiciones de los edificios, como se muestra en la figura \ref{fig:sprint1}.
-Además, se inició la captura de un \emph{\gls{raster}} para incorporar una referencia en forma de mapa de \textsc{OpenStreetMap} en el suelo, lo cual permitirá verificar si se están creando las geometrías en el lugar correcto.
+Además, se inició la captura de un \emph{\glsdisp{raster}{raster}} para incorporar una referencia en forma de mapa de \textsc{OpenStreetMap} en el suelo, lo cual permitirá verificar si se están creando las geometrías en el lugar correcto.
 Se implementan en el gestor principal de la escena las primeras interacciones con eventos. Se ha creado una entidad en forma de cono que se posiciona encima del avión para indicar visualmente el avión sobre el cual tenemos el ratón. Esta funcionalidad permite al usuario identificar fácilmente qué avión está siendo seleccionado o resaltado.
 
 \subsubsection{Resultado}
@@ -947,11 +947,11 @@ Se implementan en el gestor principal de la escena las primeras interacciones co
   \caption{Versión inicial.}
   \label{fig:sprint1}
 \end{figure}
-Durante la reunión final del \emph{sprint} con el \emph{Product Owner}, se ha llegado a la conclusión de que se han cumplido satisfactoriamente los objetivos establecidos. Se considera que se ha logrado una buena base para continuar el desarrollo, especialmente con la incorporación de las siluetas en el terreno de la escena que es parte del desarrollo para el próximo \emph{sprint} donde abordaré la generación de un módulo que gestiona el terreno.
+Durante la reunión final del \emph{sprint} con el \emph{Product Owner}, se ha llegado a la conclusión de que se han cumplido satisfactoriamente los objetivos establecidos. Se considera que se ha logrado una buena base para continuar el desarrollo, especialmente con la incorporación de las siluetas de edificios en el terreno de la escena, que será de gran utilidad, para comenzar los objetivos del próximo \emph{sprint} donde abordaré la generación de un módulo que gestiona el terreno.
 \subsection{Sprint 2}
 \subsubsection{Objetivos}
 \begin{itemize}
-    \item Generar un archivo \textsc{DEM} y un \emph{\gls{raster}} para los escenarios de Madrid y Vatry.
+    \item Generar un archivo \textsc{DEM} y un \emph{\glsdisp{raster}{raster}} para los escenarios de Madrid y Vatry.
     \item Integrar en la plataforma el componente \emph{aframe-terrain-model}\footnote{\url{https://github.com/bryik/aframe-terrain-model-component}}, el cual genera un mallado a partir de un archivo binario de alturas.
     \item Desarrollar un módulo para la gestión de terrenos.
     \item Crear un segundo escenario adaptando el gestor de configuración de la aplicación para permitir la cargar toda la plataforma tan solo modificando un fichero en el \textsc{HTML} principal.
@@ -959,7 +959,7 @@ Durante la reunión final del \emph{sprint} con el \emph{Product Owner}, se ha l
     \item Adaptar el gestor principal para considerar la altura del terreno al posicionar los aviones.
 \end{itemize}
 \subsubsection{Desarrollo}
-Se generan los ficheros \textsc{DEM} y \emph{\gls{raster}} con éxito siguiendo el procedimiento descrito en las secciones \ref{sec:dem} y \ref{sec:raster}. 
+Se generan los ficheros \textsc{DEM} y \emph{\glsdisp{raster}{raster}} con éxito siguiendo el procedimiento descrito en las secciones \ref{sec:dem} y \ref{sec:raster}. 
 Para integrar el componente de terrenos en la plataforma, se ha hecho que los parámetros del componente binario de alturas y \emph{raster} del terreno sean configurables, como también la anchura, altura y la magnificación del eje de altura.
 
 Uno de los problemas actuales es que el gestor de alturas debe conocer el valor de altura en cada punto generado por el componente de terreno. He realizado una investigación consultando el código fuente del componente, y he encontrado un evento interno que puedo reutilizar para acceder a la variable de alturas guardada dentro del objeto \textsc{DEM}, como se muestra en la figura \ref{fig:terrain_evento}. Después de ver que los datos almacenados en la variable eran valores extraños e incomprensibles, logré entender la lógica del \emph{array} de datos. 
@@ -975,7 +975,7 @@ Después descargo los datos de edificios y los proceso según se detalla en la s
 \end{figure}
 Se realizan todos las modificaciones finales en el modulo de configuración para poder parametrizar la plataforma para otro escenario, y se descargan vuelos, rater y fichero de alturas y edificios tal y como se detalla finalmente en el manual de usuario para generar el escenario de Vatry (Francia) y poner a prueba la versatilidad de la plataforma.
 \subsubsection{Resultado}
-Se puede observar en la figura \ref{fig:demAframe} cómo cargo una demostración simple con los ficheros generados del binario de alturas con su respectivo \gls{raster}. 
+Se puede observar en la figura \ref{fig:demAframe} cómo cargo una demostración simple con los ficheros generados del binario de alturas con su respectivo \glsdisp{raster}{raster}. 
 
 Se puede visualizar la demostración en el siguiente enlace \url{https://djprano.github.io/AFrameTFG/demos/madrid_terrain.html}.
 Se realiza la reunión final con el \emph{Product Owner} concluyendo que se han cumplido todos los objetivos cerrando el desarrollo y definiendo los próximos objetivos para el siguiente sprint.
@@ -1001,7 +1001,7 @@ Para el panel contextual, implemento una entidad de tipo panel de \textsc{A-Fram
 
 Es aquí donde encuentro el primer problema en este \emph{sprint}, del cual me doy  cuenta afortunadamente debido a que cuando posiciono el ratón sobre un elemento de la clase \emph{clickable}, el cursor cambia a una mano. Esto me hace darme cuenta de que en ciertas zonas de la pantalla el cursor cambia a mano, pero no hay nada visible que obstaculice la interacción con el elemento. Después de verificar que el panel estaba oculto en la misma zona, llego a la conclusión de que el culpable es el panel en modo invisible.
 
-En el desarrollo inicial elegí una estrategia en la que el panel del \textsc{\gls{HUD}} es un elemento \emph{clickable} y, por tanto, intercepta los eventos del \emph{\gls{raycaster}}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no veo que el panel está tapando, al estar invisible, el panel consume los eventos y no puedo seleccionar los aviones correctamente.
+En el desarrollo inicial elegí una estrategia en la que el panel del \textsc{\gls{HUD}} es un elemento \emph{clickable} y, por tanto, intercepta los eventos del \emph{\glsdisp{raycaster}{raycaster}}. Cuando el panel no está visible y está delante del usuario tapando un avión, aunque no veo que el panel está tapando, al estar invisible, el panel consume los eventos y no puedo seleccionar los aviones correctamente.
 
 Soluciono este problema al posicionar el panel detrás del usuario en lugar de hacerlo invisible. En resumen, cuando el panel recibe el evento de cerrar, se coloca detrás del usuario en una posición donde nunca puede ser visible dentro de la escena. De esta manera, deja de interferir en los eventos del controlador principal y puedo seleccionar los objetos sin problemas.
 Además, cuando el panel recibe un evento de elemento seleccionado y cambia su posición de oculto a visible, se posiciona en la última ubicación en la que estaba antes de recibir el evento de ocultar. De esta manera, cada vez que se oculta el panel, la instancia almacena la última posición para su posterior uso cuando reciba el evento de avión seleccionado.
@@ -1037,12 +1037,12 @@ Para obtener más detalles sobre cómo he implementado este componente \emph{cus
 Se lleva a cabo una reunión final con el \emph{Product Owner} para mostrarle el prototipo y se finalizan todos los desarrollos, cumpliendo con los requisitos establecidos en este \emph{sprint}. Posteriormente, se procede a cerrar las etapas de desarrollo con el objetivo de completar la documentación final. 
 
 \section{Construcción de escenas}
-Aquí expongo un resumen del procedimiento necesario para crear un escenario y configurar la plataforma proporcionada por el prototipo implementado. Además, en la sección \ref{sec:componentesreutilizables}, describo los componentes que se pueden reutilizar en otros proyectos y cómo hacerlo.
+Aquí expongo un resumen del procedimiento necesario para crear un escenario y, configurar la plataforma proporcionada por el prototipo implementado. Además, en la sección \ref{sec:componentesreutilizables}, describo los componentes que se pueden reutilizar en otros proyectos y cómo hacerlo.
 
 \subsection{Generación de datos para el terreno}
 El primer paso consiste en determinar las coordenadas geodésicas para nuestro escenario. Es importante intentar definir un rectángulo con coordenadas que formen un plano lo más cuadrado posible. Esto se debe a que, aunque el cálculo se basa en ambas dimensiones, la cúpula del cielo se construye utilizando la coordenada más corta para asegurarse de que no tengamos una parte del área sin cubrir en el horizonte. 
 Un escenario con proporciones cuadradas evitará tener un exceso de terreno fuera de la cúpula, lo cual podría afectar al rendimiento. En resumen, se recomienda generar coordenadas cuadradas en la medida de lo posible.
-Una vez que tengamos las coordenadas geodésicas de nuestro escenario, procederemos a extraer el archivo \textsc{DEM} (Modelo de Elevación Digital) y el archivo \gls{raster} para configurar correctamente los archivos necesarios para crear el terreno. A continuación, seguiremos los pasos enumerados en el manual \ref{manual:generacionDem} para generar un archivo binario de alturas basado en las coordenadas seleccionadas. Para la generación del archivo raster, utilizaremos el script proporcionado en la figura \ref{manual:generacionRaster}, el cual se basa en el servicio de \textsc{Google} \cite{googleearthengine}. Asegúrate de reemplazar las coordenadas establecidas en el script con las correspondientes a tu escenario.
+Una vez que tengamos las coordenadas geodésicas de nuestro escenario, procederemos a extraer el archivo \textsc{DEM} (Modelo de Elevación Digital) y el archivo \glsdisp{raster}{raster} para configurar correctamente los archivos necesarios para crear el terreno. A continuación, seguiremos los pasos enumerados en el manual \ref{manual:generacionDem} para generar un archivo binario de alturas basado en las coordenadas seleccionadas. Para la generación del archivo raster, utilizaremos el script proporcionado en la figura \ref{manual:generacionRaster}, el cual se basa en el servicio de \textsc{Google} \cite{googleearthengine}. Asegúrate de reemplazar las coordenadas establecidas en el script con las correspondientes a tu escenario.
 
 \subsection{Generación de edificios para el terreno}
 El siguiente paso consiste en generar los edificios que queremos que aparezcan dentro de nuestro escenario. Para ello, seguiremos estos pasos:
@@ -1198,7 +1198,7 @@ light="type: directional; color: #fef7ec; intensity: 0.65"></a-sphere>
 \label{sec:componentesreutilizables}
 En esta sección, se presentarán en detalle los componentes de la aplicación que pueden ser reutilizados en otros proyectos a través de la configuración. Además, se presentarán aquellos componentes que pueden integrarse en otros proyectos a través de pequeñas modificaciones. También se incluirán instrucciones detalladas sobre cómo llevar a cabo la reutilización de estos componentes.
 \subsection{Componente de Información Contextual Interactiva}
-Este componente tiene la función de mostrar información contextual sobre una entidad específica. Permite al usuario obtener detalles adicionales o aclaraciones sobre el elemento seleccionado. Si deseas obtener más información sobre cómo implementarlo y utilizarlo, te recomiendo consultar la sección \ref{subsec:tooltip} donde se brindarán más detalles al respecto.
+Este componente tiene la función de mostrar información contextual sobre una entidad específica. Permite al usuario obtener detalles adicionales o aclaraciones sobre el elemento señalado. Si deseas obtener más información sobre cómo implementarlo y utilizarlo, te recomiendo consultar la sección \ref{subsec:tooltip} donde se brindarán más detalles al respecto.
 \subsubsection{ruta}
 {\scriptsize
 	\url{https://github.com/djprano/AFrameTFG/blob/main/js/gui/tooltip-info.js}
@@ -1346,7 +1346,7 @@ Se ha diseñado una arquitectura modular tal y como podemos ver en la figura~\re
 		\caption{Tabla que describe las secciones en las que se ha dividido la lógica de la aplicación.}
 	\end{center}
 \end{table}
-A continuación, se presenta un diagrama \ref{fig:javascriptFiles} que muestra la estructura de archivos en la cual he organizado la lógica de la aplicación. 
+\\A continuación, se presenta un diagrama \ref{fig:javascriptFiles} que muestra la estructura de archivos en la cual he organizado la lógica de la aplicación. 
 Esta lógica está estrechamente relacionada con la arquitectura general de la aplicación, la cual se muestra en la figura \ref{fig:arquitectura}. 
 En este diagrama, se puede observar la distribución de las secciones y la relación entre los componentes creados. Además, se puede apreciar la comunicación de eventos entre las diferentes partes de la arquitectura.
 \begin{figure}[h]
