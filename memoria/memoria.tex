@@ -342,8 +342,9 @@ A continuación, se detallan los objetivos específicos del proyecto, clasificad
 	\item Obtener metadatos de un servicio web que contenga información sobre contornos y alturas de edificios.
 	\item Modularizar la aplicación mediante la creación de componentes reutilizables.
 	\item Implementar un sistema configurable que permita la representación de escenarios en cualquier zona del mundo. Esto se logrará mediante la configuración de parámetros como las coordenadas geodésicas de la zona y la carga de datos específicos de esa zona.
-	\item El prototipo final podrá ser ejecutado en entornos de escritorio, en dispositivos de realidad virtual como el dispositivo Oculus Quest que proporciona para las pruebas la universidad. 
+	\item El prototipo final se podrá ejecutar en entornos de escritorio, en dispositivos móviles y en dispositivos de realidad virtual como el las gafas \textsc{Oculus Quest 2} que proporciona para las pruebas la Universidad Rey Juan Carlos. 
 \end{itemize}
+\newpage
 \section{Distribución del software}
 \label{sec:planificacion-temporal}
 Todo el código fuente, así como los componentes y las demos están alojados en el repositorio de GitHub en la siguiente dirección: \url{https://github.com/djprano/AFrameTFG}
@@ -372,7 +373,7 @@ Estos ejemplos demuestran cómo las aplicaciones existentes permiten a los usuar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tecnologías relacionadas}
 \label{chap:tecnologias}
-En este capítulo voy a describir el contexto tecnológico en el que se encuentra asentado el prototipo de aplicación web, repasando todas las herramientas tecnológicas usadas y estudiadas para el desarrollo de este proyecto.
+En este capítulo voy a describir el contexto tecnológico en el que se encuentra asentado el prototipo, repasando todas las herramientas tecnológicas usadas y estudiadas para el desarrollo de este proyecto.
 \section{Sistema de Vigilancia Dependiente Automática (ADS-B)}
 \label{sec:adsb}
 \subsection{Introducción a la tecnología}
@@ -406,7 +407,7 @@ Con esto, al tener un equipo de aviónica instalado que cumple los requisitos pa
 
 Existen tres tipos de transpondedores en función de su capacidad:
 \begin{itemize}
-	\item \textbf{\emph{ADS-B OUT}}: es un transpondedor diseñado exclusivamente para la transmisión de datos. Cumple con el requisito mínimo establecido por muchas regulaciones y estándares de la aviación, en la figura \ref{fig:adsbtypes} podemos apreciar que el avión de la derecha al ser de este tipo solo emite datos.
+	\item \textbf{\emph{ADS-B OUT}}: es un transpondedor diseñado exclusivamente para la transmisión de datos. Cumple con el requisito mínimo establecido por muchas regulaciones y estándares de la aviación, en la figura \ref{fig:adsbtypes} podemos apreciar que el avión de la derecha al tener un transpondedor de este tipo solo emite datos.
 	\item \textbf{\emph{ADS-B IN}}: es un transpondedor diseñado exclusivamente para la recepción de datos. Suelen ser utilizados por estaciones terrestres. Existen organizaciones como \textsc{FlightRadar24} o \textsc{OpenSky} proporcionan transpondedores \textbf{\emph{ADS-B IN}} de forma gratuita a cambio de completar un formulario. Estos transpondedores se utilizan para crear una red mundial que permite recibir información en tiempo real de todas las aeronaves, lo cual contribuye a alimentar los datos en sus servidores, especialmente en zonas con poca cobertura.
 	\item \textbf{\emph{ADS-B IN \& OUT}}: es utilizado tanto en aviones como estaciones terrestres y presenta la capacidad tanto de emitir sus propios datos, como de recibir información de aviones y estaciones terrestres cercanas. Esta funcionalidad se implementa con el propósito de visualizar un radar en los controles de la aeronave, mostrando la posición de las aeronaves cercanas, así como para recibir información meteorológica u otros tipos de metadatos de las estaciones terrestres. En la Figura \ref{fig:adsbtypes}, se puede observar que tanto el avión a la izquierda como la estación terrestre son de tipo \textbf{ADS-B IN \& OUT}. Esto significa que el avión tiene la capacidad de recibir la información meteorológica transmitida por la estación terrestre, al mismo tiempo que transmite sus propios datos a dicha estación.
 \end{itemize}
@@ -427,15 +428,15 @@ La tecnología estándar \textsc{ADS-B} ofrece una resolución temporal de un se
 \textsc{OpenSky} se inició sobre los años 2012 cuando un equipo de investigadores de \emph{Armasuisse} (Suiza), la \emph{Universidad de Kaiserslautern} (Alemania) y la \emph{Universidad de Oxford} (Reino Unido) comenzaron a colaborar capturando datos de tráfico aéreo a través de la tecnología \textsc{ADS-B}.
 A medida que el proyecto fue creciendo crearon la plataforma online sin ánimo de lucro que hoy conocemos como \textsc{OpenSky Network}, con la finalidad de permitir a los investigadores, desarrolladores y entusiastas de la aviación acceder a los datos que se recopilan.
 \subsection{Descripción técnica}
-En la red de \textsc{OpenSky} tan pronto como llega un mensaje \textsc{ADS-B} se crea un registro para el avión llamado \emph{vector de estado}.
+En la red de \textsc{OpenSky} tan pronto como llega un mensaje \textsc{ADS-B} a un transpondedor, se crea un registro para el avión llamado \emph{vector de estado}.
 El vector de estado del servicio contiene la información descrita en la tabla \ref{tab:vectorEstado}.
-En la sección \ref{subsec:dao} hablaré de cómo el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky} para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
+En la sección \ref{subsec:dao} hablaré de cómo el prototipo utilizará la \textsc{\gls{API}} proporcionada por los servicios de la organización de software libre \textsc{OpenSky}, para consumir datos en tiempo real o en forma diferida a través de una caché local. Esto permitirá crear representaciones en tiempo real del espacio aéreo, dentro de un escenario definido por un cuadrado delimitado por coordenadas geodésicas.
 
 \subsection{Contexto y aplicación en el prototipo}
-En mi caso, utilizaré la \textsc{API} gratuita que me proporciona los servidores de OpenSky con una resolución temporal de 5 segundos. Por lo tanto, aunque podría tener una mayor resolución temporal utilizando la tecnología \textsc{ADS-B} como vimos en la sección \ref{sec:adsb}, mí aplicación se adaptará a la opción gratuita que nos ofrece el servicio \textsc{REST} de \textsc{OpenSky}.
+En mi caso, utilizaré la \textsc{API} gratuita que me proporciona los servidores de OpenSky, con una resolución temporal de 5 segundos. Por lo tanto, aunque podría tener una mayor resolución temporal utilizando la tecnología \textsc{ADS-B} como vimos en la sección \ref{sec:adsb}, mí aplicación se adaptará a la opción gratuita que nos ofrece el servicio \textsc{REST} de \textsc{OpenSky}.
 \subsection{Ejemplos de uso}
 En la figura \ref{fig:getOpensky}, se muestra un ejemplo de una petición \texttt{GET} para las coordenadas de Madrid utilizando la \gls{API} de \textsc{OpenSky}.
-En este ejemplo, se realiza una petición \texttt{GET} al \emph{endpoint} \emph{https://opensky-network.org/api/states/all} con los parámetros de consulta \emph{lamin}, \emph{lomin}, \emph{lamax} y \emph{lomax} especificados. Además, se incluye un encabezado de autorización con el valor (\emph{Basic user:password}) para autenticar la solicitud donde la parte (\emph{user:password}) puede codificarse en \textsc{Base64}\footnote{\url{https://www.base64decode.org/}} para no ir los datos en claro.
+En este ejemplo, se realiza una petición \texttt{GET} al \emph{endpoint} \emph{https://opensky-network.org/api/states/all} con los parámetros de consulta \emph{lamin}, \emph{lomin}, \emph{lamax} y \emph{lomax} especificados. Además, se incluye un encabezado de autorización con el valor (\emph{Basic user:password}) para autenticar la solicitud donde la parte (\emph{user:password}) puede codificarse en \textsc{Base64}\footnote{\url{https://www.base64decode.org/}}.
 \begin{figure}[h]
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false,breaklines]{text}
@@ -498,15 +499,15 @@ Authorization: "Basic user:password"
 \section{HTML5}
 \label{sec:html5}
 \subsection{Introducción a la tecnología}
-\textsc{HTML5} es la última versión del lenguaje de marcado de hipertexto \textsc{HTML}, el lenguaje usado para estructurar y presentar contenido en una web. Junto con la tecnología \textsc{DOM} \ref{sec:dom}, forma la base tecnológica para el desarrollo de aplicaciones web modernas. Mientras que \textsc{HTML5} proporciona las herramientas de marcado para estructura y presentar la información en la web, la tecnologías \textsc{DOM} representa la estructura de ese contenido en forma de árbol de objetos para hacer los datos accesibles y manipulables mediante lenguajes de script.
+\textsc{HTML5} es la última versión del lenguaje de marcado de hipertexto \textsc{HTML}, el lenguaje usado para estructurar y presentar contenido en una web. Junto con el \textsc{DOM} \ref{sec:dom}, forma la base tecnológica para el desarrollo de aplicaciones web modernas. Mientras que \textsc{HTML5} proporciona las herramientas de marcado para estructurar y presentar la información en la web, la tecnologías \textsc{DOM} representa la estructura de ese contenido en forma de árbol de objetos para hacer los datos accesibles y manipulables mediante lenguajes de script.
 La combinación de \textsc{HTML5} y \textsc{DOM} permite a los desarrolladores acceder, modificar y actualizar de forma dinámica los elementos y estilos de una página web.
 \subsection{Historia y evolución}
 En 2004, el \emph{WHATWG}, liderado por Ian Hickson, inició el desarrollo de lo que ahora conocemos como \textsc{HTML5}  Su objetivo principal era mejorar la semántica y estructura del lenguaje \textsc{HTML}, además de agregar nuevas funcionalidades y capacidades para el desarrollo web moderno. El enfoque que resultó exitoso fue el de abordar los problemas y limitaciones que \textsc{HTML} presentaba en ese momento.
-Paralelamente, la \textsc{W3C} también estaba trabajando en la evolución de \textsc{HTML}, presentando \textsc{XHTML} como su propuesta. Sin embargo, a medida que el proyecto avanzaba, quedó claro que \textsc{XHTML} no era compatible con el ecosistema web existente.
+Paralelamente, la \gls{w3c} también estaba trabajando en la evolución de \textsc{HTML}, presentando \textsc{XHTML} como su propuesta. Sin embargo, a medida que el proyecto avanzaba, quedó claro que \textsc{XHTML} no era compatible con el ecosistema web existente.
 En 2006, la \textsc{W3C} decidió abandonar el desarrollo de \textsc{XHTML} y unirse al grupo de trabajo \textsc{WHATWG} para colaborar en el desarrollo de \textsc{HTML5}.
 Durante el proceso de desarrollo de \textsc{HTML5}, se llevaron a cabo múltiples revisiones y actualizaciones con el fin de incorporar nuevas características, mejorar la semántica, definir \textsc{APIs} y abordar los desafíos técnicos y las necesidades emergentes de la web moderna.
 
-\textsc{HTML5} introdujo una serie de mejoras semánticas,tales como la introducción de los elementos \emph{\textless header\textgreater ,\textless nav\textgreater,\textless section\textgreater, \textless article\textgreater}, entre otros, que permiten una mejor estructuración y accesibilidad del contenido. Además, \textsc{HTML5} incluyó capacidades multimedia nativas mediante la incorporación de elementos como \emph{\textless vídeo\textgreater y \textless audio\textgreater}, lo que eliminó la necesidad de utilizar tecnologías complementarias como \textsc{Flash}.
+\textsc{HTML5} introdujo una serie de mejoras semánticas, tales como la introducción de los elementos \emph{\textless header\textgreater ,\textless nav\textgreater,\textless section\textgreater, \textless article\textgreater}, entre otros, que permiten una mejor estructuración y accesibilidad del contenido. Además, \textsc{HTML5} incluyó capacidades multimedia nativas mediante la incorporación de elementos como \emph{\textless vídeo\textgreater y \textless audio\textgreater}, lo que eliminó la necesidad de utilizar tecnologías complementarias como \textsc{Flash}.
 La especificación de \textsc{HTML5} se finalizó oficialmente en octubre de 2014, marcando un hito importante en la evolución del desarrollo web.
 Desde entonces, \textsc{HTML5} se ha convertido en el estándar predominantes para la creación de páginas y aplicaciones web modernas.
 \subsection{Descripción técnica}
@@ -524,7 +525,7 @@ Esta capacidad de crear etiquetas personalizadas fue aprovechada por los creador
 Esta tecnología es la base sobre la cual \textsc{A-Frame} crea la estructura del contenido de realidad virtual en el entorno web. 
 Como veremos en la sección \ref{sec:aframe} \textsc{A-Frame} utiliza una combinación de elementos \textsc{HTML5} como \emph{\textless a-scene\textgreater}, \emph{\textless a-entity\textgreater} y \emph{\textless a-camera\textgreater}, junto con componentes propios de \textsc{A-Frame}, para construir y definir objetos \textsc{\gls{3D}}, cámaras, luces y la escena principal.
 
-En resumen, \textsc{A-Frame} utiliza tecnologías como \textsc{HTML5} y componentes propios para definir la jerarquía del escenario y la \gls{renderización} de toda la escena.
+En resumen, \textsc{A-Frame} utiliza tecnologías como \textsc{HTML5} y componentes propios para definir la jerarquía del escenario y la \glsdisp{renderización}{renderización} de toda la escena.
 \section{DOM}
 \label{sec:dom}
 \subsection{Introducción a la tecnología}
@@ -539,7 +540,7 @@ El \textsc{DOM} surgió como un conjunto de objetos que representan a un documen
 
 El \textsc{DOM} se originó en respuesta a la necesidad de acceder de manera sencilla a los datos estructurados de los elementos \textsc{XML} y \textsc{HTML}. Proporcionó una manera estándar de manipular y acceder a los elementos, atributos y contenido de un documento web.
 
-Los primeros estándares del \textsc{DOM}, desarrollados por la \textsc{W3C} \emph{(World Wide Web Consortium)}, surgieron como un intento de poner fin a las guerras de los navegadores, donde cada uno ofrecía diferentes técnicas para modificar dinámicamente la estructura de las páginas web. Estos estándares buscaban establecer una forma común y coherente de interactuar con los elementos del documento a través del \textsc{DOM}.
+Los primeros estándares del \textsc{DOM}, desarrollados por la \gls{w3c}, surgieron como un intento de poner fin a las guerras de los navegadores, donde cada uno ofrecía diferentes técnicas para modificar dinámicamente la estructura de las páginas web. Estos estándares buscaban establecer una forma común y coherente de interactuar con los elementos del documento a través del \textsc{DOM}.
 \subsection{Descripción técnica}
 El \textsc{DOM} se compone de varios conceptos:
 \begin{itemize}
@@ -572,9 +573,9 @@ Desde cualquier parte del código de la aplicación se puede manipular el \texts
 \section{JavaScript}
 \label{sec:javascript}
 \subsection{Introducción a la tecnología}
-\textsc{JavaScript} es un lenguaje de programación ampliamente utilizado en el desarrollo web que permite agregar interactividad y dinamismo a las páginas y aplicaciones. Es el único leguaje que permite ser ejecutado en el navegador web de forma nativa, sin necesidad de compilación. Su versatilidad, compatibilidad con \emph{\gls{framework}s} y capacidad para ejecutarse tanto en el lado del cliente como en el lado del servidor lo convierten en una herramienta fundamental para crear experiencias web modernas y funcionales.
+\textsc{JavaScript} es un lenguaje de programación ampliamente utilizado en el desarrollo web que permite agregar interactividad y dinamismo a las páginas y aplicaciones. Es el único leguaje que permite ser ejecutado en el navegador web de forma nativa, sin necesidad de compilación. Su versatilidad, compatibilidad con \emph{\glsdisp{framework}{frameworks}} y capacidad para ejecutarse tanto en el lado del cliente como en el lado del servidor lo convierten en una herramienta fundamental para crear experiencias web modernas y funcionales.
 \subsection{Historia y evolución}
-La historia de \textsc{JavaScript} se remonta a 1995, cuando \emph{Brendan Eich} un programador estadounidense diseñó el lenguaje para \textsc{Netscape Navigator} en un tiempo récord de dos semanas. Inicialmente se llamó \textsc{Mocha} y \textsc{LiveScript}, pero debido  a una colaboración con \textsc{Netscape} y \textsc{Sun} (la empresa propietaria por al quel entonces del lenguaje \textsc{Java}), por cuestiones de marketing ya que \textsc{Java} en aquel entonces era un lenguaje de programación muy popular se decidió establecer como nombre \textsc{JavaScript}.
+La historia de \textsc{JavaScript} se remonta a 1995, cuando \emph{Brendan Eich} un programador estadounidense diseñó el lenguaje para \textsc{Netscape Navigator} en un tiempo récord de dos semanas. Inicialmente se llamó \textsc{Mocha} y \textsc{LiveScript}, pero debido  a una colaboración con \textsc{Netscape} y \textsc{Sun} (la empresa propietaria por al quel entonces del lenguaje \textsc{Java}), por cuestiones de marketing ya que \textsc{Java} en aquel entonces era un lenguaje de programación muy popular, se decidió establecer como nombre \textsc{JavaScript}.
 Sin embargo a pesar de la similitud entre el nombre de \textsc{Java} y el nuevo lenguaje \textsc{JavaScript}, las similitudes entre ambos lenguajes son pocas y no tienen mucho en común.
 Al poco tiempo del lanzamiento de \textsc{JavaScript}, \textsc{Microsoft} presentó un lenguaje más o menos compatible llamado \textsc{JScript} para \textsc{Internet Explorer 3.0} .
 Para conciliar ambos lenguajes, \textsc{Netscape} presentó \textsc{JavaScript} a la \emph{European Computer Manufacturers Association} (\textsc{\gls{ECMA}}), con el objetivo de crear un estándar que unificase el lenguaje. Fué entonces cuando nació el estándar que se ha denominado \textsc{ECMAScript}, que se adoptó en la versión 6 en 2015 (\textsc{ES6} o \textsc{ES2015} abreviado). Desde entonces se han ido agregando nuevas características año tras año por lo que se acordó no utilizar un número consecutivo de versión, sino simplemente enumerar el año respectivo en el número de versión.
@@ -599,20 +600,20 @@ Para conciliar ambos lenguajes, \textsc{Netscape} presentó \textsc{JavaScript} 
 	\end{tabular}
 \end{center}
 \subsection{Contexto y aplicación en el prototipo}
-En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base utilizado para la implementación de toda la lógica de negocio desarrollada para el prototipo. Es por lo tanto la herramienta principal para el diseño y desarrollo de componentes que compondrán la escena final. A parte de esto como podréis ver en las secciones posteriores es la tecnología sobre la que está construida los \emph{\gls{framework}s} y librerías usados en este proyecto tales como \textsc{A-Frame}~\ref{sec:aframe}, \textsc{Leaflet}~\ref{sec:leaflet} y \textsc{Three.js}\ref{sec:threejs}.
+En este proyecto \textsc{JavaScript} ha sido el lenguaje de programación base utilizado para la implementación de toda la lógica de negocio desarrollada para el prototipo. Es por lo tanto la herramienta principal para el diseño y desarrollo de componentes que compondrán la escena final. A parte de esto como podréis ver en las secciones posteriores es la tecnología sobre la que está construida los \emph{\glsdisp{framework}{frameworks}} y librerías usados en este proyecto tales como \textsc{A-Frame}~\ref{sec:aframe}, \textsc{Leaflet}~\ref{sec:leaflet} y \textsc{Three.js}\ref{sec:threejs}.
 \subsection{Ejemplos de uso}
 
 \section{WebGL}
 \label{sec:webgl}
 \subsection{Introducción a la tecnología}
-La tecnología de gráficos \textsc{\gls{3D}} es una tecnología que permite la \gls{renderización} de gráficos interactivos en tiempo real sobre un navegador web sin la necesidad de plugins adicionales. Está construida sobre una \textsc{\gls{API}} basada en \textsc{\gls{OpenGL}} para acceder a la funcionalidad de renderizado de la tarjeta gráfica del dispositivo.
+La tecnología de gráficos \textsc{\gls{3D}} es una tecnología que permite la \glsdisp{renderización}{renderización} de gráficos interactivos en tiempo real sobre un navegador web sin la necesidad de plugins adicionales. Está construida sobre una \textsc{\gls{API}} basada en \textsc{\gls{OpenGL}} para acceder a la funcionalidad de renderizado de la tarjeta gráfica del dispositivo.
 
 WebGL\footnote{\url{https://www.khronos.org/webgl/}} está basada en \textsc{JavaScript}~\ref{sec:javascript} y se relaciona con los elementos de una página web mediante el uso de \textsc{HTML5}~\ref{sec:html5}. 
 Proporciona herramientas para crear gráficos \textsc{3D} en el navegador de forma optimizada y eficiente gracias al uso de la \gls{GPU}. \textsc{WebGL} permite una renderización de objetos 3D, texturas, sombreado y efectos visuales avanzados.
 \subsection{Contexto y aplicación en el prototipo}
 Tanto \textsc{A-Frame} como \textsc{Three.js} utilizan \textsc{WebGL} como tecnología para la renderización de escenas y objetos en \textsc{3D} en un navegador web. Ambas bibliotecas se basan en esta tecnología para realizar operaciones sobre la tarjeta gráfica en el renderizado de sus escenarios.
 \section{WebXR}
-La tecnología \textsc{WebXR} es una agrupación de estándares que se utilizan en conjunto para habilitar la representación de escenas en 3D en \gls{hardware} diseñado para la visualización de mundos virtuales (VR) o para agregar gráficos al mundo real (realidad aumentada). \textsc{WebXR} proporciona una combinación perfecta entre realidad aumentada y realidad virtual.
+La tecnología \textsc{WebXR} es una agrupación de estándares que se utilizan en conjunto para habilitar la representación de escenas en 3D en \glsdisp{hardware}{hardware} diseñado para la visualización de mundos virtuales (VR) o para agregar gráficos al mundo real (realidad aumentada). \textsc{WebXR} proporciona una combinación perfecta entre realidad aumentada y realidad virtual.
 
 Una de las ventajas principales de \textsc{WebXR} es que permite crear experiencias inmersivas directamente en un navegador web gracias a que está construido sobre \textsc{WebGL} \ref{sec:webgl}, sin necesidad de descargar ninguna aplicación adicional. Esto facilita el acceso a estas experiencias a través de múltiples dispositivos, ya que solo se necesita un navegador compatible para disfrutar de ellas.
 
@@ -1986,9 +1987,12 @@ El gestor principal de la escena utiliza los datos proporcionados por el \texttt
 \label{subsec:obtencionCache}
 Para asegurar el correcto funcionamiento del componente de acceso a los datos mencionado en la sección anterior \ref{subsec:dao}, es necesario contar con la implementación de una pieza responsable del almacenamiento de los datos en una carpeta de caché local. Así posteriormente, el \texttt{\gls{DAO}} puede consultar esta carpeta en caso de que esté configurado en el modo local.
 Este componente está implementado en \textsc{JavaScript} y se ejecuta en el entorno de \textsc{Node.js}. Su función principal es cargar previamente la configuración de un escenario específico, que incluye parámetros como el rectángulo geodésico para la obtención de datos y el intervalo de tiempo en el que se debe establecer el temporizador para realizar una petición a la \textsc{API} en cada evento. Además, este componente se encarga de almacenar el resultado de cada petición en un archivo dentro de la carpeta de caché, como se muestra en la figura \ref{fig:saveApiData}.
+
+Como se apreciar en la figura \ref{fig:capturaDatosCache} , en cada petición se almacena en la carpeta local que usaremos de cache, un fichero \textsc{\gls{JSON}} con los vectores de posición de los vuelos en ese instante temporal.
+Estos ficheros podrán ser leídos por el \texttt{DAO}, el componte anteriormente descrito en la sección \ref{subsec:dao}.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/almacenamientoCache.drawio.png}
+  \includegraphics[width=8cm, keepaspectratio]{img/almacenamientoCache.drawio.png}
   \caption{Diagrama de consulta y almacenamiento de datos ADS-B en caché.}
   \label{fig:saveApiData}
 \end{figure}
@@ -1998,9 +2002,6 @@ Este componente está implementado en \textsc{JavaScript} y se ejecuta en el ent
   \caption{Ejecución con Node.js del almacenamiento de datos ADS-B en caché.}
   \label{fig:capturaDatosCache}
 \end{figure}
-
-Como se apreciar en la figura \ref{fig:capturaDatosCache} , en cada petición se almacena en la carpeta local que usaremos de cache, un fichero \textsc{\gls{JSON}} con los vectores de posición de los vuelos en ese instante temporal.
-Estos ficheros podrán ser leídos por el \texttt{DAO}, el componte anteriormente descrito en la sección \ref{subsec:dao}.
 \clearpage
 \section{Gestión de la interfaz de usuario}
 \label{sec:gui}
@@ -2383,6 +2384,10 @@ Estas mejoras y funcionalidades se han dividido en dos secciones según su compl
 \newglossaryentry{datum}{
 	name={DATUM},
 	description={En el campo de la geodesia, un datum se refiere a un conjunto de puntos de referencia en la superficie terrestre que se utilizan para realizar mediciones de posición. Además, está asociado a un modelo que describe la forma de la Tierra, conocido como elipsoide de referencia, y se utiliza para establecer un sistema de coordenadas geográficas. En resumen, un datum proporciona los puntos de referencia y el marco de referencia necesario para definir y utilizar un sistema de coordenadas geográficas en mediciones de posición en la Tierra.}
+}
+\newglossaryentry{w3c}{
+	name={W3C},
+	description={El World Wide Web Consortium (W3C) es una organización internacional que desarrolla estándares y protocolos para la web, con el objetivo de garantizar la interoperabilidad y promover el crecimiento de la web.}
 }
 
 

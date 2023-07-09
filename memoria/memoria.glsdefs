@@ -754,3 +754,31 @@ parent={},%
 %
 }%
 
+\glsdefs@newdocentry{w3c}%
+{%
+name={W3C},%
+sort={W3C},%
+type={main},%
+first={W3C},%
+firstplural={W3Cs},%
+text={W3C},%
+plural={W3Cs},%
+description={El World Wide Web Consortium (W3C) es una organización internacional que desarrolla estándares y protocolos para la web, con el objetivo de garantizar la interoperabilidad y promover el crecimiento de la web.},%
+descriptionplural={El World Wide Web Consortium (W3C) es una organización internacional que desarrolla estándares y protocolos para la web, con el objetivo de garantizar la interoperabilidad y promover el crecimiento de la web.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
