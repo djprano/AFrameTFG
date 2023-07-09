@@ -178,14 +178,39 @@ function createFlightElement(id) {
     entityEl.setAttribute('id', id);
     entityEl.setAttribute('gltf-model', "#plane");
     entityEl.setAttribute('class', "clickable");
-    entityEl.setAttribute('scale', { x: configuration.scale, y: configuration.scale, z: configuration.scale });
-    entityEl.setAttribute('hover-scale', 'limitDistance: 100');
-    entityEl.addEventListener('mouseenter', evt => handleMouseEnter(evt));
-    entityEl.addEventListener('click', evt => handleMouseClick(evt));
-    entityEl.addEventListener('mouseleave', evt => handleMouseLeave(evt));
     mainScene.appendChild(entityEl);
+    //Añadimos un bounding box y suscribimos los eventos al bounding para mejorar la selección de objetos.
+    entityEl.addEventListener('model-loaded', () => {
+        // Obtener el objeto 3D del modelo
+        const object3D = entityEl.getObject3D('mesh');
+        // Obtener la caja delimitadora del modelo
+        const boundingBox = new THREE.Box3().setFromObject(object3D);
+        // Obtener el tamaño de la caja delimitadora
+        const size = boundingBox.getSize(new THREE.Vector3());
+        // Crear un cubo basado en el tamaño de la caja delimitadora
+        const geometry = new THREE.BoxGeometry(size.x, size.y*3, size.z);
+        // Crear un material
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // Crear una malla de cubo con la geometría y el material
+        const boundingBoxMesh = new THREE.Mesh(geometry, material);
+        //ajuste de altura
+        boundingBoxMesh.position.y += 12;
+        // Convertir la malla en una entidad de A-Frame
+        const boundingBoxEl = document.createElement('a-entity');
+        boundingBoxEl.setObject3D('mesh', boundingBoxMesh);
+        boundingBoxEl.setAttribute('id', 'boundingBox');
+        boundingBoxEl.setAttribute('class', "clickable");
+        boundingBoxEl.setAttribute('visible', false);
+        // Añadir la entidad del cubo como hijo de la entidad padre
+        entityEl.appendChild(boundingBoxEl);
+        entityEl.setAttribute('scale', { x: configuration.scale, y: configuration.scale, z: configuration.scale });
+        entityEl.setAttribute('hover-scale', 'limitDistance: 100');
+        // Agregar eventos al bounding box
+        boundingBoxEl.addEventListener('mouseenter', evt => handleMouseEnter(evt));
+        boundingBoxEl.addEventListener('click', evt => handleMouseClick(evt));
+        boundingBoxEl.addEventListener('mouseleave', evt => handleMouseLeave(evt));
+      });
     return entityEl;
-
 }
 
 const HUD_SHOW_JSON = 'hud-show-json';
@@ -196,7 +221,7 @@ const ID_ATRIBUTE = 'id';
 
 //Consumidor de eventos mouse enter
 function handleMouseClick(evt) {
-    const flightEl = evt.currentTarget;
+    const flightEl = evt.currentTarget.parentNode;
     // Crear un json con los datos del vuelo.
     let flightCacheData = flightsCache.get(flightEl.getAttribute(ID_ATRIBUTE));
     flightEl.object3D.userData.points = flightCacheData.points;
@@ -206,13 +231,13 @@ function handleMouseClick(evt) {
 
 //Consumidor de eventos mouse enter
 function handleMouseEnter(evt) {
-    const flightEl = evt.currentTarget;
+    const flightEl = evt.currentTarget.parentNode;
     mainScene.emit(HUD_OBJECT_ENTER, flightEl);
 }
 
 //Consumidor de eventos mouse leave
 function handleMouseLeave(evt) {
-    const flightEl = evt.currentTarget;
+    const flightEl = evt.currentTarget.parentNode;
     mainScene.emit(HUD_OBJECT_LEAVE, flightEl);
 }
 

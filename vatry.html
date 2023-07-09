@@ -42,12 +42,12 @@
     <!-- Camera -->
     <a-entity id="rig" position="0 0 0" movement-controls terrain-height>
       <a-entity id="camera" hud camera look-controls="reverseMouseDrag:false" cursor="rayOrigin: mouse; fuse: false"
-        raycaster="far: 4000; objects: .clickable" position="0 0 0" toolbar3d>
+        raycaster="far: 2000; objects: .clickable" position="0 0 0" toolbar3d>
       </a-entity>
       <a-entity id="left-hand" oculus-touch-controls="hand: left" laser-controls="hand: left"
-        raycaster="far: 4000; objects: .clickable"></a-entity>
+        raycaster="far: 2000; objects: .clickable"></a-entity>
       <a-entity id="right-hand" oculus-touch-controls="hand: right" laser-controls="hand: right"
-        raycaster="far: 4000; objects: .clickable"></a-entity>
+        raycaster="far: 2000; objects: .clickable"></a-entity>
         <a-entity id="cameraOnBoarEntity" camera="active: false" camrender="cid:cameraOnBoard;fps:25" position="0 0 0"
         rotation="0 -180 0"></a-entity>
     </a-entity>
