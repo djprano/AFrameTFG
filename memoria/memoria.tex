@@ -1414,6 +1414,7 @@ Para lograr un movimiento fluido de los aviones dentro de la escena, voy a crear
 Para llevar a cabo esta tarea, es necesario mantener una caché de las entidades presentes en la escena y poder consultar rápidamente si existen y cuáles son sus datos antiguos. Además, esta caché será útil más adelante para implementar la funcionalidad que muestra el trayecto de un avión seleccionado en tiempo real, véase la sección \ref{subsec:track} para más información.
 
 Dentro del archivo \emph{mainScene.js}, se puede encontrar una variable llamada \emph{flightsCache}, la cual es un mapa que contiene una instancia de la clase FlightCacheData~\ref{subsec:datosCacheVuelo} definida en el archivo \emph{FlightCacheData.js}, este mapa indexa el identificador del vuelo con su objeto caché para encontrar los datos de manera eficiente. Este mapa de objetos en caché será responsable de mantener el estado de los aviones en el mapa y permitirá consultar si un avión existe en la escena y cuál fue su posición anterior para la creación de la animación.
+Se puede ver como está indexado y como se crean los objetos caché en memoria en el diagrama \ref{fig:dao} con más detalle.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm, keepaspectratio]{img/movimientoFluido.drawio.png}
@@ -1509,19 +1510,21 @@ Según la regla de la mano derecha, si extendemos el pulgar, el índice y el ded
 \end{minipage}
 \end{figure}
 Esta convención es ampliamente utilizada en gráficos \textsc{3D} y programación, incluido el entorno de desarrollo \textsc{A-Frame}. Al seguir la regla de la mano derecha, podemos establecer una consistencia en la orientación de los ejes y facilitar la comprensión y manipulación de los objetos en el espacio tridimensional.
-En este punto, me enfrento al primer problema que debo abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un \gls{datum} \textsc{WGS84} y proyectado con \textsc{Mercator}, notaremos una diferencia en las coordenadas.
-La coordenada \textsc{Y}, que representa la latitud en el sistema \gls{geoespacial}, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debo tener en cuenta al diseñar las fórmulas de conversión.
-Si observamos la figura \ref{fig:sistemasDeReferencia}, se puede apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema \gls{geoespacial} se representa de manera diferente en ambos sistemas de referencia.
-\begin{figure}[H]
+En este punto, me enfrento al primer problema que debo abordar en las conversiones. Si observamos una vista aérea tanto del suelo de nuestro escenario como de un mapa representado por un \glsdisp{datum}{datum} \textsc{WGS84} y proyectado con \textsc{Mercator}, notaremos una diferencia en las coordenadas.
+La coordenada \textsc{Y}, que representa la latitud en el sistema \glsdisp{geoespacial}{geoespacial}, aumenta hacia arriba, mientras que en el sistema tridimensional, se representa a lo largo del eje \textsc{Z} y aumenta en dirección opuesta. Por lo tanto, esto es algo que debo tener en cuenta al diseñar las fórmulas de conversión.
+Si observamos la figura \ref{fig:sistemasDeReferencia}, se puede apreciar cómo la posición con coordenada \texttt{(x=8, y=-7)} en el sistema \glsdisp{geoespacial}{geoespacial} se representa de manera diferente en ambos sistemas de referencia.
+\begin{figure}[h]
   \centering
-  \includegraphics[width=13cm, keepaspectratio]{img/sistemasDeReferencia.drawio.png}
+  \includegraphics[width=15cm, keepaspectratio]{img/sistemasDeReferencia.drawio.png}
   \caption{Vista aerea de los sistemas de referencia.}
   \label{fig:sistemasDeReferencia}
 \end{figure}
 
 El siguiente problema al que me enfrento está relacionado con las dimensiones de la aplicación. Si se considera cuidadosamente los escenarios que se van a representar, el radio de alcance del escenario en kilómetros es considerablemente grande. \textsc{A-Frame} trabaja con unidades de metros, lo cual es adecuado para aplicaciones de realidad aumentada donde se busca que las dimensiones en el mundo 3D sean equivalentes a la realidad. Sin embargo, en el caso de nuestra aplicación, el objetivo es asegurar que los aviones se puedan visualizar correctamente incluso a distancias de varios kilómetros. Manejar dimensiones tan grandes plantea problemas en el \glsdisp{renderización}{renderizado} de objetos lejanos y en la interacción con entidades distantes, además de dificultades en el manejo de coordenadas 3D con unidades tan grandes.
-Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry}, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan \texttt{[xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094)}. Utilizando un pequeño \emph{script} en \textsc{Google Earth Engine}, voy a calcular las distancias de altura y anchura para este rectángulo:
-\begin{figure}[H]
+Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry}, donde se configura un rectángulo con las siguientes coordenadas geoespaciales que representan \texttt{[xmin, xmax, ymin, ymax] = (48.491151723988, 49.027963936994, 3.7545776367187, 4.6238708496094)}. 
+
+Utilizando un pequeño \emph{script} en \textsc{Google Earth Engine}, voy a calcular las distancias de altura y anchura para este rectángulo, vease la figura ~\ref{codigo:dimensionesVatry}.
+\begin{figure}
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
 		// Cargar el rectángulo de coordenadas geodésicas
@@ -1552,7 +1555,7 @@ Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry
 		\label{codigo:dimensionesVatry}
 	}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\begin{minted}[fontsize=\scriptsize, frame=single, numberblanklines=false]{javascript}
 	Altura del rectángulo:
@@ -1564,10 +1567,11 @@ Para ilustrar este concepto, consideremos el escenario de la demo de \emph{Vatry
 	\label{codigo:resultadoDimensiones}
 	}
 \end{figure}
+
 Como se puede observar en la figura \ref{codigo:resultadoDimensiones}, este \emph{script} nos arroja que estoy manejando distancias de aproximadamente 60 km. 
 Por lo tanto, se debe tener en cuenta que cuando los aviones se alejan, se verán muy pequeños si representamos las unidades con una anchura de 60.000 unidades en el mundo 3D de A-Frame. Además, las operaciones como la intersección del rayo utilizado para seleccionar los aviones pueden presentar problemas y afectar el rendimiento de nuestra aplicación.
 Para abordar esta situación, voy a realizar una operación de escalado en nuestras ecuaciones. Esto permitirá dimensionar nuestro escenario de una manera más óptima, ajustando las unidades a una escala adecuada para asegurar una representación visual adecuada y un rendimiento eficiente.
-
+\newpage
 El tercer problema al que me enfrento es la asimetría en el escenario de representación. A menos que estemos representando una zona cercana al meridiano de \textsc{Greenwich} y al ecuador, al trabajar con coordenadas en metros es común que se estén manejando unidades excesivamente grandes. Por ejemplo, en la ciudad de \emph{Vatry}, las coordenadas se centran en aproximadamente x = 472476 e y = 6245020. A medida que nos alejamos, podemos encontrarnos con zonas de Rusia donde las coordenadas se expresan en millones de metros, lo cual hace que las operaciones resulten poco prácticas.
 Para abordar este problema, se ha tomado la decisión de desplazar el centro del mapa al centro del escenario. Esto implica que, además del escalado mencionado anteriormente, se realizará un desplazamiento de tal manera que el centro del escenario coincida con el centro del mapa.
 Esta solución permite trabajar con dimensiones más manejables y evita la asimetría en la representación. Al centrar el mapa en el escenario, las operaciones y cálculos se realizan de manera más eficiente y se logra una representación equilibrada de los elementos geoespaciales en el entorno 3D.
@@ -1607,7 +1611,8 @@ Esta función utiliza la librería \textsc{Leaflet} para crear una coordenada ge
 \subsubsection{De Mercator a WGS84}
 \label{funcion:meterToDegree}
 Esta función realiza la operación inversa a la función descrita en \ref{funcion:deegreeToMeter}. Convierte una coordenada cartesiana en el sistema de proyección \textsc{Mercator} a una coordenada geodésica en el sistema de referencia \textsc{WGS84} haciendo uso de la librería \textsc{Leaflet}. Esta función aprovecha sus capacidades integradas para realizar la desproyección de coordenadas.
-\subsubsection{De MatorToWorld}
+\subsubsection{De Mercator a mundo 3D}
+\label{funcion:mercatorToWorld}
 Esta función se encargará de realizar la conversión de una coordenada cartesiana en proyección \textsc{Mercator} a una coordenada en el mundo 3D. Su objetivo principal es aplicar las transformaciones mencionadas anteriormente para abordar los problemas de representación, que incluyen la inversión del eje \textsc{Z}, el desplazamiento y el escalado. Para lograr esto, la función hará uso del desplazamiento calculado en el constructor de la clase. A continuación, se presentan las fórmulas que serán aplicadas:
 
 \begin{figure}[h]
@@ -1663,10 +1668,10 @@ Esta función no tiene ninguna aplicación en el prototipo final, su único prop
 \section{Terreno en el mapa}
 \label{sec:mapGround}
 En esta carpeta se encuentran todos los archivos responsables de gestionar la lógica relacionada con el suelo y las entidades asociadas. El objetivo de estos archivos es gestionar todas las operaciones relacionadas con el suelo, desde la generación del mallado hasta el posicionamiento y desplazamiento de las entidades sobre la superficie del suelo. Para lograr esto, se utilizan diversas tecnologías y librerías que permiten realizar las operaciones necesarias de forma eficiente y precisa.
-También se podrá encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos \gls{raster}. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.
+También se podrá encontrar las entidades que serán colocadas sobre el suelo, como la cámara principal que se moverá sobre la superficie del terreno y los edificios que deben estar alineados con el suelo. Para modelar las superficies, se utilizan conjuntos de datos \glsdisp{raster}{raster}. Un raster es una matriz compuesta por celdas o píxeles dispuestos en filas y columnas que cubren una determinada región geográfica.
 Cada celda en la matriz representa una unidad de área cuadrada y contiene un valor numérico que representa una altura tal y como se puede apreciar en la figura \ref{fig:dem}.
 
-Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un \gls{datum} de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
+Un archivo DEM es un tipo de archivo raster con celdas que representan un valor de elevación correspondiente a una ubicación geodésica específica en relación a un \glsdisp{datum}{datum} de referencia. En resumen, un archivo DEM es una representación muestreada de una superficie terrestre limitada, donde las alturas se almacenan en una matriz.
 
 \begin{figure}[h]
   \centering
@@ -1749,15 +1754,16 @@ Se va a describir los pasos para generar el fichero \textsc{DEM} de Madrid como 
 
     {\scriptsize
     \begin{verbatim}
-    gdal_translate -scale 0 2522 0 65535 -ot UInt16 -outsize 200 200 -of ENVI smallMap.tif Madrid.bin
+	gdal_translate -scale 0 2522 0 65535 -ot UInt16 -outsize 200 200 
+	-of ENVI smallMap.tif Madrid.bin
     \end{verbatim}
     }
 \end{enumerate}
 
 \subsection{Generación de la capa de textura raster}
 \label{sec:raster}
-Voy a describir cómo utilizando la tecnología que nos brinda \textsc{Google Earth Engine} se puede extraer la capa \gls{raster} correspondiente a las coordenadas del rectángulo para el cual se ha generado el archivo bin en formato \textsc{ENVI}. Esto permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que proporciona una representación más realista del terreno.
-En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estoy usando el \textsc{API} que ofrece el \gls{framework} de \textsc{Google Earth Engine}, el objeto \texttt{ee} (\emph{Earth Engine}) ofrece la capacidad de crear geometrías, añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que sigo para realizar la extracción del raster:
+Voy a describir cómo utilizando la tecnología que nos brinda \textsc{Google Earth Engine} se puede extraer la capa \glsdisp{raster}{raster} correspondiente a las coordenadas del rectángulo para el cual se ha generado el archivo bin en formato \textsc{ENVI}. Esto permitirá superponer la textura del terreno con una imagen satelital que esté georreferenciada con las mismas coordenadas, lo que proporciona una representación más realista del terreno.
+En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estoy usando el \textsc{API} que ofrece el \glsdisp{framework}{framework} de \textsc{Google Earth Engine}, el objeto \texttt{ee} (\emph{Earth Engine}) ofrece la capacidad de crear geometrías, añadirlas al mapa y realizar operaciones con ellas, a continuación paso a describir el proceso que sigo para realizar la extracción del raster:
 \begin{enumerate}
     \item Se crea una geometría rectangular con coordenadas \textsc{WGS84} que  permitirá realizar una operación de intersección con el raster para la obtención de una porción.
     \item Se añade el rectángulo como capa para visualizar la zona que vamos a exportar y realizar una comprobación visual de los datos.
@@ -1765,7 +1771,7 @@ En la figura \ref{codigo:generacionRasterMadrid} se puede observar que estoy usa
     \item Se crea un mosaico de las imágenes de la colección. Esto combina todas las imágenes en una sola imagen, seleccionando los píxeles en función de su importancia o calidad. Se añade este mosaico como capa para visualizar el resultado.
     \item Se crea una imagen \textsc{RGB} utilizando las bandas B4, B3 y B2.
     \item Se exporta la imagen \textsc{RGB} en formato \textsc{GeoTIFF}, utilizando una escala de 20 metros por píxel y el sistema de coordenadas \textsc{EPSG:3857}. Se va a usar \textsc{EPSG:3857} porque utiliza el \textsc{Datum WGS84} y proyecta en \textsc{Mercator}, que es el sistema de coordenadas comúnmente utilizado por \textsc{Google Maps} y \textsc{OpenStreetMaps}. De esta manera, se obtiene el raster proyectado en \textsc{Mercator} directamente, que es lo que se necesita.
-    En la figura \ref{fig:dem}, se muestra el resultado de la exportación. Mientras que en la figura \ref{fig:demAframe}, se presenta una escena simple en A-Frame donde visualizamos el raster exportado sobre una malla con las alturas obtenidas del fichero DEM de Madrid. En esta representación, se pueden apreciar claramente las montañas y las alturas alrededor del aeropuerto de Madrid.
+    En la figura \ref{fig:demMadrid}, se muestra el resultado de la exportación. Mientras que en la figura \ref{fig:demAframe}, se presenta una escena simple en A-Frame donde visualizamos el raster exportado sobre una malla con las alturas obtenidas del fichero DEM de Madrid. En esta representación, se pueden apreciar claramente las montañas y las alturas alrededor del aeropuerto de Madrid.
 \end{enumerate}
 \label{manual:generacionRaster}
 \begin{figure}[H]
@@ -1851,7 +1857,7 @@ Para determinar la columna correspondiente en la matriz, se divide la posición 
 De manera similar, se calcula la fila correspondiente en la matriz utilizando el eje Z. Estos cálculos proporcionarán la fila y columna adecuadas en la matriz de alturas.
 En la figura \ref{formula:calculoIndiceAlturas} podemos ver las fórmulas de cálculo de índices en columna y fila que acabo de describir.
 
-Finalmente, es importante mencionar que se está utilizando una representación de la matriz de alturas en formato de array unidimensional. Aunque conceptualmente es una matriz bidimensional, se almacena en una variable de tipo array de una sola dimensión. 
+Finalmente, es importante mencionar que se está utilizando una representación de la matriz de alturas en formato de array unidimensional. Aunque conceptualmente es una matriz bidimensional como muestra la figura \ref{fig:terrainDrawio}, se almacena en una variable de tipo array de una sola dimensión. 
 Para determinar el índice en el array al que corresponde una determinada fila y columna en la matriz, se realiza una operación básica para convertir el índice bidimensional en un índice unidimensional.
 La fórmula utilizada para este cálculo se muestra en la Figura \ref{formula:calculoIndiceAlturas}. Esta fórmula permite acceder correctamente al valor de altura correspondiente en el array, teniendo en cuenta la relación entre la posición bidimensional y la representación unidimensional de la matriz de alturas.
 
@@ -1866,7 +1872,7 @@ En resumen para obtener la altura correspondiente a un vector de posición en el
 
 \subsection{Generación de datos geoespaciales de los edificios}
 \label{subsec:buildingData}
-Para extraer la información \gls{geoespacial} de los edificios, me he basado en el servicio proporcionado por \textsc{Overpass}\footnote{\url{https://overpass-api.de/}}, el cual ofrece acceso a datos geoespaciales almacenados en la base de datos de \textsc{OpenStreetMaps}\footnote{\url{https://www.openstreetmap.org/}}. 
+Para extraer la información \glsdisp{geoespacial}{geoespacial} de los edificios, me he basado en el servicio proporcionado por \textsc{Overpass}\footnote{\url{https://overpass-api.de/}}, el cual ofrece acceso a datos geoespaciales almacenados en la base de datos de \textsc{OpenStreetMaps}\footnote{\url{https://www.openstreetmap.org/}}. 
 Overpass brinda una \textsc{API} que permite realizar consultas a la base de datos y también proporciona una herramienta en línea llamada \textsc{Overpass Turbo}\footnote{\url{https://overpass-turbo.eu/}}, que permite visualizar consultas a la \textsc{API}, así como visualizar y exportar los resultados de manera interactiva.
 Inicialmente, se considera cargar los datos en línea en tiempo real. Sin embargo, debido a que el formato del resultado de la consulta requería un preprocesamiento adicional y a la gran cantidad de entidades que se recuperaban en cada consulta, se llega a la conclusión de que, para el prototipo, sería mejor trabajar con una cantidad reducida de entidades preprocesadas previamente y almacenadas localmente dando así prioridad al rendimiento de la aplicación.
 Para descargar los datos se hace uso de \textsc{Postman}\footnote{\url{https://www.postman.com/}} y se genera la siguiente petición para la \textsc{API}:
@@ -1902,7 +1908,7 @@ En esta sección, se va a describir brevemente la implementación de la generaci
 El gestor de alturas utiliza un archivo geoespacial en formato \textsc{GEOJSON} para representar los edificios. Cada edificio se define usando una lista de coordenadas geoespaciales en el sistema de referencia \textsc{WGS84}, que describe su contorno. En ocasiones también se incluye un metadato que indica el número de pisos del edificio dependiendo la zona que se consulte, sobre todo se van a encontrar más metadatos de alturas en ciudades grandes. 
 Para la generación de la geometría del edificio, se va a necesitar la lista de coordenadas ya convertida al espacio \textsc{3D} utilizando el conversor descrito en la sección \ref{subsec:mapConversion}, la altura del terreno y la altura del edificio calculada a partir del número de pisos.
 
-Para calcular la altura del terreno, se obtiene el \gls{centroide} de la lista de puntos que definen el contorno del edificio. Luego, se aplican las fórmulas descritas en \ref{formula:calculoIndiceAlturas} para determinar la altura del terreno en el punto del centroide.
+Para calcular la altura del terreno, se obtiene el \glsdisp{centroide}{centroide} de la lista de puntos que definen el contorno del edificio. Luego, se aplican las fórmulas descritas en \ref{formula:calculoIndiceAlturas} para determinar la altura del terreno en el punto del centroide.
 
 En la implementación, se comienza creando una geometría bidimensional en \textsc{Three.js} a partir de la lista de coordenadas del edificio. Sin embargo, surge un problema al realizar la extrusión, ya que las coordenadas que utiliza la \textsc{API} de \textsc{Three.js} para extruir una forma son en \textsc{2D} y al devolver la geometría \textsc{3D} tendrá el siguiente formato \textsc{3D} \texttt{(x, y, 0)}, cuando en realidad deberían ser \texttt{(x, 0, y)}. 
 Por lo tanto, después de crear la forma, se aplica una rotación de 90 grados alrededor del \emph{eje X} para colocar el edificio en su posición original. Luego, se ajusta la altura del edificio aplicando una traslación en el \emph{eje Y} que incluye la altura del terreno y la altura del edificio. De esta manera, el edificio queda correctamente posicionado y anclado al terreno.
@@ -2157,7 +2163,7 @@ Además, se invirtieron muchas horas de investigación para garantizar que el co
 \end{figure}
 Para permitir que los componentes que viajan con la cámara principal puedan ser arrastrados, voy a aclarar el proceso. En primer lugar, es importante tener en cuenta que la complejidad radica en garantizar que el elemento se mueva siempre en el mismo plano, sin cambios en la profundidad, solo en las coordenadas horizontales y verticales.
 Además, cuando se arrastra el componente con el ratón o el mando de las gafas de realidad virtual, es fundamental que siga el movimiento realizado para dar la sensación de arrastre.
-Después de explorar diversas estrategias, se llega a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{\gls{raycaster}}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \textsc{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse.\\
+Después de explorar diversas estrategias, se llega a la conclusión de que la técnica más sencilla y eficiente es utilizar un \emph{\glsdisp{raycaster}{raycaster}}. Un componente \emph{raycaster} es una herramienta fundamental en entornos \textsc{3D} que permite realizar intersecciones y detecciones de colisiones en la escena. Su funcionamiento se basa en el trazado de un rayo desde un origen en una dirección determinada. Cuando el rayo colisiona con las entidades envía eventos a los que los componentes pueden suscribirse.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=10cm, keepaspectratio]{img/custom-draggable.png}
