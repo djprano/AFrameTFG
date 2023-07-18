@@ -25,7 +25,7 @@ AFRAME.registerComponent('hover-scale', {
     },
 
     getFactor: function(distance){
-      return ((distance - this.data.limitDistance)/40) + 1;
+      return ((distance - this.data.limitDistance)/55) + 1;
     },
 
     invertalEvent: function () {
